@@ -1,6 +1,7 @@
 
 
 .. toctree::
+  :maxdepth: 1
 
   shell条件判断if
   shell的变量替换
@@ -18,6 +19,7 @@
 一些bug
 
 .. toctree::
+  :maxdepth: 1
 
   shell下while与set
 

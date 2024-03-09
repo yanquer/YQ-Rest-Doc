@@ -3,6 +3,7 @@ Kali
 ============================
 
 .. toctree::
+  :maxdepth: 1
 
   mac m1安装kali
   Kali安装配置

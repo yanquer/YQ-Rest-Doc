@@ -50,8 +50,8 @@ PySide6.QtWidgets下常用控件
 ============================
 
 .. toctree::
-  :glob:
+  :maxdepth: 1
 
-  ./pyside6_more/*
+  ./pyside6_more/index
 
 

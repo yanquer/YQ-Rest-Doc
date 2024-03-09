@@ -111,7 +111,7 @@ ctypes 提供了三种方法调用动态链接库：
     PyDbg; Immunity Debugger(界面友好, 类似OllyDbg)
   - 内核模式: 与底层交互
 
-X86八个通用寄存器(具体说明可参考: :doc:`/docs/逆向工程/汇编`)::
+X86八个通用寄存器(具体说明可参考: :doc:`/docs/安全/逆向工程/汇编`)::
 
   EAX, EDX, ECX, ESI, EDI, EBP, ESP 和 EBX
 

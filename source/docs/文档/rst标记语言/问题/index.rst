@@ -3,6 +3,7 @@
 =================
 
 .. toctree::
+  :maxdepth: 1
 
   toctree通配符失效
   跨文档引用问题

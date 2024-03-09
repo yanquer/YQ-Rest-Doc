@@ -21,6 +21,7 @@ Torch 是 TensorFlow 开源前非常出名的一个深度学习框架，
   print(torch.cuda.is_available())
 
 .. toctree::
+  :maxdepth: 1
 
   API
   autograd

@@ -324,6 +324,7 @@ app.task() 装饰器负责在应用任务注册表中注册你的任务。
 ====================
 
 .. toctree::
+  :maxdepth: 1
 
   ./celery_more/option_install
   ./celery_more/conf_celery

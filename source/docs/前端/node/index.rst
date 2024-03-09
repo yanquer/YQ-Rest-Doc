@@ -1,10 +1,11 @@
 ============================
-node-模块相关
+node服务端
 ============================
 
 node相关
 
 .. toctree::
+  :maxdepth: 1
 
   ./node下载安装
   ./node启动常见参数
@@ -13,12 +14,14 @@ node相关
 node标准库
 
 .. toctree::
+  :maxdepth: 1
 
   ./标准库/index
 
 node三方库
 
 .. toctree::
+  :maxdepth: 1
 
   ./三方库/index
 

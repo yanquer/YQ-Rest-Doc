@@ -3,6 +3,7 @@ Debian
 ===================================
 
 .. toctree::
+  :maxdepth: 1
 
   Debian包依赖
   debian查看系统版本

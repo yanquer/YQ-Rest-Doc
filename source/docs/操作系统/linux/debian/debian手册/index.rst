@@ -5,6 +5,7 @@ debian手册
 参考: `<https://www.debian.org/doc/manuals/debian-reference/>`_
 
 .. toctree::
+  :maxdepth: 1
 
   PS1 提示符定义
   类 Unix 文件系统

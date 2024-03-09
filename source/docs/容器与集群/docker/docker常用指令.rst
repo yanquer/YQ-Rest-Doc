@@ -6,6 +6,7 @@ docker常用指令
 .. =======================
 
 .. toctree::
+  :maxdepth: 1
 	:maxdepth: 3
 
 	docker_command/index

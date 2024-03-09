@@ -333,6 +333,7 @@ environment variables:
 ============================
 
 .. toctree::
+  :maxdepth: 1
 
   pytest/index
 

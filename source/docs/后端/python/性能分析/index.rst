@@ -13,6 +13,7 @@ Python性能分析
 - pyinstrument: 使用采样方法对函数的执行时间进行记录，开销比cProfile要小.
 
 .. toctree::
+  :maxdepth: 1
 
   cProfile
   pyflame

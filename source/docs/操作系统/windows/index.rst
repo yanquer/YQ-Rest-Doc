@@ -4,6 +4,7 @@ Windows
 
 
 .. toctree::
+  :maxdepth: 1
 
   Windows打开Debian问题
   windows_shell

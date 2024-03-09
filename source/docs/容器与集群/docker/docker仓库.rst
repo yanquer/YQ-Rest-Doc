@@ -3,7 +3,7 @@ docker仓库
 ================
 
 .. toctree::
-  :glob:
+  :maxdepth: 1
 
-  ./docker_store/*
+  ./docker_store/index
 

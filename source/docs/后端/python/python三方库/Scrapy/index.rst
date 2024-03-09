@@ -14,6 +14,7 @@ Scrapy 常应用在包括数据挖掘，信息处理或存储历史数据等一�
 通常我们可以很简单的通过 Scrapy 框架实现一个爬虫，抓取指定网站的内容或图片。
 
 .. toctree::
+  :maxdepth: 1
 
   架构
   使用
@@ -44,6 +45,7 @@ Scrapy 常应用在包括数据挖掘，信息处理或存储历史数据等一�
 相关工具
 
 .. toctree::
+  :maxdepth: 1
 
   Scrapy shell
 

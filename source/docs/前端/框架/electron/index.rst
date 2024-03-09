@@ -7,6 +7,7 @@ Electron
 最新文档地址: `https://www.electronjs.org/zh/docs/latest/`
 
 .. toctree::
+  :maxdepth: 1
 
   install报错
   electron-builder配置生成位置

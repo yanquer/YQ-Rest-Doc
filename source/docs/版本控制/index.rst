@@ -3,9 +3,9 @@
 ============================
 
 .. toctree::
-  :glob:
+  :maxdepth: 1
 
-  git/*
+  git/index
   svn/index
 
   svn与git的区别

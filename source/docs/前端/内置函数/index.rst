@@ -5,6 +5,7 @@
 内置对象
 
 .. toctree::
+  :maxdepth: 1
 
   navigator
 

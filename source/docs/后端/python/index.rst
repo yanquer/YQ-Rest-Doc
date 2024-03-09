@@ -3,14 +3,14 @@ Python
 ================================
 
 .. toctree::
-  :glob:
+  :maxdepth: 1
 
   Web框架/index
-  cookbook/*
+  cookbook/index
   相关技术实现/index
-  python三方库/*
-  python标准库/*
-  概念相关/*
+  python三方库/index
+  python标准库/index
+  概念相关/index
   性能分析/index
   包管理器
   问题总结/index

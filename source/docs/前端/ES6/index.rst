@@ -13,6 +13,7 @@ JavaScript 的正式名称是 ECMAScript
 语法基础:
 
 .. toctree::
+  :maxdepth: 1
 
   基本数据类型
   变量声明

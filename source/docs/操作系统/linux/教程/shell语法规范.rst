@@ -31,6 +31,7 @@ case语句
 其他:
 
 .. toctree::
+  :maxdepth: 1
 
   shell语法规范/index
 

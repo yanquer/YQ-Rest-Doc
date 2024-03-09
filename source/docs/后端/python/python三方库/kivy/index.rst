@@ -7,6 +7,7 @@
   Kivy, 弃之...
 
 .. toctree::
+  :maxdepth: 1
 
   安装kivy
   使用-属性声明

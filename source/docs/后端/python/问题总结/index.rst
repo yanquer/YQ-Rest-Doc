@@ -4,6 +4,7 @@ Python问题总结
 
 
 .. toctree::
+  :maxdepth: 1
 
   python重写父类参数列表问题
   Sphinx使用

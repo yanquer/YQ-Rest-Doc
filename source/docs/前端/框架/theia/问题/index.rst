@@ -4,6 +4,7 @@ Theia框架相关问题总结
 
 
 .. toctree::
+  :maxdepth: 1
 
   关于theia的绑定
   创建自定义拓展

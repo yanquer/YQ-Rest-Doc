@@ -3,6 +3,7 @@ sklearn提供的API
 ===============================
 
 .. toctree::
+  :maxdepth: 1
 
   datasets
   impute

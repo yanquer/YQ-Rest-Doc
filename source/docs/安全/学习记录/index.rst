@@ -4,6 +4,7 @@
 
 
 .. toctree::
+  :maxdepth: 1
 
   渗透流程
   phpStudy搭建

@@ -3,6 +3,7 @@ rst标记语言
 =============================
 
 .. toctree::
+  :maxdepth: 1
 
   语法模块/index
   doc语法模块/index

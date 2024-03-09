@@ -3,21 +3,20 @@ C
 =================================
 
 .. toctree::
+  :maxdepth: 1
 
   c++
   cmake
   cmakelists编写
   c类型
-  c库函数
-  c标准库
+  c库函数/index
+  标准库/index
   gcc(++)编译器
   vscode调试相关
   使用CLion
-  一些问题
   基础知识
   一些关键字
-  长路径操作
-  关于库的报错
+  问题/index
 
 
 

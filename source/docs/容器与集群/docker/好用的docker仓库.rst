@@ -33,7 +33,7 @@ webmin
 
 hubdocker地址: `johanp/webmin <https://hub.docker.com/r/johanp/webmin>`_
 
-还有samba管理, bind ( :doc:`/docs/运维/config_dns/docker-bind部署dns-管理面板` ) 等相关的
+还有samba管理, bind ( :doc:`/docs/杂乱无章/计算机网络/config_dns/docker-bind部署dns-管理面板` ) 等相关的
 
 jellyfin
 ===================

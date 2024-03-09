@@ -83,9 +83,9 @@
 每个字段都应该是 Field 类的实例
 
 .. toctree::
-  :glob:
+  :maxdepth: 1
 
-  支持的Field/*
+  支持的Field/index
 
 参考: `Django模型字段 <https://docs.djangoproject.com/zh-hans/3.2/ref/models/fields/#model-field-types>`_
 

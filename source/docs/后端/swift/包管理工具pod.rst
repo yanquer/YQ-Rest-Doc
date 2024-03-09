@@ -7,7 +7,7 @@
 类似于Java的Maven
 
 需要先有Ruby, 因为pod是用Ruby写的,
-可参考: :doc:`../ruby/安装配置`
+可参考: :doc:`/docs/后端/ruby/index`
 
 安装::
 

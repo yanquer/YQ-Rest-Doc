@@ -1,0 +1,78 @@
+===============================
+Python标准库
+===============================
+
+.. toctree::
+  :maxdepth: 1
+
+  .分类
+  argparse
+  asyncio
+  atexit
+  bdb
+  bisect
+  cmath
+  collections
+  concurrent
+  configparser
+  contextlib
+  contextvars
+  csv
+  ctypes
+  dataclasses
+  datetime
+  decimal
+  dis
+  fileinput
+  fnmatch
+  fractions
+  functools
+  gettext
+  glob
+  heapq
+  hmac
+  html
+  importlib
+  inspect
+  itertools
+  json
+  logging
+  math
+  mmap
+  multiprocessing
+  operator
+  os
+  pip
+  pprint
+  pytz
+  random
+  re
+  resource
+  secrets
+  shutil
+  signal
+  site
+  socket
+  socketserver
+  ssl
+  string
+  struct
+  subprocess
+  sys
+  tarfile
+  tempfile
+  textwrap
+  threading
+  time
+  timeit
+  tkinter
+  traceback
+  types
+  typing
+  unicodedata
+  unittest
+  urllib
+  uuid
+  weakref
+  xml
+

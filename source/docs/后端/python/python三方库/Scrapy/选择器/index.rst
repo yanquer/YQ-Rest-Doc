@@ -35,6 +35,7 @@ Selector会自动解析 xml/html
 两种选择器详解(与Scrapy结合使用)
 
 .. toctree::
+  :maxdepth: 1
 
   CSS选择器
   XPath选择器

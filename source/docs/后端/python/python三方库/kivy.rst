@@ -11,6 +11,7 @@ kivy
 详见:
 
 .. toctree::
+  :maxdepth: 1
 
   kivy/index
 

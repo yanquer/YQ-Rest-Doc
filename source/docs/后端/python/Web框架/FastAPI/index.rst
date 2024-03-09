@@ -37,6 +37,7 @@ FastAPI 适用场景
   - 生态系统： 基于Python生态系统，可以方便地集成各种库和工具。
 
 .. toctree::
+  :maxdepth: 1
 
   结构详解
   安装配置

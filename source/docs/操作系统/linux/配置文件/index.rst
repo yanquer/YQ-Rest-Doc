@@ -10,6 +10,7 @@
 - /etc/hostname 设置当前主机名, 可通过 hostnamectl 修改, 重启生效
 
 .. toctree::
+  :maxdepth: 1
 
   etc-hosts
   etc-resolv-conf

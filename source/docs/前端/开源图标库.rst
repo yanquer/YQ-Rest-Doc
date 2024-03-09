@@ -5,9 +5,9 @@
 codicon
 =============================
 
-vscode有个开源图标库 `codicon`, 可在此预览: `https://microsoft.github.io/vscode-codicons/dist/codicon.html`
+vscode有个开源图标库 `codicon`, 可在此预览: `<https://microsoft.github.io/vscode-codicons/dist/codicon.html>`_
 
-也有个仓库: `https://github.com/microsoft/vscode-codicons/tree/main/src/icons`
+也有个仓库: `<https://github.com/microsoft/vscode-codicons/tree/main/src/icons>`_
 
 没注意是否一致
 
@@ -45,7 +45,9 @@ fontawesome
 
   yarn add @fortawesome/fontawesome-free --save
 
-预览: https://fontawesome.com/v5/search
+预览: `<https://fontawesome.com/v5/search>`_
+
+
 
 
 

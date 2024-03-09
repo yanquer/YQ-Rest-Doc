@@ -4,6 +4,9 @@
 
 
 .. toctree::
+  :maxdepth: 1
 
   镜像文件解包
+  一些UI相关的了解
+  一些XML配置属性
 

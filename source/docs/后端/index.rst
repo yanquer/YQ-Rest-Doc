@@ -5,7 +5,7 @@
 编程语言
 
 .. toctree::
-  :glob:
+  :maxdepth: 1
 
   c/index
   java/index

@@ -48,6 +48,7 @@
 基于贪心算法的算法
 
 .. toctree::
+  :maxdepth: 1
 
   Dijkstra(迪杰斯特拉)算法
 

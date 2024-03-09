@@ -3,6 +3,7 @@ Ubuntu
 ==============================
 
 .. toctree::
+  :maxdepth: 1
 
   图形界面
   ubuntu中文支持

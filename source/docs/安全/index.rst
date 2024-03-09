@@ -3,6 +3,7 @@
 ================================
 
 .. toctree::
+  :maxdepth: 1
 
   Python灰帽子
   kali/index
@@ -16,6 +17,7 @@
   一些有用的网站
   brup/index
   学习记录/index
+  逆向工程/index
 
 大致路线
 

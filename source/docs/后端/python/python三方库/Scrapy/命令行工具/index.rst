@@ -73,6 +73,7 @@ startproject
 不依赖项目目录的指令
 
 .. toctree::
+  :maxdepth: 1
 
   bench
   fetch
@@ -87,6 +88,7 @@ startproject
 依赖项目目录的指令(只有在项目目录下才可以正常执行)
 
 .. toctree::
+  :maxdepth: 1
 
   check
   crawl

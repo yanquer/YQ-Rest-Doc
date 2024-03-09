@@ -14,6 +14,7 @@
 当然, 个人观点.
 
 .. toctree::
+  :maxdepth: 1
 
   amis
   api配置

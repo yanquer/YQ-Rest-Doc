@@ -2,7 +2,7 @@
 debian下的安装
 ====================
 
-使用docker配置, 见: :doc:`/docs/容器与集群/docker/配置debian容器`
+使用docker配置, 见: :doc:`/docs/操作系统/linux/debian/配置debian容器`
 
 安装 Python3 必要的包::
 

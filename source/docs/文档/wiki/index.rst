@@ -3,6 +3,7 @@ wiki
 =================================
 
 .. toctree::
+  :maxdepth: 1
 
   wiki
   wiki.js

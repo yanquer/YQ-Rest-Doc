@@ -40,6 +40,7 @@ Swift内置了一个包管理, 能够更简单的导入,
   国内NGO就是社会组织
 
 .. toctree::
+  :maxdepth: 1
 
   swift3.x升级到5.x
   包管理工具pod
@@ -62,6 +63,7 @@ Swift内置了一个包管理, 能够更简单的导入,
 访问C头文件的几种方式
 
 .. toctree::
+  :maxdepth: 1
 
   使用modulemap导入C++框架
   桥接导入C

@@ -5,6 +5,7 @@
 暂时只写了docker与nginx, 集群待补充
 
 .. toctree::
+  :maxdepth: 1
 
   docker/index
   nginx/index

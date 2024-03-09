@@ -3,9 +3,9 @@ git 命令
 =======================
 
 .. toctree::
-  :glob:
+  :maxdepth: 1
 
-  ./command/*
+  ./command/index
 
 如何表示版本号联系
 =======================

@@ -5,7 +5,7 @@
 按照常见类型划分, 如linux, windows等
 
 .. toctree::
-  :glob:
+  :maxdepth: 1
 
   linux/index
   windows/index

@@ -27,10 +27,9 @@ Kali命令工具
 .. :doc:`/docs/安全/kali/kali渗透专用指令/index`
 
 .. toctree::
-	:glob:
+  :maxdepth: 1
 
-	kali渗透专用指令/*
-
+  kali渗透专用指令/index
 
 .. figure:: ../../../resources/images/2023-02-25-15-16-11.png
 .. figure:: ../../../resources/images/2023-02-25-15-25-00.png
@@ -38,11 +37,11 @@ Kali命令工具
 .. figure:: ../../../resources/images/2023-02-25-15-48-48.png
 .. figure:: ../../../resources/images/2023-02-25-15-50-02.png
 
-	备忘,
+  备忘,
 
 .. figure:: ../../../resources/images/2023-02-25-15-38-27.png
 
-	云服务器厂商. 国外
+  云服务器厂商. 国外
 
 msf
 ========================

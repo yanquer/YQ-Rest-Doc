@@ -5,6 +5,7 @@ React
 前端框架 React, 官方中文: `<https://zh-hans.react.dev/reference/react>`_
 
 .. toctree::
+  :maxdepth: 1
 
   hooks/index
   关于React使用自定义组件却需要使用状态

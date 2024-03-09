@@ -14,7 +14,8 @@ scikit-learn
   pip install scikit-learn
 
 .. toctree::
+  :maxdepth: 1
 
   简单使用教程
   API/index
-  问题/index 
+  问题/index

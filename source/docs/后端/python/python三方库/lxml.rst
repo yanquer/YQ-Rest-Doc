@@ -5,7 +5,7 @@ lxml
 - github地址: `<https://github.com/lxml/lxml>`_
 - 官方主页: `<https://lxml.de>`
 
-需要先了解 :doc:`/docs/后端/python/xpath/index` 的前置知识
+需要先了解 :doc:`/docs/后端/python/教程/xpath/index` 的前置知识
 
 安装::
 

@@ -12,6 +12,7 @@ Theia
 ProcessManager的控制, 会在关闭时候自动关闭所有由其创建的子进程
 
 .. toctree::
+  :maxdepth: 1
 
   创建自己的IDE
   技术实现/index

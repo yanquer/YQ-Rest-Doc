@@ -40,7 +40,7 @@ React.forwardRef 会创建一个React组件，这个组件能够将其接受的 
 useImperativeHandle
 ================================================
 
-见: :ref:`React-Hook_useImperativeHandle`
+见: :doc:`/docs/前端/框架/react/hooks/useImperativeHandle`
 
 
 参考:

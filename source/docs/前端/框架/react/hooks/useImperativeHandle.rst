@@ -2,8 +2,6 @@
 useImperativeHandle
 ===========================================
 
-.. _React-Hook_useImperativeHandle:
-
 useImperativeHandle 可以让你在使用 ref 时 **自定义暴露给父组件的实例值**。
 或者 **给不存在ref属性的函数组件, 增加ref属性**.
 在大多数情况下，应当避免使用 ref 这样的命令式代码。

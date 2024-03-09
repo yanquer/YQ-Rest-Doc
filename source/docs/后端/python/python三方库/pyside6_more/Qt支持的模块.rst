@@ -8,9 +8,9 @@ Qt支持的模块
 一些附加说明:
 
 .. toctree::
-  :glob:
+  :maxdepth: 1
 
-  ./modules/*
+  ./modules/index
 
 其实主要是 pyside6 下面的一些模块:
 

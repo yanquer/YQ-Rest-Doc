@@ -112,6 +112,7 @@ Windows直接在PATH环境变量新增一个即可.
 ========================
 
 .. toctree::
+  :maxdepth: 1
 
   gradle/index
 

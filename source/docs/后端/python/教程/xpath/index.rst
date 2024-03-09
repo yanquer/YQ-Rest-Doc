@@ -31,6 +31,7 @@ XPath 是一门在 XML 文档中查找信息的语言。
 
 
 .. toctree::
+  :maxdepth: 1
 
   XPath节点
   XPath语法

@@ -407,7 +407,7 @@ if语句不能包含循环语句, 不过可以使用goto处理::
 =======================
 
 .. toctree::
-  :glob:
+  :maxdepth: 1
 
-  ./windows_shell/*
+  ./windows_shell/index
 

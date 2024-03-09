@@ -70,7 +70,7 @@ VMware安裝OpenWrt
     仍然可以让虚拟机连接到Internet或其他网络)。
 
 控制器默认即可,
-磁盘选择使用 :doc:`/docs/常用工具使用/StarWindConverter` 转换的虚拟机文件(需要保持现有格式):
+磁盘选择使用 :doc:`/docs/杂乱无章/常用工具使用/StarWindConverter` 转换的虚拟机文件(需要保持现有格式):
 
 .. figure:: ../../../../resources/images/2024-03-03-18-59-10.png
   :width: 480px
@@ -104,7 +104,7 @@ VMware安裝OpenWrt
 
     genisoimage -o openwrt.iso openwrt-23.05.2-x86-generic-generic-ext4-combined.img
 
-  实测直接转换的iso是不能用的, 还是老老实实使用工具 :doc:`/docs/常用工具使用/StarWindConverter` 吧
+  实测直接转换的iso是不能用的, 还是老老实实使用工具 :doc:`/docs/杂乱无章/常用工具使用/StarWindConverter` 吧
 
 然后打开虚拟机, 会安装一会儿, 出现 ready 后回车即可:
 

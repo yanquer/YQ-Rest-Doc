@@ -3,6 +3,7 @@ css常用属性
 ======================
 
 .. toctree::
+  :maxdepth: 1
 
   align-items
   background

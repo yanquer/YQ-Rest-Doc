@@ -52,5 +52,10 @@ xargs -0 将 ``\0`` 作为定界符。
 
   find ./ -name "*.apk" 2>/dev/null | xargs -t -I "{}" cp "{}" apks
 
+再比如MacOS下查找当前目录的rst文档名::
+
+  ls *.rst | xargs -L1  | cut -d. -f 1
+
+
 
 

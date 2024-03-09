@@ -15,19 +15,20 @@ Django
 
 
 .. toctree::
+  :maxdepth: 1
 
-    创建项目
-    模型模块module
-    自定义sql
-    内部类Meta
-    抽象基类
-    后台管理模块admin
-    settings常用字段
-    应用打包
-    测试
-    QuerySet-Api
-    FQ
-    问题总结
+  创建项目
+  模型模块module
+  自定义sql
+  内部类Meta
+  抽象基类
+  后台管理模块admin
+  settings常用字段
+  应用打包
+  测试
+  QuerySet-Api
+  FQ
+  问题总结
 
 模型类
 ===============================

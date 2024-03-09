@@ -16,6 +16,7 @@ TypeScript 可处理已有的 JavaScript 代码，并只对其中的 TypeScript 
 语法
 
 .. toctree::
+  :maxdepth: 1
 
   基础语法
   基础类型
@@ -26,6 +27,7 @@ TypeScript 可处理已有的 JavaScript 代码，并只对其中的 TypeScript 
 相关指令
 
 .. toctree::
+  :maxdepth: 1
 
   tsc
 

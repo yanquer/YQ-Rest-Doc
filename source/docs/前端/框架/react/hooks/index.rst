@@ -18,6 +18,7 @@ hooks
 函数组件拥有
 
 .. toctree::
+  :maxdepth: 1
 
   useState
   useEffect
@@ -28,12 +29,14 @@ hooks
 类组件特有
 
 .. toctree::
+  :maxdepth: 1
 
   createRef
 
 其他
 
 .. toctree::
+  :maxdepth: 1
 
   自定义Hook
 

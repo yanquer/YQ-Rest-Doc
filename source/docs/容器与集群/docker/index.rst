@@ -3,6 +3,7 @@ docker
 ====================================
 
 .. toctree::
+  :maxdepth: 1
 
   docker简介
   docker使用

@@ -3,7 +3,7 @@ Linux
 ==============================
 
 .. toctree::
-  :glob:
+  :maxdepth: 1
 
   debian/index
   系统服务/index
@@ -12,7 +12,7 @@ Linux
   概念性/index
   问题/index
   网络/index
-  linux指令/*
+  linux指令/index
   ubuntu/index
   package/index
   一些安全相关文件

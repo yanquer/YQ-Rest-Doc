@@ -7,7 +7,7 @@ LD_PRELOAD
 与Mac的 :doc:`/docs/操作系统/Mac/Mac环境变量/DYLD_INSERT_LIBRARIES`
 基本一致
 
-用例: :doc:`/docs/逆向工程/实战-Ubuntu16下Hook系统的open`
+用例: :doc:`/docs/安全/逆向工程/实战-Ubuntu16下Hook系统的open`
 
 LD_PRELOAD指定的动态库如果与其他的动态库有同名函数,
 则会覆盖掉后者的调用

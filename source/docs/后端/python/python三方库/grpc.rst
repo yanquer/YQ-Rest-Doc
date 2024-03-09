@@ -5,7 +5,7 @@ grpc使用入门
 
 RPC, 远程过程调用服务, 注重传输协议于序列化.
 
-一些认识 :doc:`/docs/计算机网络/HTTP认识`
+一些认识 :doc:`/docs/杂乱无章/计算机网络/HTTP认识`
 
 gRPC是由Google公司开源的高性能RPC框架。支持多语言、多平台，
 其消息协议使用Google自家开源的Protocol Buffers协议机制（proto3） 序列化，传输使用HTTP/2标准，支持双向流和连接多路复用。

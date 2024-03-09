@@ -26,6 +26,7 @@
 十大机器学习算法
 
 .. toctree::
+  :maxdepth: 1
 
   线性回归算法 Linear Regression
   支持向量机算法(Support Vector Machine,SVM)

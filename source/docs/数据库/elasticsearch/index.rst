@@ -3,6 +3,7 @@ elasticsearch
 ===========================
 
 .. toctree::
+  :maxdepth: 1
 
   es遇到的问题
 

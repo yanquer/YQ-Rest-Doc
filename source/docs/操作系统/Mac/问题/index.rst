@@ -4,6 +4,7 @@
 
 
 .. toctree::
+  :maxdepth: 1
 
   MacApp提权
   XCODE多版本

@@ -3,6 +3,7 @@
 =====================================
 
 .. toctree::
+  :maxdepth: 1
 
   lbfgs failed to converge
 

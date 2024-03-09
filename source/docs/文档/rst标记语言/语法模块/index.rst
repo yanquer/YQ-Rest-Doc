@@ -5,6 +5,7 @@ rst语法模块
 按照用法分类
 
 .. toctree::
+  :maxdepth: 1
 
   标题
   段落

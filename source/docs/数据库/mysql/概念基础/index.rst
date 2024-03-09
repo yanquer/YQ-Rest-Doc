@@ -6,6 +6,7 @@ mysql概念定义
 关键字
 
 .. toctree::
+  :maxdepth: 1
 
   关键字
   关键字-truncate
@@ -13,12 +14,14 @@ mysql概念定义
 数据类型
 
 .. toctree::
+  :maxdepth: 1
 
   数据类型VARCHAR和CHAR
 
 基础
 
 .. toctree::
+  :maxdepth: 1
 
   函数API
   binlog

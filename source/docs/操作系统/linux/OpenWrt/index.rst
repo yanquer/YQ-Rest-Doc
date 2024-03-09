@@ -9,6 +9,7 @@ OpenWrt
 路由器厂商也可以基于 OpenWRT 这个平台，进行二次开发，增加更多丰富的功能和有厂商特色的路由器系统。
 
 .. toctree::
+  :maxdepth: 1
 
   VMware安裝OpenWrt
 

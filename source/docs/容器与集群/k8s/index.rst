@@ -5,6 +5,7 @@ Kubernetes
 官网主页: `Kubernetes 文档 <https://kubernetes.io/zh-cn/docs/home/>`_
 
 .. toctree::
+  :maxdepth: 1
 
   集群安装
 

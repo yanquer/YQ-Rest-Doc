@@ -5,6 +5,7 @@ doc可用于rst文本元素
 这是按照指令分类
 
 .. toctree::
+  :maxdepth: 1
 
   Admonitions
   Images

@@ -2,7 +2,7 @@
 教程
 ===================
 
-基本说明见: :doc:`/docs/后端/python/python三方库/pyside6_more/基本说明`
+基本说明见: :doc:`/docs/后端/python/python三方库/pyside6_more/index`
 
 Widgets说明
 ===================
