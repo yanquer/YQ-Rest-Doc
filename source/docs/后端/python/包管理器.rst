@@ -1,0 +1,172 @@
+===================================
+包管理器
+===================================
+
+pip
+===================================
+
+常用安装选项
+
+- install <package>
+- uninstall <package>
+- show <package>
+- list <package>
+
+常用参数
+
+-t                安装时, 指定安装目录
+-U, --upgrade     升级安装, 使用与正常的包升级与同版本覆盖安装
+
+查看配置项所在配置文件路径::
+
+  pip -v config list
+
+Debian下配置安装
+-----------------------------------
+
+Linux由于系统内置Python的缘故, 多少有点不同.
+
+Debian下如果没有pip, 可以使用apt安装::
+
+  apt install python-pip				# py2使用
+  apt install python3-pip				# py3使用
+
+注意这安装的是于系统默认Python匹配的版本
+
+配置pip源基本一致（需要自定义才配置，默认国外的太慢）,
+在用户目录下创建 ~/.pip/pip.conf 配置文件，内容::
+
+    [global]
+    index-url = http://pypi.douban.com/simple 	# 豆瓣源;可以换成其他的源
+    disable-pip-version-check = true     		    # 取消pip版本检查&#xff0c;排除每次都报最新的pip
+    timeout = 120
+    [install]
+    trusted-host = pypi.douban.com      		    # 添加豆瓣源为可信主机&#xff0c;要不然可能报错
+
+或者执行的时候直接指定::
+
+    pip instal soft -i "http://pypi.douban.com/simple" --trusted-host pypi.douban.com
+
+Mac配置pip源
+-----------------------------------
+
+.. code-block:: sh
+
+  cd ~
+  mkdir .pip && cd .pip
+  echo "[global]
+  index-url = https://pypi.douban.com/simple/
+  [install]
+  trusted-host=pypi.douban.com
+  " >pip.conf
+
+
+.. note::
+
+  其他源
+
+  .. code::
+
+    https://mirrors.aliyun.com/pypi/simple/ # 阿里云
+    https://pypi.douban.com/simple/  #   豆瓣
+    https://pypi.tuna.tsinghua.edu.cn/simple/   #  清华大学
+    https://pypi.mirrors.ustc.edu.cn/simple/   # 中国科学技术大学
+
+Conda
+===================================
+
+可以通过以下地址下载对应系统的资源安装:
+`https://repo.anaconda.com/archive/`
+
+项目github地址: `https://github.com/conda`
+
+查看有哪些环境::
+
+  conda env list
+
+创建指定Python版本的环境::
+
+  conda create --name py37 python=3.7
+
+复制环境py37为一个新的py379::
+
+  conda create -n py379 --clone py37
+
+删除环境 py379::
+
+  conda remove -n py379 --all
+
+打包为离线环境
+-----------------------------------
+
+先安装pack::
+
+  conda install conda-pack
+  # conda install -c conda-forge conda-pack
+
+也可以pip安装::
+
+  pip install conda-pack
+
+下面以导出 `venv-py379` 为例
+  新建此环境::
+
+    conda create --name venv-py379 python=3.7.9
+
+  激活环境::
+
+    conda activate venv-py379
+
+  安装pack::
+
+    conda install conda-pack
+
+  打包为 `py379.tar.gz`::
+
+    conda pack -n venv-py379 -o py379.tar.gz
+
+目标机器上使用 `py379.tar.gz`
+  创建虚拟环境所在目录并解压::
+
+    mkdir venv-py379
+    tar -xzf py379.tar.gz -C venv-py379
+
+  激活环境::
+
+    . ./venv-py379/bin/activate
+
+  清除前缀::
+
+    conda-unpack
+
+  清除前缀是因为可能有些库啊什么的允许会依赖有其他路径的东西,
+  不清除后配置为自己conda的用不了
+
+
+.. note::
+
+  也支持API使用::
+
+    import conda_pack
+
+    # 把虚拟环境 my_env 打包为 my_env.tar.gz
+    conda_pack.pack(name="my_env")
+
+    # -o 参数指定打包路径和名称，把虚拟环境 my_env 打包为 out_name.tar.gz
+    conda_pack.pack(name="my_env", output="out_name.tar.gz")
+
+    # 把某个特定路径的虚拟环境打包为 my_env.tar.gz
+    conda_pack.pack(prefix="/explicit/path/to/my_env")
+
+  conda_pack文档: `https://conda.github.io/conda-pack/cli.html`
+
+打包为配置
+-----------------------------------
+
+激活环境后::
+
+  conda env export > py379.yaml
+
+然后将这个yaml复制到目标机器::
+
+  conda env create -f py379.yaml

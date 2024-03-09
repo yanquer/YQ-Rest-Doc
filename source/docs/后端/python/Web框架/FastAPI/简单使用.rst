@@ -1,0 +1,75 @@
+===================================
+简单使用
+===================================
+
+参考: `第一个 FastAPI 应用 <https://www.runoob.com/fastapi/fastapi-step1.html>`_
+
+简单使用::
+
+  # main.py
+  from fastapi import FastAPI
+
+  app = FastAPI()
+
+  @app.get("/")
+  def read_root():
+      return {"Hello": "World"}
+
+在命令行中运行以下命令以启动应用::
+
+  uvicorn main:app --reload
+
+.. note::
+
+  ``--reload`` 表示代码修改后自动重启服务器
+
+打开浏览器并访问 http://127.0.0.1:8000，
+你应该能够看到 FastAPI 自动生成的交互式文档，并在根路径 ("/") 返回的 JSON 响应::
+
+  {"Hello": "World"}
+
+接下来我们来丰富下代码功能，并做具体说明
+以下的 FastAPI 应用，使用了两个路由操作（/ 和 /items/{item_id}）::
+
+  from typing import Union
+
+  from fastapi import FastAPI
+
+  app = FastAPI()
+
+
+  @app.get("/")
+  def read_root():
+      return {"Hello": "World"}
+
+
+  @app.get("/items/{item_id}")
+  def read_item(item_id: int, q: Union[str, None] = None):
+      return {"item_id": item_id, "q": q}
+
+其中, 定义带路径参数和查询参数的路由操作::
+
+  @app.get("/items/{item_id}")
+  def read_item(item_id: int, q: Union[str, None] = None):
+      return {"item_id": item_id, "q": q}
+
+函数接受两个参数:
+
+- item_id --是路径参数，指定为整数类型。
+- q -- 是查询参数，指定为字符串类型或空（None）。
+
+访问::
+
+  http://127.0.0.1:8000/items/5?q=tttt9
+
+你将会看到如下 JSON 响应::
+
+  {"item_id":"5","q":"tttt9"}
+
+
+
+
+
+
+
+

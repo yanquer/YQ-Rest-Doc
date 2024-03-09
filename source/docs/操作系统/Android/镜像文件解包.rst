@@ -1,0 +1,74 @@
+=========================
+镜像文件解包
+=========================
+
+系统: Mac
+
+用到的工具.
+
+- simg2img
+- lpunpack
+
+其中 `simg2img` 直接brew安装即可::
+
+  brew install simg2img
+
+`lpunpack` 就需要自行去github上找了, 需要找了自己编
+
+第一次找了个c++的, 本地没有编过, 然后找了个py的, 看起来可以, 地址::
+
+  https://github.com/unix3dgforce/lpunpack
+
+大致用法, 用的是 `Redmi K60` 的国行线刷包, 下载的文件是官方的tgz格式,
+解压后可以找到image下main的 `super.img` 文件(当前安卓规定的动态分区文件).
+
+可以file查看文件格式::
+
+  file super.img
+  super.img: Android sparse image, version: 1.0, Total of 2228224 4096-byte output blocks in 141 input chunks.
+
+是 `sparse image`, 需要使用 `simg2img` 转换为 raw::
+
+  simg2img super.img super_raw.img
+
+查看是否成功::
+
+  file super_raw.img
+  super_raw.img:: data
+
+成功
+
+然后解压分区镜像(我新建了一个data目录放在下面)::
+
+  python3 lpunpack.py super_raw.img data/
+
+结果::
+
+  file data/*
+  data/mi_ext_a.img:          data
+  data/mi_ext_b.img:          empty
+  data/odm_a.img:             data
+  data/odm_b.img:             empty
+  data/product_a.img:         data
+  data/product_b.img:         empty
+  data/system_a.img:          data
+  data/system_b.img:          empty
+  data/system_ext_a.img:      data
+  data/system_ext_b.img:      empty
+  data/vendor_a.img:          data
+  data/vendor_b.img:          empty
+  data/vendor_dlkm_a.img:     data
+  data/vendor_dlkm_b.img:     empty
+
+这里的img文件就是 `ext4` 格式的镜像了,
+最简单的打开方式就是使用linux挂载,
+一开始找了很久怎么在Win/Mac系统打开, 都失败了, 最终还是拿到虚拟机去挂载打开的.
+
+.. note::
+
+  windows下的话有个仓库的 simg2img 可以用::
+
+    https://github.com/KinglyWayne/simg2img_win
+
+  里面的ext2不能用.
+

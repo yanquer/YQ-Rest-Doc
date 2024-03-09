@@ -1,0 +1,77 @@
+=================================
+设备/服务类型
+=================================
+
+UPnP具有的Server类型
+=================================
+
+UPnP 定义了多种设备和服务类型,对应不同的功能和用途。其中 UPnP 设备类型由 UPnP 论坛定义和维护,常见的有:
+
+1. 媒体服务器(MediaServer)
+提供数字媒体内容存储和流式传输功能,如音乐、视频和图片。例如 Windows Media Player 可以发现这类设备并播放其媒体。
+2. 媒体渲染器(MediaRenderer)
+用于渲染数字媒体内容,如播放音乐、视频和显示图片。例如网络音响、网络电视和数字媒体播放器。
+3. 网关设备(InternetGatewayDevice)
+提供路由和互联网访问服务。大多数家用路由器实现此设备类型。
+4. 打印机(Printer)
+提供打印服务,允许网络计算机发现并使用连接的打印机。
+5. 扫描仪(Scanner)
+提供扫描服务,允许网络计算机控制扫描仪扫描文档。
+6. 健康设备(HealthDevice)
+提供健康和医疗设备相关的服务,用于远程监控。
+7. 家庭自动化(HomeAutomation)
+提供家居自动化设备控制,如灯光、电视等。智能家居产品常实现此类型。
+8. 广告设备(Advertisement)
+
+提供广告相关的服务,可以将广告信息推送到订阅客户端。
+UPnP 设备会在自己的设备描述中声明具体实现的设备类型,这样 UPnP 控制点根据设备类型就可以判断设备提供的服务类型和功能。
+其中媒体和路由器设备可能是最常见的类型。
+
+**具体的ID定义**
+
+在 UPnP 中,每个设备类型都对应一个标准的 server type 编号,也称 UPnP Device Type IDs。
+这些编号由 UPnP 论坛定义和维护,以标识不同类型的 UPnP 设备。
+常见的几种 UPnP 设备类型及其 server type ID 如下:
+
+- 媒体服务器(MediaServer):urn:schemas-upnp-org:device:MediaServer:1
+- 媒体渲染器(MediaRenderer):urn:schemas-upnp-org:device:MediaRenderer:1
+- 路由器(InternetGatewayDevice):
+  urn:schemas-upnp-org:device:InternetGatewayDevice:1
+- 打印机(Printer):urn:schemas-upnp-org:device:Printer:1
+- 扫描仪(Scanner):urn:schemas-upnp-org:device:Scanner:1
+- 家庭自动化(HomeAutomation):urn:schemas-upnp-org:device:HomeAutomation:1
+- 广告设备(Advertisement):urn:schemas-upnp-org:device:Advertisement:1
+
+等等,每个设备类型都有自己唯一的 server type ID 进行标识。
+UPnP 设备在其设备描述中,通过包含自己对应的标准 server type ID,来告知控制点自己具体实现的是哪种设备类型。
+例如,如果一个 UPnP 设备的设备描述中包含::
+
+  <deviceType>urn:schemas-upnp-org:device:MediaServer:1</deviceType>
+
+则该设备实现的是 UPnP 媒体服务器设备类型。
+UPnP 控制点可以通过解析设备描述,获取其中的 deviceType 信息,进而确定设备类型和支持的服务。
+所以,UPnP Device Type ID 允许在标准的 UPnP 框架下,定义和识别各种服务器设备类型,这为 UPnP 设备之间的互操作性提供了基础。
+开发 UPnP 设备时,需要选择一个已有的标准设备类型,或者定义一个新的设备类型(并申请一个唯一 ID),以便其他 UPnP 控制点能够正确识别该设备。
+
+UPnP常见几种服务
+=================================
+
+- AVTransport Service （可控制多屏设备上的媒体 play，pause，seek，stop 等）
+- RenderingControl Service （可调节多屏设备上的音量，声音，静音等）
+- ContentDirectory Service （可获取多屏设备上可访问的媒体内容）
+- ConnectionManager Service （可提供所支持的传输协议信息及多屏设备的 MIME 格式信息）
+
+DLNA 各种设备术语
+=================================
+
+- Digital Media Controller（DMC）数位媒体控制器：
+  作为遥控装置使用，可寻找 DMS 上的多媒体档案，
+  并指定可播放该多媒体档案的 DMR 进行播放或是控制多媒体档案上下传到 DMS 的装置，一般是手机。
+- Digital Media Server（DMS）数位媒体服务器：
+  提供了媒体档案的获取、录制、储存以及作为源头的装置。一般是公网上流媒体服务器
+- Digital Media Renderer（DMR）数位媒体控制器：
+  可接收并播放从 DMC push 过来的媒体档案。即接收投屏数据，一般是智能电视，OTT 盒子等。
+
+这三者的关系是，DMC 通过获取 DMS 上的歌曲或者视频（也可以不是 DMS 上的，而仅仅只是一个链接），把它们传送到 DMR 上，由 DMR 进行播放。
+
+

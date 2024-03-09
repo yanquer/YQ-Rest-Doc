@@ -1,0 +1,64 @@
+========================
+Python一些内置函数/属性
+========================
+
+
+__file__
+========================
+
+一般是Python编码模块使用, 表示模块所在路径, 如获取json模块所在路径::
+
+  >>> import json
+  >>>
+  >>> json.__file__
+  '/usr/local/Cellar/python@3.9/3.9.10/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/__init__.py'
+  >>>
+
+dir()
+========================
+
+.. function:: dir([object])
+
+  dir() 函数不带参数时，返回当前范围内的变量、方法和定义的类型列表；
+
+  带参数时，返回参数的属性、方法列表。
+
+  - 如果参数包含方法__dir__()，该方法将被调用。
+  - 如果参数不包含__dir__()，该方法将最大限度地收集参数信息。
+
+  object:
+    对象、变量、类型。
+
+exec()
+========================
+
+将字符串当作代码执行
+
+.. function:: def exec(__source: str | bytes | CodeType, __globals: dict[str, Any] | None = ..., __locals: Mapping[str, Any] | None = ...) -> Any
+
+  __source:
+    需要执行的字符串
+  __globals:
+    全局变量字典
+  __locals:
+    局部变量字典
+
+  - 将字符串作为Python代码执行,不返回任何结果。
+  - 可以执行跨越多行的代码块,支持变量赋值、函数定义等全面的Python代码。
+  - 如果字符串不是合法的Python代码,仍然会引发SyntaxError。
+
+eval()
+========================
+
+- 将字符串作为表达式执行,并返回结果。
+- 仅能执行单个表达式,不能为变量赋值。
+- 字符串必须是合法的Python表达式,否则会引发SyntaxError。
+
+其他内置函数
+========================
+
+.. toctree::
+  :glob:
+
+  ../内置函数/*
+

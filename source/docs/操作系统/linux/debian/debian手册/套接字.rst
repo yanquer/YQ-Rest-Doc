@@ -1,0 +1,21 @@
+===========================
+套接字
+===========================
+
+套接字被广泛应用于所有的互联网通信，数据库和操作系统本身。
+
+它类似于命名管道（FIFO）并且允许进程之间甚至不同计算机之间进行信息交换。
+
+对于套接字，这些进程不需要在同一时间运行，也不需要是同一个父进程的子进程。
+
+它是 `进程间通信（IPC） <https://zh.wikipedia.org/wiki/Inter-process_communication>`_ 的一个节点。信息的交换可能会通过网络发生在不同主机之间。
+
+最常见的两种是  `互联网套接字 <https://zh.wikipedia.org/wiki/Internet_socket>`_  和
+`UNIX域套接字 <https://zh.wikipedia.org/wiki/Unix_domain_socket>`_  ::
+
+  通过 "`netstat -an`" 命令可以很方便的查看系统已经打开了哪些套接字
+
+
+
+
+

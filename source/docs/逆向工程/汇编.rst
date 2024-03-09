@@ -1,0 +1,50 @@
+==============================
+汇编
+==============================
+
+怎么用
+
+参考:
+
+- `如何阅读简单的汇编(持续更新) <https://zhuanlan.zhihu.com/p/368962727>`_
+- `逆向实操、x86/x64汇编、IDA pro静态分析 <https://zhuanlan.zhihu.com/p/534173044>`_
+
+常见约定寄存器参数及作用
+
+.. csv-table::
+  :header: 寄存器, 作用
+
+  %rax,       传递返回值
+  %rdi,       传递第一个参数,
+  %rsi,       传递第二个参数
+  %rdx,       传递第三个参数
+  %rcx,       传递第四个参数
+  %r8,        传递第五个参数
+  %r9,        传递第六个参数,                   callee-owned
+  %rsp,       栈顶指针,                         caller-owned
+  %rbx,       临时变量,                         caller-owned
+  %rbp,       栈基指,                           caller-owned
+  %r12-%15,   临时变量,                         caller-owned
+  %rip,       存储下一条要执行的指令
+  %eflags,    flags和条件判断的结果标志位
+  xmmO,       用来传递第一个double 参数
+  xmm1,       用来传递第二个dioubie 參费
+
+  SP,         栈寄存器
+  LR,         保存函数返回地址
+  PC,         当前运行到的地址
+  R0-R3,      用来放函数的参数，执行完后，R0存放返回值
+  R4-R7,      用来放函数的局部变量
+
+.. note::
+
+  rdi是8字节的，4字节的时候对应的就是edi。
+
+callee-owned:
+  如果caller要使用这些寄存机，那么它在调用callee前，要把这些寄存器保存好。
+caller-owned:
+  如果callee要使用这些寄存器，那么它就要保存好这些寄存器的值，并且返回到caller的时候要将这些值恢复。
+
+
+
+

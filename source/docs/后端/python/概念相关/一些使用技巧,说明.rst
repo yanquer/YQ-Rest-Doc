@@ -1,0 +1,446 @@
+==============================
+Python使用技巧/问题
+==============================
+
+.. _ProgressInPy:
+
+进度条
+==============================
+
+最原始数字实现::
+
+  def print_hi():
+    n = 100
+    for i in range(n):
+        for j in range(n):
+            j += i
+        print(f"{i+1} / {n}", end='\r')
+
+效果::
+
+  8622 / 10000
+
+百分比进度条::
+
+  def print_hi():
+    n = 10000
+    for i in range(n):
+        for j in range(n):
+            j += i
+        # print(i)
+        # print(f"{i+1} / {n}", end='\r')
+        print("进度·",
+              f"|{ '+' * ((i+1) * 100 // n):100}|",
+              f"{(i+1) * 100 // n}/%",
+              end='\r')
+
+效果
+
+.. figure:: ../../../../resources/images/2024-02-07-12-28-42.png
+  :width: 480px
+
+其他第三方进度条库模块:
+
+- :doc:`/docs/后端/python/python三方库/progress`
+- :doc:`/docs/后端/python/python三方库/tqdm`
+- :doc:`/docs/后端/python/python三方库/alive-progress`
+
+
+多赋值
+==============================
+
+普通多赋值::
+
+  In [10]: product_info = ['apple', '5', 1000]
+
+  In [11]: name, price, num = product_info
+
+  In [12]: name, price, num
+  Out[12]: ('apple', '5', 1000)
+
+  In [13]:
+
+如果只需要部分, 其它的任意变量占位即可, 如只需要name::
+
+  In [13]: name, *_ = product_info
+
+  In [14]: name, _
+  Out[14]: ('apple', ['5', 1000])
+
+.. tip::
+
+  可使用 * 赋值为列表
+
+  适用与任何可迭代对象, 如list, str
+
+获取参数列表
+==============================
+
+函数内部
+------------------------------
+
+**函数内部** 获取, 使用 locals ::
+
+  In [1]: def fun1(a, b, c):
+  ...:     d = 4
+  ...:     print(locals())
+  ...:     print(a, b, c)
+  ...:
+
+  In [2]: fun1(1, 2, 3)
+  {'a': 1, 'b': 2, 'c': 3, 'd': 4}
+  1 2 3
+
+函数外部
+------------------------------
+
+**函数外部** 获取, 使用 ``__code__.co_varnames`` , 只能获取参数名 ::
+
+  In [4]: fun1.__code__.co_varnames
+  Out[4]: ('a', 'b', 'c', 'd')
+
+或者使用 inspect 模块, 获取形参列表和默认参数, 例::
+
+  In [8]: import inspect
+
+  In [9]: inspect.getargspec(fun1)
+  <ipython-input-9-96541cc6565c>:1: DeprecationWarning: inspect.getargspec() is deprecated since Python 3.0, use inspect.signature() or inspect.getfullargspec()
+  inspect.getargspec(fun1)
+  Out[9]: ArgSpec(args=['a', 'b', 'c'], varargs=None, keywords=None, defaults=None)
+
+  In [10]: inspect.signature(fun1)
+  Out[10]: <Signature (a, b, c)>
+
+  In [11]: inspect.getfullargspec(fun1)
+  Out[11]: FullArgSpec(args=['a', 'b', 'c'], varargs=None, varkw=None, defaults=None, kwonlyargs=[], kwonlydefaults=None, annotations={})
+
+看起来建议使用 getfullargspec 获取的最详细.
+
+.. tip:: 相关
+
+  获取函数参数个数(形参个数)::
+
+    In [6]: fun1.__code__.co_argcount
+    Out[6]: 3
+
+  获取函数参数默认值(元组), 如果有::
+
+    In [7]: fun1.__defaults__
+
+关于字典
+==============================
+
+当字典的元素个数少于1000时，应使用::
+
+  dData.keys(),dData.items(),dDate.values()
+
+当字典的元素个数超过1000时，为了提高效率，可以使用::
+
+  dData.iterkeys(),dData.iteritems,dData.itervalues()
+
+当没有把握时，采用第一种keys的方案
+
+keys，items，values会创建新的副本参与元素遍历，安全性更高，
+而iter是迭代器的概念，直接用元素的内存地址指针参与每个元素的遍历
+
+多个变量的赋值
+==============================
+
+创建一个整型对象，值为1，三个变量被分配到相同的内存空间上::
+
+  a = b = c = 1
+
+a,b,c分别被赋值为1,2，"john"::
+
+  a, b, c = 1, 2, "john"
+
+Python 五个标准的数据类型
+==============================
+
+- Numbers:    数字
+- String:     字符串
+- List:       列表
+- Tuple:      元组
+- Dictionary: 字典
+
+Python支持四种不同的数字类型
+==============================
+
+- int:      有符号整型
+- long:     长整型，也可以代表八进制或者十六进制
+- float:    浮点型
+- complex:  复数
+
+python2.2之后int溢出后会自动自动转换为long，3中long被移除
+
+在python中类型属于对象，变量是没有类型的
+
+字符串的操作
+==============================
+
+
+截取字符串::
+
+  str = 'hello'
+  print str[1:4]				#ell
+  # str[start:end],从下标start开始，end结束，不包括end
+
+将字符串转换为数组::
+
+  str = 'hi yo'
+  print str.split()			#['hi', 'yo']
+  # split，以指定字符串分隔, 不带参默认是空格
+
+获取对象占用的内存大小
+==============================
+
+sys.getsizeof()
+
+获取对象占用的内存大小
+
+sys.modules
+==============================
+
+sys.modules是一个全局字典，该字典是python启动后就加载在内存中，
+每当导入新的模块，sys.modules都将记录这些模块。
+
+字典sys.modules对于加载模块起到了缓冲的作用。
+当某个模块第一次导入，字典sys.modules将自动记录该模块。
+当第二次再导入该模块时，python会直接到字典中查找，从而加快了程序运行的速度。
+
+sys.argv[]
+==============================
+
+sys.argv[0]表示代码本身文件路径以及调用时的参数
+
+sys.argv[]说白了就是一个从程序外部获取参数的桥梁，
+这个“外部”很关键，所以那些试图从代码来说明它作用的解释一直没看明白。
+因为我们从外部取得的参数可以是多个，所以获得的是一个列表（list)，
+也就是说sys.argv其实可以看作是一个列表，所以才能用[]提取其中的元素。
+其第一个元素是程序本身，随后才依次是外部给予的参数::
+
+  sys.argv[num]		#调用时的第num个参数，0表示脚本本身
+
+四舍五入
+==============================
+
+code::
+
+  format(1.23456, '.2f')
+
+  '%.4f' % 1.23456
+
+还有一个 :doc:`/docs/后端/python/内置函数/round` 不是很建议, 除非对精度无要求
+
+获取集合中最大/小的N个元素
+==============================
+
+如果 N == 1, 那么还是使用 min(), max() 好点
+
+N > 1 时, 使用 :doc:`/docs/后端/python/python标准库/heapq` 的:
+
+- heapq.nlargest(n, iterable, key=None)  获取最大n个元素
+- heapq.nsmallest(n, iterable, key=None) 获取最小n个元素
+
+字典的一些不常见操作
+==============================
+
+例::
+
+  a={
+  'x' : 1,
+  'y' : 2,
+  'z' : 3 }
+  b={
+  'w' : 10,
+  'x' : 11,
+  'y' : 2 }
+
+操作::
+
+  # Find keys in common
+  a.keys() & b.keys()
+  # { 'x', 'y' }
+  # Find keys in a that are not in b
+  a.keys() - b.keys()
+  # { 'z' }
+  # Find (key,value) pairs in common
+  a.items() & b.items()
+  # { ('y', 2) }
+
+一个字典就是一个键集合与值集合的映射关系。字典的 keys() 方法返回一个展现 键集合的键视图对象。
+键视图的一个很少被了解的特性就是它们也支持集合操作，比如 集合并、交、差运算。
+所以，如果你想对集合的键执行一些普通的集合操作，可以直接 使用键视图对象而不用先将它们转换成一个 set。
+
+字典的 items() 方法返回一个包含 (键，值) 对的元素视图对象。
+这个对象同样也 支持集合操作，并且可以被用来查找两个字典有哪些相同的键值对。
+
+尽管字典的 values() 方法也是类似，但是它并不支持这里介绍的集合操作。
+某种 程度上是因为值视图不能保证所有的值互不相同，这样会导致某些集合操作会出现问题。
+不过，如果你硬要在值上面执行这些集合操作的话，你可以先将值集合转换成 set， 然后再执行集合运算就行了。
+
+序列中出现次数最多的元素
+==============================
+
+collections.Counter
+
+见 :doc:`/docs/后端/python/python标准库/collections`
+
+下划线
+==============================
+
+在Python中，下划线（underscore）有多种用途，包括：
+
+- 单个前导下划线：`_var`，表示该变量是一个私有变量，建议不要在类的外部直接访问。
+
+- 单个结尾下划线：`var_`，避免与Python关键字或内置函数冲突。
+
+- 双前导下划线：`__var`，表示该变量是一个强制私有变量，不能在类的外部直接访问。在类内部通过`self.__var`的方式访问。
+
+- 双前导和双结尾下划线：`__var__`，表示Python内置的方法或属性，避免与自定义方法或属性发生冲突。
+
+- 单个独立下划线：`_`，作为占位符使用，表示某个变量或参数没有被使用。
+  在交互式界面中, 默认表示最近一次的值.
+
+需要注意的是，在Python中使用下划线并不是强制性的，而只是一种编码规范。但是，遵守这些规范可以提高代码的可读性和可维护性。
+
+特别的, 在python交互式控制台中, 单下划线表示上一个语句的返回值.
+
+判断类型注解是否属于typing
+==============================
+
+:ref:`判断类型注解是否引入了typing <an_is_typing>`
+
+
+关于数据类型模块使用注解
+==============================
+
+当使用 :doc:`/docs/后端/python/python标准库/dataclasses` 模块时,
+可能会用到 :doc:`/docs/后端/python/python标准库/typing` 注解.
+
+当需要获取注解的相关信息时, 可以使用 fields 函数::
+
+
+  @dataclass
+  class Person(object):
+    name: str
+    pet: List[Cat] = field(default_factory=list)
+    pet2: Cat = field(default_factory=Cat)
+
+  from typing import _GenericAlias
+
+  for f in fields(Person):
+    print('type', f.type)
+
+返回结果是 typing.Field 的一个迭代
+
+一些内置类型的注解
+==============================
+
+比如 函数类型的注解, 可以使用 :doc:`/docs/后端/python/python标准库/types` 下的定义,
+如::
+
+  def _fun(): ...
+
+  import types
+  assert types.FunctionType == type(_fun)
+
+判断是否是协程函数, 调用后可以使用 Awaitable,
+未调用时只能使用 ::
+
+  import asyncio
+  asyncio.iscoroutinefunction()
+
+实际会调用 inspect 模块下的 iscoroutinefunction
+
+Python定义抽象类/接口类
+==============================
+
+见 :ref:`Python_抽象/接口类`
+
+使用 abc 会定义的抽象类会强制进行类型检查,
+并不建议使用强制类型检查, 因为Python是一门动态语言, 这样不但降低性能, 而且显得舍本逐末.
+
+可以直接按照普通的定义, 抽象基类直接抛异常即可::
+
+  class IBase(object):
+
+    def method1(self):
+      raise NotImplemented
+
+快速实现比较方法
+
+不想全部定义object比较的方法, 可以使用
+:doc:`/docs/后端/python/python标准库/functools` 下的 total_ordering 装饰器
+
+这样只需要定义任意一个比较方法, 就可以实现完整的比较.
+
+不过性能较慢, 所以如果不是强需求的话, 还是手动都实现了吧, 实在不行, 定义个比较基类实现就行
+
+判断语句
+==============================
+
+看这个例子::
+
+  def fun(*args, **kwargs):  return not (args or kwargs)
+  def fun2(*args, **kwargs): return not args and not kwargs
+
+当我没说...
+
+进制说明
+==============================
+
+八进制以 0o 开头, 如::
+
+  0o755
+
+进制转换见 :ref:`Python_进制转换`
+
+同名类属性/实例变量与属性访问器(Property)的访问顺序
+====================================================
+
+- 类属性: 定义类时定义的属性
+- 实例属性: 类实例化后设置的属性
+- 属性访问器: 使用 @property 修饰的属性方法
+
+结果: 对于已经实例的对象而言, 优先查找@property属性访问器
+
+注意: 如果定义同名的实例属性与属性访问器, 必须设置属性访问器的setter方法, 否则会报错.
+若定义的类属性需要支持设置值时, 也需要设置, 否则报错.
+
+如, 同名实例属性与属性访问器::
+
+  class A(object):
+      def __init__(self):
+          self.name: str = '123'
+
+      @property
+      def name(self):
+          return 'nnn'
+
+  if __name__ == '__main__':
+      a = A()
+      print(a.name)
+
+报错::
+
+  self.name: str = '123'
+  AttributeError: can't set attribute
+
+同名类属性与属性访问器(不支持设置类属性值)::
+
+  class A(object):
+      name: str = '123'
+
+      @property
+      def name(self):
+          return 'nnn'
+
+  if __name__ == '__main__':
+      a = A()
+      print(a.name)
+
+结果::
+
+  nnn
+

@@ -1,0 +1,252 @@
+===========================
+查询选项
+===========================
+
+- union	去重查询
+- union all	不去重查询
+- distinct	字段去重
+
+非交互式查询
+===========================
+
+命令行直接查询::
+
+  # 如果是文件
+  mysql -u $user -p $pass < $file.sql
+  # 不是文件
+  echo "$sql" | mysql -u $user -p$pass
+
+如果把账号密码放到一个文件::
+
+  # pwd.cnf
+  [client]
+  user=root
+  password=root
+
+命令行直接查询::
+
+  # 如果是sql语句文件
+  mysql --defaults-extra-file=pwd.cnf < $file.sql
+  # 如果不是
+  echo "$sql" | mysql --defaults-extra-file=pwd.cnf
+
+
+空间占用查询
+===========================
+
+查询所占空间::
+
+  select
+    table_schema as '数据库',
+    sum(table_rows) as '记录数',
+    sum(truncate(data_length/1024/1024, 2)) as '数据容量(MB)',
+    sum(truncate(index_length/1024/1024, 2)) as '索引容量(MB)'
+  from information_schema.tables
+  where table_schema='mysql';
+
+使用optimize命令查询空间占用::
+
+  optimize table tb_report_inventory;
+
+.. note::
+
+  使用的时间比较长，需要耐心等待。
+
+  optimize执行时会将表锁住，所以不要在高峰期使用。也不要经常使用，每月一次就足够了
+
+查询数据库连接
+===========================
+
+SQL::
+
+  show processlist;
+
+显示当前正在执行的进程或会话的列表以及与每个进程相关的一些信息.
+会返回一个结果集，其中包含以下信息：
+
+Id
+  表示连接的唯一标识符。
+User
+  表示连接使用的数据库用户。
+Host
+  表示连接的主机名或 IP 地址。
+db
+  表示连接当前正在使用的数据库。
+Command
+  表示连接正在执行的 SQL 命令类型，如 Query、Sleep、Binlog Dump 等。
+Time
+  表示连接已经执行的时间（以秒为单位）。
+State
+  表示连接的当前状态，如 Running、Locked、Sending data 等。
+Info
+  表示连接当前正在执行的 SQL 语句或操作的描述。
+
+监视数据库连接和识别潜在问题非常有用
+
+mysql8.0下实际使用记录
+===========================
+
+创建用户::
+
+  create user 'username'@'%' identified by 'password';
+
+  username	用户名
+  %	主机名，本机可用localhost，%表示所有（通配符）
+
+查看用户权限::
+
+  show grants for username@localhost;
+
+为username@localhost赋予超级用户权限::
+
+  grant all privileges on *.* to username@localhost with grant option;
+
+  grant	授权
+  all privileges	所有权限
+  on *.*	所有数据库，所有表
+  to username@localhost	哪个用户的哪个主机
+  with grant option	是否将username自身的权限赋予其他账户
+
+普通用户权限添加::
+
+  grant usage,select,insert,update,delete,create temporary tables,execute on jikedb.* to username@localhost; //此时没有with grant option 表示不给其他用户赋权限
+  flush privileges;
+
+  usage:无权限，当你想创建一个没有权限的用户时候，指定usage
+  show:的权限
+  view:视图的权限(mysql8.0+赋权限出错)ERROR 3619 (HY000): Illegal privilege level specified for VIEW
+  create temporary tables:创建临时表的权限
+  excute：执行的权限
+
+收回权限::
+
+  revoke delete on jikedb.* from username@localhost;
+  # 意思是收回username@localhost下jikedb库所有的表的删除操作
+
+新创建的用户username@localhost 要想使用，登录后需要修改密码::
+
+  alter user username@localhost identified by '12345678'
+
+删除用户::
+
+  drop user username@localhost; //username，localhost加不加引号都可
+
+有时候需要重载一下表数据::
+
+  grant reload on *.* to username@'%';
+
+.. _TableCreate:
+
+实际使用2-表的创建修改
+===========================
+
+创建t1表::
+
+  mysql> create table t1(id int primary key, name varchar(255), age int);
+  Query OK, 0 rows affected (0.03 sec)
+
+查看创建语句::
+
+  mysql> show create table t1 \G;
+  *************************** 1. row ***************************
+        Table: t1
+  Create Table: CREATE TABLE `t1` (
+    `id` int NOT NULL,
+    `name` varchar(255) DEFAULT NULL,
+    `age` int DEFAULT NULL
+    PRIMARY KEY (`id`)
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+  1 row in set (0.00 sec)
+
+  ERROR:
+  No query specified
+
+修改表, 增加一个birth字段::
+
+  mysql> alter table t1 add birth datetime;
+  Query OK, 0 rows affected (0.03 sec)
+  Records: 0  Duplicates: 0  Warnings: 0
+
+查看::
+
+  mysql> show create table t1 \G;
+  *************************** 1. row ***************************
+        Table: t1
+  Create Table: CREATE TABLE `t1` (
+    `id` int NOT NULL,
+    `name` varchar(255) DEFAULT NULL,
+    `age` int DEFAULT NULL,
+    `birth` datetime DEFAULT NULL,
+    PRIMARY KEY (`id`)
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+  1 row in set (0.00 sec)
+
+  ERROR:
+  No query specified
+
+其他
+===========================
+
+- select into 写入文件
+
+常用语句(有些上面有了)::
+
+		select
+			now()             查看当前时间
+			database()        查看当前数据库
+			version()         查看数据库版本
+			user()            查看当前登录的数据库用户
+
+			sleep(n)           睡眠 n 秒
+			substr(a, b, c)    对于a字符串，b位置开始，截取长度c的字符
+			count()            计算总数
+			ascii(a)           字符a的ascii码
+			length(a)          字符串a的长度
+
+		# 查询数据库版本
+		select version();
+
+		# 使用指定的数据库
+		use $database_name;
+
+		# 查看指定表信息 这个好像在8.0有问题...
+		# show table $table_name
+
+		# 查看指定表的结构
+		show create table $table_name
+
+		# 查看指定表的索引
+		show index from $table_name
+
+		# 删除表 多个逗号隔开, drop table 单个也可
+		drop tables $table_name;
+
+		# 查看SQL查询计划
+		EXPLAIN 加数据库语句
+
+		# 查看各种优化参数开关
+		select @@optimizer_switch;
+		# 在会话级别设置查询优化器可以看到隐藏索引,
+		# use_invisible_indexes 可以通过上面的 optimizer_switch 看到
+		set session optimizer_switch="use_invisible_indexes=on";
+
+		# 开启一个事务
+		# begin;
+
+    # 删除外键约束
+    DROP FOREIGN KEY <外键约束名>
+
+    # 查看所有触发器
+    show triggers\G;
+
+mysql命令::
+
+		-h host         链接到指定的主机
+		-u user         用户
+		-p password     密码
+
+
+
+
+
+

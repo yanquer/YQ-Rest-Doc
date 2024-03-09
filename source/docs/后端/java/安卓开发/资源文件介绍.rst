@@ -1,0 +1,9 @@
+======================
+资源文件介绍
+======================
+
+- res/layout/main.xml App主窗体布局文件，应用长什么样都在这边定义，有Design和Text两种模式
+- res/values/strings.xml 可以理解为i18n文件，用来存放程序调用的各种字符串
+- src/com/example/helloandroid/MyActivity.java 主程序类，要实现的功能都在这个文件里添加
+
+

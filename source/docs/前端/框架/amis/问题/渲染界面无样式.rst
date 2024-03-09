@@ -1,0 +1,20 @@
+===========================
+渲染界面无样式
+===========================
+
+注意需要导入内置的CSS才有样式::
+
+  import 'amis/lib/themes/cxd.css';
+  import 'amis/lib/helper.css';
+  import 'amis/sdk/iconfont.css';
+  // 或 import 'amis/lib/themes/antd.css';
+
+如果是html, 这样引入::
+
+  <link href="./node_modules/amis/lib/themes/cxd.css" />
+  <link href="./node_modules/amis/lib/helper.css" />
+  <link href="./node_modules/amis/sdk/iconfont.css" />
+  <!-- 或 <link href="./node_modules/amis/lib/themes/antd.css" /> -->
+
+
+

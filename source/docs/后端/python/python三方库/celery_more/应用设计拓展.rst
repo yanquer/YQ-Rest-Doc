@@ -1,0 +1,63 @@
+====================
+应用设计(编码)拓展
+====================
+
+任务基类更新
+====================
+
+装饰器的 base 参数可以指定继承的任务基类::
+
+  import celery
+
+  class MyTask(celery.Task):
+
+      def on_failure(self, exc, task_id, args, kwargs, einfo):
+          print('{0!r} failed: {1!r}'.format(task_id, exc))
+
+  @task(base=MyTask)
+  def add(x, y):
+      raise KeyError()
+
+也可以手动直接更新 app 基类属性::
+
+  >>> from celery import Celery, Task
+
+  >>> app = Celery()
+
+  >>> class MyBaseTask(Task):
+  ...    queue = 'hipri'
+
+  >>> app.Task = MyBaseTask
+  >>> app.Task
+  <unbound MyBaseTask>
+
+  >>> @app.task
+  ... def add(x, y):
+  ...     return x + y
+
+  >>> add
+  <@task: __main__.add>
+
+  >>> add.__class__.mro()
+  [<class add of <Celery __main__:0x1012b4410>>,
+  <unbound MyBaseTask>,
+  <unbound Task>,
+  <type 'object'>]
+
+调用实例方法
+====================
+
+在 celery 中也叫绑定方法, 使用 bind 参数
+
+被绑定的任务意味着任务的第一个参数总是任务实例（self），就像Python绑定方法一样::
+
+  logger = get_task_logger(__name__)
+
+  @task(bind=True)
+  def add(self, x, y):
+      logger.info(self.request.id)
+
+注意这里的 self 是 task 实例
+
+
+

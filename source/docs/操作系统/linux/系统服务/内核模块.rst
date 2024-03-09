@@ -1,0 +1,22 @@
+=========================================
+内核模块
+=========================================
+
+insmod 与 modprobe 都是载入 kernel module，
+不过一般差别于 modprobe 能够处理 module 载入的相依问题。
+
+比方你要载入 a module，但是 a module 要求系统先载入 b module 时，
+直接用 insmod 挂入通常都会出现错误讯息，
+不过 modprobe 倒是能够知道先载入 b module 后才载入 a module，如此相依性就会满足。
+
+不过 modprobe 并不是大神，不会厉害到知道 module 之间的相依性为何，
+该程式是读取 /lib/modules/2.6.xx/modules.dep 档案得知相依性的。
+而该档案是透过 depmod 程式所建立。
+
+相关指令
+
+- :doc:`/docs/操作系统/linux/linux指令/lsmod`
+- :doc:`/docs/操作系统/linux/linux指令/rmmod`
+- :doc:`/docs/操作系统/linux/linux指令/insmod`
+- :doc:`/docs/操作系统/linux/linux指令/modprobe`
+

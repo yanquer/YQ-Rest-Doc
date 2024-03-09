@@ -1,0 +1,216 @@
+===========================
+官方库
+===========================
+
+UIKit
+  移动端用
+Cocoa
+  OS x桌面端用
+
+  包含
+
+  - AppKit: 官方文档: `https://developer.apple.com/documentation/appkit`
+  - Foundation
+SwiftUI
+  较新的框架, 跨平台支持(桌面/移动)
+
+一些库对象/函数
+===========================
+
+NSEvent
+  是Core Graphics框架提供的事件处理类。
+  一个比较底层的事件类, 用于处理与图形渲染和窗口服务相关的事件。
+
+  CGEvent可以用于模拟和处理鼠标、键盘、触摸等低级输入事件。
+  它提供了更底层的控制，可以直接操作事件的属性，如位置、按键状态等。
+CGEvent
+  AppKit框架提供的事件处理类.
+
+  是一个较高层的事件处理接口，用于处理与应用程序界面和用户交互相关的事件。
+  NSEvent提供了一些高级的功能，如自动处理按键重复、多点触控、手势识别等。
+  它还提供了更高级的事件处理方法，如响应链、事件分发等。
+
+  CGEvent.tapCreate
+    创建一个事件截取, 参考: `https://developer.apple.com/documentation/coregraphics/cgevent/1454426-tapcreate`
+
+    参数列表: ``(tap: CGEventTapLocation, place: CGEventTapPlacement, options: CGEventTapOptions, eventsOfInterest: CGEventMask, callback: CGEventTapCallBack, userInfo: UnsafeMutableRawPointer?) -> CFMachPort?``
+
+    主要说一下 ``eventsOfInterest: CGEventMask``,
+    这个是一个位掩码集合, 标识截取的事件类型, 比如 ``CGEventMask(1 << NSEvent.EventType.keyDown.rawValue)``,
+    多个事件用 ``|`` 整合. **左移一位表示转换为位掩码**
+
+    其中有一个参数Callable是个回调函数, 用于处理事件
+    需要返回一个cgEvent的指针(),
+    函数签名为 ``CGEventRef (*)(CGEventTapProxy proxy, CGEventType type, CGEventRef event, void *refcon)``
+    (返回一个CGEventRef对象，即一个CGEvent类型的引用)
+
+    回调函数负责创建和返回CGEventRef对象，并控制对该对象的内存管理
+
+    回调返回的cgEvent有两个可用的修饰:
+
+    - passRetained：在回调函数中，如果你使用passRetained来返回CGEventRef对象，它表示你将内存管理权转移给调用方。
+      这意味着，调用方需要负责在适当的时候调用CFRelease来释放CGEventRef对象，以确保正确释放内存并避免内存泄漏。
+      这通常适用于你在回调函数中创建了一个新的CGEventRef对象，并希望调用方负责管理其生命周期。
+
+      例如，如果你在回调函数中使用CGEventCreateCopy函数创建了一个新的事件副本，并通过passRetained返回，
+      那么调用方需要负责在不再需要该事件时调用CFRelease来释放它。
+    - passUnretained：在回调函数中，如果你使用passUnretained来返回CGEventRef对象，它表示你不会转移内存管理权给调用方。
+      这意味着，调用方不需要调用CFRelease释放CGEventRef对象，因为你保留了对该对象的所有权。
+      这通常适用于你在回调函数中返回了一个指向全局或静态变量的CGEventRef对象，
+      或者你从其他地方获取的对象，而不是在回调函数中创建的新对象。
+
+      例如，如果你在回调函数中返回一个全局变量中存储的事件对象，或者你通过传递指针参数获取一个事件对象，
+      然后使用passUnretained返回，那么调用方不需要调用CFRelease释放它。
+
+    综上所述，使用passRetained表示你将内存管理权转移给调用方，调用方需要负责释放对象。
+    而使用passUnretained表示你保留了内存管理权，调用方无需释放对象。
+    你应根据具体情况选择适当的内存管理方式，以确保正确处理内存生命周期。
+
+    (这部分来自AI)
+
+    .. note::
+
+      另外自己使用 CGEvent 时, 尽量不要去强转为 NSEvent::
+
+        let nsEvent = NSEvent(cgEvent: cgEvent),
+
+      因为有时候在这转了后, 返回的cgEvent, 在底层调用可能会报错::
+
+        Assertion failure in -[NSEvent _initWithCGEvent:eventRef:], NSEvent.m:1,846
+        ...
+        com.apple.NSEventThread (7): EXC_BREAKPOINT (code=1, subcode=0x18307be7c) Assertion failure in -[NSEvent _initWithCGEvent:eventRef:], NSEvent.m:1,846
+DispatchQueue
+  执行任务的调度队列,
+  支持异步执行
+
+  DispatchQueue 是一个用于执行任务的调度队列，它是在Grand Central Dispatch (GCD) 中提供的主要类之一。
+  GCD是一个用于并发执行任务的底层系统框架，它提供了一种简单而强大的方式来管理并发任务的执行。
+
+  DispatchQueue 可以将任务（代码块）安排到不同的队列中，并按照特定的调度方式进行执行。它提供了两种类型的队列：
+
+  - Serial Queue（串行队列）：每次只能执行一个任务，按照任务添加的顺序进行执行。后一个任务会等待前一个任务完成后才能开始执行。
+  - Concurrent Queue（并发队列）：可以同时执行多个任务，并且任务的执行顺序可能不确定。
+
+  你可以使用 DispatchQueue 来执行以下类型的任务：
+
+  - 同步任务（Sync Tasks）：任务会在当前线程中同步执行，直到任务执行完毕后才会继续执行后续代码。
+  - 异步任务（Async Tasks）：任务会在后台线程中异步执行，不会阻塞当前线程的执行，可以继续执行后续代码。
+
+  以下是一个使用 DispatchQueue 的简单示例::
+
+    let queue = DispatchQueue(label: "com.example.queue")
+
+    // 异步任务
+    queue.async {
+        // 在后台线程执行的任务
+        print("异步任务")
+    }
+
+    // 同步任务
+    queue.sync {
+        // 在当前线程执行的任务
+        print("同步任务")
+    }
+
+  DispatchQueue 还提供了其他功能，如延迟执行任务、调度任务在特定时间或间隔后执行等。
+  它是在iOS、macOS、watchOS 和 tvOS 开发中进行异步和并发编程的重要工具之一。
+
+  比如延时执行也可以::
+
+    // 延时执行任务
+    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+        // 2秒后执行的任务
+        print("延时执行的任务")
+    }
+NSViewRepresentable
+  一个协议，用于在SwiftUI中封装和使用Cocoa（macOS）中的NSView。
+  它允许开发者通过实现一些必要的方法来创建自定义的NSView，并将其嵌入到SwiftUI视图层级中。
+
+  通过遵循NSViewRepresentable协议，
+  你可以创建一个遵循NSViewRepresentable协议的自定义结构体或类，然后实现以下两个必要的方法：
+
+  - makeNSView(context:)：在这个方法中，你需要创建并返回一个NSView实例。这个方法会在视图第一次被创建时调用。
+  - updateNSView(_:context:)：在这个方法中，你可以根据需要更新NSView的属性和内容。这个方法会在视图的状态发生变化时被调用。
+
+  通过实现这些方法，你可以在SwiftUI中使用自定义的NSView，
+  并在其中使用Cocoa（macOS）提供的各种功能和控件，以满足特定的需求。
+View
+  视图顶级窗口, 注意, 没有提供默认的close方法, 因为官方觉得close不应该由View触发
+
+  可以通过以下代码获取到View所在窗体然后关闭::
+
+    NSWindow(contentViewController: NSHostingController(rootView: self))
+
+NSWindow
+  AppKit的窗口管理
+NSHostingController
+  AppKit 中的类，用于在 macOS 应用程序中承载 SwiftUI 视图。
+
+  它是一个 AppKit 视图控制器，用于在 AppKit 应用程序中托管和管理 SwiftUI 视图。
+  通过将 SwiftUI 视图嵌入到 NSHostingController 中，可以在 AppKit 应用程序的视图层次结构中使用 SwiftUI 视图。
+
+ZStack与VStack
+===========================
+
+ZStack
+  一个3D的布局方式, 比如有三个图标, 后者会叠放在前者上
+VStack
+  垂直布局方式, 比如有三个图标, 后者会垂直排列与前者
+
+支持的块
+===========================
+
+Settings 块
+  用于定义应用程序的设置场景，它是一个视图构造器，用于自定义应用程序的设置界面。
+  通过在 Settings 块中添加视图来创建自定义的设置界面，以供用户配置和调整应用程序的各种选项。
+WindowGroup 块
+  WindowGroup 块用于定义应用程序的主窗口场景。
+  在 WindowGroup 块中，你可以指定应用程序的主窗口的内容视图以及其他与窗口相关的属性。
+Scene 块
+  Scene 块用于定义应用程序的场景，它可以包含一个或多个窗口组。
+  你可以在 Scene 块中定义应用程序的场景配置、窗口管理和生命周期处理。
+NavigationView 块
+  NavigationView 块用于创建具有导航功能的视图层次结构。
+  在 NavigationView 块中，你可以使用 NavigationView 的修饰符和子视图来定义导航栏、导航链接以及其他与导航相关的界面元素。
+Form 块
+  Form 块用于创建表单视图，用于显示和收集用户的输入。
+  在 Form 块中，你可以使用 Form 的修饰符和子视图来创建表单字段、分组和其他与表单相关的界面元素。
+List 块
+  List 块用于创建可滚动的列表视图。
+  在 List 块中，你可以使用 List 的修饰符和子视图来定义列表项、分组和其他与列表相关的界面元素。
+ForEach 块
+  ForEach 块用于在列表或视图中迭代和显示集合中的元素。
+  在 ForEach 块中，你可以使用 ForEach 的修饰符和子视图来定义每个元素的显示方式和交互行为。
+
+SwiftUI 与 AppKit
+===========================
+
+SwiftUI 和 AppKit 是 Apple 提供的两个不同的框架，
+用于构建 macOS 应用程序的用户界面。它们在设计和开发理念上有一些区别。
+
+- 声明性 UI：SwiftUI 是一个基于声明性 UI 的框架，
+  它使用简洁的代码和声明式的方式来描述用户界面。
+  你可以使用 SwiftUI 的各种视图和修饰符来构建用户界面，
+  并且它会自动处理视图状态和布局，以及与用户交互的响应。
+
+  而 AppKit 是一个基于命令式的 UI 框架，你需要编写更多的代码来手动管理视图的状态和布局。
+- 跨平台支持：SwiftUI 是一个跨平台框架，
+  除了 macOS，它还可以用于构建 iOS、iPadOS、watchOS 和 tvOS 应用程序。
+  这意味着你可以使用相同的代码和技术来开发多个平台上的应用程序。
+
+  而 AppKit 是专门为 macOS 设计的框架，不支持其他平台。
+- 响应式布局：SwiftUI 的布局系统是响应式的，
+  它使用了一种叫做 "容器视图" 的概念，可以自动适应不同的屏幕尺寸和设备方向。
+  这使得开发适应性更强的用户界面变得更加容易。
+
+  AppKit 的布局系统相对较为传统，需要手动处理不同的屏幕尺寸和设备方向。
+- 预览功能：SwiftUI 提供了一个强大的预览功能，可以在开发过程中实时预览和调试用户界面。
+  你可以在 Xcode 中查看 SwiftUI 视图在不同设备上的外观，并即时查看代码更改的效果。
+  这对于迭代开发和快速调试非常有帮助。AppKit 并没有提供类似的预览功能。
+
+尽管 SwiftUI 在设计上有一些新颖的概念和优势，
+但在某些情况下，仍然需要使用 AppKit 来构建更复杂和定制化的 macOS 应用程序。
+AppKit 拥有更多的功能和灵活性
+
+
+

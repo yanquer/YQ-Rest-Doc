@@ -1,0 +1,38 @@
+=============================
+指令
+=============================
+
+语法::
+
+  nginx -s signal
+
+signal支持的
+  - stop: 快速停止
+  - quit: 优雅终止(会等待worker完成所有请求);
+    也支持使用系统的kill发送::
+
+      kill -s QUIT nginx的pid
+
+    默认情况下, pid文件  nginx.pid 在以下目录::
+
+      /usr/local/nginx/logs
+      /var/run
+
+  - reload: 重载配置文件;
+    当master收到这个信号的时候,
+    会先检查配置文件有没有语法问题, 没有的话, 给正在运行的worker发送终止信号(相当于quit),
+    并启动新的worker;
+  - reopen: 重新打开日志文件
+
+
+
+
+
+
+
+
+
+
+
+
+

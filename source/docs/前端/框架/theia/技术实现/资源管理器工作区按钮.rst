@@ -1,0 +1,13 @@
+====================================
+资源管理器工作区按钮
+====================================
+
+`node_modules/@theia/workspace/src/browser/workspace-commands.ts` 的
+`WorkspaceCommands` 基本上定义完了
+
+触发定义在 `WorkspaceCommandContribution`
+
+
+
+
+

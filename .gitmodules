@@ -1,0 +1,3 @@
+[submodule "submodule/themes/yanque_sphinx_theme"]
+	path = submodule/themes/yanque_sphinx_theme
+	url = git@gitee.com:maybe-or/sphinx-theme-based-on-pythory.git

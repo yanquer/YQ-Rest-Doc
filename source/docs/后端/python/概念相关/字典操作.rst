@@ -1,0 +1,74 @@
+=================
+字典操作
+=================
+
+.. function:: dict()
+
+  返回一个字典
+
+.. function:: dict.fromkeys(seq[, value])
+
+  seq:
+    字典键值列表。
+  value:
+    可选参数, 设置键序列（seq）的值，默认为 None。
+
+  Python 字典 fromkeys() 函数用于创建一个新字典，
+  以序列 seq 中元素做字典的键，value 为字典所有键对应的初始值。
+
+字典的一些说明
+=================
+
+Python3.7之后, 字典的遍历是有序的(通过使用一个排序过的双链表来保存键值对实现),
+不过, 字典在插入时仍然无序, 有序性仅体现在遍历和排序时.
+
+使用sorted排序
+=================
+
+.. tip::
+
+  仅针对Python3.7 之后的版本
+
+测试代码::
+
+  data = {
+      'a': 1,
+      'b': 2,
+      'outer': 3,
+      'c': 4
+  }
+  print('origin ========')
+  for one in data:
+      print(one)
+
+  data_new = sorted(data, key=lambda o: o != 'outer', reverse=False)
+
+  print('after sort ========')
+  for one in data_new:
+      print(one)
+
+输出::
+
+  origin ========
+  a
+  b
+  outer
+  c
+  after sort ========
+  outer
+  a
+  b
+  c
+
+这里我没有弄明白为什么 ``o != 'outer'`` 结果是放在最前面,
+而 ``o == 'outer'`` , outer在最后.
+
+合并字典的方式
+=================
+
+注意 ``**a2`` 这里， key不能为 非str, 因为是当做参数传递解析的::
+
+  a1, a2 = dict(), dict()
+  b = dict(a1, **a2)
+
+

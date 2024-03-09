@@ -1,0 +1,62 @@
+syntax = 'proto3';
+package rpc_cat;
+
+//import 'google/protobuf/any.proto';
+
+// 定义服务
+service RpcCat{
+  rpc get_name (EmptyMessage) returns (StringMessage) {}
+  rpc get_age (EmptyMessage) returns (IntMessage) {}
+  rpc get_love (EmptyMessage) returns (TupleMessage) {}
+  rpc get_food_once (EmptyMessage) returns (FoodMessage) {}
+  rpc get_attr_by_name (StringMessage) returns (StringMessage) {}
+
+  // 请求体使用流式传输, python 实现时使用迭代器即可
+  rpc get_attr_by_name_with_stream (stream StringMessage) returns (stream StringMessage) {}
+
+  rpc get_all (EmptyMessage) returns (AllMessage) {}
+
+}
+
+message EmptyMessage{
+
+}
+
+message StringMessage{
+  string message = 1;
+}
+
+message IntMessage{
+  int32 message = 1;
+}
+
+message TupleMessage{
+  repeated string message = 1;
+}
+
+//message OneFoodMessage{
+//  string name = 1;
+//  float weight = 2;
+//}
+
+message FoodMessage{
+  // repeated 表示字段可重复任意次
+  // repeated OneFoodMessage food_message = 1;
+
+  // map 不可设置 repeated 属性
+  map<string, float> message = 1;
+}
+
+message MulType{
+  optional string str = 1;
+  optional TupleMessage tup = 2;
+  optional FoodMessage food = 3;
+  optional int32 i = 4;
+}
+
+message AllMessage{
+
+//  map<string, google.protobuf.Any> message = 2;
+
+  bytes message = 1;
+}

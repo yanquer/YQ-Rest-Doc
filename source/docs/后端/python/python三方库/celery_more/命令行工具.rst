@@ -1,0 +1,343 @@
+====================
+命令行选项说明
+====================
+
+语法, Celery command entrypoint ::
+
+  celery [OPTIONS] COMMAND [ARGS]...
+
+选项参数
+====================
+
+-A, --app       指定运行的 Celery 应用程序实例，格式必须为 module.path:attribute
+                但如果只设置包名，它将进行搜索app实例, 详细见 app_args_
+-b, --broker    TEXT, 中间人, 会覆盖代码里的配置
+--result-backend
+                TEXT, 结果后端
+--loader        TEXT
+--config        TEXT
+--workdir       PATH, 工作目录
+-C, --no-color  无颜色?
+-q, --quiet     安静模式?
+--version       版本信息
+--help          Show this message and exit.
+
+支持的命令_
+
+.. _app_args:
+
+关于 app 参数说明:
+
+使用 --app 参数可也指定运行的 Celery 应用程序实例，格式必须为 module.path:attribute
+但如果只设置包名，它将进行搜索app实例，顺序如下:
+
+用 --app=proj::
+
+  名为 proj.app 的属性.
+  名为 proj.celery 的属性
+  模块 proj 中值为 Celery 应用程序的任何属性，如果还没有找到，将尝试检索名为 proj.celery的子模块
+  名为 proj.celery.app 的属性
+  名为 proj.celery.celery 的属性
+  模块 proj.celery 中值为 Celery 应用程序的任何属性
+  在此方案模仿文档中使用的实例，即 针对单个模块包含的proj:app ，以及 大型项目的 proj.celery:app
+
+.. note::
+
+  使用 celery 5.2 貌似不能自动识别 proj.app 了. 自动识别的话只能写 celery.py
+
+支持的命令
+====================
+
+Commands::
+
+  amqp     打开 AMQP Shell.
+  beat     启动节拍周期任务调度程序.
+  call     命令行调用一个任务.
+  control  Workers 远程控制.
+  events   事件流实用程序.
+  graph    The ``celery graph`` command.
+  inspect  检查运行的Worker.
+  list     从中间人 broker 获取信息.
+  logtool  The ``celery logtool`` command.
+  migrate  将任务从一个 broker 迁移到另一个 代理(broker).
+  multi    启动多个 worker 实例.
+  purge    清除所有已知任务队列中的所有消息.
+  report   显示可包括在错误报告中的有用信息.
+  result   打印给定 任务ID(task id) 的返回值.
+  shell    打开一个 shell 会话来便捷访问 celery.
+  status   查看所有 workers 状态.
+  upgrade  查看版本升级信息.
+  worker   启动 worker 实例.
+
+.. note::
+
+  注意, 像 status_ 这样的命令需要手动指定配置::
+
+    % celery -b redis://localhost:6379/0 status
+    ->  celery@yanquedembp.local: OK
+
+    1 node online.
+
+  若使用配置文件::
+
+    % celery --config  src.time_schedule.celery_conf status
+    ->  celery@yanquedembp.local: OK
+
+    1 node online.
+
+  或者直接指定应用::
+
+    % celery -A src.time_schedule  status
+    ->  celery@yanquedembp.local: OK
+
+    1 node online.
+
+worker
+--------------------
+
+用法::
+
+  celery worker [OPTIONS]
+
+启动一个 worker 实例.
+
+Examples::
+
+  $ celery --app=proj worker -l INFO
+  $ celery -A proj worker -l INFO -Q hipri,lopri
+  $ celery -A proj worker --concurrency=4
+  $ celery -A proj worker --concurrency=1000 -P eventlet
+  $ celery worker --autoscale=10,0
+
+消费者选项 Worker Options:
+
+-n, --hostname HOSTNAME         设定自定义主机名 (e.g., w1@%%h).
+                                Expands: %%h (hostname), %%n (name) and %%d,
+                                (domain).
+-D, --detach                    以后台进程的形式启动
+                                Start worker as a background process.
+-S, --statedb PATH              状态数据库的路径, 文件为 db 后缀
+                                Path to the state database. The extension
+                                '.db' may be appended to the filename.
+-O <[default|fair]>             应用优化配置文件.
+-l, --loglevel <[DEBUG|INFO|WARNING|ERROR|CRITICAL|FATAL]>
+                                日志等级.
+--prefetch-multiplier <prefetch multiplier>
+                                Set custom prefetch multiplier value for
+                                this worker instance.
+                                这个没懂
+
+线程/进程池选项 Pool Options:
+
+-c, --concurrency <concurrency>
+                                队列的进程数目, 默认为CPU个数.
+-P, --pool <[prefork|eventlet|gevent|solo|processes|threads]>
+                                使用那种池方式. 进程池/线程池/时间池.
+-E, --task-events, --events     发送任务相关的时间能够被 (celery 事件、 celerymon、 other) 监视捕获
+--time-limit FLOAT              强制设置任务时间限制. 单位: 秒; 类型: int/float
+--soft-time-limit FLOAT         设置软时间限制. 单位: 秒; 类型: int/float. 不知道与上一个区别在哪.
+--max-tasks-per-child INTEGER   每个消费者池能够执行的最大任务数, 若超过将会使用一个新的消费者进程池(worker)替代
+--max-memory-per-child INTEGER  最大驻留内存. 单位: Kib.
+                                若耗尽将会使用一个新的 消费者进程池(worker).
+                                若存在单个任务就超过了最大驻留内存, 在完成此任务后,
+                                才会使用新的 消费者进程池(worker) 来替换.
+                                默认无限制.
+
+队列选项 Queue Options:
+
+-Q, --queues <COMMA SEPARATED LIST>             队列, 多个使用逗号分隔
+-X, --exclude-queues <COMMA SEPARATED LIST>     排除队列, 多个使用逗号分隔
+-I, --include <COMMA SEPARATED LIST>            包含队列, 多个使用逗号分隔
+--purge, --discard                              清除队列, 多个使用逗号分隔
+--discard                                       清除队列, 多个使用逗号分隔
+
+功能:
+
+--without-gossip
+--without-mingle
+--without-heartbeat
+--heartbeat-interval INTEGER
+--autoscale <MIN WORKERS>, <MAX WORKERS>
+
+Embedded Beat Options:
+
+-B, --beat
+-s, --schedule-filename, --schedule TEXT
+--scheduler TEXT
+
+Daemonization Options:
+
+-f, --logfile TEXT
+--pidfile TEXT
+--uid TEXT
+--uid TEXT
+--gid TEXT
+--umask TEXT
+--executable TEXT
+
+beat
+--------------------
+
+用法::
+
+  celery beat [OPTIONS]
+
+.. Start the beat periodic task scheduler.
+
+启动周期任务调度, 设置 contrab 任务等定时任务时, 需要使用此命令来发现注册定时任务.
+
+Beat Options:
+
+--detach                        作为守护进程独立执行
+-s, --schedule TEXT             执行数据库的路径.
+                                默认为 ``celerybeat-schedule``.
+                                The extension '.db' may be
+                                appended to the filename.
+-S, --scheduler TEXT            使用哪个调度器(scheduler)类
+--max-interval INTEGER          调度器轮询的间隔时间.
+                                不确定是每次任务周期的间隔(多个任务都执行完成一次, 组成一个任务周期),
+                                还是每个任务之间的间隔. 应是后者.
+-l, --loglevel <[DEBUG|INFO|WARNING|ERROR|CRITICAL|FATAL]>
+                                日志等级
+
+守护线程执行选项 Daemonization Options:
+
+-f, --logfile TEXT    日志文件名
+--pidfile TEXT        pid文件名
+--uid TEXT            uid
+--gid TEXT            gid
+--umask TEXT          创建文件的umask值
+--executable TEXT     不知道...
+
+status
+--------------------
+
+用法::
+
+  celery status [OPTIONS]
+
+查看在线的 Worker 节点.
+
+远程控制选项 Remote Control Options:
+
+-t, --timeout FLOAT             设置检查超时时间.
+-d, --destination <COMMA SEPARATED LIST>
+                                检查的目标节点列表. 逗号分隔.
+-j, --json                      使用json格式输出.
+
+graph
+--------------------
+
+用法::
+
+  celery graph [OPTIONS] COMMAND [ARGS]...
+
+图形化显示?
+实际使用效果是json格式的相关输出信息.
+
+命令::
+
+  bootsteps  显示引导步骤图.
+  workers    显示 workers graph.
+
+例::
+
+  celery --config  src.time_schedule.celery_conf graph workers
+
+call
+--------------------
+
+使用::
+
+  celery call [OPTIONS] NAME
+
+根据任务名调用任务.
+
+调用选项 Calling Options:
+
+-a, --args <JSON ARRAY>         位置参数.
+-k, --kwargs <JSON OBJECT>      关键字参数字典.
+--eta ISO-86091                 执行时间.
+--countdown FLOAT               eta in seconds from now.
+--expires <ISO-86091 OR FLOAT>  过期时间.
+--serializer TEXT               任务序列化方式.
+
+路由选项 Routing Options:
+
+--queue TEXT        自定义队列名.
+--exchange TEXT     自定义交换机名.
+--routing-key TEXT  路由key.
+
+例::
+
+  celery -A src.time_schedule call -a '[2, 2]'  src.time_schedule.pre_tasks.add
+  7506ef60-5621-460a-8219-7a97f6e96f4e
+
+
+公共选项
+--------------------
+
+--help  Show this message and exit.
+
+一些常用命令
+====================
+
+设置并发数
+--------------------
+
+worker -c 设置并发数, 默认数为cpu数::
+
+  -c, --concurrency <concurrency>
+                                  Number of child processes processing the
+                                  queue.  The default is the number of CPUs
+                                  available on your system.
+
+设置日志级别
+--------------------
+
+worker -l 设置日志信息::
+
+  -l, --loglevel [DEBUG|INFO|WARNING|ERROR|CRITICAL|FATAL]
+                                  Logging level.
+
+后台运行
+--------------------
+
+celery multi 后台运行, 但是看新版本指令帮助信息貌似又不支持::
+
+  celery multi --help
+  Usage: celery multi [OPTIONS]
+
+    Start multiple worker instances.
+
+  Options:
+    --help  Show this message and exit.
+
+启动::
+
+  celery multi start w1 -A proj -l info
+
+重启::
+
+  celery  multi restart w1 -A proj -l info
+
+停止运行::
+
+  $ celery multi stop w1 -A proj -l info
+
+stop 命令是异步的，所以不会等待职程（Worker）关闭。可以通过 stopwait 命令进行停止运行，可以保证在退出之前完成当前正在执行的任务::
+
+  $ celery multi stopwait w1 -A proj -l info
+
+默认情况下会在当前目录中创建pid文件和日志文件，为防止多个职程（Worker）干扰，建议将这些文件存放在专门的目录中::
+
+  $ mkdir -p /var/run/celery
+  $ mkdir -p /var/log/celery
+  $ celery multi start w1 -A proj -l info --pidfile=/var/run/celery/%n.pid \
+                                          --logfile=/var/log/celery/%n%I.log
+
+也可以使用 multi 命令启动多个职程（Worker），有一个强大的语法为不同职程（Worker）设置不同的参数::
+
+  $ celery multi start 10 -A proj -l info -Q:1-3 images,video -Q:4,5 data \
+      -Q default -L:4,5 debug
+

@@ -1,0 +1,21 @@
+==============================
+常见属性包装器
+==============================
+
+@State
+  .
+@StateObject
+  @StateObject属性包装器与类似@State，只不过它适用于ObservableObject。
+  一个ObservableObject始终是引用类型 (class)，并且每当其@Published属性之一发生更改时都会通知。
+@Binding
+  .
+@ObservedObject
+  以便视图可以观察外部对象的状态，并在重要内容发生变化时收到通知。
+@Published
+  允许我们创建可观察的对象，并且在发生更改时触发视图重绘。我们经常将@Published与ObservableObject协议结合使用。
+
+此部分可参考: `https://juejin.cn/post/7319706549915156499`
+
+
+
+

@@ -1,0 +1,27 @@
+=========================
+一些问题
+=========================
+
+preload无法导入其他ts
+=========================
+
+BrowserWindow加载参数webPreferences.preload,
+
+当preload调用了node的api时, 需要将 `nodeIntegration` 设置为 true::
+
+  const mainWindow = new BrowserWindow({
+        width: 800,
+        height: 600,
+        webPreferences: {
+            // 集成nodejs, preload脚本中使用了Node.js的API时必设为true, 才能正常执行
+            nodeIntegration: true,
+            preload: join(__dirname, 'preload.js')
+        }
+    })
+
+
+
+
+
+
+

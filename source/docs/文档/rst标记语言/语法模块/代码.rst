@@ -1,0 +1,49 @@
+=================================
+代码
+=================================
+
+使用 code 或者 code-block 或者 直接双冒号
+
+code
+=================================
+
+code 不支持 linenos显示行号
+
+code-block
+=================================
+
+支持选项::
+
+  :emphasize-lines: 特别强调的行(高亮), 如 3,5
+  :linenos:         是否生成行号
+  :lineno-start:    起始行号, 如 2
+  :dedent:          忽略高亮显示行的错误
+
+
+.. note::
+
+  上述部分指令可参见于: :doc:`/docs/文档/rst标记语言/doc语法模块/index`
+
+literalinclude
+=================================
+
+使用 literalinclude 直接引用文件内容::
+
+  .. literalinclude:: ../../../../../resources/code/example1.nsi
+    :language: nsis
+
+双冒号
+=================================
+
+如使用Py执行文件::
+
+  python xxx.py
+
+源码::
+
+  如使用Py执行文件::
+
+    python xxx.py
+
+
+

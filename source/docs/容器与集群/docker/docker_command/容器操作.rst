@@ -1,0 +1,478 @@
+======================
+容器操作
+======================
+
+ps
+-----------------------
+
+| 列出容器
+
+语法
++++++++++++++++++++++++
+
+``docker ps [OPTIONS]``
+
+.. topic:: OPTIONS说明
+
+	- -a :显示所有的容器，包括未运行的。
+	- -f :根据条件过滤显示的内容。
+	- --format :指定返回值的模板文件。
+	- -l :显示最近创建的容器。
+	- -n :列出最近创建的n个容器。
+	- --no-trunc :不截断输出。
+	- -q :静默模式，只显示容器编号。
+	- -s :显示总的文件大小。
+
+示例
++++++++++++++++++++++++
+
+列出所有在运行的容器信息。
+
+.. code-block:: sh
+
+	yanque@yanquedembp ~ % docker ps
+	CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+
+.. topic:: 输出详情介绍：
+
+	- CONTAINER ID: 容器 ID。
+	- IMAGE: 使用的镜像。
+	- COMMAND: 启动容器时运行的命令。
+	- CREATED: 容器的创建时间。
+	- STATUS: 容器状态。
+
+.. topic:: STATUS 状态有7种：
+
+	- created（已创建）
+	- restarting（重启中）
+	- running（运行中）
+	- removing（迁移中）
+	- paused（暂停）
+	- exited（停止）
+	- dead（死亡）
+	- PORTS: 容器的端口信息和使用的连接类型（tcp\udp）。
+	- NAMES: 自动分配的容器名称。
+
+列出最近创建的5个容器信息。
+
+.. code-block:: sh
+
+	yanque@yanquedembp ~ % docker ps -n 5
+	CONTAINER ID   IMAGE                    COMMAND                  CREATED       STATUS                     PORTS     NAMES
+	de1871a5ebeb   whyour/qinglong:latest   "./docker/docker-ent…"   2 weeks ago   Exited (137) 3 hours ago             qinglong
+
+列出所有创建的容器ID。
+
+.. code-block:: sh
+
+	yanque@yanquedembp ~ % docker ps -a -q
+	de1871a5ebeb
+
+inspect
+-----------------------
+
+| docker inspect : 获取容器/镜像的元数据
+
+语法
++++++++++++++++++++++++
+
+``docker inspect [OPTIONS] NAME|ID [NAME|ID...]``
+
+.. topic:: OPTIONS说明：
+
+	- -f :指定返回值的模板文件。
+
+	- -s :显示总的文件大小。
+
+	- --type :为指定类型返回JSON。
+
+示例
++++++++++++++++++++++++
+
+获取 *python镜像* 元数据
+
+.. code-block:: sh
+
+	yanque@yanquedembp mytest %
+	yanque@yanquedembp mytest % docker inspect python
+	[
+		{
+			"Id": "sha256:26acbad26a2ca1387add4d4d07957e88d18930fb47580a90313de939873c75d8",
+			"RepoTags": [
+				"python:latest"
+			],
+			"RepoDigests": [
+				"python@sha256:497a6f39e10440ab20242b56693fbc2d0549b515cd585328a702720ff4db6bd5"
+			],
+			"Parent": "",
+			"Comment": "",
+			"Created": "2017-09-13T14:27:41.728086539Z",
+			"Container": "0018f3382d15704565819e20c299fe0346dcbc3cfc48b17e528dfbc3c068d433",
+			"ContainerConfig": {
+				"Hostname": "0018f3382d15",
+				"Domainname": "",
+				"User": "",
+				"AttachStdin": false,
+				"AttachStdout": false,
+				"AttachStderr": false,
+				"Tty": false,
+				"OpenStdin": false,
+				"StdinOnce": false,
+				"Env": [
+					"PATH=/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+					"LANG=C.UTF-8",
+					"GPG_KEY=0D96DF4D4110E5C43FBFB17F2D347EA6AA65421D",
+					"PYTHON_VERSION=3.6.2",
+					"PYTHON_PIP_VERSION=9.0.1"
+				],
+				"Cmd": [
+					"/bin/sh",
+					"-c",
+					"#(nop) ",
+					"CMD [\"python3\"]"
+				],
+				"ArgsEscaped": true,
+				"Image": "sha256:3cc8e180255b46231404d2ae57c380015063812b3da3254909555d4dd7f3b905",
+				"Volumes": null,
+				"WorkingDir": "",
+				"Entrypoint": null,
+				"OnBuild": [],
+				"Labels": {}
+			},
+			"DockerVersion": "17.06.2-ce",
+			"Author": "",
+			"Config": {
+				"Hostname": "",
+				"Domainname": "",
+				"User": "",
+				"AttachStdin": false,
+				"AttachStdout": false,
+				"AttachStderr": false,
+				"Tty": false,
+				"OpenStdin": false,
+				"StdinOnce": false,
+				"Env": [
+					"PATH=/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+					"LANG=C.UTF-8",
+					"GPG_KEY=0D96DF4D4110E5C43FBFB17F2D347EA6AA65421D",
+					"PYTHON_VERSION=3.6.2",
+					"PYTHON_PIP_VERSION=9.0.1"
+				],
+				"Cmd": [
+					"python3"
+				],
+				"ArgsEscaped": true,
+				"Image": "sha256:3cc8e180255b46231404d2ae57c380015063812b3da3254909555d4dd7f3b905",
+				"Volumes": null,
+				"WorkingDir": "",
+				"Entrypoint": null,
+				"OnBuild": [],
+				"Labels": null
+			},
+			"Architecture": "amd64",
+			"Os": "linux",
+			"Size": 689734109,
+			"VirtualSize": 689734109,
+			"GraphDriver": {
+				"Data": {
+					"LowerDir": "/var/lib/docker/overlay2/c26d04f12ee93cf5d1856f63eb61dca2b866417b8d73cec1e9baa5860fa3cd61/diff:/var/lib/docker/overlay2/9245eeb0a8f0f9412452d02e23633ebb762288083c15392e57385332ee5793ef/diff:/var/lib/docker/overlay2/d448eb624cefd5b3af0fb2e5780df0538a39304bf30402568136f23c905d5f2c/diff:/var/lib/docker/overlay2/4d10354dd281b1040ed8b9f8924d978f8b6f3599a39e82ff87c0b08052cd2ade/diff:/var/lib/docker/overlay2/ebec34fd45fac8ec2858f01593d7d3117e21b6c97786bbea01742e705fd8a6b3/diff:/var/lib/docker/overlay2/edd8ed31051b48638c8b05dd8fdaecd65e245ef296b9ddbba98da08b53c35cd6/diff:/var/lib/docker/overlay2/5732de9fa78c685f662b1715a712c6651c54878ae67a955981ccdb1c3c4b5024/diff",
+					"MergedDir": "/var/lib/docker/overlay2/e96aa157f1fe9bfad88b1597c7c821a18c8a5b507977fe0fbbc9fab22846af18/merged",
+					"UpperDir": "/var/lib/docker/overlay2/e96aa157f1fe9bfad88b1597c7c821a18c8a5b507977fe0fbbc9fab22846af18/diff",
+					"WorkDir": "/var/lib/docker/overlay2/e96aa157f1fe9bfad88b1597c7c821a18c8a5b507977fe0fbbc9fab22846af18/work"
+				},
+				"Name": "overlay2"
+			},
+			"RootFS": {
+				"Type": "layers",
+				"Layers": [
+					"sha256:18f9b4e2e1bcd5abe381a557c44cba379884c88f6049564f58fd8c10ab5733df",
+					"sha256:d70ce8b0dad684a9e2294b64afa06b8848db950c109cde60cb543bf16d5093c9",
+					"sha256:ecd70829ec3d4a56a3eca79cec39d5ab3e4d404bf057ea74cf82682bb965e119",
+					"sha256:7381522c58b0db7134590fdcbc3b648865325f638427f69a474adc22e6b918af",
+					"sha256:1e96ffb4a81f9b0fbb625448b7d0b6b6a38b0b9eb891473320a90df91ded2acf",
+					"sha256:ec71859e4a965f98cb08cd85ef5ea52753fd26f811ba556264b2b08bb7b911b6",
+					"sha256:24b78eec42f88fb03c35a48f28301b0d2a26598c7795101184177ed00998880b",
+					"sha256:6bcbbdeefa0a25adf0cdab0004b772c21f16eb119965c8588ef100414d01b53f"
+				]
+			},
+			"Metadata": {
+				"LastTagTime": "0001-01-01T00:00:00Z"
+			}
+		}
+	]
+	yanque@yanquedembp mytest %
+
+top
+-----------------------
+
+| docker top :查看容器中运行的进程信息，支持 ps 命令参数
+
+语法
++++++++++++++++++++++++
+
+``docker top [OPTIONS] CONTAINER [ps OPTIONS]``
+
+.. note::
+
+	容器运行时不一定有/bin/bash终端来交互执行top命令，而且容器还不一定有top命令，可以使用docker top来实现查看 container (容器) 中正在运行的进程。
+
+示例
++++++++++++++++++++++++
+
+查看容器 *mykali* 的进程信息。
+
+.. code-block:: sh
+
+	yanque@yanquedembp mytest % docker top mykali
+	UID                 PID                 PPID                C                   STIME               TTY                 TIME                CMD
+	root                3177                3152                0                   03:19               ?                   00:00:00            /usr/bin/qemu-aarch64 /usr/bin/bash bash
+	root                3419                3152                0                   06:36               ?                   00:00:00            /usr/bin/qemu-aarch64 /bin/bash /bin/bash
+	yanque@yanquedembp mytest %
+
+查看所有运行容器的进程信息。
+
+.. code-block:: sh
+
+	for i in  `docker ps |grep Up|awk '{print $1}'`;do echo \ &&docker top $i; done
+
+attach
+-----------------------
+
+| docker attach :连接到正在运行中的容器。
+
+语法
++++++++++++++++++++++++
+
+``docker attach [OPTIONS] CONTAINER``
+
+要attach上去的容器必须正在运行，可以同时连接上同一个 container 来共享屏幕（与screen命令的attach类似）。
+
+官方文档中说attach后可以通过CTRL-C来 detach ，但实际上经过我的测试，如果 container 当前在运行bash，CTRL-C自然是当前行的输入，没有退出；如果 container 当前正在前台运行进程，如输出nginx的 access .log日志，CTRL-C不仅会导致退出容器，而且还stop了。这不是我们想要的， detach 的意思按理应该是脱离容器终端，但容器依然运行。好在attach是可以带上--sig-proxy=false来确保CTRL-D或CTRL-C不会关闭容器。
+
+示例
++++++++++++++++++++++++
+
+容器mynginx将访问日志指到标准输出，连接到容器查看访问信息。
+
+.. code-block:: sh
+
+	runoob@runoob:~$ docker attach --sig-proxy=false mynginx
+	192.168.239.1 - - [10/Jul/2016:16:54:26 +0000] "GET / HTTP/1.1" 304 0 "-" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.93 Safari/537.36" "-"
+
+
+events
+-----------------------
+
+| docker events : 从服务器获取实时事件
+
+语法
++++++++++++++++++++++++
+
+``docker events [OPTIONS]``
+
+.. topic:: OPTIONS说明
+
+	- -f ：根据条件过滤事件；
+
+	- --since ：从指定的时间戳后显示所有事件;
+
+	- --until ：流水时间显示到指定的时间为止；
+
+示例
++++++++++++++++++++++++
+
+显示docker 镜像为 *python* 2022年10月1日后的相关事件。
+
+.. code-block:: sh
+
+	yanque@yanquedembp mytest % docker events --since="1672204137" -f "image"="python"
+	2022-12-28T15:30:25.569291322+08:00 image pull python:latest (name=python)
+	2022-12-28T15:30:41.440253288+08:00 container create 7932605f6337cecda520ef7aab9702e0d18ce506e9a96967b5feaac7f3998fa9 (image=python, name=objective_burnell)
+	2022-12-28T15:30:41.446677063+08:00 container attach 7932605f6337cecda520ef7aab9702e0d18ce506e9a96967b5feaac7f3998fa9 (image=python, name=objective_burnell)
+	2022-12-28T15:30:42.106046916+08:00 container start 7932605f6337cecda520ef7aab9702e0d18ce506e9a96967b5feaac7f3998fa9 (image=python, name=objective_burnell)
+	2022-12-28T15:30:42.216118892+08:00 container die 7932605f6337cecda520ef7aab9702e0d18ce506e9a96967b5feaac7f3998fa9 (exitCode=0, image=python, name=objective_burnell)
+	2022-12-28T15:31:02.434099427+08:00 container create 9221c1215238177472921fb1f38a9cf0a3a2f3e4ea6e3f27b9e30a8620603799 (image=python, name=peaceful_jones)
+	2022-12-28T15:31:02.437918597+08:00 container attach 9221c1215238177472921fb1f38a9cf0a3a2f3e4ea6e3f27b9e30a8620603799 (image=python, name=peaceful_jones)
+	2022-12-28T15:31:02.709044368+08:00 container start 9221c1215238177472921fb1f38a9cf0a3a2f3e4ea6e3f27b9e30a8620603799 (image=python, name=peaceful_jones)
+	2022-12-28T15:31:02.784000217+08:00 container die 9221c1215238177472921fb1f38a9cf0a3a2f3e4ea6e3f27b9e30a8620603799 (exitCode=0, image=python, name=peaceful_jones)
+	2022-12-28T15:31:11.441315766+08:00 container create 491ca524a65358209d3db71648f07a0e319c827b1cfd6b672d66e338baa917dd (image=python, name=nifty_hawking)
+	2022-12-28T15:31:11.446211552+08:00 container attach 491ca524a65358209d3db71648f07a0e319c827b1cfd6b672d66e338baa917dd (image=python, name=nifty_hawking)
+	2022-12-28T15:31:11.725841917+08:00 container start 491ca524a65358209d3db71648f07a0e319c827b1cfd6b672d66e338baa917dd (image=python, name=nifty_hawking)
+	2022-12-28T15:31:11.734199431+08:00 container resize 491ca524a65358209d3db71648f07a0e319c827b1cfd6b672d66e338baa917dd (height=58, image=python, name=nifty_hawking, width=166)
+	2022-12-28T15:31:38.000185842+08:00 container die 491ca524a65358209d3db71648f07a0e319c827b1cfd6b672d66e338baa917dd (exitCode=0, image=python, name=nifty_hawking)
+	2022-12-28T15:31:41.223429147+08:00 container create 83b54283c0f7640a2c8814341fb8d3f289d4bbec830b7995c12a7e141fb090f5 (image=python, name=fervent_hofstadter)
+	2022-12-28T15:31:41.227702518+08:00 container attach 83b54283c0f7640a2c8814341fb8d3f289d4bbec830b7995c12a7e141fb090f5 (image=python, name=fervent_hofstadter)
+	2022-12-28T15:31:41.447076652+08:00 container start 83b54283c0f7640a2c8814341fb8d3f289d4bbec830b7995c12a7e141fb090f5 (image=python, name=fervent_hofstadter)
+	2022-12-28T15:31:41.455181214+08:00 container resize 83b54283c0f7640a2c8814341fb8d3f289d4bbec830b7995c12a7e141fb090f5 (height=58, image=python, name=fervent_hofstadter, width=166)
+	2022-12-28T15:31:51.146816850+08:00 container die 83b54283c0f7640a2c8814341fb8d3f289d4bbec830b7995c12a7e141fb090f5 (exitCode=0, image=python, name=fervent_hofstadter)
+	^C%                                                                                                                                                                                                         yanque@yanquedembp mytest %
+
+如果指定的时间是到秒级的，需要将时间转成时间戳。如果时间为日期的话，可以直接使用，如--since="2022-10-01"。
+
+logs
+-----------------------
+
+| docker logs : 获取容器的日志
+
+语法::
+
+	docker logs [OPTIONS] CONTAINER
+
+.. topic:: OPTIONS说明
+
+	-f
+		跟踪日志输出
+	--since
+		显示某个开始时间的所有日志
+	-t
+		显示时间戳
+	--tail
+		仅列出最新N条容器日志
+
+示例
++++++++++++++++++++++++
+
+跟踪查看容器 *mykali* 的日志输出
+
+.. code-block:: sh
+
+	yanque@yanquedembp mytest % docker logs -f mykali
+	┌──(root㉿fa15654fc7d1)-[/]
+	^C%
+
+wait
+-----------------------
+
+| docker wait : 阻塞运行直到容器停止，然后打印出它的退出代码
+
+语法
++++++++++++++++++++++++
+
+``docker wait [OPTIONS] CONTAINER [CONTAINER...]``
+
+示例
++++++++++++++++++++++++
+
+.. code-block:: sh
+
+	docker wait CONTAINER
+
+
+export
+-----------------------
+
+| docker export : 将文件系统作为一个tar归档文件导出到STDOUT。
+
+语法
++++++++++++++++++++++++
+
+``docker export [OPTIONS] CONTAINER``
+
+.. topic:: OPTIONS说明
+
+	- -o :将输入内容写到文件。
+
+示例
++++++++++++++++++++++++
+
+将容器 *mykali* 按日期保存为tar文件。
+
+.. code-block::
+
+	yanque@yanquedembp test % docker export -o mykali-`date +%Y%m%d`.tar mykali
+	yanque@yanquedembp test % ls
+	1.txt			c++			dd			mykali-20221228.tar
+	yanque@yanquedembp test % ls -lh mykali-20221228.tar
+	-rw-------@ 1 yanque  staff   231M 12 28 16:20 mykali-20221228.tar
+	yanque@yanquedembp test %
+
+port
+-----------------------
+
+| docker port 用于列出指定的容器的端口映射，或者查找将 PRIVATE_PORT NAT 到面向公众的端口
+
+语法::
+
+	docker port [OPTIONS] CONTAINER [PRIVATE_PORT[/PROTO]]
+
+示例
++++++++++++++++++++++++
+
+查看容器 *mykali* 的端口映射情况
+
+.. code-block:: sh
+
+	yanque@yanquedembp test % docker port mykali
+	5900/tcp -> 0.0.0.0:60000
+	5901/tcp -> 0.0.0.0:60001
+	5902/tcp -> 0.0.0.0:60002
+
+stats
+-----------------------
+
+| docker stats : 显示容器资源的使用情况，包括：CPU、内存、网络 I/O 等
+
+语法
++++++++++++++++++++++++
+
+``docker stats [OPTIONS] [CONTAINER...]``
+
+.. topic:: OPTIONS说明
+
+	- --all , -a :显示所有的容器，包括未运行的。
+
+	- --format (格式) :指定返回值的模板文件。
+
+	- --no-stream :展示当前状态就直接退出了，不再实时更新。
+
+	- --no-trunc :不截断输出。
+
+示例
++++++++++++++++++++++++
+
+列出所有在运行的容器信息。
+
+.. code-block:: sh
+
+	yanque@yanquedembp test % docker stats
+	CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT     MEM %     NET I/O       BLOCK I/O        PIDS
+	fa15654fc7d1   mykali    0.00%     23.63MiB / 7.675GiB   0.30%     1.51kB / 0B   6.15MB / 4.1kB   4
+
+.. topic:: 输出详情介绍
+
+	- CONTAINER ID 与 NAME: 容器 ID 与名称。
+
+	- CPU % 与 MEM %: 容器使用的 CPU 和内存的百分比。
+
+	- MEM USAGE / LIMIT (限制) : 容器正在使用的总内存，以及允许使用的内存总量。
+
+	- NET I/O: 容器通过其网络接口发送和接收的数据量。
+
+	- BLOCK I/O: 容器从主机上的块设备读取和写入的数据量。
+
+	- PIDs: 容器创建的进程或线程数。
+
+根据容器等 ID 或名称现实信息, 支持多个:
+
+.. code-block:: sh
+
+	yanque@yanquedembp test % docker stats mykali
+	CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT     MEM %     NET I/O       BLOCK I/O        PIDS
+	fa15654fc7d1   mykali    0.00%     23.63MiB / 7.675GiB   0.30%     1.51kB / 0B   6.15MB / 4.1kB   4
+
+以 JSON 格式输出：
+
+.. code-block:: sh
+
+	yanque@yanquedembp test % docker stats mykali --no-stream --format "{{json .}}"
+	{"BlockIO":"6.15MB / 4.1kB","CPUPerc":"0.00%","Container":"mykali","ID":"fa15654fc7d1","MemPerc":"0.30%","MemUsage":"23.63MiB / 7.675GiB","Name":"mykali","NetIO":"1.58kB / 0B","PIDs":"4"}
+	yanque@yanquedembp test %
+
+输出指定的信息：
+
+.. code-block:: sh
+
+	yanque@yanquedembp test % docker stats --no-stream --all --format "table {{.Container}}\t{{.CPUPerc}}\t{{.MemUsage}}" mykali
+	CONTAINER   CPU %     MEM USAGE / LIMIT
+	mykali      0.00%     23.63MiB / 7.675GiB
+

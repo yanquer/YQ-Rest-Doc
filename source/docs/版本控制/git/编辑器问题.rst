@@ -1,0 +1,17 @@
+======================
+编辑器问题
+======================
+
+设置vim编辑器::
+
+  git config --global core.editor 'vim'
+
+背景:
+
+之前不小心安装了, 然后忘了怎么配置称使用这个工具的编辑器, 贼难用,
+然后卸载了GitExtensions, 再rebase 的时候就会报错::
+
+  hint: Waiting for your editor to close the file... "C:/Program Files (x86)/GitExtensions/GitExtensions.exe"
+
+设置一下vim编辑器即可.
+

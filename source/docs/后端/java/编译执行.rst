@@ -1,0 +1,19 @@
+===================
+java文件的编译执行
+===================
+
+很久没用java, 在vscode里写测试都忘了类名需要与文件名一致...
+
+
+以, test_run.java 文件为例.
+
+编译class文件, -d指定输出目录::
+
+	javac -d __javacache__ test_run.java
+
+运行, 无需class后缀, 若自定义了输出路径, 需要使用 -cp 指定查找路径::
+
+	java -cp __javacache__ test_run
+
+
+

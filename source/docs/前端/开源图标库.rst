@@ -1,0 +1,51 @@
+=============================
+开源图标库
+=============================
+
+codicon
+=============================
+
+vscode有个开源图标库 `codicon`, 可在此预览: `https://microsoft.github.io/vscode-codicons/dist/codicon.html`
+
+也有个仓库: `https://github.com/microsoft/vscode-codicons/tree/main/src/icons`
+
+没注意是否一致
+
+处了直接从上述仓库下载完整的svg图标, 还可以:
+
+普通js项目
+  直接引入cdn::
+
+    <script src="https://unpkg.com/vscode-codicons/dist/codicon.js"></script>
+    const addIcon = codicon.add;
+    ...
+
+  或者npm安装::
+
+    npm install vscode-codicons --save
+
+  引入并使用::
+
+    import * as codicon from 'vscode-codicons';
+    const addIcon = codicon.add;
+
+theia项目
+  可以直接导入使用::
+
+    import {codicon} from "@theia/core/lib/browser"
+
+    render(){
+      return <span className={`${codicon('add')}`}/>
+    }
+
+fontawesome
+=============================
+
+安装免费使用的::
+
+  yarn add @fortawesome/fontawesome-free --save
+
+预览: https://fontawesome.com/v5/search
+
+
+

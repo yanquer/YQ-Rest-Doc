@@ -1,0 +1,53 @@
+===========================
+Swift异步
+===========================
+
+于Python类似, 高版本也支持使用async(await)来定义(调用)异步函数::
+
+  func fetchData() async -> String {
+      // 模拟异步操作，比如从网络获取数据
+      await Task.sleep(1_000_000_000) // 模拟1秒的延迟
+      return "Data fetched successfully"
+  }
+
+当在异步上下文中调用时, 除了直接await, 还可以::
+
+  async {
+      print("Async code block")
+      let result = try await someAsyncFunction()
+      print("Result: \(result)")
+  }
+
+如果要在同步上下文中调用, 可以使用 **Task** 或者 **Task.runDetached**::
+
+  Task.runDetached {
+      print("Before calling asyncTask")
+      await asyncTask()
+      print("After calling asyncTask")
+  }
+
+  Task {
+      print("Before calling asyncTask")
+      await asyncTask()
+      print("After calling asyncTask")
+  }
+
+两者区别在于它们的任务分离性和运行方式
+  任务分离性：
+
+    - Task.runDetached: 创建一个分离的任务，该任务不会等待其完成，
+      它会在后台执行，不会阻塞当前线程。
+      这意味着主线程或当前上下文中的代码可以继续执行而不等待任务完成。
+    - Task: 在当前上下文中创建一个任务，它的行为类似于一个子任务。
+      如果你在一个任务中调用另一个任务，并使用 await 来等待它的完成，
+      那么它会在当前任务中被等待，不会分离执行
+
+  运行方式：
+
+    - Task.runDetached: 会创建一个新的任务，并在后台运行，不影响当前任务的执行。
+      这通常用于启动一个异步任务，而不需要等待它完成
+    - Task: 在当前任务上下文中执行，如果使用 await 等待其完成，
+      它会被等待执行完成后再继续当前任务的执行
+
+
+

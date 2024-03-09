@@ -1,0 +1,8 @@
+===========================
+自建代理
+===========================
+
+可参考: `66云美西9929 cn2-gia vps 搭建XRAY +bbr 七合一脚本 秒开4K 速度80000+ 完美科学上网 <https://www.lbtlm.com/archives/1073>`_
+本地位置: :download:`../../resources/pdf/66云美西9929 cn2-gia vps 搭建XRAY +bbr 七合一脚本 秒开4K 速度80000+ 完美科学上网 - 萝卜头网创联盟-萝卜头网创联盟.pdf`
+
+可使用此项目: `<https://github.com/mack-a/v2ray-agent>`_

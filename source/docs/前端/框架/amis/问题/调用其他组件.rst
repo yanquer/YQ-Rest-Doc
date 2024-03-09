@@ -1,0 +1,77 @@
+
+===========================
+调用其他组件
+===========================
+
+比如调用Form的submit,
+
+在action中定义::
+
+  {
+    "type": "action",
+    "label": "提交表单",
+    "level": "primary",
+    "className": "mr-3 mb-3",
+    "onEvent": {
+      "click": {
+        "actions": [
+          {
+            "actionType": "submit",
+            "componentId": "form-action-receiver"
+          }
+        ]
+      }
+    }
+  },
+
+其中, ``"componentId": "form-action-receiver"`` 表示需要在form中定义id::
+
+  id: "form-action-receiver"
+
+form支持的行为: https://aisuda.bce.baidu.com/amis/zh-CN/components/form/index#动作表
+
+.. note::
+
+  如果要同时定义多个action, 可以使用actions串行列表.
+  如dialog的onEvent::
+
+    type: "dialog",
+    ...
+    onEvent: {
+        confirm: {
+            actions: [
+                {
+                    actionType: 'setValue',
+                    componentId: "top-form",
+                    args: {
+                        value: {
+                            envD: '${ENCODEJSON(envDD)}',
+                            envDD: '${envDD}',
+                            eName: 'x${eName}'
+                        }
+                    }
+                },
+                {
+                    actionType: 'setValue',
+                    componentId: "dis-data",
+                    args: {
+                        value: {
+                            envD: '${ENCODEJSON(envDD)}',
+                            envDD: 'x${envDD}',
+                            eName: 'x${eName}'
+                        }
+                    }
+                },
+                {
+                    actionType: 'custom',
+                    script: (context: any, doAction: any, event: any) => {
+                        console.log(context)
+                    }
+                }
+            ]
+        }
+    }
+
+最后的 `custom` 属于 **自定义JS** 见: `https://aisuda.bce.baidu.com/amis/zh-CN/docs/concepts/event-action#自定义-js`
+
+

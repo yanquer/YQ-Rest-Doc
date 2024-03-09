@@ -1,0 +1,481 @@
+========================================
+认证和访问控制
+========================================
+
+.. _PAM(Pluggable Authentication Modules,即可插入的验证模块): https://zh.wikipedia.org/wiki/Pluggable_Authentication_Modules
+
+一般的 Unix 认证
+========================================
+
+一般的 Unix 认证由
+`PAM(Pluggable Authentication Modules,即可插入的验证模块)`_
+下的 `pam_unix` 模块提供。
+它的 3 个重要文件如下，其内的条目使用 “`:`” 分隔::
+
+  文件			权限		用户		组		说明
+  /etc/passwd	-rw-r--r--	root	root	（明文的）用户账号信息
+  /etc/shadow	-rw-r-----	root	shadow	安全加密的用户账号信息
+  /etc/group	-rw-r--r--	root	root	组信息
+
+/etc/passwd`
+  `/etc/passwd` 包含下列内容::
+
+    user1:x:1000:1000:User1 Name,,,:/home/user1:/bin/bash user2:x:1001:1001:User2 Name,,,:/home/user2:/bin/bash
+
+  如 `passwd` 中所述，这个文件中被 “ `:` ” 分隔的每项含义如下。
+
+  - 登录名
+  - 密码形式说明
+  - 数字形式的用户 ID
+  - 数字形式的组 ID
+  - 用户名或注释字段
+  - 用户家目录
+  - 可选的用户命令解释器
+
+  `/etc/passwd` 的第二项曾经被用来保存加密后的密码。在引入了 “ `/etc/shadow` ” 后，该项被用来说明密码形式。
+`/etc/shadow`
+  `/etc/shadow` 包含下列内容::
+
+    user1:$1$Xop0FYH9$IfxyQwBe9b8tiyIkt2P4F/:13262:0:99999:7:::
+    user2:$1$vXGZLVbS$ElyErNf/agUDsm1DehJMS/:13261:0:99999:7:::
+
+  如 `shadow` (5) 中所述，这个文件中被 “ `:` ” 分隔的每项含义如下。
+
+  - 登录名
+  - 加密后的密码（开头的 “`$1$`” 表示使用 MD5 加密。“*” 表示无法登陆。）
+  - 最后一次修改密码的时间，其表示从 1970 年 1 月 1 日起的天数
+  - 允许用户再次修改密码的天数间隔
+  - 用户必须修改密码的天数间隔密码失效前的天数，在此期间用户会被警告
+  - 密码失效后的天数，在次期间密码依旧会被接受账号失效的时间，其表示从 1970 年 1 月 1 日起的天数
+  - …
+
+`/etc/group`
+  `/etc/group` 包含下列内容::
+
+    group1:x:20:user1,user2
+
+  如 `group` (5) 中所述，这个文件中被 “ `:` ” 分隔的每项含义如下。
+
+  - 组名称
+  - 加密后的密码（不会被真正使用）
+  - 数字形式的组 ID
+  - 使用 “,” 分隔的用户名列表
+
+  .. note::
+
+    “ `/etc/gshadow` ” 为 “ `/etc/group` ” 提供了与 “ `/etc/shadow` ” 相似的功能，但没有被真正地使用。
+
+    如果" `auth optional pam_group.so` " 这行添加到了" `/etc/pam.d/common-auth` "，
+    并且在" `/etc/security/group.conf` " 里进行了设置，一个用户的实际组就可以被动态添加。参见 `pam_group` (8).
+
+    `base-passwd` 软件包包含了一份用户和组的官方文档：“`/usr/share/doc/base-passwd/users-and-groups.html`”。
+
+设立加密的密码
+========================================
+
+下面是一些用于 `生成加盐的加密密码 <https://zh.wikipedia.org/wiki/Salt_(cryptography)>`_ 的独立工具
+
+生成密码的工具::
+
+  软件包	流行度				大小		命令				功能
+  whois	V:32, I:371		364		mkpasswd		具备 crypt(3) 库所有特性的前端
+  openssl	V:814, I:994	1465	openssl passwd	计算密码哈希 (OpenSSL). passwd(1ssl)
+
+PAM 和 NSS
+========================================
+
+可参考: :doc:`PAM模块`
+
+现代的 `类 Unix <https://zh.wikipedia.org/wiki/Unix-like>`_
+系统（例如 Debian 系统）提供
+`PAM(Pluggable Authentication Modules,即可插入的验证模块)`_
+和
+`NSS（Name Service Switch，名称服务切换） <https://zh.wikipedia.org/wiki/Name_Service_Switch>`_
+机制给本地系统管理员，使他们能够配置自己的系统。它们的功能可以概括为以下几点。
+
+- PAM 给应用软件提供了一个灵活的认证机制，因此涉及到了密码数据的交换。
+- NSS 提供了一个灵活的名称服务机制，
+  它经常被 `C 标准库 <https://zh.wikipedia.org/wiki/C_standard_library>`_ 使用，
+  使例如 `ls` (1) 和 `id` (1) 这样的程序获得用户和组名称。
+
+PAM 和 NSS 系统必须保持配置一致。
+
+PAM 和 NSS 系统中重要的软件包如下::
+
+  软件包				流行度				大小		说明
+  libpam-modules		V:813, I:999	1048	插入式验证模块（基础服务）
+  libpam-ldap			I:12			249		允许 LDAP 接口的插入式验证模块
+  libpam-cracklib		I:15			117		启用 cracklib 支持的插入式验证模块
+  libpam-systemd		V:484, I:869	574		用于 logind 注册用户会话的插入式验证模块（PAM）
+  libpam-doc			I:1				1046	插入式验证模块（html 和 文本文档）
+  libc6				V:946, I:999	12772	GNU C 库：同样提供“名称服务切换”服务的共享库
+  glibc-doc			I:11			3161	GNU C 库：帮助页面
+  glibc-doc-reference	I:4				12740	GNU C 库：参考手册，有 info、pdf 和 html 格式（non-free）
+  libnss-mdns			I:508			150		用于解析组播 DNS 名称的 NSS 模块
+  libnss-ldap			I:11			265		NSS 模块，用于使用 LDAP 作为一个名称服务的
+  libnss-ldapd		I:14			153		NSS 模块，用于使用 LDAP 作为一个名称服务的（libnss-ldap 的新 fork）
+
+- `libpam-doc` 中 “The Linux-PAM System Administrators' Guide” 是了解 PAM 配置的必要文档。
+- `glibc-doc-reference` 中的 “System Databases and Name Service Switch” 是了解 NSS 配置的重要文档。
+
+  注意
+
+  你可以使用 “ `aptitude search 'libpam-|libnss-'` ” 命令查看更多的相关软件包。
+  NSS 缩写也可能意味着 “Network Security Service，网络安全服务”，它不同于 “Name Service Switch，名称服务切换”。
+
+  PAM 是用来为每个程序使用系统范围的默认值来初始化环境变量的最基础方法。
+
+在 `systemd <https://zh.wikipedia.org/wiki/Systemd>`_ 下,
+`libpam-systemd` 软件包被安装用来管理用户登录，
+通过为 `logind <https://zh.wikipedia.org/wiki/Systemd###logind>`_
+在 `systemd` 控制组层级中注册用户会话来实现。
+
+PAM 和 NSS 访问的配置文件
+========================================
+
+下面是一些 PAM 和 NSS 访问的重要配置文件::
+
+  配置文件						功能
+  /etc/pam.d/program_name		为 “program_name” 程序设置 PAM 配置；参加 pam(7) 和 pam.d(5)
+  /etc/nsswitch.conf			为每个服务条目设置 NSS 配置。参见 nsswitch.conf(5)
+  /etc/nologin				通过 pam_nologin(8) 模块限制用户登陆
+  /etc/securetty				通过 pam_securetty(8) 模块限制 root 访问 tty
+  /etc/security/access.conf	通过 pam_access(8) 模块设置访问限制
+  /etc/security/group.conf	通过 pam_group(8) 模块设置基于组的限制
+  /etc/security/pam_env.conf	通过 pam_env(8) 模块设置环境变量
+  /etc/environment			通过带有 “readenv=1” 参数的 pam_env(8) 模块设置额外的环境变量
+  /etc/default/locale			通过带有 “readenv=1 envfile=/etc/default/locale” 参数的 pam_env(8) 模块设置语言环境值（在 Debian 系统中）
+  /etc/security/limits.conf	通过 pam_linits(8) 模块设置资源限制（ulimit、core 等等）
+  /etc/security/time.conf		通过 pam_time(8) 模块设置时间限制
+  /etc/systemd/logind.conf	设置systemd 的登录管理器配置 (参见 logind.conf(5) 和 systemd-logind.service(8))
+
+密码选择的限制是通过 PAM 模块 `pam_unix` (8) 和 `pam_cracklib` (8) 来实现的。它们可以通过各自的参数进行配置。
+
+.. note::
+
+  PAM 模块在文件名中使用后缀 “`.so`”。
+
+现代的集中式系统管理
+========================================
+
+现代的集中式系统管理可以使用集中式的
+`轻量目录访问协议（LDAP） <https://zh.wikipedia.org/wiki/Lightweight_Directory_Access_Protocol>`_
+服务器进行部署，从而通过网络管理许多类 Unix 和 非类 Unix 系统。
+轻量目录访问协议的开源实现是 `OpenLDAP 软件 <http://www.openldap.org/>`_
+
+LDAP 服务器使用带有 PAM 和 NSS 的 `libpam-ldap` 和 `libnss-ldap` 软件包为 Debian 系统提供账号信息。
+需要一些动作来启用 LDAP（我没有使用过这个设置，并且下面的信息纯粹是第二手的信息。请在这种前提下阅读下列内容。
+
+- 通过运行一个程序，例如独立的 LDAP 守护进程 `slapd` (8)，来建立集中式的 LDAP 服务器。
+- 你在 “ `/etc/pam.d/` ” 目录中的 PAM 配置文件里，使用 “ `pam_ldap.so` ” 替代默认值 “ `pam_unix.so` ”。
+  - Debian 使用 “ `/etc/pam_ldap.conf` ” 作为 `libpam-ldap` 的配置文件，“ `/etc/pam_ldap.secret` ” 作为保存 root 密码的文件。
+- 你在 “ `/etc/nsswitch.conf` ” 文件中改变 NSS 配置，使用 “ `ldap` ” 替代默认值（“ `compat` ” 或 “ `file` ”）。
+  - Debian 使用 “ `/etc/libnss-ldap.conf` ” 作为 `libnss-ldap` 的配置文件。
+- 为了密码的安全，你必须让 `libpam-ldap` 使用 `SLL（或 TLS） <https://zh.wikipedia.org/wiki/Transport_Layer_Security>`_ 连接。
+- 为了确保 LDAP 网络开销数据的完整性，你必须让 `libpam-ldap` 使用 `SLL（或 TLS） <https://zh.wikipedia.org/wiki/Transport_Layer_Security>`_ 连接。
+- 为了减少 LDAP 网络流量，你应该在本地运行 `nscd` (8) 来缓存任何 LDAP 搜索结果。
+
+为什么 GNU su 不支持 wheel 组
+========================================
+
+这是在旧的 “ `info su` ” 底部 Richard M. Stallman 所说的一句名言。
+别担心：Debian 系统中当前的 `su` 命令使用了 PAM，
+这样当在 “ `/etc/pam.d/su` ” 中启用了带有 “ `pam_wheel.so` ” 的行后，
+就能够限制非 wheel 组的用户 `su` 到 `root` 组的能力。
+
+确保互联网上的的密码安全
+========================================
+
+许多流行的传输层服务都使用纯文本来传输包括密码验证信息在内的各类消息。
+使用纯文本在公网上传输密码是很糟糕的做法，因为这样传输的密码很容易在网上被他人截获。
+为了确保整个沟通过程，包括密码信息在内都使用加密传输来确保安全，
+您可以在 `传输层安全（Transport Layer Security，TLS） <https://zh.wikipedia.org/wiki/Transport_Layer_Security>`_
+协议或者其前身，“安全套接字层（Secure Sockets Layer，SSL）”协议之上运行这些服务::
+
+  不安全的服务名		端口		安全的服务名			端口
+  www (http)		80			https			443
+  smtp (邮件)		25			ssmtp (smtps)	465
+  ftp-data		20			ftps-data		989
+  ftp				21			ftps			990
+  telnet			23			telnets			992
+  imap2			143			imaps			993
+  pop3			110			pop3s			995
+  ldap			389			ldaps			636
+
+加密消耗 CPU 时间。
+作为对 CPU 有益的替代方案，你可以保持使用纯文本通讯，
+仅仅使用安全认证协议加密密码，
+比如说：POP 使用"Authenticated Post Office Protocol" (APOP)，
+SMTP 和 IMAP 使用 "Challenge-Response Authentication Mechanism MD5" (CRAM-MD5)。
+（你的邮件客户端通过互联网上你的邮件服务器发送邮件时，
+最近流行使用新的递交端口 587 来代替传统的 SMTP 端口 25，
+这样可以避免在使用 CRAM-MD5 认证自己时，网络提供商阻塞 25 端口。）
+
+安全 Shell
+========================================
+
+`安全 Shell (SSH) <https://zh.wikipedia.org/wiki/Secure_Shell>`_
+程序使用安全认证来提供不安全网络上两个不可信任主机之间的安全加密通讯。
+它由 `OpenSSH <http://www.openssh.org/>`_
+客户端, `ssh` (1), 和
+`OpenSSH <http://www.openssh.org/>`_
+后台守护进程（daemon）, `sshd` (8)组成.SSH 使用端口转发特性，
+可以给 POP 和 X 之类的不安全的协议通讯建立隧道，使其可以在互联网上安全传输。
+
+客户端可以使用如下方式来认证自己：
+
+- 基于主机的认证
+- 公钥认证
+- 质疑应答认证
+- 密码认证
+
+使用公钥认证，可以实现远程免密码登录。
+参见 `第 6.3 节 “服务器远程访问和工具 (SSH)” <https://www.debian.org/doc/manuals/debian-reference/ch06.zh-cn.html###_the_remote_access_server_and_utilities_ssh>`_
+
+root 密码安全
+========================================
+
+为阻止人们使用 root 权限访问你的机器，你需要做下面的操作。
+
+- 阻止对硬盘的物理访问
+- 锁住 UEFI/ BIOS 来阻止从可移动介质启动
+- 为 GRUB 交互式会话设置密码
+- 锁住 GRUB 菜单，禁止编辑
+
+sudo
+========================================
+
+参考: :doc:`/docs/操作系统/linux/linux指令/sudo`
+
+PolicyKit
+========================================
+
+`PolicyKit <https://zh.wikipedia.org/wiki/PolicyKit>`_
+是在类 Unix 操作系统中控制整个系统权限的一个操作系统组件。
+
+较新的 GUI 图形界面程序设计时便考虑到了不作为特权进程来运行。
+它们通过 PolicyKit 来和特权进程通信，从而执行管理操作。
+
+在 Debian 系统中，PolicyKit 限制了属于 `sudo` 组的用户账号的这种操作。
+
+网络设置
+========================================
+
+主机名解析
+  主机名解析，目前也是由
+  `NSS (名字服务转换 Name Service Switch) <https://zh.wikipedia.org/wiki/Name_Service_Switch>`_
+  机制来支持。这个解析的流程如下
+
+  1. `/etc/nsswitch.conf` 文件里的 `hosts: files dns` 这段规定主机名解析顺序。
+     (代替 `/etc/host.conf` 文件里的" `order` 这段原有的功能。)
+  2. `files` 方式首先被调用。如果主机名在 `/etc/hosts` 文件里面发现，
+     则返回所有有效地址并退出。 ( `/etc/host.conf` 文件包含 `multi on` .)
+  3. `dns` 方式被调用。如果主机名通过查询 `/etc/resolv.conf` 文件里面写的
+     `互联网域名系统 Domain Name System (DNS) <https://zh.wikipedia.org/wiki/Domain_Name_System>`_
+     来找到，则返回所有有效地址并退出
+
+- `/etc/hosts` 参考 :doc:`/docs/操作系统/linux/配置文件/etc-hosts`
+- `/etc/resolv.conf` 参考 :doc:`/docs/操作系统/linux/配置文件/etc-resolv-conf`
+
+对于典型 adhoc 局域网环境下的 PC 工作站，除了基本的 `files` 和 `dns` 方式之外，
+主机名还能够通过组播 DNS `mDNS, [零配置网络 Zeroconf <https://zh.wikipedia.org/wiki/Zeroconf>`_
+进行解析
+
+- `Avahi <https://zh.wikipedia.org/wiki/Avahi_(software)>_` 提供 Debian 下的组播 DNS 发现框架。
+- 它和 `Apple Bonjour / Apple Rendezvous <https://zh.wikipedia.org/wiki/Bonjour>`_ 相当.
+- `libnss-mdns` 插件包提供 mDNS 的主机名解析，GNU C 库 (glibc)的 GNU 名字服务转换 Name Service Switch (NSS) 功能支持 mDNS。
+- " `/etc/nsswitch.conf` " 文件应当有像 " `hosts: files mdns4_minimal [NOTFOUND=return] dns mdns4` " 这样的一段.
+- `".local" <https://zh.wikipedia.org/wiki/.local>`_ 结尾的主机名，
+  使用 `pseudo-top-level domain <https://zh.wikipedia.org/wiki/Pseudo-top-level_domain>`_ (TLD) 来解析.
+- mDNS IPv4 本地连接组播地址 " `224.0.0.251` " 或它相应的 IPv6 地址 " `FF02::FB` " 被用来作为 " `.local` " 结尾名字的 DNS 查询。
+
+较老的 Windows 系统安装 `winbind` 软件包来提供旧的
+`NETBios over TCP/IP <https://zh.wikipedia.org/wiki/NetBIOS_over_TCP/IP>`_ 主机名解析。
+为启用这个功能，" `/etc/nsswitch.conf` " 文件应当有这样的一段：
+" `hosts: files mdns4_minimal [NOTFOUND=return] dns mdns4 wins` "。 (现代 Windows 系统通常使用 `dns` 方式来进行主机名解析。)
+
+局域网网络地址范围
+========================================
+
+让我们重新提醒下在
+`rfc1918 <http://tools.ietf.org/html/rfc1918>`_ 里规定的
+`局域网 local area networks (LANs) <https://zh.wikipedia.org/wiki/Local_area_network>`_
+IPv4 32 位地址在各类地址的保留范围. 这些地址保证不会与因特网上专有的地址冲突。
+
+.. note::
+
+  IP 地址书写中有冒号的是 `IPv6 地址 <https://zh.wikipedia.org/wiki/IPv6>`_ ，
+  例如，" `::1` " 是 `localhost 本地主机`
+
+网络地址范围列表::
+
+  类别	网络地址					子网掩码		子网掩码/位数	子网数
+  A	10.x.x.x					255.0.0.0		/8			1
+  B	172.16.x.x — 172.31.x.x		255.255.0.0		/16			16
+  C	192.168.0.x — 192.168.255.x	255.255.255.0	/24			256
+
+.. note::
+
+  如果这些地址分配到一个主机，那么这个主机一定不能够直接访问互联网，
+  必须通过一个作为网关的代理服务或通过
+  `网络地址转换 Network Address Translation (NAT) <https://zh.wikipedia.org/wiki/Network_address_translation>`_.
+  消费局域网环境，宽带路由器通常使用 NAT。
+
+图形界面的网络配置工具
+========================================
+
+Debian 系统 NM 的官方文档位于 “ `/usr/share/doc/network-manager/README.Debian` ” 。
+
+本质上，如下操作即可完成桌面的网络配置。
+
+1. 通过下列命令使桌面用户 `foo` 归属 “ `netdev` ” 组
+   （另外，例如 GNOME 和 KDE 这样的现代桌面环境会通过 [D-bus <https://zh.wikipedia.org/wiki/D-Bus) 自动完成该操作）::
+
+      $ sudo adduser foo netdev
+2. 使 “ `/etc/network/interfaces` ” 的
+   配置保持下面那样简洁::
+
+    auto lo
+    iface lo inet loopback
+3. 通过下列
+   命令重新启动 NM::
+
+     $ sudo systemctl restart network-manager
+4. 通过图形界面配置网络
+   注意,
+   只有 **不** 列在 “ `/etc/network/interfaces` ” 中的接口会被 NM 管理，以避免与 `ifupdown` 的冲突。
+
+   提示
+
+   如果你想扩展 NM 的网络配置功能，请寻找适当的插件模块和补充软件包，
+   例如 `network-manager-openconnect` 、
+   `network-manager-openvpn-gnome` 、
+   `network-manager-pptp-gnome` 、
+   `mobile-broadband-provider-info` 、
+   `gnome-bluetooth` 等等。
+
+底层网络配置
+========================================
+
+在 Linux 上的底层网络配置，使用
+`iproute2 <http://www.linuxfoundation.org/collaborate/workgroups/networking/iproute2>`_
+程序 ( `ip` (8), …) .
+
+Iproute2 命令
+========================================
+
+`Iproute2 <http://www.linuxfoundation.org/collaborate/workgroups/networking/iproute2>`_
+命令集提供完整的底层网络配置能力。
+有个从旧的
+`net-tools <http://www.linuxfoundation.org/collaborate/workgroups/networking/net-tools>`_
+命令集到新的
+`iproute2 <http://www.linuxfoundation.org/collaborate/workgroups/networking/iproute2>`_
+命令集的转换表
+
+从旧的 net-tools 命令集到新的 iproute2 命令集转换表::
+
+  旧的 net-tools	新的 iproute2			操作
+  ifconfig(8)			ip addr			一个设备上的协议（IP 或 IPv6）地址
+  route(8)			ip route		路由表条目
+  arp(8)				ip neigh		ARP 或 NDISC 缓存条目
+  ipmaddr				ip maddr		多播地址
+  iptunnel			ip tunnel		IP 隧道
+  nameif(8)			ifrename(8)		基于 MAC 地址的网络接口名
+  mii-tool(8)			ethtool(8)		以太网设备设置
+
+安全的底层网络操作
+========================================
+
+你可以按下面的方式安全的使用底层网络命令，这些命令不会改变网络配置::
+
+  命令						说明
+  ip addr show			显示活动的网络接口连接和地址状态
+  route -n				用数字地址显示全部路由表
+  ip route show			用数字地址显示全部路由表
+  arp						显示当前 ARP 缓存表的内容
+  ip neigh				显示当前 ARP 缓存表的内容
+  plog					显示 ppp 后台守护进程（daemon）日志
+  ping yahoo.com			检查到 "yahoo.com" 的因特网连接
+  whois yahoo.com			在域名数据库里面检查谁注册了 "yahoo.com"
+  traceroute yahoo.com	跟踪到 "yahoo.com" 的因特网连接
+  tracepath yahoo.com		跟踪到 "yahoo.com" 的因特网连接
+  mtr yahoo.com			跟踪到 "yahoo.com" 的因特网连接（重复的）
+  dig 					查询由 "dns-server.com" 提供服务的 "example.com" 域名的 DNS 记录： "a", "mx" 或 "any" 记录
+  dig[@dns-server.com] example.com [{a|mx|any}]
+  iptables -L -n			查看包过滤
+  netstat -a				找出所有打开的端口
+  netstat -l --inet		找出监听端口
+  netstat -ln --tcp		找出 TCP 监听端口（数字的）
+  dlint example.com		查询 "example.com" 的 DNS zone 信息
+
+找出最佳 MTU
+========================================
+
+`最大传输单元 Maximum Transmission Unit (MTU) <https://zh.wikipedia.org/wiki/Maximum_transmission_unit>`_
+的值能够通过加 " `-M do` " 选项的 `ping` (8) 实验来确定，
+它发送从 1500 字节（对于IP+ICMP 包头，有 28 字节的偏移）大小开始的 ICMP 包，来找出 IP 不分片的最大包大小。
+
+尝试下列例子::
+
+  $ ping -c 1 -s $((1500-28)) -M do www.debian.org
+  PING www.debian.org (194.109.137.218) 1472(1500) bytes of data.
+  From 192.168.11.2 icmp_seq=1 Frag needed and DF set (mtu = 1454)
+
+  --- www.debian.org ping statistics ---
+  0 packets transmitted, 0 received, +1 errors
+
+尝试 MTU=1454 代替 MTU=1500
+
+你看到用 MTU=1454 `ping` (8) 成功了。
+
+如果 MTU 不是 1500，你可能想在 NM 里面配置 MTU 设置。
+
+这个过程是 `路径 MTU (PMTU) 发现 <https://zh.wikipedia.org/wiki/Path_MTU_discovery>`_ ,
+`[RFC1191 <http://tools.ietf.org/html/rfc1191>`_ ,
+`tracepath` (8) 命令能够自动完成这个。
+
+.. note::
+
+  上面的列子，PMTU 的值是 1454，这是我先前的光纤到户提供商，
+  使用了 `异步传输模式 Asynchronous Transfer Mode <https://zh.wikipedia.org/wiki/异步传输模式>`_ (ATM)
+  作为他们的骨干网络，并使用
+  `PPPoE <https://zh.wikipedia.org/wiki/Point-to-Point_Protocol_over_Ethernet>`_
+  作为客户端。实际 PMTU 值依赖于你的环境，比如说，我新的光纤到户提供商是 1500。
+
+网络应用
+========================================
+
+浏览器配置
+
+在某些浏览器中，你可以使用下列特殊的 URL 来确认它们的设置。
+
+- "`about:`"
+- "`about:config`"
+- "`about:plugins`"
+
+
+- :doc:`SSH`
+- :doc:`国际化和本地化`
+
+系统技巧-任务安排
+  - :doc:`../问题/单次任务`
+  - :doc:`../问题/定时任务`
+
+- :doc:`../问题/谁在系统`
+- :doc:`../问题/警告所有人`
+- :doc:`../教程/硬盘分区配置`
+- :doc:`../问题/二进制数据访问`
+
+
+
+
+
+
+
+
+
+
+
+
+
+

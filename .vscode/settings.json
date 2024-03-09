@@ -1,0 +1,38 @@
+{
+	"esbonio.sphinx.confDir": "${workspaceFolder}/source",
+	// "pasteImage.path": "${currentFileDir}/resources/images",
+	"pasteImage.path": "${projectRoot}/source/resources/images",
+	// // 输出到终端
+    // "code-runner.runInTerminal": true,
+	// // code runner使用python3运行
+    // "code-runner.executorMap": {
+    //     "python": "python3 -u",
+	// }
+	"esbonio.sphinx.buildDir": "${workspaceFolder}/build",
+	"restructuredtext.linter.rstcheck.executablePath": "rstcheck",
+	// "restructuredtext.linter.rst-lint.executablePath": "rst-lint",
+	// "restructuredtext.linter.doc8.executablePath": "doc8",
+	// 禁用语法检查项目
+	"restructuredtext.linter.disabledLinters": [
+		"rst-lint",
+		// "rstcheck",
+		// "doc8",
+	],
+	"restructuredtext.preview.name": "sphinx",
+	"sqltools.connections": [
+		{
+			"mysqlOptions": {
+				"authProtocol": "default"
+			},
+			"previewLimit": 50,
+			"server": "localhost",
+			"port": 9999,
+			"driver": "MySQL",
+			"name": "docker-mysql8",
+			"database": "test",
+			"username": "yanque",
+			"password": "yanque"
+		}
+	],
+	// "restructuredtext.preview.docutils.disabled": true,
+}

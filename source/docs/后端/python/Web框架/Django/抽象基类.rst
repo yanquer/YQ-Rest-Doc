@@ -1,0 +1,34 @@
+===========================
+抽象基类-定义公共字段
+===========================
+
+抽象基类在你要将公共信息放入很多模型时会很有用。
+编写你的基类，并在 `Meta <https://docs.djangoproject.com/zh-hans/3.2/topics/db/models/#meta-options>`_
+类中填入 `abstract=True`.
+该模型将不会创建任何数据表。当其用作其它模型类的基类时，它的字段会自动添加至子类。
+
+如::
+
+  from django.db import models
+
+  class CommonInfo(models.Model):
+      name = models.CharField(max_length=100)
+      age = models.PositiveIntegerField()
+
+      class Meta:
+          abstract = True
+
+  class Student(CommonInfo):
+      home_group = models.CharField(max_length=5)
+
+`Student` 模型拥有3个字段： `name`， `age` 和 `home_group`。 `CommonInfo` 模型不能用作普通的 Django 模型，
+因为它是一个抽象基类。它不会生成数据表，也没有管理器，也不能被实例化和保存。
+
+从抽象基类继承来的字段可被其它字段或值重写，或用 `None` 删除。
+
+对很多用户来说，这种继承可能就是你想要的。它提供了一种在 Python 级抽出公共信息的方法，但仍会在子类模型中创建数据表。
+
+
+
+
+

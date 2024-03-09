@@ -1,0 +1,162 @@
+======================
+脚本结构
+======================
+
+- 属性定义: :ref:`NSIS_变量`
+- 包的导入: :ref:`NSIS_导入其他脚本`
+- 页面配置: 向导页_
+- 区段_
+- 函数: 回调函数_ ; 自定义函数_
+
+向导页
+======================
+
+向导页(Page)
+
+古典页面
+-------------------
+
+语法::
+
+  Page [Custom] <name|function>
+
+如果使用 ``Custom`` 后面跟自定义函数, 表示自定义的向导页面, 一个函数就是一个页面, 可直接根多个.
+
+非静默安装, 安装向导页面设置(设置显示哪些界面)::
+
+    Page license
+    Page components
+    Page directory
+    Page instfiles
+    UninstPage uninstConfirm
+    UninstPage instfiles
+
+现代页面(宏定义)
+-------------------
+
+例如::
+
+  ; 欢迎页面
+  !insertmacro MUI_PAGE_WELCOME
+  ; 许可协议页面
+  !insertmacro MUI_PAGE_LICENSE "LicenceDeclare.txt"
+  ; 安装目录选择页面
+  !insertmacro MUI_PAGE_DIRECTORY
+  ; 安装过程页面
+  !insertmacro MUI_PAGE_INSTFILES
+  ; 安装完成页面
+  !insertmacro MUI_PAGE_FINISH
+  ; 安装卸载过程页面
+  !insertmacro MUI_UNPAGE_INSTFILES
+  ; 安装界面包含的语言设置
+  !insertmacro MUI_LANGUAGE "SimpChinese"
+  ; 安装预释放文件
+  !insertmacro MUI_RESERVEFILE_INSTALLOPTIONS
+  ; ------ MUI 现代界面定义结束 ------
+
+还可以使用::
+
+   !insertmacro
+   # 和
+   !define
+
+命令进行更多安装页面和安装功能的设置.
+
+如安装时对开始菜单、桌面快捷启动图标的设置等.
+
+.. _区段:
+
+组件(自定义节/区段)
+======================
+
+**对应某种安装/卸载选项的处理逻辑, 该段代码仅当用户选择相应的选项才被执行. 卸载程序的区段名用"un."作为前缀.**
+
+有些应用程序允许安装额外的组件, 比如安装的时候, 显示可选的组件, 让用户选择哪些组件可以安装. 使用 ``Section`` ::
+
+    Section "Installer Section"
+    SectionEnd
+
+卸载的时候也支持可选卸载, 在名称前加 ``un`` 即可::
+
+    Section "un.Uninstaller Section"
+    SectionEnd
+
+.. note::
+
+    ``Section`` 支持设置多个, 表示多个组件部分可选
+
+区段名的修饰符::
+
+  /o 表示该区段默认不选上
+  - 表示隐藏区段(匿名区段也是隐藏区段)
+  ! 表示需要粗体显示的区段。
+
+另外还有:
+
+- SectionIn 表示该区段和安装类型之间的关系
+
+  语法::
+
+    SectionIn insttype_index [insttype_index] ... [RO]
+    ; RO 修饰符表示不可修改。
+
+- SubSection表示子区段
+
+  语法::
+
+    SubSection [/e] Caption [subsection_name index output]
+    ;修饰符 /e 用于该子区段的所有区段是否默认展开。
+
+.. _NSIS_自定义函数:
+
+自定义函数
+======================
+
+语法::
+
+  Function fun_name
+    # do something
+  FunctionEnd
+
+调用::
+
+  Call fun_name
+
+.. _回调函数:
+
+预定义函数-回调函数
+======================
+
+安装逻辑的回调函数:
+
+- .onGUIInit
+- .onInit
+- .onInstFailed
+- .onInstSuccess
+- .onGUIEnd
+- .onMouseOverSection
+- .onRebootFailed
+- .onSelChange
+- .onUserAbort
+- .onVerifyInstDir
+
+卸载逻辑回调函数:
+
+- un.onGUIInit
+- un.onInit
+- un.onUninstFailed
+- un.onUninstSuccess
+- un.onGUIEnd
+- un.onRebootFailed
+- un.onUserAbort
+
+其他-内置字段
+======================
+
+部分字段
+
+- ``VIProductVersion "$version"`` : 定义鼠标放上去时, 显示的版本信息
+- ``VIAddVersionKey /LANG=${language} "CompanyName" "xxx公司"`` : 鼠标放上去时, 显示的公司名称
+
+
+

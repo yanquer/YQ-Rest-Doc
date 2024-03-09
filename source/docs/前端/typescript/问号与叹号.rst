@@ -1,0 +1,94 @@
+==============================
+ts的问号与叹号
+==============================
+
+问号
+==============================
+
+ts中有四种使用方式
+
+三目运算符
+  例::
+
+    const isCN = country === 'China' ? true : false;
+函数可选参数(可以理解为参数自动加上 undefined)
+  例::
+
+    function getUsername(firstName: string, lastName?: string){}
+
+  类似与::
+
+    function getUsername(firstName: string, lastName: string | undefined){}
+可选成员（类、接口）
+  例::
+
+    class A {
+      name?: string
+    }
+
+    interface B {
+      name?: string
+    }
+链判断运算符（ES2020 optional chaining operator）
+  例::
+
+    const firstName = message?.body?.user?.firstName || 'default';
+
+感叹号
+==============================
+
+三个地方会用到:
+
+一元运算符::
+  例::
+
+    const isShow = !isModalHide();
+成员(强调非空/已有值)
+  例::
+
+    interface B {
+      name?: string
+    }
+
+    // 因为接口B里面name被定义为可空的值，但是实际情况是不为空的，
+    // 那么我们就可以通过在class里面使用！，重新强调了name这个不为空值
+    class A implemented B {
+      name!: string
+    }
+
+  TypeScript 2.7 引入了一个新的控制类型检查的标记 `--strictPropertyInitialization`,
+  这个参数规定每个实例属性都会在构造函数里或使用属性初始化器赋值::
+
+    class Person {
+      name: string;
+      country: string;
+      constructor() {
+        this.name = 'Louis';
+      }
+    }
+
+  在 `strictPropertyInitialization` 打开的情况下，上面的代码编译器会报错::
+
+    error TS2564: Property 'country' has no initializer and is not definitely assigned in the constructor.
+
+  如果我们不想在初始化的时候为country赋值，此时就可以用 `!` 修饰该属性::
+
+    class Person {
+      name: string;
+      country!: string;
+      constructor() {
+        this.name = 'Louis';
+      }
+    }
+非空断言操作符(Non-null Assertion Operator)
+  在编辑器中当参数可能为空(null or undefined)时, 调用可能会有警告/错误,
+  这个时候可以使用 `!` 表示一定不为空(不会改变代码的运行时行为)::
+
+    function liveDangerously(x?: number | null) {
+      // No error
+      console.log(x!.toFixed());
+    }
+
+
+
+

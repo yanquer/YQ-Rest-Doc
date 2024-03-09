@@ -1,0 +1,17 @@
+=============================
+安装
+=============================
+
+Python的安装::
+
+  pip install selenium
+
+其他语言的安装参考: https://www.selenium.dev/zh-cn/documentation/webdriver/getting_started/install_library/
+
+如Java的 `pom.xml`::
+
+  <dependency>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-java</artifactId>
+      <version>4.15.0</version>
+  </dependency>

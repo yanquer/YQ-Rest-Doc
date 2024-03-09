@@ -1,0 +1,127 @@
+=============================
+浏览器加载选项
+=============================
+
+pageLoadStrategy
+=============================
+
+页面加载策略:
+
++----------+--------------+----------------------------------------------------------+
+| 策略     | 就绪状态     | 备注                                                     |
++==========+==============+==========================================================+
+| normal   |  complete    |  默认值, 等待所有资源下载                                |
++----------+--------------+----------------------------------------------------------+
+| eager    |  interactive |  DOM 访问已准备就绪, 但诸如图像的其他资源可能仍在加载    |
++----------+--------------+----------------------------------------------------------+
+| none     |  Any         |  完全不会阻塞 WebDriver                                  |
++----------+--------------+----------------------------------------------------------+
+
+示例(Options)::
+
+  from selenium import webdriver
+  from selenium.webdriver.chrome.options import Options
+
+  options = Options()
+
+  # 阻塞等待页面资源加载
+  options.page_load_strategy = 'normal'
+
+  # WebDriver一直等到 DOMContentLoaded 事件触发并返回.
+  # options.page_load_strategy = 'eager'
+
+  # WebDriver 仅等待初始页面已下载.
+  # options.page_load_strategy = 'none'
+
+  driver = webdriver.Chrome(options=options)
+  driver.get("http://www.google.com")
+  driver.quit()
+
+platformName
+=============================
+
+标识了远端的操作系统, 获取 platformName 将返回操作系统的名称
+
+acceptInsecureCerts
+=============================
+
+检查在会话期间导航时 是否使用了过期的 (或) 无效的 TLS Certificate
+
+如果将功能设置为 false, 则页面浏览遇到任何域证书问题时, 将返回insecure certificate error .
+如果设置为 true, 则浏览器将信任无效证书.
+
+默认情况下, 此功能将信任所有自签名证书. 设置后, acceptInsecureCerts 功能将在整个会话中生效.
+
+timeouts
+=============================
+
+WebDriver session 具有一定的 session timeout 间隔, 在此间隔内, 用户可以控制执行脚本或从浏览器检索信息的行为.
+
+每个会话超时都配置有不同 timeouts 的组合, 如下所述:
+
+- Script Timeout:
+  指定在当前浏览上下文中, 中断正在执行脚本的时机.
+  WebDriver创建新会话时, 将设置默认的超时时间为 30,000 .
+- Page Load Timeout:
+  指定在当前浏览上下文中, 加载网页的时间间隔.
+  WebDriver创建新会话时, 默认设置超时时间为 300,000 .
+  如果页面加载限制了给定 (或默认) 的时间范围, 则该脚本将被 TimeoutException 停止.
+- Implicit Wait Timeout
+  指定在定位元素时, 等待隐式元素定位策略的时间.
+  WebDriver创建新会话时, 将设置默认超时时间为 0 .
+
+unhandledPromptBehavior
+=============================
+
+指定当前会话 user prompt handler 的状态. 默认为 dismiss and notify state .
+
+User Prompt Handler
+  这定义了在远端出现用户提示时必须采取的措施. 该行为由unhandledPromptBehavior 功能定义, 具有以下状态:
+
+  - dismiss
+  - accept
+  - dismiss and notify
+  - accept and notify
+  - ignore
+
+setWindowRect
+=============================
+
+用于所有支持 调整大小和重新定位 命令 的远程终端.
+
+strictFileInteractability
+=============================
+
+用于是否对 类型为文件的输入(input type=file) 元素进行严格的交互性检查.
+默认关闭严格性检查, 在将 元素的Send Keys 方法作用于隐藏的文件上传时, 会有控制方面的行为区别.
+
+proxy
+=============================
+
+代理服务器充当客户端和服务器之间的请求中介. 简述而言, 流量将通过代理服务器流向您请求的地址, 然后返回.
+
+使用代理服务器用于Selenium的自动化脚本, 可能对以下方面有益:
+
+- 捕获网络流量
+- 模拟网站后端响应
+- 在复杂的网络拓扑结构或严格的公司限制/政策下访问目标站点.
+
+如果您在公司环境中, 并且浏览器无法连接到URL, 则最有可能是因为环境, 需要借助代理进行访问.
+
+设置代理的方式::
+
+  from selenium import webdriver
+
+  PROXY = "<HOST:PORT>"
+  webdriver.DesiredCapabilities.FIREFOX['proxy'] = {
+  "httpProxy": PROXY,
+  "ftpProxy": PROXY,
+  "sslProxy": PROXY,
+  "proxyType": "MANUAL",
+
+  }
+
+  with webdriver.Firefox() as driver:
+  # Open URL
+      driver.get("https://selenium.dev")
+

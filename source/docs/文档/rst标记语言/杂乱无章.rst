@@ -1,0 +1,54 @@
+==========================
+杂乱无章
+==========================
+
+选项说明
+==========================
+
+-a            command-line option "a"
+-1 file, --one=file, --two file
+              Multiple options with arguments.
+
+code
+==========================
+
+Here is a literal block::
+
+    if literal_block:
+        text = 'is left as-is'
+        spaces_and_linebreaks = 'are preserved'
+        markup_processing = None
+
+Data Dict
+==========================
+
+cat: str
+	cat
+dog: str
+	dog
+name: str
+	name
+
+类似字典说明
+==========================
+
+:cat: str
+	cat
+:dog: str
+	dog
+:name: str
+	name
+
+引文
+==========================
+
+Take it away, Eric the Orchestra Leader!
+
+| A one, two, a one two three four
+|
+| Half a bee, philosophically,
+|     must, *ipso facto*, half not be.
+| But half the bee has got to be,
+|     *vis a vis* its entity.  D'you see?
+|
+| Singing...

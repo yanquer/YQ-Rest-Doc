@@ -1,0 +1,44 @@
+=================
+换行符问题
+=================
+
+主要是 Windows 下, 以及跨平台协作时吧
+
+相关的两个配置::
+
+  core.autocrlf [true | input | false]  # 换行符自动转化
+
+  core.safecrlf [true | warn | false]   # 检查换行
+
+换行符自动转换
+=================
+
+core.autocrlf
+
+- true    (default)提交时、 检出时都转换.
+  这个在不同系统下不同, 比如 Windows 是提交时将本地的 CRLF 转换为 LF, 检出时反之.
+- input   仅提交时转换为
+- false   都不转换
+
+检查换行
+=================
+
+core.safecrlf
+
+- true    拒绝提交混合换行符文件
+- warn    允许提交包含混合换行符文件，但给出警告
+- false   允许提交包含混合换行符文件
+
+例::
+
+  git config --local core.autocrlf true
+
+  git config --local core.safecrlf true
+
+  git clone --config core.autocrlf=false https://xxx.git
+
+
+
+
+
+

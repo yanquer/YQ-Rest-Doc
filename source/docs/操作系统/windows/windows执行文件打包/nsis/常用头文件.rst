@@ -1,0 +1,28 @@
+=========================
+常用头文件
+=========================
+
+MUI.nsh
+=========================
+
+Modern User Interface 是NSIS脚本中一个非常常用的头文件，它提供了一系列现代化的用户界面元素，
+包括简单易用的安装向导、控件和页面。使用"MUI.nsh"可以轻松地创建具有现代风格的安装程序，而无需编写复杂的代码。
+
+常用的指令::
+
+  !insertmacro MUI_PAGE_WELCOME：添加欢迎页面。
+  !insertmacro MUI_PAGE_LICENSE：添加许可证协议页面。
+  !insertmacro MUI_PAGE_DIRECTORY：添加选择安装位置页面。
+  !insertmacro MUI_PAGE_INSTFILES：添加文件安装进度页面。
+  !insertmacro MUI_PAGE_FINISH：添加安装完成页面。
+  !insertmacro MUI_LANGUAGE：设置安装程序的语言。
+
+如设置安装语言为英文::
+
+  !insertmacro MUI_LANGUAGE "English"
+
+设置为中文::
+
+  !insertmacro MUI_LANGUAGE "SimpChinese"
+
+

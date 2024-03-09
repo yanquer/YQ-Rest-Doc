@@ -1,0 +1,58 @@
+=======================
+Java安装配置
+=======================
+
+可官网下载: https://www.oracle.com/cn/java/technologies/downloads/#java20
+
+解压后需要设置的环境变量:
+
+- JAVA_HOME, 就是安装目录
+- PATH, 就是 安装目录/bin. (当键盘键入java时, 会找这个目录下的java)
+
+特殊说明-Mac下Java安装的说明
+==============================================
+
+当前系统: MacOs13
+
+使用Java的时候发现系统有一个默认的 `/usr/bin/java` , 无法删除, 据说即使想办法删掉后,
+重启后还会自己恢复.
+
+所以最开始, 是直接把环境变量的JAVA_HOME写到所有环境变量的前面来解决的.
+后面偶然发现这个不是主要原因.
+
+仅以Mac下的 `/usr/bin/java` 来说明, 同目录下的其它文件可能也是这个原理, 还没测试过...
+
+`/usr/bin/java` 会默认去找 `/Library/Java/JavaVirtualMachines` 下面安装好的JDK,
+故, 若使用的是压缩包什么的安装在了其它目录, 需要移动到这个目录下面, 或者软链接过来,
+比如我下载的JDK20解压包在 `/usr/local/java/jdk-20.0.1.jdk`, 使用以下命令链接::
+
+  sudo ln -sn /usr/local/java/jdk-20.0.1.jdk /Library/Java/JavaVirtualMachines/jdk-20.0.1.jdk
+
+看一下链接后的内容::
+
+  ls /Library/Java/JavaVirtualMachines
+  jdk-20.0.1.jdk		jdk1.8.0_311.jdk	temurin-8.jdk
+
+测试::
+
+  /usr/bin/java --version
+  java 20.0.1 2023-04-18
+  Java(TM) SE Runtime Environment (build 20.0.1+9-29)
+  Java HotSpot(TM) 64-Bit Server VM (build 20.0.1+9-29, mixed mode, sharing)
+
+.. note::
+
+  Mac有内置的获取JAVA_HOME的指令::
+
+    /usr/libexec/java_home
+
+Mac下的卸载
+==============================================
+
+同理, `/usr/bin/java` 不能被删除, 不用管, 直接更新一下 profile 配置的环境变量(看当初安装配置的时候设置在哪),
+然后删除 `/Library/Java/JavaVirtualMachines` 下面相关版本即可.
+貌似可以不用删? 看起来找版本是从高到低的, 还没试过, 之前的两个11版本被我删完了, 1.8的貌似没有被自动识别, 以后有机会在试.
+
+
+
+

@@ -1,0 +1,132 @@
+=====================================
+前后端通信-前端调用后端服务
+=====================================
+
+前后端服务都将以 `依赖注入` 的形式定义.
+
+此处将介绍, 使用RPC通信, 将后端的服务提供给前端调用.
+
+用例, 在项目根的 `package.json` 定义了工作区::
+
+  "workspaces": [
+    "src/@ide/*"
+  ]
+
+在 `src/@ide/` 下新增一个拓展 `you-watch`::
+
+  mkdir src/@ide/you-watch
+
+.. sidebar::
+
+  工作区可以嵌套, 即可以在自定义的拓展下再定义工作区
+
+此拓展名为 `@ide/you-watch` (拓展下的 `package.json` 定义)::
+
+  "name": "@ide/you-watch"
+
+然后, 新建 `backen` 和 `browser` 目录, 并实现前后端相应功能,
+大概目录结构::
+
+  $ tree src -L 2
+  src
+  ├── backend
+  │   ├── index.ts
+  │   ├── util-service.ts
+  │   └── utils.ts
+  ├── browser
+  │   ├── index.ts
+  │   ├── util-client.ts
+  │   └── you-watch-contribution.ts
+  └── common
+      └── service.ts
+
+.. sidebar::
+
+  `index` 即默认入口文件
+
+主要在于绑定, 后端的入口文件::
+
+  // backend/index.ts
+
+  import {ContainerModule} from '@theia/core/shared/inversify'
+  import {IUtilService, IUtilClient, IUtilServicePath} from "../common/service";
+  import {UtilService} from "./util-service";
+  import {ConnectionHandler, RpcConnectionHandler} from "@theia/core";
+
+  export default new ContainerModule(
+      (bind, unbind, isBound, rebind, unbindAsync, onActivation, onDeactivation) => {
+          bind(IUtilService).to(UtilService).inSingletonScope()
+
+          // 后端通信实现
+          bind(ConnectionHandler).toDynamicValue(
+              ({container}) => new RpcConnectionHandler<IUtilClient>(
+                  IUtilServicePath,
+                  (client) => {
+                      const utilService: IUtilService = container.get(IUtilService)
+                      utilService.setClient(client)
+                      return utilService
+                  }
+              )
+          )
+      }
+  )
+
+这里使用rpc通信, `IUtilClient` 只是一由前端实现的通信中介, 前端可实现空::
+
+  // browser/util-client.ts
+  import {injectable} from "@theia/core/shared/inversify";
+
+  @injectable()
+  export class UtilClient implements IUtilClient{
+
+  }
+
+前端的绑定实现::
+
+  // browser/index.ts
+  /**
+  * Generated using theia-extension-generator
+  */
+
+  import {YouWatchCommandContribution, YouWatchMenuContribution} from "./you-watch-contribution";
+  import { CommandContribution, MenuContribution } from '@theia/core/lib/common';
+  import { ContainerModule } from '@theia/core/shared/inversify';
+  import {IUtilClient, IUtilService, IUtilServicePath} from "../common/service";
+  import {UtilClient} from "./util-client";
+  import {WebSocketConnectionProvider} from "@theia/core/lib/browser";
+
+
+  export default new ContainerModule(bind => {
+      // add your contribution bindings here
+      bind(CommandContribution).to(YouWatchCommandContribution).inSingletonScope()
+      bind(MenuContribution).to(YouWatchMenuContribution).inSingletonScope()
+
+      // 前端通信实现
+      bind(IUtilClient).to(UtilClient).inSingletonScope()
+      bind(IUtilService).toDynamicValue(
+          (context) => {
+              const client = context.container.get<IUtilClient>(IUtilClient)
+              const connection = context.container.get(WebSocketConnectionProvider)
+              return connection.createProxy<IUtilService>(
+                  IUtilServicePath,
+                  client
+              )
+          }
+      )
+  });
+
+这里是关联到后端发布的rpc服务.
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,16 @@
+=============================
+随机数
+=============================
+
+/dev/random和/dev/urandom其实效果都是一样的
+
+man描述的不是很准确
+
+详细见: `<https://zhuanlan.zhihu.com/p/64680713>`_
+
+真伪随机是存在的: `<https://blog.csdn.net/czc1997/article/details/78167705>`_
+
+但是linux的/dev/random和/dev/urandom与真伪并不完全一致
+
+
+

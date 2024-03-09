@@ -1,0 +1,130 @@
+============================
+upnp流程详细介绍
+============================
+
+大体上是以下流程
+
+地址分配
+============================
+
+UPnP 设备加入网络后,通过自动配置或动态主机配置协议(DHCP)获得一个 IP 地址。
+
+对于在个人pc上自行开发而言, 一般这一步在第一次启动电脑的时候已经做了.
+
+发现
+============================
+
+UPnP 设备通过简单服务发现协议(SSDP)广播自己的存在,并侦听其他设备的广播。发现过程中交换设备的唯一标识符、URL 等信息。
+
+使用 UDP 协议. UPnP设备发现过程中的所有UDP消息都使用以下格式::
+
+  METHOD * HTTP/1.1
+  HOST: 239.255.255.250:1900
+  [其他头部]
+
+- METHOD指明消息类型,可以是NOTIFY、M-SEARCH等
+- \* 表示发送到所有设备
+- HOST指定目的地址是SSDP的组播地址和端口1900
+- 其他头部根据消息类型不同而不同
+
+ssdp:alive 通告消息
+-----------------------------
+
+当设备第一次加入网络或需要更新过期时间时,会主动发送ssdp:alive通告消息.
+向网络告知设备加入 - NOTIFY::
+
+  NOTIFY * HTTP/1.1
+  HOST: 239.255.255.250:1900
+  CACHE-CONTROL: max-age=1800
+  LOCATION: http://192.168.1.20:5678/device.xml
+  NT: upnp:rootdevice
+  NTS: ssdp:alive
+  USN: uuid:f40c2981-7329-40b7-8b04-27f187aecfb5
+
+其中:
+
+- NOTIFY: 一个通告消息
+- HOST: 目的地址是SSDP组播地址,端口号1900
+- CACHE-CONTROL: 指定通告消息的过期时间1800秒
+- LOCATION: 提供设备描述文档的URL
+- NT: 描述设备类型,这里是upnp:rootdevice表示根设备
+- USN: 提供设备的UUID
+
+M-SEARCH搜索消息
+-----------------------------
+
+设备搜索, 当控制点加入网络或需要发现设备时,会发送M-SEARCH搜索消息::
+
+  M-SEARCH * HTTP/1.1
+  HOST: 239.255.255.250:1900
+  MAN: ssdp:discover
+  MX: 3
+  ST: ssdp:all
+
+- MX：设置设备响应最长等待时间，设备响应在0和这个值之间随机选择响应延迟的值
+- ST：设置服务查询的目标，它必须是下面的类型：
+
+  - ssdp:all 搜索所有设备和服务
+  - upnp:rootdevice 仅搜索网络中的根设备
+  - uuid:device-UUID 查询UUID标识的设备
+  - urn:schemas-upnp-org:device:device-type:{version} 查询device-Type字段
+    指定的设备类型，设备类型和版本由UPNP组织定义
+  - urn:schemas-upnp-org:service:service-type:{version} 查询service-Type字段
+    指定的服务类型，服务类型和版本由UPNP组织定义
+
+搜索网络上的所有设备。设备需在3秒内返回响应。
+
+ssdp:response 响应消息
+-----------------------------
+
+当设备接收到 M-SEARCH搜索消息_ 后,需要返回ssdp:response响应消息。例如::
+
+  HTTP/1.1 200 OK
+  CACHE-CONTROL: max-age=1800
+  DATE: Fri, 15 Jun 2018 04:56:29 GMT
+  EXT:
+  LOCATION: http://192.168.1.20:5678/device.xml
+  SERVER: Linux/3.14.0 UPnP/1.1 XXX-Device/1.0
+  ST: upnp:rootdevice
+  USN: uuid:f40c2981-7329-40b7-8b04-27f187aecfb5
+
+- EXT: 留作扩展使用的头部。目前未使用。
+- ST: 搜索目标(Search Target)字段,返回搜索的设备类型。这里是upnp:rootdevice表示根设备。
+- SERVER: 服务器字段,提供响应设备的操作系统、UPnP协议版本和设备信息。格式不严格指定,由设备厂商自定义。
+
+ssdp:byebye退出消息
+-----------------------------
+
+当UPnP设备从网络移除时,它需要发送ssdp:byebye消息以通知网络上的其他设备::
+
+  NOTIFY * HTTP/1.1
+  HOST: 239.255.255.250:1900
+  NT: upnp:rootdevice
+  USN: uuid:device-UUID
+
+- NOTIFY方法表示这是一条通告消息
+
+收到此ssdp:byebye消息的其他设备,将删除对应设备信息,知晓该设备已不再存在于网络中。
+
+UPnP设备需要在从网络断开时发送ssdp:byebye消息,而不能仅仅断开网络连接就离开。
+否则,其他设备会一直认为它存在,直到其ssdp:alive消息过期。ssdp:byebye消息能更清晰的告知设备的离开,避免其他设备的错误认知。
+
+描述
+============================
+
+每个 UPnP 设备都有一个 XML 设备描述文件和一个或多个服务描述文件,描述设备和服务的详细信息。这些描述文件根据 UPnP 设备架构制定。
+
+控制
+============================
+
+UPnP 使用简单对象访问协议(SOAP)实现设备的远程控制和查询。
+
+事件通知
+============================
+
+UPnP 使用通用事件通知架构(GENA)使设备能主动通知控制点其内部状态的变化。
+
+
+
+
+

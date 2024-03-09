@@ -1,0 +1,54 @@
+====================
+消息队列
+====================
+
+rabbitmq地址: `AMQP 0-9-1 Protocol <https://www.rabbitmq.com/protocol.html>`_
+
+此文主要介绍 AMQP (Advanced Message Queuing Protocol) 协议: 高级消息队列协议
+
+设计目标: 让服务端可通过协议编程
+
+组成:
+
+- 网络协议
+- 服务端服务
+
+包含:
+
+- 高级消息队列协议模型(AMQ Model)
+- 网络层协议AMQP, 让客户端程序与实现了AMQ Model的服务端进行通信
+
+AMQP协议是一个二进制协议，具有一些现代特性:
+
+- 多通道（multi-channel）
+- 可协商（negotiated）
+- 异步
+- 安全
+- 便携
+- 语言中立
+- 高效
+
+基本的AMQP模型::
+
+                |   Exchange          Queue     |
+  发布者 ->      |    交换机    ->    Msg Queue   |  -> 消费者
+  Publisher     |                               |     Consumer
+                |         AMQP Model            |
+
+消息由交换机路由给消息队列
+
+
+:没来得及看的一些文章::
+ - `一篇文章讲透彻了AMQP协议 <https://developer.aliyun.com/article/847370>`_
+ - `AMQP 协议详解 <https://www.jianshu.com/p/284b1b928ee1>`_
+ - `RabbitMQ MQTT协议和AMQP协议 <https://www.cnblogs.com/bclshuai/p/8607517.html>`_
+
+
+AMQP 入门
+====================
+
+
+
+
+
+

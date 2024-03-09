@@ -1,0 +1,47 @@
+============================
+使用-属性声明
+============================
+
+官网: https://kivy.org/doc/stable/gettingstarted/properties.html
+
+kivy提供了属性构造的方法, 比如一个数字::
+
+  numeric_var = NumericProperty(1)
+
+主要用于与kv文件的属性交互, 有以下优点
+
+- 支持值的自动变更
+- 校验值是否符合要求
+- 优化内存管理
+
+.. warning::
+
+  需要在类级别声明, 即声明为类变量.
+
+支持定义 ``on_<propertyname>`` 实例方法来获取值变更事件.
+
+提供的属性:
+
+- NumericProperty 数字
+- StringProperty 字符串
+- ListProperty 列表
+- ObjectProperty Python类实例
+- BooleanProperty bool
+- BoundedNumericProperty 区间值,
+  如::
+
+    number = BoundedNumericProperty(0, min=-5, max=5)
+
+  表示默认值为0, 最小为-5, 最大为5
+- OptionProperty
+- ReferenceListProperty
+- AliasProperty
+- DictProperty 字典
+- VariableListProperty
+- ConfigParserProperty
+- ColorProperty 颜色,
+  支持的参数类型:
+
+  - 三或四个float在0到1之间的值, 默认为1 (1.0, 1.0, 1.0, 1.0)
+  - 字符串类型的颜色进制, 如 #rrggbb or #rrggbbaa
+  - 字符串类型颜色名, 如 red, yellow

@@ -1,0 +1,20 @@
+========================================
+调用自定义子函数组件属性
+========================================
+
+:关键字::
+  - React
+  - 父组件调用子组件
+  - 父组件调用子函数组件
+  - 父组件调用自定义子函数组件
+
+见 :doc:`/docs/前端/框架/react/hooks/useImperativeHandle` 的 :ref:`React-Hook_给非DOM函数组件增加ref属性`
+
+- :doc:`/docs/前端/框架/react/hooks/forwardRef`
+- :doc:`/docs/前端/框架/react/hooks/useImperativeHandle`
+
+
+
+
+
+

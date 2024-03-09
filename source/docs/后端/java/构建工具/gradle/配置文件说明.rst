@@ -1,0 +1,160 @@
+============================
+配置文件说明
+============================
+
+- build.gradle
+- settings.gradle
+
+.. note::
+
+  settings.gradle 编译优先级高于build.gradle
+
+build.gradle
+============================
+
+build.gradle 是项目构建所使用的脚本。
+
+settings.gradle
+============================
+
+settings.gradle 必要的一些设置，例如，任务或项目之间的依懒关系等
+
+settings.gradle是模块Module配置文件，主要是用于配置子模块，
+根目录下的setting.gradle脚本文件是针对module的全局配置, 如::
+
+  // 为指定父模块的名称 平台根
+  rootProject.name = 'project-root'
+  //包含子系统以及模块
+  include ':project-core'
+  //Hello系统模块的加载
+  include ':project-hello'
+  //World系统模块的加载
+  include ':project-world'
+
+单项目构建该文件可选，多项目构建必须, 因为需要在这个文件中声明哪些子项目需要参与构建，也包括子项目路径、名称等.
+多项目的构建原则:
+如果该构建目录中存在settings.gradle文件，那么就依据该文件来进行构建；
+如果不存在该文件，那么会向上一级目录查询文件是否存在(注意：只会向父目录查询，而不是一直向上级目录递归查询)，
+如果存在就依据该文件进行构建，否则此次构建就是一个单项目的构建
+
+文件结构及其配置
+----------------------------
+
+plugins:
+  需要引进的相关插件Plugins, 此处调用了 PluginDependenciesSpec 中的 id 方法, 如::
+
+    // 需要引进的相关插件Plugins
+    plugins {
+        // 'com.android.application' 表示应用com.android.application插件
+        id 'com.android.application'
+    }
+
+repositories:
+  仓库配置, 用于存储依赖(从哪下载依赖), 如::
+
+    // repositories闭包  存储库
+    // 声明在何处查找项目的依赖项
+    repositories {
+    //    指定使用maven本地仓库，而本地仓库在配置maven时setting文件指定的仓库位置。
+        mavenLocal()
+
+        maven {
+            name "aliyun"
+            url "https://maven.aliyun.com/repository/gradle-plugin"
+        }
+
+        // 这是Maven的中央仓库，无需配置，直接声明就可以使用
+        mavenCentral()
+
+        // JCenter中央仓库，实际也是是用的maven搭建的，但相比Maven仓库更友好，通过CDN分发，并且支持https访问。
+        // jcenter()
+    }
+
+dependencies:
+  依赖声明, 如::
+
+    // dependencies闭包  依赖
+    // 是用于声明这个项目依赖于哪些jar
+    dependencies {
+        implementation 'org.springframework.boot:spring-boot-starter-web'
+    }
+
+gradle.properties
+============================
+
+定义一些执行的属性
+
+脚本位置一般在 `$GRADLE_USER_HOME/` 目录下. 但, 我的Mac个人目录下有一个 `.gradle` , 这下面有一个,
+貌似是如果没设置, 默认就是这个目录? 暂时还没看到有说明.
+
+可参考官网文档: https://docs.gradle.org/current/userguide/build_environment.html
+
+init.gradle
+============================
+
+初始化时执行的脚本, 详情可参考: https://docs.gradle.org/current/userguide/init_scripts.html
+
+.. sidebar::
+
+  到这里的时候, 想起安装时候有看到说设置环境变量 `GRADLE_HOME`, 目前为止貌似没看到官方文档有提到用处
+
+使用方式
+
+- 可以通过命令行参数 `-I` 或者 `--init-script` 跟文件路径来指定, 支持多个,
+- 也可以直接将其文件放在 `$GRADLE_USER_HOME/` 目录下. (需提前设置此环境变量)
+- 若有多个文件, 可以将其命令为以 `.gradle` 结尾的文件, 然后放到 `$GRADLE_USER_HOME/init.d/` 目录下.
+
+脚本支持的内容, 如build.gradle::
+
+  repositories {
+      mavenCentral()
+  }
+
+  tasks.register('showRepos') {
+      def repositoryNames = repositories.collect { it.name }
+      doLast {
+          println "All repos:"
+          println repositoryNames
+      }
+  }
+
+设置源大抵也得放到这里, 不过我机器使用官方的源也挺快, 就没设置.
+
+如init.gradle::
+
+  allprojects {
+      repositories {
+          mavenLocal()
+      }
+  }
+
+  // 声明额外依赖
+  initscript {
+      repositories {
+          mavenCentral()
+      }
+      dependencies {
+          classpath 'org.apache.commons:commons-math:2.0'
+      }
+  }
+
+之前冲浪看到有人说高版本已经废弃了allprojects, 但是官网文档还有这个...
+
+然后使用命令行可以这么::
+
+  > gradle --init-script init.gradle -q showRepos
+  All repos:
+  [MavenLocal, MavenRepo]
+
+工作流程
+============================
+
+工作流程::
+
+  初始化阶段(首先解析settings.gradle)
+
+              ==》
+
+  Configration阶段(解析每个Project中的build.gradle，解析过程中并不会执行各个build.gradle中的task)
+
+一个 Project 包含很多 Task, 每个 Task 之间有依赖关系

@@ -1,0 +1,42 @@
+==================================
+命令行工具-创建并运行项目
+==================================
+
+官网: `https://www.swift.org/getting-started/cli-swiftpm/`
+
+平台: MacOS
+
+以创建一个 `Hello World` 作为说明
+
+项目创建与运行
+==================================
+
+创建项目::
+
+  $ mkdir MyCLI
+  $ cd MyCLI
+  $ swift package init --name MyCLI --type executable
+
+生成以下结构目录文件::
+
+  .
+  ├── Package.swift
+  └── Sources
+      └── main.swift
+
+执行程序::
+
+  $ swift run MyCLI
+  Building for debugging...
+  [3/3] Linking MyCLI
+  Build complete! (0.68s)
+  Hello, world!
+
+
+
+
+
+
+
+
+

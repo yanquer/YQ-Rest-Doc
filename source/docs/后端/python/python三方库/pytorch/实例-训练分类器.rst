@@ -1,0 +1,45 @@
+=====================================
+实例-训练分类器
+=====================================
+
+训练数据
+=====================================
+
+在训练分类器前，当然需要考虑数据的问题。
+通常在处理如图片、文本、语音或者视频数据的时候，
+一般都采用标准的 Python 库将其加载并转成 Numpy 数组，然后再转回为 PyTorch 的张量。
+
+- 对于图像，可以采用 Pillow, OpenCV 库；
+- 对于语音，有 scipy 和 librosa;
+- 对于文本，可以选择原生 Python 或者 Cython 进行加载数据，或者使用 NLTK 和 SpaCy 。
+
+PyTorch 对于计算机视觉，特别创建了一个 torchvision 的库，
+它包含一个数据加载器(data loader)，可以加载比较常见的数据集，
+比如 Imagenet, CIFAR10, MNIST 等等，然后还有一个用于图像的数据转换器(data transformers)，
+调用的库是 torchvision.datasets 和 torch.utils.data.DataLoader 。
+
+在本教程中，将采用 CIFAR10 数据集，它包含 10 个类别，分别是飞机、汽车、鸟、猫、鹿、狗、青蛙、马、船和卡车。数据集中的图片都是 3x32x32。一些例子如下所示：
+
+数据并行
+=====================================
+
+在 GPU 上训练模型的做法很简单，如下代码所示，定义一个 device 对象，
+然后用 .to() 方法将网络模型参数放到指定的 GPU 上::
+
+  device = torch.device("cuda:0")
+  model.to(device)
+
+接着就是将所有的张量变量放到 GPU 上::
+
+  mytensor = my_tensor.to(device)
+
+.. note::
+
+  这里 my_tensor.to(device) 是返回一个 my_tensor 的新的拷贝对象，
+  而不是直接修改 my_tensor 变量，因此你需要将其赋值给一个新的张量，然后使用这个张量。
+
+Pytorch 默认只会采用一个 GPU，因此需要使用多个 GPU，需要采用 DataParallel ，代码如下所示::
+
+  model = nn.DataParallel(model)
+
+参考: `<https://zhuanlan.zhihu.com/p/66543791>`_

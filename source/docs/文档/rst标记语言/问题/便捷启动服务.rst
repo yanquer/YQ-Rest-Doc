@@ -1,0 +1,16 @@
+=============================
+便捷启动服务
+=============================
+
+直接访问构建出的HTML源码不方便, 可以启动一个本地HTTP服务::
+
+  sphinx-autobuild source build/html
+
+.. note::
+
+  需要先安装::
+
+    pip install sphinx-autobuild -i https://mirrors.aliyun.com/pypi/simple
+
+参考: :doc:`/docs/后端/python/python三方库/sphinx-autobuild`
+

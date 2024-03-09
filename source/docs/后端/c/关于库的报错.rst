@@ -1,0 +1,44 @@
+===========================
+关于库的报错
+===========================
+
+对于使用Nuitka编译的Python代码而言, 也适用, 因为最终还是先转换为C再编译.
+
+尤其易出现的跨系统场景, 比如在Ubuntu16编译的方法哦Ubuntu20上去跑.
+
+以自己经历的一个场景而言,
+  主要业务代码是用Python编码, 使用了自己编写的C库(一个跨平台的GUI库)的动态链接.
+  在 `Ubuntu16` 编译的时候, 使用了16的 `libpng.so`.
+  放到 `Ubuntu18` 与 `Ubuntu20` 上运行时, 由调用了各自系统的 `libpng.so`.
+  且18与20的 `libpng` 又依赖于 `libz.so` 的 `1.2.9` 版本.
+  而16上是仅依赖于 `libz.so` 的 `1.2.3.4` 版本.
+
+  这里使用Nuitka编译的时候, 发现自动把16的 `libz.so` 给放进去了, 就出现了报错::
+
+    libz.so.1: version `ZLIB_1.2.9' not found (required by /lib/x86xxxxxx/libpng.so)
+
+  把应用下的 `libz.so.1` 给删除了, 遇到另一个库的报错::
+
+    libxcb-shm.so.0 undefined symbol
+
+  应用程序下是有另一个库 `libxcb.so.1` , 这里实际是由应用程序下的 `libxcb.so.1` 调了系统的 `libxcb-shm.so.0`,
+  真实原因就是两者版本不一致.
+
+  这里的不一致是指, `libxcb.so.1` 与 `libxcb-shm.so.0` 理应都是属于 `libxcb` 的共享库, 但是Nuitka处理的时候,
+  只处理了一部分(只把 `libxcb-shm.so.0` 给复制到应用程序目录下)
+
+  最终把应用程序下的 `libxcb.so.1` 删除即可.
+
+  最后料想, 是否一开始就将 `Ubuntu16` 的 `libpng.so` 搞到应用程序下面, 就不会有问题, 但是奈何... 就没有尝试.
+
+.. note::
+
+  一些可以尝试的指令:
+
+  - :doc:`/docs/操作系统/linux/linux指令/ldd` , 查看贡献库的依赖项(链接项),
+    注意这里的依赖, 如果应用程序目录下存在, 会优先使用应用程序下有的
+  - :doc:`/docs/操作系统/linux/linux指令/strings` , 查看此共享库依赖的具体版本
+
+
+
+

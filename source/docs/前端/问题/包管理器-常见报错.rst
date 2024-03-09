@@ -1,0 +1,59 @@
+==============================
+包管理器-常见报错
+==============================
+
+yarn install时候下载ripgrep代理错误
+============================================================
+
+报错局部信息::
+
+  GET https://api.github.com/repos/microsoft/ripgrep-prebuilt/releases/tags/v13.0.0-2
+  Deleting invalid download cache
+  Downloading ripgrep failed: TypeError [ERR_INVALID_PROTOCOL]: Protocol "https:" not supported. Expected "http:"
+
+或者::
+
+  Error: Cannot find module '@vscode/ripgrep/bin/rg'
+
+这里是需要下载github的资源,
+而由于众所周知的原因, 下载不了, 所以用clash配置了代理,
+并给yarn与node都设置了代理,
+这里报错是某个node模块的问题,
+尝试多次后都无法解决, 后面在 `https://github.com/microsoft/vscode-ripgrep/issues/26`
+看到了一个解决办法::
+
+  1. Clone ripgrep locally: git clone git@github.com:microsoft/vscode-ripgrep ~/vscode-ripgrep
+  2. run yarn in that folder (this seems to work even behind proxy)
+  3. cp bin/rg ~/vscode-repo-path/node_modules/@vscode/ripgrep
+  4. run yarn in your vscode repo path again
+
+大致code如下::
+
+  git clone https://github.com/microsoft/vscode-ripgrep.git
+  cd vscode-ripgrep
+  yarn
+  cp bin/rg ../myproject/node_modules/@vscode/ripgrep
+
+yarn 安装时候证书过期
+==============================
+
+如::
+
+  error ~/test-electron-win/node_modules/electron: Command failed.
+  Exit code: 1
+  Command: node install.js
+  Arguments:
+  Directory:~/test-electron-win/node_modules/electron
+  Output:
+  RequestError: certificate has expired
+  at ClientRequest.<anonymous>
+
+网上这个问题很多, 且好多年来一直都有, 但是解决办法寥寥无几,
+最终还是设置忽略环境变量解决. 参考: `https://github.com/realm/realm-js/issues/5228#issuecomment-1375191886`
+
+先使用环境变量来忽略证书验证::
+
+  NODE_TLS_REJECT_UNAUTHORIZED=0 yarn install
+
+貌似这样安装一次后就有缓存了, 然后改版本以后直接 ``yarn install`` 也可以,
+不确定是否在缓存的话, 就还是加上 ``NODE_TLS_REJECT_UNAUTHORIZED`` 吧.

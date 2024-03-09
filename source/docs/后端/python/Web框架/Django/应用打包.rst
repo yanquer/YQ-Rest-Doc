@@ -1,0 +1,121 @@
+============================
+应用打包
+============================
+
+使用 setuptools 打包
+============================
+
+1. 建立一个文件夹放模块
+2. 将模块目录移入这个新建的目录
+3. 在新建目录下创建一个 README.rst 文件，
+
+  包含以下内容::
+
+    rst
+    =====
+    Polls
+    =====
+
+    Polls is a Django app to conduct Web-based polls. For each question,
+    visitors can choose between a fixed number of answers.
+
+    Detailed documentation is in the "docs" directory.
+
+    Quick start
+    -----------
+
+    1. Add "polls" to your INSTALLED_APPS setting like this::
+
+        INSTALLED_APPS = [
+            ...
+            'polls',
+        ]
+
+    2. Include the polls URLconf in your project urls.py like this::
+
+        path('polls/', include('polls.urls')),
+
+    3. Run ``python manage.py migrate`` to create the polls models.
+
+    4. Start the development server and visit http://127.0.0.1:8000/admin/
+      to create a poll (you'll need the Admin app enabled).
+
+    5. Visit http://127.0.0.1:8000/polls/ to participate in the poll.
+
+4. 在同一目录下创建 LICENSE 文件。选择一个授权协议（这里暂时不知道怎么搞）
+5. 创建 setup.cfg 和 setup.py 说明构建与安装的细节。可参考 `setuptools docs <https://setuptools.readthedocs.io/en/latest/>`_
+
+  大致包含以下内容
+
+  setup.cfg::
+
+    [metadata]
+    name = django-polls
+    version = 0.1
+    description = A Django app to conduct Web-based polls.
+    long_description = file: README.rst
+    url = https://www.example.com/
+    author = Your Name
+    author_email = yourname@example.com
+    license = BSD-3-Clause  # Example license
+    classifiers =
+        Environment :: Web Environment
+        Framework :: Django
+        Framework :: Django :: X.Y  # Replace "X.Y" as appropriate
+        Intended Audience :: Developers
+        License :: OSI Approved :: BSD License
+        Operating System :: OS Independent
+        Programming Language :: Python
+        Programming Language :: Python :: 3
+        Programming Language :: Python :: 3 :: Only
+        Programming Language :: Python :: 3.6
+        Programming Language :: Python :: 3.7
+        Programming Language :: Python :: 3.8
+        Topic :: Internet :: WWW/HTTP
+        Topic :: Internet :: WWW/HTTP :: Dynamic Content
+
+    [options]
+    include_package_data = true
+    packages = find:
+    python_requires = >=3.6
+    install_requires =
+        Django >= X.Y  # Replace "X.Y" as appropriate
+
+  setup.py::
+
+    from setuptools import setup
+    setup()
+
+6. 默认情况，包中仅包含 Python 模块和包。
+   要包含其他文件，我们需要创建一个`MANIFEST.in` 文件。
+   上一步中提到的 setuptools 文档更详细地讨论了这个文件。
+   要包含模板、`README.rst` 和我们的 `LICENSE` 文件，创建一个文件 `MANIFEST.in` ，其内容如下::
+
+    include LICENSE
+    include README.rst
+    recursive-include polls/static *
+    recursive-include polls/templates *
+
+7. 在应用中包含详细文档是可选的，但我们推荐你这样做。新建目录下创建一个空目录 `docs` 用于未来编写文档。
+   额外添加一行至 `MANIFEST.in`::
+
+    recursive-include docs *
+
+  注意，现在 `docs` 目录不会被加入你的应用包，除非你往这个目录加几个文件。
+  许多 Django 应用也提供他们的在线文档通过类似 `readthedocs.org <https://readthedocs.org/>`_ 这样的网站。
+
+8. 试着构建你自己的应用包通过 ptyhon setup.py sdist（在  django-polls 目录内）。
+   这将创建一个名为 `dist` 的目录并构建你自己的应用包， `django-polls-0.1.tar.gz`。
+
+更多关于打包的信息，见 Python 的 `关于打包和发布项目的教程 <https://packaging.python.org/tutorials/packaging-projects/>`_
+
+
+
+
+
+
+
+
+
+
+

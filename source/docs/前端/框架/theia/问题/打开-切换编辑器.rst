@@ -1,0 +1,28 @@
+=================================
+打开/切换编辑器
+=================================
+
+使用 `EditorManager`, 位置::
+
+  import {EditorManager} from "@theia/editor/lib/browser";
+
+需要知道当前URI, 然后调用 `open` ::
+
+  import URI from '@theia/core/lib/common/uri'
+
+  @inject(EditorManager) _editorManager: EditorManager
+
+  const uri: URI
+  this._editorManager.open(uri)
+
+调用时候会自动判断存不存在, 若存在就切换过去
+
+.. note::
+
+  吐槽下theia的某些内置的机制有点反人类,
+  啥都得重写一下, 才好用.
+
+
+
+
+

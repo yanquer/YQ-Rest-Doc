@@ -1,0 +1,28 @@
+===========================
+基本数据类型
+===========================
+
+支持的数据类型:
+
+- Number
+- String
+- Boolean
+- Object
+- null
+- undefined
+- Symbol (ES6新增); 每一个 Symbol 的值都是不相等的
+
+有 Symbol.for() 的类似单例功能::
+
+  let yellow = Symbol("Yellow");
+  let yellow1 = Symbol.for("Yellow");
+  yellow === yellow1;      // false
+
+  let yellow2 = Symbol.for("Yellow");
+  yellow1 === yellow2;     // true
+
+和 Symbol.keyFor() 检查是否已登记::
+
+  let yellow1 = Symbol.for("Yellow");
+  Symbol.keyFor(yellow1);    // "Yellow"
+

@@ -1,0 +1,9 @@
+============================
+一些好用三方库
+============================
+
+KeyboardShortcuts
+  键盘事件处理库: `https://swiftpackageindex.com/sindresorhus/KeyboardShortcuts`
+
+  支持全局快捷键的监听, 完美支持MacOS的沙盒
+

@@ -1,0 +1,68 @@
+===============================
+Linux图形界面
+===============================
+
+此篇主要针对与Ubuntu20
+
+.. sidebar::
+
+  仅以此篇, 纪念那云桌面重启后的丢失的图形界面
+
+Ubuntu的桌面系统分:
+
+- 桌面环境_
+- 显示器管理器
+
+桌面环境
+===============================
+
+常见的有
+
+- GNOME
+- KDE
+- Xfce
+
+显示器管理器
+===============================
+
+显示管理器向用户显示登录屏幕。 当用户成功输入用户名和密码的有效组合时，会话开始。gdm3，kdm 和 lightdm 都是显示管理器。 它们提供图形化登录并处理用户身份验证。
+
+- gdm，gnome系列的图形管理器。
+- kdm, SDDM是KDE系列的图形管理器。
+- lightdm是另一种跨桌面DM。该显示管理器的主要功能是重量轻，这意味着它在占用很少内存的情况下提供了出色的性能。
+
+查看当前使用的显示器管理器::
+
+  cat /etc/X11/default-display-manager
+
+可能的值::
+
+  /usr/sbin/gdm3
+  或
+  /usr/sbin/lightdm
+  或
+  /usr/sbin/sddm
+
+.. note::
+
+  可直接执行::
+
+    sudo gdm
+    或
+    sudo startx
+
+  进入图形界面.
+
+切换显示器管理器::
+
+  sudo dpkg-reconfigure <Default_Display_Manager>
+
+如::
+
+  sudo dpkg-reconfigure gdm3
+  或
+  sudo dpkg-reconfigure lightdm
+  或
+  sudo dpkg-reconfigure sddm
+
+

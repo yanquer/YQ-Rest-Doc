@@ -1,0 +1,149 @@
+============================
+ES6 数组
+============================
+
+数组创建
+============================
+
+.. function:: Array.of()
+
+  将参数中所有值作为元素形成数组
+
+.. function:: Array.from(arrayLike[, mapFn[, thisArg]])
+
+  将类数组对象或可迭代对象转化为数组
+
+  arrayLike
+    想要转换的类数组对象或可迭代对象
+  mapFn
+    可选，map 函数，用于对每个元素进行处理，放入数组的是处理后的元素
+  thisArg
+    可选，用于指定 map 函数执行时的 this 对象
+
+类数组对象
+============================
+
+一个类数组对象必须含有 length 属性，且元素属性名必须是数值或者可转换为数值的字符
+
+转换可迭代对象
+============================
+
+转换 map::
+
+  let map = new Map();
+  map.set('key0', 'value0');
+  map.set('key1', 'value1');
+  console.log(Array.from(map)); // [['key0', 'value0'],['key1',
+  // 'value1']]
+
+转换 set::
+
+  let arr = [1, 2, 3];
+  let set = new Set(arr);
+  console.log(Array.from(set)); // [1, 2, 3]
+
+转换字符串::
+
+  let str = 'abc';
+  console.log(Array.from(str)); // ["a", "b", "c"]
+
+扩展的方法
+============================
+
+查找
+
+.. function:: find()
+
+  查找数组中符合条件的元素,若有多个符合条件的元素，则返回第一个元素
+
+.. function:: findIndex()
+
+  查找数组中符合条件的元素索引，若有多个符合条件的元素，则返回第一个元素索引
+
+  参数1：回调函数
+  参数2(可选)：指定回调函数中的 this 值
+
+填充
+
+.. function:: fill()
+
+  将一定范围索引的数组元素内容填充为单个指定的值
+
+  参数1：用来填充的值
+  参数2：被填充的起始索引
+  参数3(可选)：被填充的结束索引，默认为数组末尾
+
+.. function:: copyWithin()
+
+  将一定范围索引的数组元素修改为此数组另一指定范围索引的元素
+
+  参数1：被修改的起始索引
+  参数2：被用来覆盖的数据的起始索引
+  参数3(可选)：被用来覆盖的数据的结束索引，默认为数组末尾
+
+遍历
+
+.. function:: entries()
+
+  遍历键值对
+
+.. function:: keys()
+
+  遍历键名
+
+.. function:: values()
+
+  遍历键值
+
+包含
+
+.. function:: includes()
+
+  数组是否包含指定值
+
+  注意：与 Set 和 Map 的 has 方法区分；
+  Set 的 has 方法用于查找值；Map 的 has 方法用于查找键名。
+
+嵌套数组转一维数组
+
+.. function:: flat()
+
+.. function:: flatMap()
+
+  先对数组中每个元素进行了的处理，再对数组执行 flat() 方法
+
+  参数1：遍历函数，该遍历函数可接受3个参数：当前元素、当前元素索引、原数组
+  参数2：指定遍历函数中 this 的指向
+
+.. /**
+..      * Removes elements from an array and, if necessary, inserts new elements in their place, returning the deleted elements.
+..      * @param start The zero-based location in the array from which to start removing elements.
+..      * @param deleteCount The number of elements to remove.
+..      * @returns An array containing the elements that were deleted.
+..      */
+.. function:: splice(start: number, deleteCount?: number): T[];
+
+  从指定索引删除指定数量的元素;
+
+  会对原数组进行修改, 返回一个由删除的元素组成的新数组
+
+  - start: 数据索引下标
+  - deleteCount: 从 `start` 开始, 需要删除的元素数量, 如果只是做替换, 为0
+
+.. /**
+..   * Removes elements from an array and, if necessary, inserts new elements in their place, returning the deleted elements.
+..   * @param start The zero-based location in the array from which to start removing elements.
+..   * @param deleteCount The number of elements to remove.
+..   * @param items Elements to insert into the array in place of the deleted elements.
+..   * @returns An array containing the elements that were deleted.
+..   */
+.. function:: splice(start: number, deleteCount: number, ...items: T[]): T[];
+
+  从指定索引删除指定数量的元素, 并在此位置增加给定的元素;
+
+  会对原数组进行修改, 返回一个由删除的元素组成的新数组
+
+  - start: 数据索引下标
+  - deleteCount: 从 `start` 开始, 需要删除的元素数量, 如果只是做替换, 为0
+  - ...items: 需要增加的元素
+

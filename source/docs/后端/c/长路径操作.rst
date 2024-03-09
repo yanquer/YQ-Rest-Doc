@@ -1,0 +1,13 @@
+================================
+Windows下长路径删除/重命名
+================================
+
+.. literalinclude:: /resources/code/c_remove_or_rename_dir.c
+
+
+
+
+
+
+
+

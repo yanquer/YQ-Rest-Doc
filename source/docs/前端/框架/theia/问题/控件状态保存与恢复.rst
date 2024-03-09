@@ -1,0 +1,37 @@
+================================
+控件状态保存与恢复
+================================
+
+一般都是实现 `StatefulWidget` 的 `storeState` 与 `restoreState`,
+包位置::
+
+  import {StatefulWidget} from "@theia/core/lib/browser";
+
+大致例子::
+
+  class Example implements StatefulWidget{
+
+    storeState(): object {
+        const argsExample = {his: this.history, name: this.name}
+        return {argsExample}
+    }
+
+    restoreState(oldState: object): void {
+        const lastArgs = oldState['argsExample'] || {}
+
+        // do restore from these args
+        this.restore(lastArgs)
+    }
+
+    restore(lastArgs){
+      // do restore from these args
+    }
+
+  }
+
+这样每次重新打开的时候, 就可以触发相应的恢复
+
+.. note::
+
+  只有theia正常关闭的时候, 状态才会被正常记录
+

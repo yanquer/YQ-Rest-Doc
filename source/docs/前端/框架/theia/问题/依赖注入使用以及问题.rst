@@ -1,0 +1,85 @@
+================================
+依赖注入使用以及问题
+================================
+
+依赖注入, 现在使用是很普遍.
+
+在 `theia` 中编写服务时, 解耦的角度也可以使用依赖注入
+
+个人习惯将接口都定义在common::
+
+  // 后端提供的服务
+  export const IUtilService = Symbol('IUtilService')
+  export interface IUtilService extends RpcServer<IUtilClient>{
+
+      getHash(data: string): Promise<string>
+      getRandomStr(): Promise<string>
+
+      setClient(client: IUtilClient): void
+  }
+
+将服务定义为成员变量与构造函数参数的区别
+================================================================
+
+当通过 `@inject` 属性注入时,如果直接定义为类成员变量,
+在构造函数中访问该成员变量时,有可能仍未被初始化, 出现 `undefined`
+
+而如果在构造函数参数中定义,则可以保证在构造函数体执行前被初始化
+
+- 类成员变量会在调用构造函数之前声明,但不会提前初始化
+- 构造函数参数会在调用构造函数时由注入器进行初始化
+- 构造函数体内,参数的值已经被初始化,但成员变量可能还未被初始化
+
+故还是使用构造函数参数接收注入的值好一些::
+
+  constructor(@inject(Foo) private foo: Foo) {
+    // foo 已被初始化
+  }
+
+但是其实即使是在构造函数中注入, 也可视作成员变量,
+不需要在构造函数的实现中, 手动赋值, 默认就可以 `this` 调用
+
+贡献点使用
+================================
+
+普通服务注入直接 ``@inject`` 服务名即可
+
+贡献点是注入贡献点 ``ContributionProvider`` 名称加一个 ``@named(贡献点基类)``::
+
+  @inject(ContributionProvider)
+  @named(IExampleContribute) // IExampleContribute 是贡献点接口
+  protected readonly exampleCs: ContributionProvider<IExampleContribute>
+
+除了贡献点基类, 都是内置的::
+
+  import {inject, injectable, named, postConstruct } from "@theia/core/shared/inversify";
+  import {ContributionProvider} from "@theia/core";
+
+记得在入口文件绑定::
+
+  // 把贡献点接口绑定
+  bindContributionProvider(bind, IExampleContribute)
+
+  // 每一个实现都正常绑定, 此处不能rebind, 不然会覆盖前面已绑定的贡献点
+  bind(A).toSelef().inSingleScope()
+  bind(IExampleContribute).toService(A)
+
+获取所有贡献点::
+
+  this.exampleCs.getContributions()
+
+只bind自己效果
+================================
+
+在 Theia 框架中，如果你只使用 ``bind(A).toSelf().inSingletonScope()``
+将服务 A 绑定到自身并设置为单例作用域，通常不需要使用 ``bind(A).toService(A)``
+
+``bind(A).toSelf().inSingletonScope()`` 表示将服务 A 绑定到自身，并在单例作用域中创建实例。
+这意味着每次请求服务 A 时，都会返回同一个实例。
+
+``bind(A).toService(A)`` 则是将服务 A 绑定到服务 A 的实现。
+这在一些复杂的依赖注入场景中可能会用到，但在一般情况下并不是必需的。
+
+因此，如果你只需要创建实例并在需要的地方进行注入，
+``bind(A).toSelf().inSingletonScope()`` 就足够了，无需额外 ``bind(A).toService(A)``
+

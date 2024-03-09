@@ -1,0 +1,31 @@
+=============================
+一些安全相关文件
+=============================
+
+# todo:
+
+.. figure:: ../../../resources/images/2023-02-19-22-07-10.png
+
+	/etc/login.defs
+
+.. figure:: ../../../resources/images/2023-02-19-22-10-40.png
+.. figure:: ../../../resources/images/2023-02-19-22-14-17.png
+
+
+.. figure:: ../../../resources/images/2023-02-19-22-14-55.png
+.. figure:: ../../../resources/images/2023-02-19-22-15-43.png
+.. figure:: ../../../resources/images/2023-02-19-22-16-21.png
+.. figure:: ../../../resources/images/2023-02-19-22-17-57.png
+.. figure:: ../../../resources/images/2023-02-19-22-18-18.png
+
+umask 命令, 创建文件权限减去umask设置的值
+
+.. figure:: ../../../resources/images/2023-02-19-22-19-03.png
+
+- /etc/login.defs 定义与 /etc/passwd , /etc/shadow 配套的用户限制设置
+
+- /etc/knockd.conf ssh相关敲门
+
+	使用 nmap -p 端口号 IP地址
+
+	按照文件所给的端口依次敲门可以恢复访问

@@ -1,0 +1,15 @@
+==========================
+一些常见发行版下载
+==========================
+
+Ubuntu
+  官网: `https://cn.ubuntu.com/download/desktop`
+
+  Ubuntu14: `https://releases.ubuntu.com/trusty/`
+
+  Ubuntu22: `https://releases.ubuntu.com/22.04/ubuntu-22.04.3-desktop-amd64.iso`
+
+.. note::
+
+  发行版的 **LTS** 表示长期支持(一般都是五年吧)
+

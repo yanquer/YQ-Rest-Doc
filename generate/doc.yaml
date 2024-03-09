@@ -1,0 +1,4 @@
+# index_rst_path: source/index.rst
+doc_index_rst_path: source/index.rst
+doc_dir: source/docs
+exclude_dir: ['resources', '.DS_Store', 'awtk']

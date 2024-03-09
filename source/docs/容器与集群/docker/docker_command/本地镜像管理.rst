@@ -1,0 +1,360 @@
+============================
+本地镜像管理
+============================
+
+images
+-----------------------
+
+| docker images : 列出本地镜像
+
+语法::
+
+	docker images [OPTIONS] [REPOSITORY[:TAG]]
+
+.. topic:: OPTIONS说明：
+
+	-a
+		列出本地所有的镜像（含中间映像层，默认情况下，过滤掉中间映像层）；
+	--digests
+		显示镜像的摘要信息；
+	-f
+		显示满足条件的镜像；
+	--format
+		指定返回值的模板文件；
+
+		比如只显示ID::
+
+			docker images --format "{{.ID}}"
+
+		以表格形式美化显示(默认就是表格)::
+
+			docker images --format "table {{.ID}}\t{{.Repository}}\t{{.Tag}}"
+
+	--no-trunc
+		显示完整的镜像信息；
+	-q
+		只显示镜像ID。
+
+示例
++++++++++++++++++++++++
+
+显示本地镜像列表
+
+.. code-block:: sh
+
+	yanque@yanquedembp test % docker images
+	REPOSITORY               TAG                IMAGE ID       CREATED         SIZE
+	yanquer/kali             config_apt_list2   24b7cbbe11fb   2 days ago      236MB
+	whyour/qinglong          latest             a5db91bf7c98   2 weeks ago     322MB
+	kalilinux/kali-rolling   latest             c2fadbc65f8d   11 months ago   126MB
+	python                   latest             26acbad26a2c   5 years ago     690MB
+	java                     latest             d23bdf5b1b1b   5 years ago     643MB
+
+显示仓库为 *yanquer/kali* 镜像信息以及摘要信息
+
+.. code-block:: sh
+
+	yanque@yanquedembp test % docker images --digests yanquer/kali
+	REPOSITORY     TAG                DIGEST                                                                    IMAGE ID       CREATED      SIZE
+	yanquer/kali   config_apt_list2   sha256:161c0ffd5197fa4a4a88d00e53ccf43500da3b075f1793d9a3722c6c0bdf15ff   24b7cbbe11fb   2 days ago   236MB
+
+rmi
+-----------------------
+
+| 删除image
+
+语法
++++++++++++++++++++++++
+
+``docker rmi [OPTIONS] IMAGE [IMAGE...]``
+
+.. topic:: OPTIONS说明：
+
+	- -f :强制删除；
+	- --no-prune :不移除该镜像的过程镜像，默认移除；
+
+示例
++++++++++++++++++++++++
+
+强制删除本地镜像 kali:config_apt_list1。
+
+.. code-block:: sh
+
+	(dev_venv) yanque@yanquedeMacBook-Pro project % docker images
+	REPOSITORY               TAG                IMAGE ID       CREATED         SIZE
+	kali                     config_apt_list2   24b7cbbe11fb   3 minutes ago   236MB
+	kali                     config_apt_list1   167a6460c75d   9 minutes ago   236MB
+	kalilinux/kali-rolling   latest             ae8b160e1ecb   9 hours ago     140MB
+	(dev_venv) yanque@yanquedeMacBook-Pro project % docker rmi kali:config_apt_list1
+	Untagged: kali:config_apt_list1
+	(dev_venv) yanque@yanquedeMacBook-Pro project %
+	(dev_venv) yanque@yanquedeMacBook-Pro project % docker images
+	REPOSITORY               TAG                IMAGE ID       CREATED         SIZE
+	kali                     config_apt_list2   24b7cbbe11fb   6 minutes ago   236MB
+	kalilinux/kali-rolling   latest             ae8b160e1ecb   9 hours ago     140MB
+
+
+tag
+-----------------------
+
+| 标记本地镜像，将其归入某一仓库。 可用于更新名称然后删除旧的.
+
+语法
++++++++++++++++++++++++
+
+``docker tag [OPTIONS] IMAGE[:TAG] [REGISTRYHOST/][USERNAME/]NAME[:TAG]``
+
+示例
++++++++++++++++++++++++
+
+将镜像 kali:config_apt_list1 标记为 yanquer/kali:config_apt_list2 镜像。
+
+.. code-block:: sh
+
+	(dev_venv) yanque@yanquedeMacBook-Pro project % docker images
+	REPOSITORY               TAG                IMAGE ID       CREATED         SIZE
+	kali                     config_apt_list2   24b7cbbe11fb   6 minutes ago   236MB
+	kalilinux/kali-rolling   latest             ae8b160e1ecb   9 hours ago     140MB
+	(dev_venv) yanque@yanquedeMacBook-Pro project %
+	(dev_venv) yanque@yanquedeMacBook-Pro project % docker tag 24b7cbbe11fb yanquer/kali:config_apt_list2
+	(dev_venv) yanque@yanquedeMacBook-Pro project %
+	(dev_venv) yanque@yanquedeMacBook-Pro project % docker images
+	REPOSITORY               TAG                IMAGE ID       CREATED          SIZE
+	kali                     config_apt_list2   24b7cbbe11fb   25 minutes ago   236MB
+	yanquer/kali             config_apt_list2   24b7cbbe11fb   25 minutes ago   236MB
+	kalilinux/kali-rolling   latest             ae8b160e1ecb   10 hours ago     140MB
+	(dev_venv) yanque@yanquedeMacBook-Pro project %
+
+
+build
+-----------------------
+
+| docker build 命令用于使用 Dockerfile 创建镜像。
+
+语法::
+
+	docker build [OPTIONS] PATH | URL | -
+
+.. topic:: OPTIONS说明：
+
+	--build-arg
+		设置镜像创建时的变量 ``--build-arg=[]``；
+	--cpu-shares
+		设置 cpu 使用权重；
+	--cpu-period
+		限制 CPU CFS周期；
+	--cpu-quota
+		限制 CPU CFS配额；
+	--cpuset-cpus
+		指定使用的CPU id；
+	--cpuset-mems
+		指定使用的内存 id；
+	--disable-content-trust
+		忽略校验，默认开启；
+	-f
+		指定要使用的Dockerfile路径；
+	--force-rm
+		设置镜像过程中删除中间容器；
+	--isolation
+		使用容器隔离技术；
+	--label
+		设置镜像使用的元数据, ``--label=[]`` ；
+	-m
+		设置内存最大值；
+	--memory-swap
+		设置 Swap (交换) 的最大值为内存+ Swap (交换) ，"-1"表示不限 Swap (交换) ；
+	--no-cache
+		创建镜像的过程不使用缓存；
+	--pull
+		尝试去更新镜像的新版本；
+	--quiet, -q
+		安静模式，成功后只输出镜像 ID；
+	--rm
+		设置镜像成功后删除中间容器；
+	--shm-size
+		设置/dev/shm的大小，默认值是64M；
+	-ulimit
+		Ulimit配置。
+	--squash
+		将 Dockerfile 中所有的操作压缩为一层。
+	--tag, -t
+		镜像的名字及标签，通常 name:tag 或者 name 格式；可以在一次构建中为一个镜像设置多个标签。
+	--network
+		默认 default。在构建期间设置RUN指令的网络模式
+
+示例
++++++++++++++++++++++++
+
+使用当前目录的 Dockerfile 创建镜像，标签为 runoob/ubuntu:v1。
+
+.. code-block:: sh
+
+	docker build -t runoob/ubuntu:v1 .
+
+使用URL github.com/creack/docker-firefox 的 Dockerfile 创建镜像。
+
+.. code-block:: sh
+
+	docker build github.com/creack/docker-firefox
+
+也可以通过 -f Dockerfile 文件的位置：
+
+.. code-block:: sh
+
+	$ docker build -f /path/to/a/Dockerfile .
+
+在 Docker 守护进程执行 Dockerfile 中的指令前，首先会对 Dockerfile 进行语法检查，有语法错误时会返回：
+
+.. code-block:: sh
+
+	$ docker build -t test/myapp .
+	Sending build context to Docker daemon 2.048 kB
+	Error response from daemon: Unknown instruction: RUNCMD
+
+history
+-----------------------
+
+| docker history : 查看指定镜像的创建历史
+
+语法
++++++++++++++++++++++++
+
+``docker history [OPTIONS] IMAGE``
+
+.. topic:: OPTIONS说明：
+
+	- -H :以可读的格式打印镜像大小和日期，默认为true；
+
+	- --no-trunc :显示完整的提交记录；
+
+	- -q :仅列出提交记录ID。
+
+示例
++++++++++++++++++++++++
+
+查看本地镜像 *yanquer/kali:config_apt_list2* 的创建历史
+
+.. code-block:: sh
+
+	yanque@yanquedembp test % docker history yanquer/kali:config_apt_list2
+	IMAGE          CREATED      CREATED BY                                      SIZE      COMMENT
+	24b7cbbe11fb   2 days ago   bash                                            526B      kali image with config ustc apt list
+	<missing>      2 days ago   bash                                            96.3MB
+	<missing>      3 days ago   /bin/sh -c #(nop) CMD ["bash"]                  140MB
+	<missing>      3 days ago   /bin/sh -c #(nop) ENV LANG=C.UTF-8              0B
+	<missing>      3 days ago   /bin/sh -c #(nop) ADD file:cc482abaa0a3211e9…   0B
+	<missing>      3 days ago   /bin/sh -c #(nop) LABEL org.opencontainers.i…   0B
+	<missing>      3 days ago   /bin/sh -c #(nop) ARG BUILD_DATE PROJECT_URL…   0B
+	<missing>      3 days ago   /bin/sh -c #(nop) ARG BUILD_DATE PROJECT_URL…   0B
+	<missing>      3 days ago   /bin/sh -c #(nop) ARG BUILD_DATE PROJECT_URL…   0B
+	<missing>      3 days ago   /bin/sh -c #(nop) ARG BUILD_DATE PROJECT_URL…   0B
+	<missing>      3 days ago   /bin/sh -c #(nop) ARG BUILD_DATE VERSION        0B
+	<missing>      3 days ago   /bin/sh -c #(nop) ARG BUILD_DATE                0B
+	yanque@yanquedembp test %
+
+.. _docker save:
+
+save
+-----------------------
+
+| docker save : 将指定镜像保存成 tar 归档文件
+
+.. note::
+
+	docker export 也可以导出, 但是其针对的是容器, save针对的是镜像
+
+语法
++++++++++++++++++++++++
+
+``docker save [OPTIONS] IMAGE [IMAGE...]``
+
+.. topic:: OPTIONS说明：
+
+	- -o :输出到的文件
+
+示例
++++++++++++++++++++++++
+
+将镜像 *yanquer/kali* 生成归档文件.
+
+.. code-block:: sh
+
+	yanque@yanquedembp test % docker save -o mykali_image.tar yanquer/kali
+	yanque@yanquedembp test % ls
+	1.txt			c++			dd			mykali-20221228.tar	mykali_image.tar
+	yanque@yanquedembp test % ls -lh mykali_image.tar
+	-rw-------@ 1 yanque  staff   232M 12 28 16:47 mykali_image.tar
+	yanque@yanquedembp test %
+
+load
+-----------------------
+
+| docker load : 导入使用 :ref:`docker save` 命令导出的镜像
+
+.. note::
+
+	docker export 导出归档的加载见 :ref:`docker import` .
+
+语法
++++++++++++++++++++++++
+
+``docker load [OPTIONS]``
+
+.. topic:: OPTIONS说明：
+
+	- --input , -i : 指定导入的文件，代替 STDIN。
+
+	- --quiet , -q : 精简输出信息。
+
+示例
++++++++++++++++++++++++
+
+`-i` 的效果与 `<` 一样(懂shell重定向的都知道). 导入 *yanquer/kali:config_apt_list2*
+
+.. code-block:: sh
+
+	yanque@yanquedembp test % docker load < mykali_image.tar
+	Loaded image: yanquer/kali:config_apt_list2
+	yanque@yanquedembp test %
+	yanque@yanquedembp test % docker load --input mykali_image.tar
+	Loaded image: yanquer/kali:config_apt_list2
+	yanque@yanquedembp test %
+
+.. _docker import:
+
+import
+-----------------------
+
+| docker import : 从归档文件中创建镜像
+
+.. note::
+
+	除了导出 :ref:`docker save`
+
+	还可用于导入 docker export 导出的容器归档文件.
+
+语法
++++++++++++++++++++++++
+
+``docker import [OPTIONS] file|URL|- [REPOSITORY[:TAG]]``
+
+.. topic:: OPTIONS说明：
+
+	- -c :应用docker 指令创建镜像；
+
+	- -m :提交时的说明文字；
+
+示例
++++++++++++++++++++++++
+
+从 *mykali-20221228.tar* 归档文件创建 *yanquer/mykali* 镜像
+
+.. code-block:: sh
+
+	yanque@yanquedembp test % docker import mykali-20221228.tar yanquer/mykali
+	sha256:514ae6d5ab88157b978b729520e30c687a5b1b2e3ff2200de88c827bf5ec5ec8
+	yanque@yanquedembp test %
+	yanque@yanquedembp test % docker images
+	REPOSITORY               TAG                IMAGE ID       CREATED         SIZE
+	yanquer/mykali           latest             514ae6d5ab88   6 seconds ago   235MB
+

@@ -1,0 +1,67 @@
+====================
+优化
+====================
+
+默认情况下，默认的配置项没有针对吞吐量进行优化，默认的配置比较合适大量短任务和比较少的长任务。
+
+如果需要优化吞吐量，请参考优化：Optimizing。
+
+中间人
+====================
+
+如果使用的中间人是 RabbitMQ，可以将换成 librabbitmq 模块（通过 C 语言实现的AMQP客户端）::
+
+  $ pip install librabbitmq
+
+任务执行
+====================
+
+**避免启动同步子任务**
+
+让一个任务等待另一个任务的结果往往是非常低效的，并在工作池耗尽时，可能会导致死锁。
+建议使您的设计异步化，例如使用回调函数。
+
+例子::
+
+  # 糟糕的使用
+  @app.task
+  def update_page_info(url):
+      page = fetch_page.delay(url).get()
+      info = parse_page.delay(url, page).get()
+      store_page_info.delay(url, info)
+
+  # 较好的使用
+  def update_page_info(url):
+      # fetch_page -> parse_page -> store_page
+      chain = fetch_page.s(url) | parse_page.s() | store_page_info.s(url)
+      chain()
+
+  @app.task()
+  def fetch_page(url):
+      return myhttplib.get(url)
+
+  @app.task()
+  def parse_page(page):
+      return myparser.parse_document(page)
+
+  @app.task(ignore_result=True)
+  def store_page_info(info, url):
+      PageInfo.objects.create(url=url, info=info)
+
+默认情况下，Celery不允许您在任务中运行同步子任务，但是在极少数或极端情况下您可能需要这么做。
+
+.. warning::
+
+  强烈不建议在任务中运行同步子任务。
+
+**任务中强制运行同步子任务** ::
+
+  @app.task
+  def update_page_info(url):
+      page = fetch_page.delay(url).get(disable_sync_subtasks=False)
+      info = parse_page.delay(url, page).get(disable_sync_subtasks=False)
+      store_page_info.delay(url, info)
+
+
+
+

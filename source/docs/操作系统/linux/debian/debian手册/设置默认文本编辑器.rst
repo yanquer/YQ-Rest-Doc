@@ -1,0 +1,22 @@
+===============================
+设置默认文本编辑器
+===============================
+
+Debian有许多不同的编辑器。
+我们建议安装上面提到的 :doc:`/docs/常用工具使用/vim` 软件包。
+Debian通过命令 `/usr/bin/editor` 提供了对系统默认编辑器的统一访问，
+因此其它程序（例如 `reportbug` ）可以调用它。
+你可以通过下列命令改变它::
+
+  $ sudo update-alternatives --config editor
+
+对于新手，我建议使用 `/usr/bin/vim.basic` 代替 `/usr/bin/vim.tiny` ，因为它支持格式高亮。
+
+.. note::
+
+  许多程序使用环境变量 `$EDITOR` 或 `$VISUAL` 来决定使用那个编辑器.
+  出于 Debian 系统的一致性考虑，它们被设置到 `/usr/bin/editor` 。
+  （在历史上， `$EDITOR` 是 `ed` ， `$VISUAL` 是 `vi` 。)
+
+
+

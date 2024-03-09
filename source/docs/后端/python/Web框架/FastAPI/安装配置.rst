@@ -1,0 +1,23 @@
+==================================
+安装配置
+==================================
+
+FastAPI 依赖 Python 3.8 及更高版本。
+
+安装 FastAPI 很简单，这里我们使用 pip 命令来安装::
+
+  pip install fastapi
+
+另外我们还需要一个 ASGI 服务器，生产环境可以使用 `Uvicorn <https://www.uvicorn.org/>`_
+或者 `Hypercorn <https://gitlab.com/pgjones/hypercorn>`_::
+
+  pip install "uvicorn[standard]"
+
+.. note::
+
+  两个合起来就是::
+
+    pip install fastapi "uvicorn[standard]"
+
+
+

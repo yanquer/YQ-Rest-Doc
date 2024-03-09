@@ -1,0 +1,45 @@
+=============================
+原理/结构
+=============================
+
+Selenium所做的一切, 就是发送给浏览器命令, 用以执行某些操作或为信息发送请求.
+
+启动一个驱动实例::
+
+  driver = webdriver.Chrome()
+
+打开指定的网页::
+
+  driver.get("https://www.selenium.dev/selenium/web/web-form.html")
+
+获取网页信息::
+
+  title = driver.title
+
+建立等待策略
+将代码与浏览器的当前状态同步 是Selenium面临的最大挑战之一, 做好它是一个高级主题.
+基本上, 您希望在尝试定位元素之前, 确保该元素位于页面上, 并且在尝试与该元素交互之前, 该元素处于可交互状态.
+隐式等待很少是最好的解决方案, 但在这里最容易演示,::
+
+  driver.implicitly_wait(0.5)
+
+发送命令 查找元素::
+
+  text_box = driver.find_element(by=By.NAME, value="my-text")
+  submit_button = driver.find_element(by=By.CSS_SELECTOR, value="button")
+
+操作元素::
+
+  # 填充 Selenium
+  text_box.send_keys("Selenium")
+  submit_button.click()
+
+获取元素信息::
+
+  driver.find_element(by=By.ID, value="message")
+  text = message.text
+
+结束会话, 即结束驱动程序进程, 默认情况下, 该进程也会关闭浏览器. 无法向此驱动程序实例发送更多命令::
+
+  driver.quit()
+

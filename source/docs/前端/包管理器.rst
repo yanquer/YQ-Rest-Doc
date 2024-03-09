@@ -1,0 +1,66 @@
+===================
+前端-包管理器
+===================
+
+常见有两个
+
+- npm
+- yarn
+
+yarn
+===================
+
+安装::
+
+    brew install yarn
+
+yarn 默认是去 npm/yarn 官方镜像源（国外）获取资源, 较慢
+
+查询源::
+
+    yarn config get registry
+
+设置为淘宝源::
+
+    yarn config set registry https://registry.npm.taobao.org/
+
+还原::
+
+    yarn config set registry https://registry.yarnpkg.com
+
+.. note::
+
+    建议所有使用yarn配置的镜像, 再使用npm配置一遍, 因为有些工具
+    还是用的是npm下载而不是yarn.
+
+第三方工具yrm管理镜像源
+======================================
+
+安装::
+
+    npm install -g yrm
+
+列出所有镜像源::
+
+    yrm ls
+
+切换镜像::
+
+   yrm use taobao
+
+新增镜像::
+
+    yrm add aliyun http://maven.aliyun.com/nexus/content/groups/public
+
+删除镜像::
+
+    yrm del taobao
+
+测试延迟（访问速度）::
+
+    yrm test aliyun
+
+查看帮助::
+
+    yrm -h
+

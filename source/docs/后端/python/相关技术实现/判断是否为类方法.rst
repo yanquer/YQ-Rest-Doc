@@ -1,0 +1,23 @@
+===============================
+Python 判断某个类包含的类方法
+===============================
+
+
+| 使用 types 与 isinstance
+
+.. code-block:: python
+
+	class ITest(object):
+
+		def get_one(self):
+			raise NotImplemented
+
+		def get_two(self):
+			raise NotImplemented
+
+	# 注意类方法是 FunctionType
+	#   实例方法是 types.MethodType
+	functions_ = [k for k, v in ITest.__dict__.items() if isinstance(v, types.FunctionType)]
+	print(functions_)
+	# ['get_one', 'get_two']
+	

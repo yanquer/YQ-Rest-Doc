@@ -1,0 +1,37 @@
+=========================
+一些问题/报错
+=========================
+
+Module xxx has no attribute ‘celery‘
+==================================================
+
+报错大概都是这样::
+
+  Module xxx has no attribute ‘celery‘
+
+celery 对目录模块啥的要求比较严格, 启动的时候, -A/--app 的参数, 需要明确指定具体的实例化 Celery 的 py 文件
+
+如 app.py::
+
+  # coding: utf-8
+  from celery import Celery
+
+  app = Celery()
+
+所在位置如下::
+
+  % tree src/time_schedule/app.py
+  src/time_schedule/app.py  [error opening dir]
+
+  0 directories, 0 files
+
+
+启动::
+
+  celery -A time_schedule.app --workdir src worker -l info
+
+使用 ``time_schedule.app`` 而不是 ``time_schedule``
+
+说明: celery 默认只寻找 指定模块下的 ``celery.py`` ,
+除非更名 ``app.py`` 为 ``celery.py`` 否则必须指定具体的 **实例化 Celery 的 py 文件**
+

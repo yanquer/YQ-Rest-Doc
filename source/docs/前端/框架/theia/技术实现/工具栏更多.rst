@@ -1,0 +1,35 @@
+======================================
+工具栏更多
+======================================
+
+资源管理器的工具栏的更多
+`node_modules/@theia/core/src/browser/shell/tab-bar-toolbar/tab-bar-toolbar.tsx` 的
+`TabBarToolbar` 下的 `registerMoreToolbarItem`::
+
+  // More (...) toolbar items.
+  this.registerMoreToolbarItem({
+      id: FileNavigatorCommands.TOGGLE_AUTO_REVEAL.id,
+      command: FileNavigatorCommands.TOGGLE_AUTO_REVEAL.id,
+      tooltip: FileNavigatorCommands.TOGGLE_AUTO_REVEAL.label,
+      group: NavigatorMoreToolbarGroups.TOOLS,
+  });
+  this.registerMoreToolbarItem({
+      id: WorkspaceCommands.ADD_FOLDER.id,
+      command: WorkspaceCommands.ADD_FOLDER.id,
+      tooltip: WorkspaceCommands.ADD_FOLDER.label,
+      group: NavigatorMoreToolbarGroups.WORKSPACE,
+  });
+
+那三个点实现在
+`node_modules/@theia/core/src/browser/shell/tab-bar-toolbar/tab-bar-toolbar.tsx` 的
+`TabBarToolbar` 下 `renderMore`::
+
+  protected renderMore(): React.ReactNode {
+      return !!this.more.size && <div key='__more__' className={TabBarToolbar.Styles.TAB_BAR_TOOLBAR_ITEM + ' enabled'}>
+          <div id='__more__' className={codicon('ellipsis', true)} onClick={this.showMoreContextMenu}
+              title={nls.localizeByDefault('More Actions...')} />
+      </div>;
+  }
+
+
+

@@ -1,0 +1,19 @@
+=============================
+等待
+=============================
+
+隐式等待
+  对所有元素有效.
+  使用 `driver.implicitly_wait(2)`
+显式等待
+  对指定元素有效.
+  每次都需要建立WebDriverWait对象::
+
+    wait = WebDriverWait(driver, timeout=2)
+    wait.until(lambda d : revealed.is_displayed())
+
+  还支持条件设置::
+
+    errors = [NoSuchElementException, ElementNotInteractableException]
+    wait = WebDriverWait(driver, timeout=2, poll_frequency=.2, ignored_exceptions=errors)
+    wait.until(lambda d : revealed.send_keys("Displayed") or True)

@@ -1,0 +1,86 @@
+===========================
+设置其他组件的值
+===========================
+
+.. onChange:\:
+
+..   {
+..     "type": "grid",
+..     "columns": [
+..       {
+..         "type": "select",
+..         "name": "select_array",
+..         "options": [
+..           {
+..             "label": "a",
+..             "value": "a"
+..           },
+..           {
+..             "label": "b",
+..             "value": "b"
+..           }
+..         ],
+..         "onEvent": {
+..           "change": {
+..               "actions": [
+..                   {
+..                       "actionType": "setValue",
+..                       "target": "current_select",
+..                       "value": "${select_array}"
+..                   },
+..               ]
+..           }
+..         }
+..       },
+..       {
+..         "type": "input-text",
+..         "name": "current_select",
+..         "value": "${select_array}"
+..       }
+..     ]
+
+..   }
+
+.. 使用 onEvent 来整合 change, 设置 current_select 组件的值
+
+.. .. note:\:
+
+..   无法使用 onChange 来替换 onEvent, 除非组件特殊支持
+
+.. 上面用 onChange 是错的, 得这样
+
+最简单的, 直接使用 value 即可::
+
+  {
+      type: "input-text",
+      name: "input_v2",
+  },
+  {
+      type: "input-text",
+      name: "input_v",
+      value: "${input_v2}"
+  },
+
+input_v2更新会自动更新input_v
+
+或者用onChange只能这样写::
+
+  {
+      type: "input-text",
+      name: "input_v2",
+      onEvent: {
+          change: {
+              actions: [
+                  {
+                      actionType: "setValue",
+                      componentName: "input_v",
+                      args: {
+                          value: "${input_v2}"
+                      }
+                  },
+              ]
+          }
+      }
+  },
+
+

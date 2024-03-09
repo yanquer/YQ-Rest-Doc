@@ -1,0 +1,17 @@
+========================
+TypeScript基础类型
+========================
+
+- any: 任意类型
+- number: 数字类型, 双精度 64 位浮点值。它可以用来表示整数和分数
+- string: 字符串, 可使用 单/双/反引号定义, 其中反引号可用于定义多行文本以及使用变量(用$), 类似于Python的 `f`
+- boolean: true, false
+- enum: 枚举
+- void
+- null: 表示对象值缺失。表示一个空对象引用. 用 typeof 检测 null 返回是 object
+- undefined: 用于初始化变量为一个未定义的值. undefined 是一个没有设置值的变量. typeof 一个没有值的变量会返回 undefined
+- never: never 是其它类型（包括 null 和 undefined）的子类型，代表从不会出现的值。
+
+
+
+

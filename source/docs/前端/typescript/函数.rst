@@ -1,0 +1,41 @@
+===========================
+TypeScript 函数
+===========================
+
+可选参数
+===========================
+
+可选参数::
+
+  function buildName(firstName: string, lastName?: string) {
+      if (lastName)
+          return firstName + " " + lastName;
+      else
+          return firstName;
+  }
+
+lastName加问号表示是一个可选参数, 可选参数必须跟在必需参数后面, 也可以直接给一个默认值::
+
+  function function_name(param1[:type],param2[:type] = default_value) {
+  }
+
+剩余参数
+===========================
+
+使用 ``...``, 类似Python的 ``*args``
+
+有一种情况，我们不知道要向函数传入多少个参数，这时候我们就可以使用剩余参数来定义。
+剩余参数语法允许我们将一个不确定数量的参数作为一个数组传入::
+
+  function buildName(firstName: string, ...restOfName: string[]) {
+      return firstName + " " + restOfName.join(" ");
+  }
+
+  let employeeName = buildName("Joseph", "Samuel", "Lucas", "MacKinzie");
+
+
+
+
+
+
+

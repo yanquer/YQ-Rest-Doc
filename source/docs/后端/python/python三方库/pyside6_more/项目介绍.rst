@@ -1,0 +1,88 @@
+============================
+工具/结构介绍
+============================
+
+PySide6项目
+============================
+
+- ``.ui`` 控件布局设计文件
+- ``.qrc`` 资源文件
+- ``.qmltype``
+
+控件开发相关GUI工具
+============================
+
+Widget 开发
+
+一般绘制前端界面时, 使用GUI工具手动绘制具有实时可见性(相对于手写py代码开发而言)
+
+而此工具只有在手动画界面时使用.
+
+- pyside6-designer, GUI界面开发工具, 生成 ``.ui`` 文件
+- pyside6-uic, 将 ``.ui`` 文件转换为 python 代码
+- pyside6-rcc, to generate serialized data from .qrc resources files.
+  Keep in mind these files can be used in other non-widget projects.
+
+.. note::
+
+  直接使用 ``pyside6-designer`` 即可启动, 而不是去安装目录下直接点开. 因为有一些环境变量的加载是必要的. 见 工具启动_
+
+QML 开发
+============================
+
+
+
+- pyside6-qmllint, 验证 ``.qmltype`` 是否存在语法错误.
+
+.. _qmltyperegistrar:
+
+- pyside6-qmltyperegistrar, 读取 元类型文件 并 生成包含注册这些类型为相关宏 的文件
+
+  原文:
+
+    to read metatypes files and generate files that contain the necessary code
+    to register all the types marked with relevant macros.
+
+- pyside6-qmlimportscanner, 定义项目需要导入的 QML 模块, 并将结果装载为json数组.
+
+  理解可能有点问题, 原文:
+
+    to identify the QML modules imported from a project/QML files and
+    dump the result as a JSON array.
+
+  有误后面实际使用了再补充.
+
+  .. todo: pyside6-qmlimportscanner
+
+其他工具/指令
+============================
+
+- pyside6-assistant, 打开在线文档(Qt Help)
+- pyside6-genpyi, 将 Qt 模块编译为 ``.pyi`` 文件.
+- pyside6-metaobjectdump, 打印元类型信息的工具, 元类型信息从 qmltyperegistrar_ 生成的 JSON 中读取
+- pyside6-deploy, to deploy desktop applications in Linux,
+  Windows and macOS environments.
+
+工具启动
+============================
+
+部分工具是直接放置到python pip安装目录下的, Windows下体现为 ``.exe`` 文件, Mac下体现为 ``.app`` .
+
+不建议直接去安装目录下点击此文件而启动, 而是使用 ``pyside6-`` 前缀,
+因为, 有部分环境变量插件等需要正确加载, 否则相关部分可能无法正常使用.
+
+比如, Mac 安装环境下的designer是 ``Designer.app`` , 使用 ``pyside6-designer`` 来启动::
+
+  (dev_venv) yanque@mbp14 project % ls /Users/yanque/project/python_venv/dev_venv/lib/python3.9/site-packages/PySide6 | grep Design
+  Designer.app
+  QtDesigner.abi3.so
+  QtDesigner.pyi
+  (dev_venv) yanque@mbp14 project % pyside6-designer
+  Error: Qt Designer: The QWebEngineView custom widget plugin is disabled because it requires OpenGL/Software RHI (current: 6).
+  Qt Designer: The QQuickWidget custom widget plugin is disabled because it requires OpenGL RHI (current: 6).
+  Designer: 为类 QQuickWidget 的窗口部件注册的自定义窗口部件工厂返回 0。
+  ** WARNING Factory failed to create  "QQuickWidget"
+  Qt Designer: The QWebEngineView custom widget plugin is disabled because it requires OpenGL/Software RHI (current: 6).
+
+  while executing '/Users/yanque/project/python_venv/dev_venv/lib/python3.9/site-packages/PySide6/Designer.app/Contents/MacOS/Designer'
+

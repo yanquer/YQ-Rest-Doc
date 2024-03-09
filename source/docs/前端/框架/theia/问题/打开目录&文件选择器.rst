@@ -1,0 +1,32 @@
+===============================
+打开目录/文件选择器
+===============================
+
+使用内置 ``FileDialogService`` 的 ``showOpenDialog`` 即可::
+
+  import {FileDialogService, OpenFileDialogProps} from '@theia/filesystem/lib/browser'
+  import {FileService} from '@theia/filesystem/lib/browser/file-service'
+
+  @inject(FileDialogService) protected readonly _fileDialogService: FileDialogService
+  @inject(FileService) protected readonly _fileService: FileService
+
+  async selectSomeFile(){
+      const selectOptions: OpenFileDialogProps =  {
+          title: '请选择文件',
+          canSelectFiles: true,
+          canSelectFolders: false,
+          canSelectMany: false,
+
+          // 若要自定义选择文件类型
+          filters: {
+              'static': ['css', 'js'],
+              'typeScript': ['ts', 'tsx']
+          }
+      }
+      const startPath = await this._fileService.resolve(URI.fromFilePath('/usr/local/xxx'))
+      await this._fileDialogService.showOpenDialog(
+          selectOptions,
+          startPath
+      )
+  }
+

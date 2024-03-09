@@ -1,0 +1,45 @@
+==============================
+异常
+==============================
+
+在 TypeScript 中，没有像 Python 中的 ValueError 这样的内置异常类型。
+不过，你可以自定义异常类来表示特定的错误情况。
+
+示例，在 TypeScript 中自定义异常类::
+
+  class ValueError extends Error {
+      constructor(message: string) {
+          super(message);
+          this.name = "ValueError";
+      }
+  }
+
+  function divide(a: number, b: number): number {
+      if (b === 0) {
+          throw new ValueError("除数不能为零！");
+      }
+      return a / b;
+  }
+
+  try {
+      const result = divide(10, 0);
+      console.log(result);
+  } catch (error) {
+      if (error instanceof ValueError) {
+          console.error("发生值错误：", error.message);
+      } else {
+          console.error("发生错误：", error.message);
+      }
+  }
+
+在 divide 函数中，我们使用 throw 关键字抛出一个 ValueError 异常，提供了相应的错误消息。
+
+在 try 块中，我们调用 divide 函数，并根据异常对象的类型进行适当的处理。
+如果捕获到的异常是 ValueError 类型的，我们打印出值错误的消息，否则打印一般错误的消息。
+
+
+.. note::
+
+  - 使用 throw 抛出异常
+
+

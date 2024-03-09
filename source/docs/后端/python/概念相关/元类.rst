@@ -1,0 +1,21 @@
+====================
+元类
+====================
+
+默认情况下，类是使用 type() 来构建的。类体会在一个新的命名空间内执行，
+类名会被局部绑定到 type(name, bases, namespace) 的结果。
+
+类创建过程可通过在定义行传入 metaclass 关键字参数，或是通过继承一个包含此参数的现有类来进行定制。
+在以下示例中，MyClass 和 MySubclass 都是 Meta 的实例::
+
+  class Meta(type):
+      pass
+
+  class MyClass(metaclass=Meta):
+      pass
+
+  class MySubclass(MyClass):
+      pass
+
+
+

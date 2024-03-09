@@ -1,0 +1,129 @@
+====================================================
+编辑器打开并滑动
+====================================================
+
+主要基于的情况:
+  代码跳转到指定文件的指定位置
+
+入口位置: `node_modules/@theia/monaco-editor-core/src/vs/editor/contrib/gotoSymbol/browser/goToCommands.ts`
+下的 `SymbolNavigationAction` 类 `runEditorCommand`,
+关键打开实际触发的 `_openReference` 实例方法, 关键代码::
+
+  const targetEditor = await editorService.openCodeEditor({
+        resource: reference.uri,
+        options: {
+          selection: Range.collapseToStart(range),
+          selectionRevealType: TextEditorSelectionRevealType.NearTopIfOutsideViewport,
+          selectionSource: TextEditorSelectionSource.JUMP
+        }
+      }, editor, sideBySide);
+
+这里调用 `editorService.openCodeEditor`, 定义在
+`node_modules/@theia/monaco/src/browser/monaco-editor-service.ts` 下的
+`MonacoEditorService` 服务, `openCodeEditor` 关键代码::
+
+  override async openCodeEditor(input: IResourceEditorInput, source: ICodeEditor | null, sideBySide?: boolean): Promise<ICodeEditor | null> {
+    const uri = new URI(input.resource.toString());
+    const openerOptions = this.createEditorOpenerOptions(input, source, sideBySide);
+    const widget = await open(this.openerService, uri, openerOptions);
+    ...
+  }
+
+主要是 `open`,  定义在 `node_modules/@theia/core/src/browser/opener-service.ts` ::
+
+  export async function open(openerService: OpenerService, uri: URI, options?: OpenerOptions): Promise<object | undefined> {
+    const opener = await openerService.getOpener(uri, options);
+    return opener.open(uri, options);
+  }
+
+这里又回转到 `node_modules/@theia/editor/src/browser/editor-manager.ts` 下
+`EditorManager` 服务的::
+
+  override open(uri: URI, options?: EditorOpenerOptions): Promise<EditorWidget> {
+    ...
+
+      return super.open(uri, { counter, ...options });
+
+    ...
+
+这里super触发的是 `node_modules/@theia/core/src/browser/widget-open-handler.ts` 下的
+`WidgetOpenHandler` 服务的 ::
+
+  async open(uri: URI, options?: WidgetOpenerOptions): Promise<W> {
+    const widget = await this.getOrCreateWidget(uri, options);
+    await this.doOpen(widget, options);
+    return widget;
+  }
+
+但是实际上是被 `node_modules/@theia/editor-preview/src/browser/editor-preview-manager.ts` 重写的
+`EditorPreviewManager` 触发 `tryGetPendingWidget`::
+
+  protected override tryGetPendingWidget(uri: URI, options?: EditorOpenerOptions): MaybePromise<EditorWidget> | undefined {
+    return super.tryGetPendingWidget(uri, { ...options, preview: true }) ?? super.tryGetPendingWidget(uri, { ...options, preview: false });
+  }
+
+再看super的定义::
+
+  protected override tryGetPendingWidget(uri: URI, options?: EditorOpenerOptions): MaybePromise<EditorWidget> | undefined {
+      const editorPromise = super.tryGetPendingWidget(uri, options);
+      if (editorPromise) {
+          // Reveal selection before attachment to manage nav stack. (https://github.com/eclipse-theia/theia/issues/8955)
+          if (!(editorPromise instanceof Widget)) {
+              editorPromise.then(editor => this.revealSelection(editor, options, uri));
+          } else {
+              this.revealSelection(editorPromise, options);
+          }
+      }
+      return editorPromise;
+  }
+
+editorPromise 那一步其实就可以算页面已经在后台创建好了, 只是还没显示出来而已.
+
+接着重点就是调用 **revealSelection** 来将光标移动道指定的位置, 关键调用代码::
+
+  if (inputSelection) {
+      const editor = widget.editor;
+      const selection = this.getSelection(widget, inputSelection);
+      if (Position.is(selection)) {
+          editor.cursor = selection;
+          editor.revealPosition(selection);
+      } else if (Range.is(selection)) {
+          editor.cursor = selection.end;
+          editor.selection = selection;
+          editor.revealRange(selection);
+      }
+  }
+
+代码跳转触发的是 `revealRange`,
+这期间简单的调用打断点向下看就是了, 大致顺序:
+
+- `node_modules/@theia/monaco/src/browser/monaco-editor.ts` 下 `MonacoEditor().revealRange`,
+  接下来以调用 `revealRangeInCenter` 为例
+- `node_modules/@theia/monaco-editor-core/src/vs/editor/browser/widget/codeEditorWidget.ts`, `CodeEditorWidget().revealRangeInCenter`
+  在这个类中最终触发::
+
+    this._modelData.viewModel.revealRange('api', revealHorizontal, viewRange, verticalType, scrollType);
+
+  它的 `_withViewEventsCollector` 会将事件放到一个集合然后统一触发.
+  稍微复杂的就是这个位置, 写的有点绕.
+
+  集合统一处理的位置: `node_modules/@theia/monaco-editor-core/src/vs/editor/common/viewEventHandler.ts` 下的 `ViewEventHandler().handleEvents`,
+  关键代码::
+
+    case viewEvents.ViewEventType.ViewRevealRangeRequest:
+      if (this.onRevealRangeRequest(e)) {
+        shouldRender = true;
+      }
+      break;
+
+  这里 `onRevealRangeRequest` 触发的相关位置为
+  `node_modules/@theia/monaco-editor-core/src/vs/editor/browser/viewParts/lines/viewLines.ts` 的
+  `ViewLines().onRevealRangeRequest`::
+
+    const scrollTopDelta = Math.abs(this._context.viewLayout.getCurrentScrollTop() - newScrollPosition.scrollTop);
+    const scrollType = (scrollTopDelta <= this._lineHeight ? ScrollType.Immediate : e.scrollType);
+    this._context.viewModel.viewLayout.setScrollPosition(newScrollPosition, scrollType);
+
+
+
+

@@ -1,0 +1,20 @@
+=============================
+服务
+=============================
+
+Driver Service Class
+
+服务类用于管理驱动程序的启动和停止. They can not be used with a Remote WebDriver session(不能用于远程会话).
+
+默认会话实例::
+
+  service = webdriver.ChromeService()
+  driver = webdriver.Chrome(service=service)
+
+设置使用本地驱动::
+
+  service = webdriver.ChromeService(executable_path=chromedriver_bin)
+
+指定端口启动::
+
+  service = webdriver.ChromeService(port=1234)

@@ -1,0 +1,103 @@
+===========================
+协程
+===========================
+
+常用的异步库见: :doc:`/docs/后端/python/python标准库/asyncio`
+
+基于python特性, 于是有了单线程内多任务, 即协程, 是一种轻量级线程 (另一方面, 避免了线程在内核的切换, 而是用户态类似函数的快捷切换)
+
+这里主要适用于 python3.5 以上的版本(asyncio是3.5以后才引入的)
+
+定义一个异步函数::
+
+  async def say_hello():
+    print(aa := 'hello')
+    return aa
+
+同步函数中使用 run_until_complete 同步获取结果::
+
+  import asyncio
+  def test_a():
+    loop = asyncio.get_event_loop()
+    # 使用 run_until_complete 同步获取结果
+    res = loop.run_until_complete(say_hello())
+    print(f'end {res}',)
+
+在协程函数中使用await也可以获取结果，但是最终还是需要一个look来进行获取结果::
+
+  async def some_a_a():
+    res = await say_hello()
+
+    # 多个协程并发执行
+    # 方法1：使用 asyncio.gather
+    res1, res2 = await asyncio.gather(say_hello(), say_hello())
+
+    # 方法2：使用 asyncio.ensure_future 创建 task，或者使用 asyncio.create_task(), 暂时还不确定区别，不过前者在某些情况下会触发后者，
+    #   还可以调用future对象
+    # 此时进入 pending 状态， 可以通过 task.done() -> done 获取是否执行
+    task1, task2 = asyncio.ensure_future(say_hello()), asyncio.ensure_future(say_hello())
+
+    # await task1, task2
+    # res11, res22 = task1.result(), task2.result()
+
+    res11, res22 = await task1, await task2
+
+    print(res, res1, res2, res11, 'res11', res22)
+
+    return 1
+
+同步函数中直接通过 run调用获取结果::
+
+  def test_run():
+    # 直接通过 run调用获取结果， 将 some_a_a 转换为一个task
+    aa = asyncio.run(some_a_a())
+    print(aa)
+
+asyncio.wait 和 asyncio.gather
+======================================================
+
+详情可参考: :doc:`/docs/后端/python/python标准库/asyncio` ::
+
+  await asyncio.wait(task_list)
+  await asyncio.gather(*task_list)
+
+相同
+  从功能上看，asyncio.wait 和 asyncio.gather 实现的效果是相同的，都是把所有 Task 任务结果收集起来。
+不同
+  asyncio.wait 会返回两个值：
+  done 和 pending，
+  done 为已完成的协程 Task，pending 为超时未完成的协程 Task，
+  需通过 future.result 调用 Task 的 result；
+
+  而asyncio.gather 返回的是所有已完成 Task 的 result，
+  不需要再进行调用或其他操作，就可以得到全部结果。
+
+asyncio 中await和create_task的区别
+======================================================
+
+参考: `<https://blog.csdn.net/luchengtao11/article/details/124527729>`_
+
+await的理解
+  立即开始执行协程对象，并允许它被挂起。--如果没有可被挂起的逻辑，则不会让出执行权
+
+与 task的不同之处
+  - create_task，是在loop里执行的，所以在loop调度该task之前，其他的task还是有机会运行的。
+  - await使用的当前的context，而create_task会拷贝一份context
+
+总结就是：create_task的消耗会更高一些。await执行过程中如果没有可以被挂起的地方，则其他任务就永远不会被执行。
+
+简而言之, 在任务调度执行中, 由于无法在同步任务中再使用时间循环获取结果, 所以只有定义为异步方法使用await,
+或者在同步任务中创建一个任务, 并给他足够时间以得到执行, 创建任务会放到事件循环中, 等待异步自动调度执行.
+
+多线程的事件循环
+===========================
+
+一般而言, 只能是主线程拥有自己的事件循环, 子线程无法获取主线程的loop, 若子线程需要, 可以在新建一个loop给子线程使用,
+
+尤其是gui编程的时候, gui线程只能在主线程跑, 那么当存在全局的非gui能处理的实时监听时, 那么就只能在子线程跑了(或者新建一个进程, 至少目前我是没有其他办法)
+
+
+
+
+
+

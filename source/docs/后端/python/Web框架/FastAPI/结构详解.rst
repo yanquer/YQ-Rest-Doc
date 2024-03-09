@@ -1,0 +1,13 @@
+===============================
+结构详解
+===============================
+
+源于: `FastAPI <https://fastapi.tiangolo.com/zh/>`_
+
+FastAPI 站在以下巨人的肩膀之上：
+
+- `Starlette <https://www.starlette.io/>`_ 负责 web 部分。
+- `Pydantic <https://pydantic-docs.helpmanual.io/>`_ 负责数据部分。
+
+
+

@@ -1,0 +1,105 @@
+===============================
+元素的出场顺序(z-index)
+===============================
+
+原文: https://zhuanlan.zhihu.com/p/340371083
+
+原文是讲解 `z-index` 作用的.
+
+当没有 `z-index` 时
+===============================
+
+没有使用 `z-index` 的时候，元素的层叠关系由2个因素决定
+
+- 元素的 `position` 是否是 `static`:
+
+  - `static` 或 `non-positioned`: 没有设置 `position`, 这个是默认值
+  - `positioned`: `position` 值是 `relative`, `absolute`, `fixed`, 或 `sticky` 则称 `positioned`
+
+  `positioned` 元素享受特权，会覆盖 `non-positioned `元素;
+  而 `non-positioned` 元素中，有 `float` 样式的元素覆盖 `没有float` 的
+- 元素的“出场”顺序 —— 即在 `html` 中的顺序，同类型元素遵循 **后来者居上** 的原则
+
+`non-positioned` / `static` / `无float` 元素一般在最下面
+
+当存在 `z-index`
+===============================
+
+z-index 存在的一个背景是 Stacking Context ，
+中文常译作层叠上下文 （其实数据结构中的栈的单词也是 stack，所以层叠上下文中已经蕴含了后来者居上的意思）
+
+构建层叠上下文仿佛 盖楼:
+
+- 首先， <html> 元素是地平线或地基 —— 所有楼都是从地基开始盖的
+- 接下来，每产生一个层叠上下文，相当于盖一座楼， z-index 的值相当于楼的高度
+
+以下几种元素可以产生层叠上下文，且z-index的值才有效:
+
+- 元素的 `position` 值为 `absolute` 或 `relative，` 且 `z-index` 值不为 `auto` （默认值）.
+- 元素的 `position` 值为 `fixed` 或 `sticky`
+- 元素是 `flexbox` 容器的子元素， 且 `z-index` 值不为 `auto` （默认值）
+- 元素是 `grid` 容器的子元素, 且 `z-index` 值不为 `auto` （默认值）
+- 元素有 `opacity` 值且值小于 1.
+- 元素有以下任意一项的值，且值不为 `none`
+
+  - transform
+  - filter
+  - perspective
+  - clip-path
+  - mask / mask-image / mask-border
+- 元素有 `isolation` 值且值为 `isolate`.
+- 元素有 `mix-blend-mode` 值且值不为 `normal`.
+- 元素有 `-webkit-overflow-scrolling` 值且值为 `touch`.
+- 还有少数几种冷门的情况
+
+**层叠上下文是可以嵌套的** —— 这是最容易让人误解的一块.
+  嵌套，顾名思义就是在一个 层叠上下文 中能创建 另一个层叠上下文。
+
+  假如在地基上盖一座50米高的楼 (即 `z-index: 50` ),
+  有可能在楼里又盖一栋 100米高的楼中楼吗？当然不可能！
+  但是你可以在这座楼里建一座 100 级阶梯高的大堂。
+
+  换句话说，在嵌套的层叠上下文中，
+  子层叠上下文被限制在了父层叠上下文中，它们的 `z-index` “单位”已经不一样了（z-index 没有单位，这边只是用于理解），
+  **无论 子层叠上下文的 z-index 值有多大都无法突破父层叠上下文的高度**
+
+层叠上下文小结:
+
+- `<html>` 元素的第一级层叠上下文
+- 特定样式的元素可以产生新的层叠上下文，且 `z-index` 的值在这些元素中才有效
+- 子层叠上下文的“高度”被限制在了父层叠上下文中
+- 在同级层叠上下文中，没有（有效） `z-index` 的元素依然遵循上一小节的规律；
+  `z-index` 值相同的元素遵循后来者居上原则
+
+.. note::
+
+  层叠上下文嵌套 与 元素嵌套 不是一一对应的关系，
+  **一个元素所处的父层叠上下文是由内向外找到的第一个能产生层叠上下文的元素所产生的层叠上下文**
+
+  例::
+
+    <div id="div1" style="position: relative; z-index: 1">
+        <div id="div2" style="position: relative; z-index: 1">
+            所处的父层叠上下文是 div1 产生的层叠上下文
+        </div>
+
+        <div id="div3">
+            <div id="div4" style="position: relative; z-index: 2">
+                所处的父层叠上下文也是 div1 产生的层叠上下文
+            </div>
+        </div>
+    </div>
+
+其他
+===============================
+
+记录一个现象,
+
+css生效不完全是按照定义的顺序来的,
+尤其当样式定义与多个文件, 浏览器可能由于网络原因、加载机制等, 效果与导入顺序不一致;
+
+且实际在开发theia项目中, 发现, 限制条件更明确的, 可能优先级更高,
+比如 ``.cl1:hover`` 的优先级低于 ``.cl1:hover:not(:disabled):not(is-disabled)``
+
+暂时还没找到原因
+

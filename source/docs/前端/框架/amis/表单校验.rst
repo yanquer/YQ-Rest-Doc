@@ -1,0 +1,118 @@
+==========================
+表单校验
+==========================
+
+用法
+==========================
+
+**validations** 配置校验规则, 尽量使用JSON格式而不推荐字符串, 如::
+
+  {
+    "type": "input-text",
+    "label": "文本",
+    "name": "text",
+    "validations": {
+      "isNumeric": true
+    },
+    "description": "请输入数字类型文本"
+  }
+
+支持的校验
+==========================
+
+参考: `https://aisuda.bce.baidu.com/amis/zh-CN/components/form/formitem#自定义校验信息`
+
+isNumeric
+  是否是数字
+
+完整::
+
+  {
+    isEmail: 'validate.isEmail',
+    isRequired: 'validate.isRequired',
+    isUrl: 'validate.isUrl',
+    isInt: 'validate.isInt',
+    isAlpha: 'validate.isAlpha',
+    isNumeric: 'validate.isNumeric',
+    isAlphanumeric: 'validate.isAlphanumeric',
+    isFloat: 'validate.isFloat',
+    isWords: 'validate.isWords',
+    isUrlPath: 'validate.isUrlPath',
+    matchRegexp: 'validate.matchRegexp',
+    minLength: 'validate.minLength',
+    maxLength: 'validate.maxLength',
+    maximum: 'validate.maximum',
+    lt: 'validate.lt',
+    minimum: 'validate.minimum',
+    gt: 'validate.gt',
+    isJson: 'validate.isJson',
+    isLength: 'validate.isLength',
+    notEmptyString: 'validate.notEmptyString',
+    equalsField: 'validate.equalsField',
+    equals: 'validate.equals',
+    isPhoneNumber: 'validate.isPhoneNumber',
+    isTelNumber: 'validate.isTelNumber',
+    isZipcode: 'validate.isZipcode',
+    isId: 'validate.isId',
+    /* 日期时间相关校验规则 2.2.0 及以上版本生效 */
+    isDateTimeSame: 'validate.isDateTimeSame',
+    isDateTimeBefore: 'validate.isDateTimeBefore',
+    isDateTimeAfter: 'validate.isDateTimeAfter',
+    isDateTimeSameOrBefore: 'validate.isDateTimeSameOrBefore',
+    isDateTimeSameOrAfter: 'validate.isDateTimeSameOrAfter',
+    isDateTimeBetween: 'validate.isDateTimeBetween',
+    isTimeSame: 'validate.isTimeSame',
+    isTimeBefore: 'validate.isTimeBefore',
+    isTimeAfter: 'validate.isTimeAfter',
+    isTimeSameOrBefore: 'validate.isTimeSameOrBefore',
+    isTimeSameOrAfter: 'validate.isTimeSameOrAfter',
+    isTimeBetween: 'validate.isTimeBetween',
+    isVariableName: 'validate.isVariableName'
+  }
+
+JS函数自定义规则
+==========================
+
+参考: `https://aisuda.bce.baidu.com/amis/zh-CN/docs/extend/addon#扩展表单验证`
+
+官网用例::
+
+  let amisLib = amisRequire('amis');
+  amisLib.addRule(
+    // 校验名
+    'isZXS',
+    // 校验函数，values 是表单里所有表单项的值，可用于做联合校验；value 是当前表单项的值
+    (values, value) => {
+      if (value === '新加坡') {
+        // 校验不通过，提示：该地区不在国内
+        return {
+          error: true,
+          msg: '该地区不在国内'
+        };
+      }
+
+      if (
+        value === '北京' ||
+        value === '上海' ||
+        value === '天津' ||
+        value === '重庆'
+      ) {
+        // return true 表示校验通过
+        return true;
+      }
+
+      // 校验不通过，提示：输入的不是直辖市
+      return {
+        error: true,
+        msg: '输入的不是直辖市'
+      };
+    }
+  );
+
+其他相关配置
+==========================
+
+表单项值发生变化即校验
+  ``"validateOnChange": true``
+
+

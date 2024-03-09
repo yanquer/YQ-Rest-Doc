@@ -1,0 +1,38 @@
+=======================
+问题总结
+=======================
+
+缓存模块的问题
+=======================
+
+使用的 LocMemCache 是不能作同步缓存的
+
+注意每个进程都有自己的私有缓存实例，这意味着不可能有跨进程缓存
+
+所以说, **LocMemCache是不能用来做同步缓存的! 请使用别的任意Cache!**
+
+
+可以参考以下链接使用其他的缓存
+
+:参考::
+  - `震惊！Django缓存中的数据频频丢失，究竟谁是幕后黑手 <https://cloud.tencent.com/developer/article/1005556>`_
+  - `使用其他的缓存 <https://segmentfault.com/a/1190000016095832>`_
+  - `Django项目如何配置Memcached和Redis缓存?哪个更好? <https://blog.csdn.net/weixin_42134789/article/details/115474919>`_
+  - `Redis和Memcache的区别分析 <https://www.1024sou.com/article/35125.html>`_
+
+时间格式转换
+=======================
+
+如::
+
+  # django 数据库查询 2021-07-30T02:46:00.Z 格式日期转换
+
+  # 末日数据库格式查询结果
+  a = datetime.datetime('2021-07-30T02:46:00.Z')
+
+  TIME_ZONE = 'Asia/Shanghai'
+  TZ_SHANGHAI = pytz.timezone(TIME_ZONE)
+
+  # 转换
+  a.astimezone(TZ_SHANGHAI).strftime('%Y-%m-%d %H:%M:%S')
+

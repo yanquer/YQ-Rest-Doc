@@ -1,0 +1,357 @@
+======================
+装饰器
+======================
+
+装饰器只会在函数定义时被调用一次。有时候你去掉装饰器的功能，那么你只需要简单的返回被装饰函数即可。
+
+函数装饰器
+======================
+
+普通装饰器::
+
+  # 异步放到线程池执行
+  def async_run_in_thread_pool(fn):
+    # 刷新 __name__
+      @functools.wraps(fn)
+      async def wrapper(*args, **kwargs):
+          def _exec_fn(params):
+              # 这样写是为了兼容， run_in_executor 的参数只有 *args
+              _arg = params[0]
+              _kwarg = params[1]
+              return fn(*_arg, **_kwarg)
+
+          loop = asyncio.get_running_loop()
+          executor = ThreadPoolExecutor()
+          return await loop.run_in_executor(executor, _exec_fn, (args, kwargs,))
+
+      return wrapper
+
+带参数的装饰器, 就是在装饰器外部再套一层带参装饰器::
+
+  def async_run_in_thread_pool_with_params(*args, **kwargs):
+      print(args, kwargs)
+      return async_run_in_thread_pool
+
+使用::
+
+  @async_run_in_thread_pool_with_params(33, a=1, b=2)
+  def add(a, b):
+      return a + b
+
+  # 输出会增加
+  # (33,) {'a': 1, 'b': 2}
+
+装饰器类
+======================
+
+自定义 __call__ 函数
+
+用类也可以实现一个装饰器。
+
+类能实现装饰器的功能， 是由于当我们调用一个对象时，实际上调用的是它的 `__call__` 方法::
+
+  class Demo:
+      def __call__(self):
+          print('我是 Demo')
+
+  demo = Demo()
+  demo()
+
+输出::
+
+  我是 Demo
+
+通过这个特性，我们便可以用类的方式来完成装饰器，功能与刚开始用函数实现的一致::
+
+  class Decorator:
+      def __init__(self, func):
+          self.func = func
+
+      def __call__(self, *args, **kwargs):
+          print('123')
+          return self.func(*args, **kwargs)
+
+  @Decorator
+  def say_hello():
+      print('同学你好')
+
+  say_hello()
+
+输出::
+
+  123
+  同学你好
+
+不带参数装饰器类
+======================
+
+注意, 使用的时候是, @装饰器类(), 也就是说使用的是对象的实例, 与被装饰的函数是一一绑定(只要没有单例)::
+
+  # 不带参数装饰器类
+  # 这里有一个问题， 无法使用 @functools.wraps 来刷新
+  class RunInThreadPool(object):
+      _thread_pool: ThreadPoolExecutor = None
+
+      @classmethod
+      def _create_thread_pool(cls):
+          if not cls._thread_pool:
+              cls._thread_pool = ThreadPoolExecutor()
+
+      def __init__(self, fun):
+          self._fun = fun
+          self._create_thread_pool()
+
+      def __call__(self, *args, **kwargs):
+          _future = self._thread_pool.submit(self._fun, *args, **kwargs)
+          # 会阻塞
+          return _future.result()
+
+带参数装饰器类
+======================
+
+无法使用 @functools.wraps 来刷新::
+
+  # 不带参数装饰器类
+  # 这里有一个问题， 无法使用 @functools.wraps 来刷新
+  class RunInThreadPool(object):
+      _thread_pool: ThreadPoolExecutor = None
+
+      @classmethod
+      def _create_thread_pool(cls):
+          if not cls._thread_pool:
+              cls._thread_pool = ThreadPoolExecutor()
+
+      def __init__(self, fun):
+          self._fun = fun
+          self._create_thread_pool()
+
+      def __call__(self, *args, **kwargs):
+          _future = self._thread_pool.submit(self._fun, *args, **kwargs)
+          # 会阻塞
+          return _future.result()
+
+一些官方装饰器
+======================
+
+wraps装饰器,
+一个函数不止有他的执行语句，还有着 `__name__`（函数名），`__doc__` （说明文档）等属性::
+
+  def decorator(func):
+      def wrapper(*args, **kwargs):
+          """doc of wrapper"""
+          print('123')
+          return func(*args, **kwargs)
+
+      return wrapper
+
+  @decorator
+  def say_hello():
+      """doc of say hello"""
+      print('同学你好')
+
+  print(say_hello.__name__)
+  print(say_hello.__doc__)
+
+输出::
+
+  wrapper
+  doc of wrapper
+
+由于装饰器返回了 `wrapper` 函数替换掉了之前的 `say_hello` 函数，导致函数名，帮助文档变成了 `wrapper` 函数的了。
+
+解决这一问题的办法是通过 :doc:`/docs/后端/python/python标准库/functools` 模块下的 `wraps` 装饰器::
+
+  from functools import wraps
+
+  def decorator(func):
+      @wraps(func)
+      def wrapper(*args, **kwargs):
+          """doc of wrapper"""
+          print('123')
+          return func(*args, **kwargs)
+
+      return wrapper
+
+  @decorator
+  def say_hello():
+      """doc of say hello"""
+      print('同学你好')
+
+  print(say_hello.__name__)
+  print(say_hello.__doc__)
+
+输出::
+
+  say_hello
+  doc of say hello
+
+内置装饰器
+======================
+
+有三种我们经常会用到的装饰器， `property`、 `staticmethod`、 `classmethod`，
+他们有个共同点，都是作用于类方法之上。
+
+property 装饰器
+  用于类中的函数，使得我们可以像访问属性一样来获取一个函数的返回值::
+
+    class XiaoMing:
+        first_name = '明'
+        last_name = '小'
+
+        @property
+        def full_name(self):
+            return self.last_name + self.first_name
+
+    xiaoming = XiaoMing()
+    print(xiaoming.full_name)
+
+  输出::
+
+    小明
+
+  例子中我们像获取属性一样获取 `full_name` 方法的返回值，这就是用 `property` 装饰器的意义，
+  既能像属性一样获取值，又可以在获取值的时候做一些操作。
+staticmethod 装饰器
+  用于类中的方法，这表示这个方法将会是一个静态方法，
+  意味着该方法可以直接被调用无需实例化，但同样意味着它没有 `self` 参数，也无法访问实例化后的对象::
+
+    class XiaoMing:
+        @staticmethod
+        def say_hello():
+            print('同学你好')
+
+    XiaoMing.say_hello()
+
+    # 实例化调用也是同样的效果
+    # 有点多此一举
+    xiaoming = XiaoMing()
+    xiaoming.say_hello()
+
+  输出::
+
+    同学你好
+    同学你好
+
+classmethod 装饰器
+  用于类中的方法，这表示这个方法将会是一个类方法，意味着该方法可以直接被调用无需实例化，
+  但同样意味着它没有 `self` 参数，也无法访问实例化后的对象。
+  相对于 `staticmethod` 的区别在于它会接收一个指向类本身的 `cls` 参数::
+
+
+    class XiaoMing:
+        name = '小明'
+
+        @classmethod
+        def say_hello(cls):
+            print('同学你好， 我是' + cls.name)
+            print(cls)
+
+    XiaoMing.say_hello()
+
+  输出::
+
+    同学你好， 我是小明
+    <class '__main__.XiaoMing'>
+
+多个装饰器的调用顺序
+======================
+
+例::
+
+  #  coding: utf-8
+  #
+  #  Copyright (C) 2022-2023, Inc. All Rights Reserved
+  #
+  #  @Time    : 2023/4/20 下午1:13
+  #  @Author  : yan que
+  #  @Email   : yanquer@qq.com
+  #  @File    : with_warp.py
+  #  @Project : mytest
+  import logging
+
+  _logger = logging.getLogger(__name__)
+  _console_handler = logging.StreamHandler()
+  _logger.addHandler(_console_handler)
+  _logger.setLevel(logging.INFO)
+
+  def warp1(fn):
+      def _warp(*args, **kwargs):
+          _logger.info(f'warp1 {fn} start')
+          ret = fn(*args, **kwargs)
+          _logger.info('warp1 end')
+          return ret
+      return _warp
+
+  def warp2(fn):
+      def _warp(*args, **kwargs):
+          _logger.info(f'warp2 {fn} start')
+          ret = fn(*args, **kwargs)
+          _logger.info('warp2 end')
+          return ret
+      return _warp
+
+  @warp1
+  @warp2
+  def main():
+      _logger.info('main start')
+      print('main')
+      _logger.info('main end')
+
+  if __name__ == '__main__':
+      main()
+
+输出::
+
+  warp1 <function warp2.<locals>._warp at 0x10755a8b0> start
+  warp2 <function main at 0x10755a820> start
+  main start
+  main end
+  warp2 end
+  warp1 end
+  main
+
+main的顺序不用管, 因为日志与直接打印不是一个处理流.
+
+可以看出, 装饰器是按照使用顺序调用的, 前面的装饰器实际装饰的并非直接是函数, 而是后一个装饰器.
+某些情况下需要注意调用顺序.
+
+.. _diff_warp_with_args:
+
+装饰器调用说明
+======================
+
+此处主要说明是否带参数/括号时的不同
+
+不带括号时的调用::
+
+  # Example use
+  @logged
+  def add(x, y):
+    return x + y
+
+类似等价于::
+
+  def add(x, y):
+    return x + y
+
+  add = logged(add)
+
+这时候，被装饰函数会被当做第一个参数直接传递给 logged 装饰器。因此，
+logged() 中的第一个参数就是被包装函数本身。所有其他参数都必须有默认值。
+
+带括号/参数时的调用::
+
+  @logged(level=logging.CRITICAL, name='example')
+  def spam():
+    print('Spam!')
+
+等价于::
+
+  def spam():
+    print('Spam!')
+
+  spam = logged(level=logging.CRITICAL, name='example')(spam)
+
+初始调用 logged() 函数时，被包装函数并没有传递进来。因此在装饰器内，它必
+须是可选的。这个反过来会迫使其他参数必须使用关键字来指定。并且，但这些参数被
+传递进来后，装饰器要返回一个接受一个函数参数并包装它的函数

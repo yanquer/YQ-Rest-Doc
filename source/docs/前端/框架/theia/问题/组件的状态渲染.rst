@@ -1,0 +1,35 @@
+=================================
+组件的状态渲染
+=================================
+
+Theia 虽然有使用 `react`, 不过却是自己另外封装的控件,
+比较典型的就是
+“@theia/core/src/browser/widgets/react-widgets” 定义的 `ReactWidget`.
+
+与普通的 `react` 类组件不同,
+
+.. 原生的使用的是 `state` 来监听组件状态的变化
+.. 而 `ReactWidget` 使用的是 `status` 来监听状态的变化,
+.. 且必要时需要调用 ``this.update()`` 手动触发视图更新.
+
+theia不存在自动刷新控件状态这种概念,
+如果其中变量有更新, 需要手动调用 ``this,update()`` 来触发UI渲染的更新;
+
+但是站在编码角度考虑, 如果每一个变量的更新都调用一次  ``this,update()`` 重渲染,
+是一个没必要的开销. 一般建议是将与UI相关的状态统一放到一个位置, 统一更新,
+如::
+
+  wStates = {
+    state1: '',
+    state2: '',
+    ...
+  }
+
+  updateDataOfUi(newData) {
+    this.wStates = newData
+    this.update()
+  }
+
+一般对于这种更新是将 `props` 传递给子组件手动触发子组件更新.
+
+

@@ -1,0 +1,610 @@
+=====================
+Python多进程
+=====================
+
+
+Python多进程方面涉及的模块主要包括:
+
+- :doc:`/docs/后端/python/python标准库/subprocess`
+- :doc:`/docs/后端/python/python标准库/mmap`
+
+.. - `mmap: 提供一种基于内存的进程间通信机制 <http://www.cnblogs.com/Security-Darren/p/4733387.html>`_
+
+- :doc:`/docs/后端/python/python标准库/multiprocessing` :
+  提供支持多处理器技术的多进程编程接口, 并且接口的设计最大程度地保持了和threading模块的一致, 便于理解和使用.
+
+进程间通信
+=====================
+
+信号, 管道(不安全,默认没加锁), 消息队列, 信号量, 共享内存, socket
+
+信号_
+  signal. 在多个进程中通信的机制中, 只有singal是异步执行的
+管道_
+  半双工,默认无锁, 不安全, 双向通信(只能一端发, 一端收)
+  - 匿名管道, 只能在具有亲缘关系进程间通信
+  - 命名管道, 允许无亲缘关系进程通信
+消息队列_
+  由消息组成的链表, 存放在内核中并由消息队列标识符标识. 消息队列克服了信号传递信息少、管道只能承载无格式字节流以及缓冲区大小受限等缺点
+信号量_
+  是一个计数器, 可以用来控制多个进程对共享资源的访问.
+  它常作为一种锁机制, 防止某进程正在访问共享资源时, 其他进程也访问该资源.
+  因此, 主要作为进程间以及同一进程内不同线程之间的同步手段.
+共享内存_
+  共享内存就是映射一段能被其他进程所访问的内存, 这段共享内存由一个进程创建, 但多个进程都可以访问.
+  共享内存是最快的 IPC 方式, 它是针对其他进程间通信方式运行效率低而专门设计的.
+  它往往与其他通信机制, 如信号量, 配合使用, 来实现进程间的同步和通信.
+套接字_
+  也是一种进程间通信机制, 与其他通信机制不同的是, 它可用于不同机器之间的进程通信.
+事件_
+  python进程的事件用于主进程控制其他进程的执行
+
+信号
+---------------------
+
+signal
+
+信号通过注册的方式‘挂’在一个进程中, 并且不会阻塞该进程的运行。
+一个进程一旦接收到其他进程（可能是应用中的其他进程, 也可能使操作系统中的进程）发送的信号就会打断原来的程序执行流程来处理这个信号。
+
+.. note::
+
+  异步: 程序在执行中利用内核功能帮助完成必要的辅助操作,不影响应用层持续执行
+
+  注意: 这里的同步和异步机制是相对多进程而言的。
+
+**在多个进程中通信的机制中, 只有singal是异步执行的**
+
+和kill相关的几个函数:
+
+.. function:: os.kill(pid, single)
+
+  发送信号给某个进程
+
+  pid:
+    进程号
+  single:
+    信号(需要通过signal模块获取)
+
+- signal.alarm(sec): 见 :doc:`/docs/后端/python/python标准库/signal`
+- signal.pause(): 见 :doc:`/docs/后端/python/python标准库/signal`
+- signal.signal(sig,handler): 见 :doc:`/docs/后端/python/python标准库/signal`
+
+管道
+---------------------
+
+管道, 半双工,默认无锁, 不安全, 双向通信(一端发, 一端收)
+
+- 匿名管道, 只能在具有亲缘关系进程间通信
+- 命名管道, 允许无亲缘关系进程通信
+
+.. code::
+
+  from multiprocessing import Pipe
+
+消息队列
+---------------------
+
+消息队列, 基于管道实现, 有加锁, 数据安全
+
+消息队列是由消息组成的链表, 存放在内核中并由消息队列标识符标识.
+消息队列克服了信号传递信息少、管道只能承载无格式字节流以及缓冲区大小受限等缺点.
+
+- Queue
+- JoinableQueue : 有put端和get的技术机制.
+  每次get()数据发送task_done()  put端计数-1,
+  直到get()端取完了队列的所有数据,  put()端的join()就会接受到信号, 直到get()端已经接受完数据了
+
+共享内存
+---------------------
+
+共享内存就是映射一段能被其他进程所访问的内存.
+
+这段共享内存由一个进程创建, 但多个进程都可以访问.
+
+共享内存是最快的 IPC 方式, 它是针对其他进程间通信方式运行效率低而专门设计的.
+它往往与其他通信机制, 如信号量, 配合使用, 来实现进程间的同步和通信.
+
+.. code::
+
+  from multiprocessing import Manager
+
+例::
+
+  # 共享内存, 举例, https://www.jb51.net/article/232067.htm
+  from multiprocessing import Value,Array
+
+  obj = Value(ctype,data)
+  # 功能: 开辟共享内存
+  # 参数: ctype 表示共享内存空间类型 'i' 'f' 'c'
+  #     data 共享内存空间初始数据
+  # 返回值: 共享内存对象
+
+  obj.value # 对象属性的修改查看即对共享内存读写
+
+  obj = Array(ctype,data)
+  # 功能: 开辟共享内存
+  # 参数: ctype 表示共享内存空间类型 'i' 'f' 'c'
+  #     data 整数表示开辟空间的大小,其数据表示开辟空间
+  # 返回值: 共享内存对象
+
+  # Array共享内存读写:通过遍历obj可以得到每个值,直接通过索引可以修改
+
+  # * 可以使用obj.value 直接打印共享内存中的字节串
+
+信号量
+---------------------
+
+信号量(信号灯集)
+
+给定一个数量对多个进程可见,多个进程都可以操作该数增减,并根据数量值决定自己的行
+
+信号量是一个计数器, 可以用来控制多个进程对共享资源的访问.
+它常作为一种锁机制, 防止某进程正在访问共享资源时, 其他进程也访问该资源.
+
+因此, 主要作为进程间以及同一进程内不同线程之间的同步手段.
+
+.. code::
+
+  from multiprocessing import Semaphore
+
+  sem = Semaphore(num)
+  # 功能: 创建信号量对象
+  # 参数: 信号量的初始值
+  # 返回值: 信号量对象
+
+  sem.acquire() 		# 信号量减1 当信号量为0时阻塞
+  sem.release() 		# 信号量加1
+  sem.get_value() 	# 获取信号量数量
+
+套接字
+---------------------
+
+套接字（socket）通信
+
+套接口也是一种进程间通信机制, 与其他通信机制不同的是, 它可用于不同机器之间的进程通信.
+
+.. code::
+
+  multiprocessing.Manager 共享全局变量 (共享内存)
+
+注意, 如果要共享变量, 只能将共享的变量定义在外部使用, 然后调用进程的时候传入, 最终获取还是在使用外部命名获取::
+
+  # coding: utf-8
+
+  """
+  python 进程间通信测试,
+
+  主进程跟, 异步进程池
+  """
+  import asyncio
+  import time
+  from concurrent.futures import ProcessPoolExecutor
+  from multiprocessing import Manager, Pipe
+  from typing import Optional
+
+
+  class SonPool(object):
+
+      _total: Optional[int] = None
+      _now: Optional[int] = None
+
+      _total_manager = None
+      _now_manager = None
+      _list_manager = [None, None]
+
+      @classmethod
+      def get_now_and_total(cls):
+          return [cls._now, cls._total]
+
+      @classmethod
+      def get_now_and_total_manager_val(cls):
+          print('_manager', cls._now_manager, cls._total_manager)
+          if cls._now_manager and type(cls._now_manager) != int:
+              print('_manager', cls._now_manager.value, cls._total_manager.value)
+              return [cls._now_manager.value, cls._total_manager.value]
+
+          return [cls._now_manager, cls._total_manager]
+
+      @classmethod
+      def get_list_manager_val(cls):
+          print('inner _list_manager', [x for x in cls._list_manager])
+          return cls._list_manager
+
+      @classmethod
+      def _reset(cls):
+          cls._total = None
+          cls._now = None
+          cls._total_manager = Manager().Value(int, 1)
+          cls._now_manager = Manager().Value(int, 1)
+          cls._list_manager = Manager().list([None, None])
+
+      @staticmethod
+      async def _async_long_time_wait():
+          await asyncio.sleep(3)
+          print('sleep 3 s')
+
+      @staticmethod
+      def _long_time_wait(*args):
+          time.sleep(5)
+          print('sleep 5', *args)
+
+      @classmethod
+      def _set_total(cls):
+          cls._long_time_wait('total')
+          cls._total = 100
+          if cls._total_manager:
+              cls._total_manager.value = 101
+          else:
+              cls._total_manager = 101
+          cls._list_manager.append(102)
+
+      @classmethod
+      def _set_now(cls):
+          cls._long_time_wait('now')
+          cls._now = 10
+          if cls._now_manager:
+              cls._now_manager.value = 11
+          else:
+              cls._now_manager = 11
+          cls._list_manager.append(12)
+
+      @classmethod
+      def run(cls, *args, **kwargs):
+          if args:
+              # cls._list_manager = arg_dict.get('list_manager')
+              cls._list_manager = args[0]
+              cls._total_manager = args[1]
+              cls._now_manager = args[2]
+          cls._set_now()
+          cls._set_total()
+          print('inner SonPool val',
+                '\ninner now, total: ', SonPool.get_now_and_total(),
+                '\ninner now, total manager: ', SonPool.get_now_and_total_manager_val(),
+                '\ninner list manager: ', SonPool.get_list_manager_val(),
+                )
+
+
+  async def main_process():
+      loop = asyncio.get_running_loop()
+      pool = ProcessPoolExecutor()
+
+      # 类内定义变量不支持进程之间共享, 错误用法
+      SonPool._total_manager = Manager().Value(int, None)
+      SonPool._now_manager = Manager().Value(int, None)
+      SonPool._list_manager = Manager().list([None, None])
+
+      # 用变量,  外部定义,  这样传入才可以正确通信
+      list_manager = Manager().list([None, None])
+      total_manager = Manager().Value(int, None)
+      now_manager = Manager().Value(int, None)
+
+    # 这样外部封装也行,  不过传入的时候还是要传入 LocalSonPool.total
+      # class LocalSonPool(object):
+      #     total = Manager().Value(int, None)
+      #     now = Manager().Value(int, None)
+      #     list_m = Manager().list([None, None])
+
+      # 用管道
+      # 还没写,
+      fd1, fd2 = Pipe()
+
+      async def _check_task1(m1, m2):
+          while True:
+              print('check_task1', m1.value, m2.value)
+              await asyncio.sleep(1)
+
+      # async def _check_task2():
+      #     while True:
+      #         print('check_task2', now_manager.value, total_manager.value)
+      #         await asyncio.sleep(1)
+
+      loop.create_task(_check_task1(now_manager, total_manager))
+    # 这样也可以
+      # loop.create_task(_check_task2())
+
+      # await loop.run_in_executor(pool, SonPool.run, )
+      await loop.run_in_executor(pool, SonPool.run,
+                                list_manager,
+                                total_manager,
+                                now_manager,)
+      print('main val',
+            # SonPool main跟进程池用的是两个不同空间的,  所以不能这样用
+            '\nmain now, total: ', SonPool.get_now_and_total(),
+            '\nmain now, total manager: ', SonPool.get_now_and_total_manager_val(),
+            '\nmain list manager: ', SonPool.get_list_manager_val(),
+
+            # 只有下面的这样,  定义在main,  使用main的调用才可以获取到值
+            '\nouter list manager', [x for x in list_manager],
+            '\nouter now manager', now_manager.value,
+            '\nouter total manager', total_manager.value,
+            )
+
+
+  def main():
+      loop = asyncio.get_event_loop()
+      loop.create_task(main_process())
+      loop.run_forever()
+
+
+  if __name__ == '__main__':
+      main()
+
+事件
+---------------------
+
+python进程的事件用于主进程控制其他进程的执行, 事件主要提供了三个方法 set、wait、clear.
+
+事件处理的机制:
+
+想象全局定义了一个“Flag”,
+如果“Flag”值为 False, 那么当程序执行 event.wait 方法时就会阻塞,
+如果“Flag”值为True, 那么event.wait 方法时便不再阻塞.
+
+其中, clear方法: 将“Flag”设置为False, set方法: 将“Flag”设置为True::
+
+  # 来源: https://zhuanlan.zhihu.com/p/446374478
+  import multiprocessing
+  import time
+
+  from multiprocessing import Process, Queue, set_start_method
+
+  event = multiprocessing.Event()
+
+  def xiao_fan(event):
+    print('小贩: 生产...')
+    print('小贩: 售卖...')
+    # time.sleep(1)
+    print('小贩: 等待就餐')
+    event.set()
+    event.clear()
+    event.wait()
+    print('小贩: 谢谢光临')
+    event.set()
+    event.clear()
+
+
+  def gu_ke(event):
+    print('顾客: 准备买早餐')
+    event.set()
+    event.clear()
+    event.wait()
+    print('顾客: 买到早餐')
+    print('顾客: 享受美食')
+    # time.sleep(2)
+    print('顾客: 付款, 真好吃...')
+    event.set()
+    event.clear()
+
+
+  if __name__ == '__main__':
+    set_start_method('fork', True)
+
+    # 创建进程
+    xf = multiprocessing.Process(target=xiao_fan, args=(event,))
+    gk = multiprocessing.Process(target=gu_ke, args=(event, ))
+    # 启动进程
+
+    gk.start()
+    xf.start()
+
+    # time.sleep(2)
+
+互斥锁-进程锁
+---------------------
+
+可使用 :doc:`/docs/后端/python/python标准库/multiprocessing` 的
+Lock() 函数
+
+缓冲I/O
+=====================
+
+分为：无缓冲，行缓冲，全缓冲
+
+- 通过 read 和 write 系统调用直接读写文件，就是无缓冲模式，性能也最差。
+- 而通过标准 I/O 库读写文件，就是缓冲模式，标准 I/O 库提供缓冲的目的是尽可能减少 read 和 write 调用的次数，提高性能。
+
+行缓冲模式
+  当在输入输出中遇到换行符时，才进行实际 I/O 操作。
+全缓冲模式
+  当填满缓冲区时，才进行实际 I/O 操作。
+
+- 管道和普通文件默认是全缓冲的;
+- 标准输入和标准输出默认是行缓冲的;
+- 标准错误默认是无缓冲的。
+
+获取子进程的返回值
+=====================
+
+队列::
+
+  multiprocessing.Queue()
+
+Pool.map()::
+
+  from multiprocessing import Pool
+  import time
+
+  def func(i):
+      return  i*i
+
+  if __name__ == '__main__':
+      p = Pool(5)
+      ret = p.map(func,range(10))
+      print(ret)
+
+pool.apply_async::
+
+  from multiprocessing import Pool
+
+  def func(): return 1
+
+  pool = multiprocessing.Pool(processes=1)
+  p = pool.apply_async(func, (i,))
+
+  pool.close()    # 关闭进程池，表示不能再往进程池中添加进程，需要在join之前调用
+  pool.join()     # 等待进程池中的所有进程执行完毕
+
+  print(p.get())  # 使用get获取值
+
+multiprocessing.Manager::
+
+  from multiprocessing import Manager
+
+  Manager().list()
+
+一些报错
+=====================
+
+can't pickle _thread.lock objects
+------------------------------------------
+
+使用进程池报错, TypeError: can't pickle _thread.lock objects ::
+
+  from concurrent.futures.process import ProcessPoolExecutor
+
+进程池内部处理使用了pickle模块(用于python特有的类型和python的数据类型间进行转换)
+中的dump(obj, file, protocol=None,)方法对参数进行了封装处理.
+
+而pickle dump 方法不支持自定义的类.
+
+pickle用来序列化对象很方便, 但是pickle对传入对象的要求是不能是内部类, 也不能是lambda函数.
+
+**解决**
+
+方法一: 使用dill包来代替, 使用方法和pickle一样::
+
+  pip install dill
+
+使用::
+
+  import dill
+
+
+  class Obj:
+    def __init__(self, info):
+      self.info = info
+
+
+  obj = Obj("this is a local object")
+
+  pk = dill.dumps(obj)
+  new_obj = dill.loads(pk)
+
+dill扩展了python的pickle模块, 用于对大多数内置python类型进行序列化和反序列化.
+序列化是将对象转换为字节流的过程, 而相反的过程是将字节流转换回python对象层次结构.
+
+所以如果遇到了pickle模块无法序列化的对象, 不妨试试dill.
+
+
+方法二::
+
+  from pathos.multiprocessing import ProcessingPool
+
+使用pathos的进程池 `https://github.com/uqfoundation/pathos`
+
+
+方法三: 将定义(或者说定义的闭包)放在外部
+
+
+一些坑
+=====================
+
+系统: MacOS 12. Python3.9
+
+
+多进程使用 multiprocessing.Lock , 如果定义在全局变量然后使用是不可行的.
+
+threading模块貌似没有这个问题, 应该是全局解释器锁的原因.
+
+全局定义示例代码::
+
+  # coding: utf-8
+  import time
+  from multiprocessing import Lock, Process
+
+  lock = Lock()
+
+  def run1():
+      lock.acquire()
+      print('run1 get lock')
+      time.sleep(3)
+
+  def run2():
+      lock.acquire()
+      print('run2 get lock')
+      time.sleep(3)
+      print('run2 release lock')
+      lock.release()
+
+  if __name__ == '__main__':
+
+      p1 = Process(target=run1,)
+      p2 = Process(target=run2,)
+
+      p1.start()
+      p1.join()
+      p2.start()
+
+      time.sleep(5)
+      print('main thread release lock')
+      lock.release()
+
+错误输出::
+
+  run1 get lock
+  run2 get lock
+  run2 release lock
+  Traceback (most recent call last):
+    File "/Users/yanque/project/pycharm/mytest/with_mul_process/global_lock2.py", line 30, in <module>
+      lock.release()
+  ValueError: semaphore or lock released too many times
+  main thread release lock
+
+可以看到连续 acquire 了两次锁... 而且之前的demo还没有报错信息
+
+这里估计是变量的多进程多核访问问题, 网上很多文章都用的全局变量定义, 误导人.
+
+不使用全局变量而是传值之后::
+
+  # coding: utf-8
+  import time
+  from multiprocessing import Lock, Process
+
+  def run1(lock: Lock):
+      lock.acquire()
+      print('run1 get lock')
+      time.sleep(3)
+
+  def run2(lock: Lock):
+      lock.acquire()
+      print('run2 get lock')
+      time.sleep(3)
+      print('run2 release lock')
+      lock.release()
+
+  if __name__ == '__main__':
+      _lock = Lock()
+      p1 = Process(target=run1, args=(_lock,), )
+      p2 = Process(target=run2, args=(_lock,), )
+
+      p1.start()
+      p1.join()
+      p2.start()
+
+      time.sleep(5)
+      print('main thread release lock')
+      _lock.release()
+
+输出正常了::
+
+  run1 get lock
+  main thread release lock
+  run2 get lock
+  run2 release lock
+
+当天下班想起这个问题, 突然反应过来
+**不同进程分配的是不同的资源, 所以使用全局变量的时候, 每个进程使用的都是不同的全局变量, 所以会出现异常的问题.**
+
+
+

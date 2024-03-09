@@ -1,0 +1,23 @@
+======================================================
+theia使用外部浏览器打开链接
+======================================================
+
+使用内置的 OpenerService::
+
+  import {OpenerService} from "@theia/core/lib/browser";
+  import {URI} from "@theia/core";
+
+
+  @inject(OpenerService) protected readonly _openService: OpenerService
+
+  protected openExternalBrowser(link: string){
+      // 这里链接必须是 https://baidu.com/ 这种
+
+      const linkUri = new URI(link)
+      this._openService.getOpener(linkUri).then(
+          (opener) => {
+              opener.open(linkUri)
+          }
+      )
+
+  }

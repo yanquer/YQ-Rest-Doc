@@ -1,0 +1,67 @@
+=============================
+关键字
+=============================
+
+.. note::
+
+  Mysql一般都不区分大小写, 比如 ``desc`` 和 ``DESC`` 是一致的
+
+DELIMITER
+  表示定义一个结束符, 默认是分号;
+
+  当我们使用命令行来定义函数时候, 函数内部的语句往往需要分号表示结束;
+  会与默认的分号冲突, 所以先定义一个其他的结束符, 再写函数;
+
+  如定义 ``//`` 为结束符::
+
+    mysql> delimiter //
+    mysql> CREATE FUNCTION `SHORTEN`(S VARCHAR(255), N INT)
+    mysql>     RETURNS varchar(255)
+    mysql> BEGIN
+    mysql> IF ISNULL(S) THEN
+    mysql>     RETURN '';
+    mysql> ELSEIF N<15 THEN
+    mysql>     RETURN LEFT(S, N);
+    mysql> ELSE
+    mysql>     IF CHAR_LENGTH(S) <=N THEN
+    mysql>    RETURN S;
+    mysql>     ELSE
+    mysql>    RETURN CONCAT(LEFT(S, N-10), '...', RIGHT(S, 5));
+    mysql>     END IF;
+    mysql> END IF;
+    mysql> END;//
+
+  另外, 用完后记得还原, 不然分号用不了::
+
+    delimiter ;
+DESC
+  DESCRIBE 的简写形式，用于获取表的结构信息。
+
+  DESC 或 DESCRIBE 命令用于检索指定表的列元数据，
+  包括列名、数据类型、约束条件等。它提供了有关表的结构的详细信息，帮助您了解表的字段及其属性。
+
+  以下是使用 DESC 命令的一般语法::
+
+    DESC $table_name;
+
+  其中，table_name 是要描述的表的名称。
+
+  返回一个结果集
+
+  - Field：列名
+  - Type：列的数据类型
+  - Null：指示列是否允许 NULL 值
+  - Key：指示列是否为主键或索引的一部分
+  - Default：列的默认值
+  - Extra：其他列属性，例如自动递增、注释等。
+DELIMITER
+  定义分隔符
+DEFAULT
+  可以用在, 当插入数据时, 不想手动写主键的值, 就可以给default.
+
+
+
+
+
+
+

@@ -1,0 +1,321 @@
+==============================
+容器生命周期管理
+==============================
+
+.. _docker run:
+
+run
+-----------------------
+
+| 创建一个新的容器并运行一个命令, 如果没有会自动pull拉取
+
+语法::
+
+  docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
+
+.. note::
+
+  ``[COMMAND] [ARG...]`` 会覆盖 :doc:`dockerfile </docs/容器与集群/docker/dockerfile编写>`
+  的 CMD
+
+OPTIONS说明:
+
+-a stdin      指定标准输入输出内容类型，可选 STDIN/STDOUT/STDERR 三项；
+-d              不使用此选项就直接在当前命令行窗口前台执行;
+-i            以交互模式运行容器，通常与 -t 同时使用；
+-P            随机端口映射，不加参数就是对于容器内打开的所有端口, 自动寻找主机空闲端口映射
+-p            指定端口映射，格式为: 主机(宿主)端口:容器端口
+-t            为容器重新分配一个伪输入终端，通常与 -i 同时使用；
+--name=<name>
+              为容器指定一个名称；
+--dns <8.8.8.8>
+              指定容器使用的DNS服务器，默认和宿主一致；
+--dns-search <example.com>
+              指定容器DNS搜索域名，默认和宿主一致；
+-h mars       指定容器的hostname；
+-e <username=ritchie>
+              设置环境变量；
+--env-file=<env_file>
+              从指定文件读入环境变量；
+--cpuset=<nums>
+              如 --cpuset="0-2" --cpuset="0,1,2", 绑定容器到指定CPU运行；
+-m            设置容器使用内存最大值；
+--net=bridge
+              指定容器的网络连接类型，支持 bridge/host/none/container: 四种类型；
+--link=<link>
+              添加链接到另一个容器；
+--expose=<ports>
+              开放一个端口或一组端口；
+--volume, -v  绑定一个卷, 格式为 `$宿主机目录:$容器内目录`
+--rm          退出容器时, 自动删除此容器
+--restart     always表示检测到挂掉后自定重启
+
+.. note::
+
+  一般不跟任何参数::
+
+    docker run $image_name
+
+  总是会产生一个挂掉的容器,
+  只有容器内有进程运行的时候, 才不会挂掉
+
+  **容器内的进程**,
+  **容器内的进程必须处于前台运行状态，否则容器就会直接退出**
+
+示例
++++++++++++++++++++++++
+
+使用docker镜像nginx:latest以后台模式启动一个容器,并将容器命名为mynginx::
+
+  docker run --name mynginx -d nginx:latest
+
+使用镜像nginx:latest以后台模式启动一个容器,并将容器的80端口映射到主机随机端口::
+
+  docker run -P -d nginx:latest
+
+使用镜像 nginx:latest，以后台模式启动一个容器,将容器的 80 端口映射到主机的 80 端口,主机的目录 /data 映射到容器的 /data::
+
+  docker run -p 80:80 -v /data:/data -d nginx:latest
+
+绑定容器的 8080 端口，并将其映射到本地主机 127.0.0.1 的 80 端口上::
+
+  $ docker run -p 127.0.0.1:80:8080/tcp ubuntu bash
+
+使用镜像nginx:latest以交互模式启动一个容器,在容器内执行/bin/bash命令::
+
+  runoob@runoob:~$ docker run -it nginx:latest /bin/bash
+  root@b8573233d675:/#
+
+
+start/stop/restart
+-----------------------
+
+- docker start :启动一个或多个已经被停止的容器
+
+- docker stop :停止一个运行中的容器
+
+- docker restart :重启容器
+
+语法
++++++++++++++++++++++++
+
+- ``docker start [OPTIONS] CONTAINER [CONTAINER...]``
+
+- ``docker stop [OPTIONS] CONTAINER [CONTAINER...]``
+
+- ``docker restart [OPTIONS] CONTAINER [CONTAINER...]``
+
+示例
++++++++++++++++++++++++
+
+启动名为 *qinglong* 的容器
+
+.. code-block:: sh
+  :emphasize-lines: 8
+
+  yanque@yanquedembp ~ % docker ps
+  CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+  yanque@yanquedembp ~ %
+  yanque@yanquedembp ~ % docker ps -a
+  CONTAINER ID   IMAGE                    COMMAND                  CREATED       STATUS                      PORTS     NAMES
+  de1871a5ebeb   whyour/qinglong:latest   "./docker/docker-ent…"   2 weeks ago   Exited (137) 44 hours ago             qinglong
+  yanque@yanquedembp ~ %
+  yanque@yanquedembp ~ % docker start qinglong
+  qinglong
+  yanque@yanquedembp ~ % docker ps
+  CONTAINER ID   IMAGE                    COMMAND                  CREATED       STATUS         PORTS                    NAMES
+  de1871a5ebeb   whyour/qinglong:latest   "./docker/docker-ent…"   2 weeks ago   Up 5 seconds   0.0.0.0:5700->5700/tcp   qinglong
+  yanque@yanquedembp ~ %
+
+停止名为 *qinglong* 的容器
+
+.. code-block:: sh
+  :emphasize-lines: 5
+
+  yanque@yanquedembp ~ % docker ps
+  CONTAINER ID   IMAGE                    COMMAND                  CREATED       STATUS         PORTS                    NAMES
+  de1871a5ebeb   whyour/qinglong:latest   "./docker/docker-ent…"   2 weeks ago   Up 5 seconds   0.0.0.0:5700->5700/tcp   qinglong
+  yanque@yanquedembp ~ %
+  yanque@yanquedembp ~ % docker stop qinglong
+  qinglong
+  yanque@yanquedembp ~ % docker ps
+  CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+  yanque@yanquedembp ~ %
+
+重启名为 *qinglong* 的容器
+
+.. code-block:: sh
+  :emphasize-lines: 4
+
+  yanque@yanquedembp ~ % docker ps
+  CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+  yanque@yanquedembp ~ %
+  yanque@yanquedembp ~ % docker restart qinglong
+  qinglong
+  yanque@yanquedembp ~ %
+  yanque@yanquedembp ~ % docker ps
+  CONTAINER ID   IMAGE                    COMMAND                  CREATED       STATUS         PORTS                    NAMES
+  de1871a5ebeb   whyour/qinglong:latest   "./docker/docker-ent…"   2 weeks ago   Up 3 seconds   0.0.0.0:5700->5700/tcp   qinglong
+  yanque@yanquedembp ~ %
+
+kill
+-----------------------
+
+| docker kill :杀掉一个运行中的容器
+
+语法
++++++++++++++++++++++++
+
+``docker kill [OPTIONS] CONTAINER [CONTAINER...]``
+
+OPTIONS说明:
+
+-s    向容器发送一个信号
+
+示例
++++++++++++++++++++++++
+
+杀掉运行中的容器 *qinglong*
+
+.. code-block:: sh
+  :emphasize-lines: 5
+
+  yanque@yanquedembp ~ % docker ps
+  CONTAINER ID   IMAGE                    COMMAND                  CREATED       STATUS          PORTS                    NAMES
+  de1871a5ebeb   whyour/qinglong:latest   "./docker/docker-ent…"   2 weeks ago   Up 26 seconds   0.0.0.0:5700->5700/tcp   qinglong
+  yanque@yanquedembp ~ %
+  yanque@yanquedembp ~ % docker kill -s KILL qinglong
+  qinglong
+  yanque@yanquedembp ~ % docker ps
+  CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+  yanque@yanquedembp ~ %
+
+rm
+-----------------------
+
+| docker rm : 删除一个或多个容器。
+
+语法
++++++++++++++++++++++++
+
+``docker rm [OPTIONS] CONTAINER [CONTAINER...]``
+
+OPTIONS说明:
+
+-f    通过 SIGKILL 信号强制删除一个运行中的容器。
+-l    移除容器间的网络连接，而非容器本身。
+-v    删除与容器关联的卷。
+
+示例
++++++++++++++++++++++++
+
+强制删除容器 db01、db02::
+
+  docker rm -f db01 db02
+
+移除容器 nginx01 对容器 db01 的连接，连接名 db::
+
+  docker rm -l db
+
+删除容器 nginx01, 并删除容器挂载的数据卷::
+
+  docker rm -v nginx01
+
+删除所有已经停止的容器::
+
+  docker rm $(docker ps -a -q)
+
+pause/unpause
+-----------------------
+
+- docker pause :暂停容器中所有的进程。
+
+- docker unpause :恢复容器中所有的进程。
+
+语法
++++++++++++++++++++++++
+
+- ``docker pause CONTAINER [CONTAINER...]``
+
+- ``docker unpause CONTAINER [CONTAINER...]``
+
+OPTIONS说明:
+
+-s    向容器发送一个信号
+
+示例
++++++++++++++++++++++++
+
+暂停数据库容器db01提供服务::
+
+  docker pause db01
+
+恢复数据库容器 db01 提供服务::
+
+  docker unpause db01
+
+create
+-----------------------
+
+| docker create : 创建一个新的容器但不启动它, 用法同 :ref:`docker run`
+
+语法
++++++++++++++++++++++++
+
+``docker create [OPTIONS] IMAGE [COMMAND] [ARG...]``
+
+用法同 :ref:`docker run`
+
+示例
++++++++++++++++++++++++
+
+使用docker镜像 *yanquer/kali:config_apt_list2* 创建一个容器,并将容器命名为 *mykali*
+
+.. code-block::
+  :emphasize-lines: 5
+
+  yanque@yanquedembp ~ % docker images
+  REPOSITORY               TAG                IMAGE ID       CREATED         SIZE
+  yanquer/kali             config_apt_list2   24b7cbbe11fb   2 days ago      236MB
+  yanque@yanquedembp ~ %
+  yanque@yanquedembp ~ % docker create -t -p 60000:5900 -p 60001:5901 -p 60002:5902 --name mykali yanquer/kali:config_apt_list2
+  WARNING: The requested image's platform (linux/arm64) does not match the detected host platform (linux/amd64) and no specific platform was requested
+  fa15654fc7d19605dbc2415e09d279bfc1d898efae6b1ff8f87f27940aa94cd8
+  yanque@yanquedembp ~ %
+  yanque@yanquedembp ~ % docker ps -a
+  CONTAINER ID   IMAGE                           COMMAND                  CREATED              STATUS                        PORTS     NAMES
+  fa15654fc7d1   yanquer/kali:config_apt_list2   "bash"                   About a minute ago   Created                                 mykali
+
+exec
+-----------------------
+
+| docker exec : 在运行的容器中执行命令
+
+语法
++++++++++++++++++++++++
+
+``docker exec [OPTIONS] CONTAINER COMMAND [ARG...]``
+
+OPTIONS说明:
+
+-d    分离模式, 在后台运行
+-i    即使没有附加也保持STDIN 打开
+-t    分配一个伪终端
+
+示例
++++++++++++++++++++++++
+
+调用容器 *mykali* 执行 *ls /usr*::
+
+  yanque@yanquedembp ~ % docker exec -it mykali ls /usr
+  bin  games  include  lib  libexec  local  sbin	share  src
+
+容器开启一个交互模式终端::
+
+  yanque@yanquedembp ~ % docker exec -it mykali /bin/bash
+  ┌──(root㉿fa15654fc7d1)-[/]
+  └─#
+
+.. note::
+
+  执行指令时的对象, 可以是容器名, 也可以是容器id

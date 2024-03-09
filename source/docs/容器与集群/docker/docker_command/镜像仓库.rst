@@ -1,0 +1,159 @@
+==========================
+镜像仓库
+==========================
+
+login/logout
+-----------------------
+
+| docker login  : 登陆到一个Docker镜像仓库，如果未指定镜像仓库地址，默认为官方仓库 Docker Hub
+| docker logout : 登出一个Docker镜像仓库，如果未指定镜像仓库地址，默认为官方仓库 Docker Hub
+
+语法
++++++++++++++++++++++++
+
+``docker login [OPTIONS] [SERVER]``
+``docker logout [OPTIONS] [SERVER]``
+
+.. topic:: OPTIONS说明：
+
+	- -u :登陆的用户名
+	- -p :登陆的密码
+
+示例
++++++++++++++++++++++++
+
+登陆到Docker Hub
+
+.. code-block:: sh
+
+	docker login -u 用户名 -p 密码
+
+登出Docker Hub
+
+.. code-block:: sh
+
+	docker logout
+
+pull
+-----------------------
+
+| docker pull : 从镜像仓库中拉取或者更新指定镜像
+
+语法
++++++++++++++++++++++++
+
+``docker pull [OPTIONS] NAME[:TAG|@DIGEST]``
+
+OPTIONS说明
+
+-a 							拉取所有 tagged 镜像
+--disable-content-trust 	忽略镜像的校验,默认开启
+--platform=<plartform>		获取指定平台镜像, 默认拉自己平台的, 如 `docker pull --platform=arm64 nginx:latest`
+
+示例
++++++++++++++++++++++++
+
+从Docker Hub下载java最新版镜像::
+
+	docker pull java
+
+从Docker Hub下载REPOSITORY为java的所有镜像::
+
+	docker pull -a java
+
+拉取arm64的nginx::
+
+	docker pull --platform=arm64 nginx
+
+
+push
+-----------------------
+
+| 将本地的镜像上传到镜像仓库,要先登陆到镜像仓库.
+
+语法
++++++++++++++++++++++++
+
+``docker push [OPTIONS] NAME[:TAG]``
+
+.. topic:: OPTIONS说明：
+
+	- --disable-content-trust :忽略镜像的校验,默认开启
+
+示例
++++++++++++++++++++++++
+
+上传本地镜像 yanquer/kali:config_apt_list2 到镜像仓库中。
+
+.. code-block:: sh
+
+	(dev_venv) yanque@yanquedeMacBook-Pro project % docker push yanquer/kali:config_apt_list2
+	The push refers to repository [docker.io/yanquer/kali]
+	b94b4b255fde: Pushed
+	cca6e5a3dfb7: Pushed
+	385ea7e36a43: Pushed
+	config_apt_list2: digest: sha256:161c0ffd5197fa4a4a88d00e53ccf43500da3b075f1793d9a3722c6c0bdf15ff size: 948
+	(dev_venv) yanque@yanquedeMacBook-Pro project %
+
+.. note::
+
+	docker hub 可 类比与 github.
+
+	注意需要先使用 *docker login* 登陆, 且目标地址已有登陆仓库(没有需要先在仓库创建).
+
+	如要验证是否已登陆, 可使用 `cat ~/.docker/config.json` 查看内容是否有 *auths* .
+
+
+search
+-----------------------
+
+| docker search : 从Docker Hub查找镜像
+
+语法
++++++++++++++++++++++++
+
+``docker search [OPTIONS] TERM``
+
+.. topic:: OPTIONS说明：
+
+	- --automated :只列出 automated build类型的镜像；
+
+	- --no-trunc :显示完整的镜像描述；
+
+	- -f <过滤条件>:列出收藏数不小于指定值的镜像。
+
+示例
++++++++++++++++++++++++
+
+从 *Docker Hub* 查找所有镜像名包含 *java* ，并且收藏数大于 10 的镜像
+
+.. code-block:: sh
+
+	yanque@yanquedembp mytest % docker search -f stars=10 java
+	NAME             DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED
+	node             Node.js is a JavaScript-based platform for s…   12222     [OK]
+	tomcat           Apache Tomcat is an open source implementati…   3458      [OK]
+	java             DEPRECATED; use "openjdk" (or other JDK impl…   1976      [OK]
+	ghost            Ghost is a free and open source blogging pla…   1582      [OK]
+	couchdb          CouchDB is a database that uses JSON for doc…   500       [OK]
+	jetty            Jetty provides a Web server and javax.servle…   387       [OK]
+	amazoncorretto   Corretto is a no-cost, production-ready dist…   267       [OK]
+	groovy           Apache Groovy is a multi-faceted language fo…   137       [OK]
+	circleci/node    Node.js is a JavaScript-based platform for s…   130
+	ibmjava          Official IBM® SDK, Java™ Technology Edition …   107       [OK]
+	tomee            Apache TomEE is an all-Apache Java EE certif…   100       [OK]
+	ibmcom/ibmjava   IBM® SDK, Java™ Technology Edition Docker Im…   21
+	bitnami/java     Bitnami Java Docker Image                       13                   [OK]
+
+.. topic:: 参数说明
+
+	- NAME: 镜像仓库源的名称
+
+	- DESCRIPTION (描述) : 镜像的描述
+
+	- OFFICIAL: 是否 docker 官方发布
+
+	- stars: 类似 Github 里面的 star，表示点赞、喜欢的意思。
+
+	- AUTOMATED: 自动构建。
+

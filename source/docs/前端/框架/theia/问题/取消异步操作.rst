@@ -1,0 +1,34 @@
+=====================================
+取消异步操作
+=====================================
+
+theia提供了 `CancellationTokenSource` 来支持取消异步操作
+
+使用
+
+导包::
+
+  import {CancellationTokenSource} from '@theia/core/lib/common'
+
+创建一个可以传递的 CancellationToken 对象::
+
+  const cts = new CancellationTokenSource();
+  const token = cts.token;
+
+在外部调用 cancel() 方法来通知已取消::
+
+  cts.cancel();
+
+在异步操作内部监听 token 的信号来处理取消逻辑::
+
+  doAsyncWork(token).then(...).catch(...);
+
+  if (token.isCancellationRequested) {
+    // 进行取消操作
+  }
+
+.. note::
+
+  外部调用 ``cts.cancel();`` 时, 将会将 ``token.isCancellationRequested`` 设置为 `true`
+
+

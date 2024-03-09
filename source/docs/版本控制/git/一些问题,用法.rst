@@ -1,0 +1,245 @@
+=======================
+一些问题/用法
+=======================
+
+强制提交
+=======================
+
+强制提交, 如将本地test分支强制（-f）推送到远程主分支master
+
+方法一:
+
+``git push origin test:master -f``
+
+方法二:
+
+.. code-block:: sh
+
+  # 将当前分支切换到主分支
+  git checkout master
+  # 将主分支重置为test分支
+  git reset --hard test
+  # 将重置后的master分支强制推送到远程仓库
+  git push origin master -f
+
+强制更新本地
+=======================
+
+拉取分支时强制覆盖本地
+
+方法一:
+
+  ``git pull -f origin $remote_branch:$local_branch``
+
+
+方法二:
+
+  .. code-block:: sh
+
+    # 拉到本地库
+    git fetch --all
+
+    # 本地库强制重制
+    git reset --hard $branch
+
+    # 工作区更新
+    git pull
+
+    # 合起来一行代码
+    # git fetch --all && git reset --hard feature-axpi-dev && git pull
+
+
+更新提交信息
+=======================
+
+针对提交人以及提交邮件的修改.
+
+执行以下代码修改相关信息::
+
+  git config --global --edit
+
+执行以下代码将修改后的内容应用到commit::
+
+  git commit --amend --reset-author
+
+
+.. note::
+
+  修改后可以通过以下命令查看::
+
+    git config --list
+
+仓库初始化说明
+=======================
+
+一般来说有两种形式
+
+从本地开始
+-----------------------
+
+- 进入本地项目根目录
+- 执行 ``git init`` 初始化仓库
+- 远程新建仓库
+- 设置远程仓库地址 ``git remote add origin xxx`` , xxx 表示仓库地址
+- add 后推送: ``git push --set-upstream origin master``
+
+
+从远程开始
+-----------------------
+
+- 在远程仓库如 `gitee <https://gitee.com>`_ 新建仓库, 可以在此处选择性配置好一些文件
+- 在本地仓库选择好拉取的目录, 执行 ``git clone xxx``
+
+永久删除文件
+=======================
+
+命令::
+
+  git filter-branch --force --index-filter 'git rm -rf --cached --ignore-unmatch tagInterface/test.txt' --prune-empty --tag-name-filter cat -- --all
+
+-filter-branch
+  重写Git仓库中的提交
+-rf
+  如果想要删除的是文件夹，将会强制并迭代查找文件夹下所有文件并删除。
+--index-filter
+  指定一条Bash命令，然后Git会检出（checkout）所有的提交， 执行该命令，然后重新提交
+--all
+  需要重写所有分支（或引用）
+
+回收空间(实际这一步貌似可以不用)::
+
+  rm -rf .git/refs/original/
+  git reflog expire --expire=now --all
+  git gc --prune=now
+  git gc --aggressive --prune=now
+
+最后强制push::
+
+  git push -f --all
+
+
+忽略已在版本控制的文件
+=======================
+
+已经将某个文件提交到Git仓库中，并且想要忽略它的修改
+
+使用`git update-index`命令将文件标记为已忽略::
+
+  git update-index --assume-unchanged <file>
+
+如果需要查看哪些文件被标记为已忽略，可以执行如下命令::
+
+  git ls-files -v | grep '^h'
+
+其中“h”表示文件已被标记为“assume unchanged”。
+
+如果要 **恢复对该文件的跟踪** ，可以使用`git update-index`命令将其取消标记::
+
+  git update-index --no-assume-unchanged <file>
+
+通过以上操作，您就可以将某个已提交的文件标记为已忽略，从而在以后的提交中忽略它的修改。
+请注意，这只会在本地忽略文件的修改，而不是从版本库中删除它们。
+如果您希望将已提交的文件彻底删除，请使用`git rm`命令，同时将该文件添加到`.gitignore`文件中。
+
+详见: :doc:`/docs/版本控制/git/command/update-index`
+
+
+tag的拉取与切换
+=======================
+
+可能因为tag是静态的吧, 所以如果直接::
+
+  git pull origin tag 1.0.0
+
+这样拉取, 若于本地tag有冲突, 即使是正常迭代的版本, 也会发生merge冲突(pull默认行为)
+
+故, 一般这样拉取:
+
+先获取到本地版本库::
+
+  git fetch origin tag 1.0.0
+
+从本地版本tag切换::
+
+  git checkout tags/1.0.0
+
+.. note::
+
+  拉取时, 会覆盖本地的所有内容, 所以注意保存
+
+全局选项
+=======================
+
+即, `--global` 或者 `-g`, 只是要注意, 当使用 `-g` 短选项时候, 需要将其放在末尾.
+
+子模块报错
+=======================
+
+如果使用::
+
+  git submodule update
+
+出现报错: ``fatal: no submodule mapping found in .gitmodules for path .``
+
+确认 .gitmodules 文件的配置没问题的话, 多半是安装的git版本问题, 换个新一点的版本
+或者支持平台的版本即可.
+
+比如我内网机重置后安装的 `git2.1` 不行, 换了个 `git for windows 2.3` 就可以了.
+
+网络不稳定可能导致的报错
+==============================================
+
+使用VPN链接github时候, clone的时候可能会发生::
+
+  error: RPC failed; curl 18 Transferred a partial file.00 KiB/s
+  error: 2457 bytes of body are still expected
+  fetch-pack: unexpected disconnect while reading sideband packet
+  fatal: early EOF
+  fatal: fetch-pack: invalid index-pack output
+
+多半是因为VPN不稳定, 传输数据的时候节点变了, 导致数据不一致,
+可以选择取消 `自动选择` , 或者更换其它稳定的VPN试试.
+
+.. note::
+
+  有时候及时没有使用 `自动选择`, 节点也可能会不稳定,
+  多半是VPN提供商那边的策略有问题...
+
+我用的是 `clashX Pro` 并配置了 `全局配置` 出现了这个问题(最开始是没有的),
+然后是这链自己手机热点, 并关闭 `全局配置`
+然后单独设置git 代理(参考 :doc:`/docs/版本控制/git/command/config` )::
+
+  git config --global http.https://github.com.proxy  http://127.0.0.1:60742
+
+.. 就好了? 看起来没走代理也直接是 几M/s, 不知道为啥(难道我手机流量可以直链?)
+
+.. 再测了下, 手机流量可以直连, 速度 10M/s, 奇怪...
+
+单用户配置多把id_rsa
+=======================
+
+比如给github专门配置一个密钥
+
+按照正常流程生成密钥::
+
+  $ ssh-keygen -t RSA -C "yanquer@qq.com"
+
+注意命名, 我这里公私密钥分别::
+
+  id_rsa_github.pub
+  id_rsa_github
+
+然后编辑 ``~/.ssh/config``::
+
+  Host github.com
+  HostName github.com
+  User yanquer
+  IdentityFile ~/.ssh/id_rsa_github
+
+如果还要给gitee配置一个, 再新建个 ``id_rsa_gitee`` 的密钥后增加::
+
+  Host gitee.com
+  HostName gitee.com
+  User yanquer
+  IdentityFile ~/.ssh/id_rsa_gitee
+

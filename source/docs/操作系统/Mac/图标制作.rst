@@ -1,0 +1,24 @@
+=================================
+图标制作
+=================================
+
+使用 :doc:`/docs/操作系统/Mac/Mac指令/sips`
+
+例, 有一个1024*1024的png: pic.png::
+
+  mkdir tmp.iconset
+
+  # 命令格式：sips -z 新图片宽度 新图片高度 原图片名 --out 临时.iconset/新图片完整名
+
+  sips -z 16 16 pic.png --out tmp.iconset/icon_16x16.png
+  sips -z 32 32 pic.png --out tmp.iconset/icon_16x16@2x.png
+  sips -z 32 32 pic.png --out tmp.iconset/icon_32x32.png
+  sips -z 64 64 pic.png --out tmp.iconset/icon_32x32@2x.png
+  sips -z 128 128 pic.png --out tmp.iconset/icon_128x128.png
+  sips -z 256 256 pic.png --out tmp.iconset/icon_128x128@2x.png
+  sips -z 256 256 pic.png --out tmp.iconset/icon_256x256.png
+  sips -z 512 512 pic.png --out tmp.iconset/icon_256x256@2x.png
+  sips -z 512 512 pic.png --out tmp.iconset/icon_512x512.png
+  sips -z 1024 1024 pic.png --out tmp.iconset/icon_512x512@2x.png
+
+还可参考: `<https://blog.csdn.net/ypf1024/article/details/114011755>`_

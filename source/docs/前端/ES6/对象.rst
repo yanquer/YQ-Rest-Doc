@@ -1,0 +1,77 @@
+=========================
+ES6 对象
+=========================
+
+对象字面量
+=========================
+
+简洁表示法::
+
+  const age = 12;
+  const name = "Amy";
+  const person = {age, name};
+  person   //{age: 12, name: "Amy"}
+
+等同于::
+
+  const person = {age: age, name: name}
+
+属性名表达式
+=========================
+
+ES6允许用表达式作为属性名，但是一定要将表达式放在方括号内::
+
+  const obj = {
+  ["he"+"llo"](){
+    return "Hi";
+    }
+  }
+  obj.hello();  //"Hi"
+
+.. note::
+
+  属性的简洁表示法和属性名表达式不能同时使用，否则会报错。
+
+对象的拓展运算符
+=========================
+
+拓展运算符（...）用于取出参数对象所有可遍历属性然后拷贝到当前对象
+
+基本用法::
+
+  let person = {name: "Amy", age: 15};
+  let someone = { ...person };
+  someone;  //{name: "Amy", age: 15}
+
+可用于合并两个对象::
+
+  let age = {age: 15};
+  let name = {name: "Amy"};
+  let person = {...age, ...name};
+  person;  //{age: 15, name: "Amy"}
+
+.. note::
+
+  属性相同时, 后面的会覆盖掉前面的
+
+对象的新方法
+=========================
+
+.. function:: Object.assign(target, source_1, ···)
+
+  用于将源对象的所有可枚举属性复制到目标对象中
+
+  assign 的属性拷贝是浅拷贝
+
+.. function:: Object.is(value1, value2)
+
+  用来比较两个值是否严格相等，与（===）基本类似
+
+  与（===）的区别::
+
+    //一是+0不等于-0
+    Object.is(+0,-0);  //false
+    +0 === -0  //true
+    //二是NaN等于本身
+    Object.is(NaN,NaN); //true
+    NaN === NaN  //false

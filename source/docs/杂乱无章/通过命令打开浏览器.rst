@@ -1,0 +1,32 @@
+======================================
+通过命令打开系统浏览器
+======================================
+
+前言
+======================================
+
+当使用shell, 且当前主机拥有GUI浏览器时, 会有在shell中通过浏览器打开网址的需求
+
+使用
+======================================
+
+
+.. topic:: Mac
+
+	.. code-block:: sh
+
+		open 'https://www.baidu.com'
+
+.. topic:: Linux
+
+	.. code-block:: sh
+
+		x-www-browser 'https://www.baidu.com'
+
+.. topic:: Windows
+
+	.. code-block:: sh
+
+		cmd /c start https://www.baidu.com
+
+

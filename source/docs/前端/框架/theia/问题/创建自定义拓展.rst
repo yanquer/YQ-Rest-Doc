@@ -1,0 +1,138 @@
+===============================
+创建自定义拓展
+===============================
+
+这部分官方文档也有说明: `https://theia-ide.org/docs/authoring_extensions/`
+
+大致流程如下
+
+安装生成器::
+
+  npm install -g yo generator-theia-extension
+
+创建拓展目录::
+
+  mkdir -p src/@ide/theia-hello-world-extension
+
+进创建的目录, 生成相关代码(这里启动生成器的时候有很多选项, 比如控件, 实际使用选需要的即可)::
+
+  cd src/@ide/theia-hello-world-extension
+  yo theia-extension # 这里教程选择 'Hello World' 选项(这里默认)
+
+生成后在当前目录生成的 `package.json` 配置文件入口::
+
+  "theiaExtensions": [
+    {
+      "frontend": "lib/browser/hello-world-frontend-module"
+    }
+  ]
+
+`theiaExtensions` 里定义的模块就是绑定了theia贡献点的依赖注入的内容(相当于特殊的入口文件)
+
+这里暂时只定义 `frontend` 贡献点, 有需要还可以定义后端的 `backend`
+
+使用的依赖注入是 `InversifyJS` 模块提供的 `ContainerModule`,
+生成内容如下(目录: `hello-world/lib/browser/hello-world-frontend-module`)::
+
+  /**
+  * Generated using theia-extension-generator
+  */
+  import { HelloWorldCommandContribution, HelloWorldMenuContribution } from './hello-world-contribution';
+  import { CommandContribution, MenuContribution } from '@theia/core/lib/common';
+  import { ContainerModule } from '@theia/core/shared/inversify';
+
+  export default new ContainerModule(bind => {
+      // add your contribution bindings here
+      bind(CommandContribution).to(HelloWorldCommandContribution);
+      bind(MenuContribution).to(HelloWorldMenuContribution);
+  });
+
+相应的package.json配置大致如下::
+
+  {
+    "name": "@ide/hello-world-extension",
+    "keywords": [
+      "theia-extension"
+    ],
+    "version": "0.1.0",
+    "files": [
+      "hello-world/lib",
+      "hello-world/src"
+    ],
+    "theiaExtensions": [
+      {
+        "frontend": "hello-world/lib/browser/hello-world-frontend-module"
+      }
+    ],
+    "dependencies": {
+      "@theia/core": "latest"
+    },
+    "private": true,
+    "engines": {
+      "yarn": ">=1.7.0 <2",
+      "node": ">=14.18.0"
+    },
+    "scripts": {
+      "clean": "rimraf lib",
+      "build": "tsc",
+
+      "build:browser": "yarn --cwd browser-app bundle",
+      "build:electron": "yarn --cwd electron-app bundle",
+      "prepare": "lerna run prepare",
+      "postinstall": "theia check:theia-version",
+      "start:browser": "yarn --cwd browser-app start",
+      "start:electron": "yarn --cwd electron-app start",
+      "watch": "lerna run --parallel watch"
+    },
+    "devDependencies": {
+      "rimraf": "latest",
+      "typescript": "latest",
+      "lerna": "2.4.0"
+    },
+    "workspaces": [
+      "hello-world", "browser-app", "electron-app"
+    ]
+  }
+
+这里生成的位置是在 `hello-world` 下, 后面有需要可以重新布局一下目录,
+当然还有tsconfig配置.
+代码可以参考 `hello-world/src` 下的ts源码.
+
+接下来就是将此拓展放进ide了, 在主项目的 `package.json` 的依赖中增加如下内容::
+
+  "private": true,
+  "dependencies": {
+    "@ide/hello-world-extension": "0.1.0"
+  }
+  "workspaces": [
+    "src/@ide/*"
+  ],
+
+.. sidebar::
+
+  说明:
+
+  - 在依赖里配置上面自己的拓展, `"@ide/hello-world-extension"` 就是在自定义拓展的 `package.json` 定义的 `name`
+  - 由于是自定义拓展, 放在本地目录, 非镜像仓库的npm包, 所以需要设置 `workspaces`, 才能正常识别本地模块并编译到 `node_module` 下面去
+  - 只有设置了 `private` 才可以使用 `workspaces`
+
+然后 `yarn install` 即可.
+
+按照上面的我这里启动的时候找不到模块 `vscode-ws-jsonrpc`, 然后去根目录装了一个(可能需要加-W)::
+
+  yarn add vscode-ws-jsonrpc --save
+
+注意版本, 发现虽然我的 `theia/languages` 是最新新版::
+
+  "@theia/languages": "latest"
+
+但是依赖的 `vscode-ws-jsonrpc` 是 `0.2.0` , 可现在(2023.09.14) `2.x.x` 都有了::
+
+  "vscode-ws-jsonrpc": "^0.2.0"
+
+.. note::
+
+  没问题 如果想开放的话, 也可以 `yarn push` 发布到官方的镜像仓库.
+
+
+

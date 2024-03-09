@@ -1,0 +1,632 @@
+=================
+字符串操作
+=================
+
+分隔字符串为列表
+=================
+
+- str.split
+- re.split , 见 :doc:`/docs/后端/python/python标准库/re`
+
+split 用于 简单的字符串分割情形，它并不允许有 多个分隔符或者是分隔符周围不确定的空格。
+当你需要更加灵活的切割字符串的时候， 最好使用 re.split() 方法::
+
+  >>> line = 'asdf fjdk; afed, fjek,asdf, foo' >>> import re
+  >>> re.split(r'[;,\s]\s*', line)
+  ['asdf', 'fjdk', 'afed', 'fjek', 'asdf', 'foo']
+
+当你使用 re.split() 函数时候，
+需要特别注意的是正则表达式中是否包含一个括 号捕获分组。
+如果使用了捕获分组，那么被匹配的文本也将出现在结果列表中::
+
+  >>> fields = re.split(r'(;|,|\s)\s*', line)
+  >>> fields
+  ['asdf', ' ', 'fjdk', ';', 'afed', ',', 'fjek', ',', 'asdf', ',', 'foo']
+  >>>
+
+如果你不想保留分割字符串到结果列表中去，但仍然需要使用到括号来分组正则 表达式的话，
+确保你的分组是非捕获分组，形如 **(?:...)** ::
+
+  >>> re.split(r'(?:,|;|\s)\s*', line)
+  ['asdf', 'fjdk', 'afed', 'fjek', 'asdf', 'foo']
+  >>>
+
+字符串首尾匹配
+=================
+
+- str.startswith
+- str. endswith
+- 切片
+- re.match, 见 :doc:`/docs/后端/python/python标准库/re`
+- fnmatch.fnmatch, 见 :doc:`/docs/后端/python/python标准库/fnmatch`
+- fnmatch.fnmatchcase
+
+字符串搜索/匹配
+=================
+
+- str.find
+- str.endswith
+- str.startswith
+- re.match
+- re.findall
+- re.finditer
+
+定义正则式的时候，通常会利用括号去捕获分组
+
+使用match::
+
+  >>> datepat = re.compile(r'(\d+)/(\d+)/(\d+)')
+
+  >>> m = datepat.match('11/27/2012')
+  >>> m
+  <_sre.SRE_Match object at 0x1005d2750>
+  >>> # Extract the contents of each group
+  >>> m.group(0)
+  '11/27/2012'
+  >>> m.group(1) '11'
+  >>> m.group(2) '27'
+  >>> m.group(3)
+  '2012'
+  >>> m.groups()
+  ('11', '27', '2012')
+
+使用 findall::
+
+  >>> text
+  'Today is 11/27/2012. PyCon starts 3/13/2013.'
+  >>> datepat.findall(text)
+  [('11', '27', '2012'), ('3', '13', '2013')]
+  >>> for month, day, year in datepat.findall(text): ... print('{}-{}-{}'.format(year, month, day)) ...
+  2012-11-27
+  2013-3-13
+  >>>
+
+使用 finditer 获取迭代.
+
+字符串替换/搜索
+=================
+
+- str.replace
+- re.sub, 见 :doc:`/docs/后端/python/python标准库/re`
+
+
+sub::
+
+  >>> text = 'Today is 11/27/2012. PyCon starts 3/13/2013.'
+  >>> import re
+  >>> re.sub(r'(\d+)/(\d+)/(\d+)', r'\3-\1-\2', text)
+  'Today is 2012-11-27. PyCon starts 2013-3-13.'
+  >>>
+
+忽略大小写
+-----------------
+
+- re.IGNORECASE
+
+re.IGNORECASE ::
+
+  >>> text = 'UPPER PYTHON, lower python, Mixed Python'
+  >>> re.findall('python', text, flags=re.IGNORECASE)
+  ['PYTHON', 'python', 'Python']
+  >>> re.sub('python', 'snake', text, flags=re.IGNORECASE)
+  'UPPER snake, lower snake, Mixed snake'
+  >>>
+
+最短匹配模式
+=================
+
+
+这个问题一般出现在需要匹配一对分隔符之间的文本的时候 (比如引号包含的字符 串),
+原因是 在正 则表达式中 * 操作符是贪婪的，因此匹配操作会查找最长的可能匹配 ::
+
+  >>> str_pat = re.compile(r'\"(.*)\"')
+  >>> text1 = 'Computer says "no."'
+  >>> str_pat.findall(text1)
+  ['no.']
+  >>> text2 = 'Computer says "no." Phone says "yes."'
+  >>> str_pat.findall(text2)
+  ['no." Phone says "yes.']
+  >>>
+
+为了修正这个问题，可以在模式中的 * 操作符后面加上? 修饰符::
+
+  >>> str_pat = re.compile(r'\"(.*?)\"')
+  >>> str_pat.findall(text2)
+  ['no.', 'yes.']
+  >>>
+
+使得匹配变成非贪婪模式，从而得到最短的匹配
+
+
+在一 个模式字符串中，点 (.) 匹配除了换行外的任何字符。
+然而，如果你将点 (.) 号放在开始 与结束符 (比如引号) 之间的时候，那么匹配操作会查找符合模式的最长可能匹配。
+这 样通常会导致很多中间的被开始与结束符包含的文本被忽略掉，并最终被包含在匹配 结果字符串中返回。
+通过在 * 或者 + 这样的操作符后面添加一个 ? 可以强制匹配算法 改成寻找最短的可能匹配。
+
+多行匹配
+=================
+
+**点 (.) 匹配除了换行外的任何字符**
+
+可以修改模式字符串，增加对换行的支持::
+
+  >>> text1 = '/* this is a comment */'
+  >>> text2 = '''/* this is a
+  ... multiline comment */
+  ... '''
+
+  >>> comment.findall(text1)
+  [' this is a comment ']
+  >>> comment.findall(text2)
+  []
+  >>>
+  >>> comment = re.compile(r'/\*((?:.|\n)*?)\*/')
+  >>> comment.findall(text2)
+  [' this is a\n multiline comment ']
+  >>>
+
+**(?:.|\n) 指定了一个非捕获组** (也就是它定义了一个仅仅用来做 匹配，而不能通过单独捕获或者编号的组)。
+
+**re.compile() 函数接受一个标志参数叫 re.DOTALL ，可以让 正则表达式中的点 (.) 匹配包括换行符在内的任意字符**
+
+Unicode 文本标准化
+==================================
+
+在 Unicode 中，某些字符能够用多个合法的编码表示::
+
+  >>> s1 = 'Spicy Jalape\u00f1o'
+  >>> s2 = 'Spicy Jalapen\u0303o'
+   >>> s1
+  'Spicy Jalapeño'
+  >>> s2
+  'Spicy Jalapeño'
+  >>> s1 == s2
+  False
+  >>> len(s1)
+  14
+  >>> len(s2)
+  15
+  >>>
+
+文本”Spicy Jalapeño”使用了两种形式来表示。
+第一种使用整体字符”ñ” (U+00F1)，
+第二种使用拉丁字母”n”后面跟一个”~”的组合字符 (U+0303)。
+
+在需要比较字符串的程序中使用字符的多种表示会产生问题。为了修正这个问题， 你可以使用 unicodedata 模块先将文本标准化::
+
+  >>> import unicodedata
+  >>> t1 = unicodedata.normalize('NFC', s1) >>> t2 = unicodedata.normalize('NFC', s2) >>> t1 == t2
+  True
+  >>> print(ascii(t1))
+  'Spicy Jalape\xf1o'
+  >>> t3 = unicodedata.normalize('NFD', s1) >>> t4 = unicodedata.normalize('NFD', s2) >>> t3 == t4
+  True
+  >>> print(ascii(t3))
+  'Spicy Jalapen\u0303o'
+  >>>
+
+- NFC 表示字符应该是整体组 成 (比如可能的话就使用单一编码)
+- NFD 表示字符应该分解为多个组合字符表示
+
+同样支持扩展的标准化形式 NFKC 和 NFKD，它们在处理某些字符的时 候增加了额外的兼容特性。比如::
+
+  >>> s = '\ufb01' # A single character >>> s
+  ''
+  >>> unicodedata.normalize('NFD', s) ''
+  # Notice how the combined letters are broken apart here
+  >>> unicodedata.normalize('NFKD', s) 'fi'
+  >>> unicodedata.normalize('NFKC', s) 'fi'
+  >>>
+
+**标准化对于任何需要以一致的方式处理 Unicode 文本的程序都是非常重要的**,
+当 处理来自用户输入的字符串而你很难去控制编码的时候尤其如此。
+
+在清理和过滤文本的时候字符的标准化也是很重要的。
+比如，假设你想清除掉一些 文本上面的变音符的时候 (可能是为了搜索和匹配)::
+
+  >>> t1 = unicodedata.normalize('NFD', s1)
+  >>> ''.join(c for c in t1 if not unicodedata.combining(c)) 'Spicy Jalapeno'
+  >>>
+
+combining() 函数可以测试一个字符是否为和音字符
+
+和音字符, 不知道为什书上这么定义, 实际就是是否为规范的数字字符:
+
+- 为规范数字字符返回数字
+- 否则返回0
+
+正则使用 Unicode
+=================
+
+用于 **使用正则表达式处理文本，但是关注的是 Unicode 字符处理**
+
+默认情况下 re 模块已经对一些 Unicode 字符类有了基本的支持。
+比如，``\\d`` 可表示匹配任意的 unicode 数字字符::
+
+  >>> import re
+  >>> num = re.compile('\d+')
+  >>> # ASCII digits
+  >>> num.match('123')
+  <_sre.SRE_Match object at 0x1007d9ed0>
+  >>> # Arabic digits
+  >>> num.match('\u0661\u0662\u0663')
+  <_sre.SRE_Match object at 0x101234030>
+  >>>
+
+匹配几个不同阿拉伯编码页 面中所有字符::
+
+  >>> arabic = re.compile('[\u0600-\u06ff\u0750-\u077f\u08a0-\u08ff]+')
+  >>>
+
+当执行匹配和搜索操作的时候，最好是先标准化并且清理所有文本为标准化格式.
+但是同样也应该注意一些特殊情况，比如在忽略大小写匹配和大小写 转换时的行为::
+
+  >>> pat = re.compile('stra\u00dfe', re.IGNORECASE)
+  >>> s = 'straße'
+  >>> pat.match(s) # Matches
+  <_sre.SRE_Match object at 0x10069d370>
+  >>> pat.match(s.upper()) # Doesn't match
+  >>> s.upper() # Case folds
+  'STRASSE'
+  >>>
+
+混合使用 Unicode 和正则表达式通常会让你抓狂。
+如果你真的打算这样做的话，最 好考虑下安装第三方正则式库，
+它们会为 Unicode 的大小写转换和其他大量有趣特性 提供全面的支持，包括模糊匹配。
+
+删除字符串中字符
+=================
+
+去掉文本字符串开头，结尾或者中间不想要的字符，比如空白
+
+- str.strip 删除开始或结尾的字符
+- str.lstrip 从左执行删除
+- str.rstrip 从右执行删除
+- str.replace 字符串替换
+- re.sub 字符串正则替换
+
+清理文本字符串
+=================
+
+除了上面的, 还有
+
+- str.translate 自定义替换
+
+例如::
+
+  >>> s = 'pýtĥöñ\fis\tawesome\r\n'
+  >>> s
+  'pýtĥöñ\x0cis\tawesome\r\n'
+  >>>
+
+第一步是清理空白字符, 空白字符 ``\t`` 和 ``\f`` 已经被重新映射到一个空格。
+回车字符 ``\r`` 直 接被删除。::
+
+  >>> remap = {
+  ... ord('\t') : ' ',
+  ... ord('\f') : ' ',
+  ... ord('\r') : None # Deleted ... }
+  >>> a = s.translate(remap)
+  >>> a
+  'pýtĥöñ is awesome\n'
+  >>>
+
+使用 dict.fromkeys() 方法构造一个字典，每个 Unicode 和音 符作为键，对应的值全部为 None 。
+
+然后使用 unicodedata.normalize() 将原始输入标准化为分解形式字符。
+然后再 调用 translate 函数删除所有重音符::
+
+  >>> import unicodedata
+  >>> import sys
+  >>> cmb_chrs = dict.fromkeys(c for c in range(sys.maxunicode)
+  ... if unicodedata.combining(chr(c)))
+  ...
+  >>> b = unicodedata.normalize('NFD', a)
+  >>> b
+  'pýtĥöñ is awesome\n'
+  >>> b.translate(cmb_chrs)
+  'python is awesome\n'
+  >>>
+
+同样的技术也可以被用来删除其他类型的字符 (比如控制字符等)。
+
+另一种清理文本的技术涉及到 I/O 解码与编码函数。
+这里的思路是先对文本做一 些初步的清理，然后再结合 encode() 或者 decode() 操作来清除或修改它::
+
+  >>> a
+  'pýtĥöñ is awesome\n'
+  >>> b = unicodedata.normalize('NFD', a)
+  >>> b.encode('ascii', 'ignore').decode('ascii')
+  'python is awesome\n'
+  >>>
+
+这里的标准化操作将原来的文本分解为单独的和音符。
+接下来的 ASCII 编码/解码 只是简单的一下子丢弃掉那些字符。
+当然，这种方法仅仅只在最后的目标就是获取到文 本对应 ACSII 表示的时候生效。
+
+文本字符清理一个最主要的问题应该是运行的性能。
+一般来讲，代码越简单运行越 快。
+对于简单的替换操作，str.replace() 方法通常是最快的，甚至在你需要多次调用 的时候.
+
+另一方面，如果你需要执行任何复杂字符对字符的重新映射或者删除操作的话， tanslate() 方法会非常的快。
+
+字符串对齐
+=================
+
+通过某种对齐方式来格式化字符串
+
+- str.ljust
+- str.rjust
+- str.center
+- format
+
+例::
+
+  >>> text = 'Hello World'
+  >>> text.ljust(20)
+  'Hello World '
+  >>> text.rjust(20)
+  '         Hello World'
+  >>> text.center(20)
+  ' Hello World '
+  >>>
+
+所有这些方法都能接受一个可选的填充字符::
+
+  >>> text.rjust(20,'=')
+  '=========Hello World'
+
+  >>> text.center(20,'*')
+  '****Hello World*****'
+  >>>
+
+函数 format() 同样可以用来很容易的对齐字符串。你要做的就是使用 <,> 或者 ^ 字符后面紧跟一个指定的宽度::
+
+  >>> format(text, '>20')
+  ' Hello World'
+  >>> format(text, '<20')
+  'Hello World '
+  >>> format(text, '^20')
+  ' Hello World '
+  >>>
+
+如果你想指定一个非空格的填充字符，将它写到对齐字符的前面即可::
+
+  >>> format(text, '=>20s')
+  '=========Hello World'
+  >>> format(text, '*^20s')
+  '****Hello World*****'
+  >>>
+
+当格式化多个值的时候，这些格式代码也可以被用在 format() 方法中::
+
+  >>> '{:>10s} {:>10s}'.format('Hello', 'World')
+  ' Hello World'
+  >>>
+
+format() 函数的一个好处是它不仅适用于字符串。它可以用来格式化任何值，使 得它非常的通用。比如，你可以用它来格式化数字::
+
+  >>> x = 1.2345
+  >>> format(x, '>10')
+  ' 1.2345'
+  >>> format(x, '^10.2f') ' 1.23 '
+  >>>
+
+在老的代码中，你经常会看到被用来格式化文本的 % 操作符。比如::
+
+  >>> '%-20s' % text
+  'Hello World '
+  >>> '%20s' % text
+  ' Hello World'
+  >>>
+
+但是，在新版本代码中，你应该优先选择 format() 函数或者方法。
+format() 要比 % 操作符的功能更为强大。
+并且 format() 也比使用 ljust() , rjust() 或 center() 方 法更通用，因为它可以用来格式化任意对象，而不仅仅是字符串
+
+合并/拼接字符串
+=================
+
+将几个小的字符串合并为一个大的字符
+
+- ''.join(iter)
+- str1 + str2
+
+
+只是合并少数几个字符串，使用加号 (+) 通常已经足够了::
+
+  >>> a = 'Is Chicago'
+  >>> b = 'Not Chicago?'
+  >>> a + ' ' + b
+  'Is Chicago Not Chicago?'
+  >>>
+
+在源码中将两个字面字符串合并::
+
+  >>> a = 'Hello' 'World'
+  >>> a
+  'HelloWorld'
+  >>>
+
+**使用加号 (+) 操作符去连接大量的字符串的 时候是非常低效率的，因为加号连接会引起内存复制以及垃圾回收操作**
+
+注意别使用没必要的字符串连接::
+
+  print(a + ':' + b + ':' + c) # Ugly
+  print(':'.join([a, b, c])) # Still ugly
+  print(a, b, c, sep=':') # Better
+
+当混合使用 I/O 操作和字符串连接操作的时候，有时候需要仔细研究你的程序。比 如::
+
+  # Version 1 (string concatenation)
+  f.write(chunk1 + chunk2)
+
+  # Version 2 (separate I/O operations)
+  f.write(chunk1)
+  f.write(chunk2)
+
+如果两个字符串很小，那么第一个版本性能会更好些，因为 I/O 系统调用天生就 慢。
+另外一方面，如果两个字符串很大，那么第二个版本可能会更加高效，因为它避免 了创建一个很大的临时结果并且要复制大量的内存块数据。
+
+编写构建大量小字符串的输出代码，你最好考虑下使用生 成器函数，利用 yield 语句产生输出片段::
+
+  def sample():
+    yield 'Is'
+    yield 'Chicago'
+    yield 'Not'
+    yield 'Chicago?'
+
+支持直接join::
+
+  text = ''.join(sample())
+
+字符串中插入变量
+=================
+
+- format
+
+使用 format::
+
+  >>> s = '{name} has {n} messages.'
+  >>> s.format(name='Guido', n=37)
+  'Guido has 37 messages.'
+  >>>
+
+如果要被替换的变量能在变量域中找到，那么你可以结合使用 format_map() 和 vars() ::
+
+  >>> name = 'Guido'
+  >>> n = 37
+  >>> s.format_map(vars())
+  'Guido has 37 messages.'
+  >>>
+
+也适用于对象实例::
+
+  >>> class Info:
+  ... def __init__(self, name, n):
+  ...     self.name = name
+  ...     self.n = n
+  >>> a = Info('Guido',37)
+  >>> s.format_map(vars(a))
+  'Guido has 37 messages.'
+  >>>
+
+format 和 format_map() 的一个缺陷就是它们并不能很好的处理变量缺失的情况::
+
+  >>> s.format(name='Guido')
+  Traceback (most recent call last):
+    File "<stdin>", line 1, in <module>
+  KeyError: 'n'
+  >>>
+
+一种避免这种错误的方法是另外定义一个含有 ``__missing__()`` 方法的字典对象::
+
+  class safesub(dict):
+      """ 防止 key 找不到"""
+
+      def __missing__(self, key): return '{' + key + '}'
+
+  >>> del n # Make sure n is undefined
+  >>> s.format_map(safesub(vars()))
+  'Guido has {n} messages.'
+  >>>
+
+其他方式:
+
+% ::
+
+  >>> name = 'Guido'
+  >>> n = 37
+  >>> '%(name) has %(n) messages.' % vars()
+  'Guido has 37 messages.'
+  >>>
+
+字符串模版::
+
+  >>> import string
+  >>> s = string.Template('$name has $n messages.')
+  >>> s.substitute(vars())
+  'Guido has 37 messages.'
+  >>>
+
+format() 和 format_map() 相比较上面这些方案而已更加先进，因此应该 被优先选择。
+使用 format() 方法还有一个好处就是你可以获得对字符串格式化的所有 支持 (对齐，填充，数字格式化等待)，
+而这些特性是使用像模板字符串之类的方案不可 能获得的。
+
+
+指定列宽格式化
+=================
+
+有一些长字符串，想以指定的列宽将它们重新格式化
+
+-  :doc:`/docs/后端/python/python标准库/textwrap`
+
+使用 textwrap ::
+
+  s = "Look into my eyes, look into my eyes, the eyes, the eyes, \ the eyes, not around the eyes, don't look around the eyes, \ look into my eyes, you're under."
+
+格式化::
+
+  >>> import textwrap
+  >>> print(textwrap.fill(s, 70))   # 每行最长 70
+  >>> print(textwrap.fill(s, 40))   # 每行最长 40
+  >>> print(textwrap.fill(s, 40, initial_indent=' '))
+
+textwrap 模块对于字符串打印是非常有用的，特别是当你希望输出自动匹配终端 大小的时候。
+你可以使用 os.get_terminal_size() 方法来获取终端的大小尺寸。比如::
+
+  >>> import os
+  >>> os.get_terminal_size().columns
+  80
+  >>>
+
+fill() 方法接受一些其他可选参数来控制 tab，语句结尾等。参阅 :doc:`/docs/后端/python/python标准库/textwrap`
+
+处理 html 和 xml
+=================
+
+将 HTML 或者 XML 实体如 &entity; 或 &#code; 替换为对应的文本。再者， 你需要转换文本中特定的字符 (比如 <, >, 或 &)
+
+可以使用 :doc:`/docs/后端/python/python标准库/html`
+
+在生成 HTML 或者 XML 文本的时候，如果正确的转换特殊标记字符是一个很容 易被忽视的细节。
+特别是当你使用 print() 函数或者其他字符串格式化来产生输出的 时候。
+使用像 html.escape() 的工具函数可以很容易的解决这类问题。
+
+如果你想以其他方式处理文本，还有一些其他的工具函数比如 xml.sax.saxutils. unescapge() 可以帮助你。
+然而，你应该先调研清楚怎样使用一个合适的解析器。
+比 如，如果你在处理 HTML 或 XML 文本，
+使用某个解析模块比如 html.parse 或 xml. etree.ElementTree 已经帮你自动处理了相关的替换细节。
+
+字符串令牌解析
+=================
+
+假如你有下面这样一个文本字符串::
+
+  text = 'foo = 23 + 42 * 10'
+
+为了令牌化字符串，你不仅需要匹配模式，还得指定模式的类型. 例::
+
+  tokens = [('NAME', 'foo'), ('EQ','='), ('NUM', '23'), ('PLUS','+'),
+            ('NUM', '42'), ('TIMES', '*'), ('NUM', '10')]
+
+利用命名捕获组的正则表达式来定 义所有可能的令牌，包括空格::
+
+  import re
+  NAME = r'(?P<NAME>[a-zA-Z_][a-zA-Z_0-9]*)' NUM = r'(?P<NUM>\d+)'
+  PLUS = r'(?P<PLUS>\+)'
+  TIMES = r'(?P<TIMES>\*)'
+  EQ = r'(?P<EQ>=)'
+  WS = r'(?P<WS>\s+)'
+  master_pat = re.compile('|'.join([NAME, NUM, PLUS, TIMES, EQ, WS]))
+
+?P<TOKENNAME> 用于给一个模式命名，供后面使用
+
+使用 scanner() ::
+
+  >>> scanner = master_pat.scanner('foo = 42')
+  >>> scanner.match()
+  <_sre.SRE_Match object at 0x100677738>
+  >>> _.lastgroup, _.group()
+  ('NAME', 'foo')
+
