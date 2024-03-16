@@ -128,7 +128,7 @@ html_theme_options = {
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#confval-html_theme_options
 # https://www.sphinx-doc.org/en/master/usage/theming.html
 
-html_title = f'启 {release}'
+html_title = f'个人文档 版本 {release}'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
