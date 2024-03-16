@@ -61,8 +61,17 @@ healthchecks
     8 6 * * * python /home/user/test.py && curl -fsS -m 10 --retry 5 -o /dev/null http://localhost:8000/ping/880cb4d2
 
   如果未按时调用回调接口，healthchecks将会通过邮件等通知方式告警。
+hyper
+  一个基于electron的终端工具. 跨平台.
+
+  - 官网: `<https://hyper.is>`_
+  - github: `<https://github.com/vercel/hyper>`_
+furo
+  见 :doc:`/docs/后端/python/python三方库/furo`
 
 待处理
   - EMBY 一个媒体服务器, 介绍可看: `<https://zhuanlan.zhihu.com/p/629282288>`_
+
+
 
 

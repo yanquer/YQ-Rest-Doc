@@ -42,6 +42,7 @@ Python标准库
   multiprocessing
   operator
   os
+  pelican
   pip
   pprint
   pytz

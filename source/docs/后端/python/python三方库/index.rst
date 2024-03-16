@@ -17,6 +17,7 @@ Python三方库
   cryptography
   ffmpeg
   frida
+  furo
   grpc
   jsonrpc
   jupyter

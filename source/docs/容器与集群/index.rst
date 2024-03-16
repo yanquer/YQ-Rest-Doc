@@ -2,6 +2,14 @@
 容器、代理与集群
 =================================
 
+.. post:: Apr 15, 2022
+  :tags:
+  :category: 容器与集群
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 暂时只写了docker与nginx, 集群待补充
 
 .. toctree::

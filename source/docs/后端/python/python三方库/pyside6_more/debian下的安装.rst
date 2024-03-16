@@ -13,9 +13,11 @@ debian下的安装
   cd ~
   mkdir .pip && cd .pip
   echo "[global]
-  index-url = https://pypi.douban.com/simple/
+  index-url = https://pypi.tuna.tsinghua.edu.cn/simple
+  # index-url = https://pypi.douban.com/simple/
   [install]
-  trusted-host=pypi.douban.com
+  trusted-host=pypi.tuna.tsinghua.edu.cn
+  # trusted-host=pypi.douban.com
   " >pip.conf
 
 官网要求安装的依赖包::

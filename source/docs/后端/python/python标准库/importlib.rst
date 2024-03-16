@@ -120,6 +120,18 @@ reload
 
   在 3.7 版更改: 如果重新加载的模块缺少 ModuleSpec ，则会触发 ModuleNotFoundError 。
 
+metadata
+========================
+
+metadata.entry_points
+------------------------
+
+位置::
+
+  from importlib.metadata import entry_points
+
+通过参数 group 或者 name, 找到所有匹配的已安装包的入口.
+
 关于loader加载器
 ========================
 

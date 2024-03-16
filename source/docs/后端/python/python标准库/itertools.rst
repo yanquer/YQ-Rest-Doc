@@ -2,7 +2,7 @@
 itertools
 ================
 
-官网: https://docs.python.org/zh-cn/3/library/itertools.html
+官网: `<https://docs.python.org/zh-cn/3/library/itertools.html>`_
 
 groupby
 ================
@@ -122,6 +122,24 @@ zip_longest
   Out[20]: [('A', 0, 10), ('B', 1, 20), ('C', 2, 30), (None, 3, 40), (None, 4, None)]
 
   In [21]:
+
+starmap
+================================
+
+乘法运算符可以被映射到两个向量之间执行高效的点积::
+
+  sum(starmap(operator.mul, zip(vec1, vec2, strict=True)))。
+
+.. note::
+
+  operator 见 :doc:`operator`
+
+再如统计两个数组a, b中索引与元素都相等的个数::
+
+  starmap(operator.eq, zip(a, b))
+
+
+
 
 
 

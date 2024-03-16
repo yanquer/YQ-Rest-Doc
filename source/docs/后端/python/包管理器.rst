@@ -37,15 +37,17 @@ Debian下如果没有pip, 可以使用apt安装::
 在用户目录下创建 ~/.pip/pip.conf 配置文件，内容::
 
     [global]
-    index-url = http://pypi.douban.com/simple 	# 豆瓣源;可以换成其他的源
+    index-url = https://pypi.tuna.tsinghua.edu.cn/simple
+    # index-url = http://pypi.douban.com/simple 	# 豆瓣源;可以换成其他的源
     disable-pip-version-check = true     		    # 取消pip版本检查&#xff0c;排除每次都报最新的pip
     timeout = 120
     [install]
-    trusted-host = pypi.douban.com      		    # 添加豆瓣源为可信主机&#xff0c;要不然可能报错
+    trusted-host = pypi.tuna.tsinghua.edu.cn
+    # trusted-host = pypi.douban.com      		    # 添加豆瓣源为可信主机&#xff0c;要不然可能报错
 
 或者执行的时候直接指定::
 
-    pip instal soft -i "http://pypi.douban.com/simple" --trusted-host pypi.douban.com
+    pip instal soft -i "https://pypi.tuna.tsinghua.edu.cn/simple" --trusted-host pypi.douban.com
 
 Mac配置pip源
 -----------------------------------
@@ -55,7 +57,7 @@ Mac配置pip源
   cd ~
   mkdir .pip && cd .pip
   echo "[global]
-  index-url = https://pypi.douban.com/simple/
+  index-url = https://pypi.tuna.tsinghua.edu.cn/simple
   [install]
   trusted-host=pypi.douban.com
   " >pip.conf

@@ -101,7 +101,12 @@
 
 有几个地方
 
-1. theia-core模块的定义
+- theia-core模块的定义1_
+- theia-core模块的定义2_
+- vs的editor下面的转换_
+
+theia-core模块的定义1
+===================================
 
 这个的触发方式是 `node_modules/@theia/core/src/browser/color-application-contribution.ts`
 定义的事件::
@@ -184,7 +189,61 @@
 结论
     会在theia自定义的样式前加上 `--theia-` 前缀, 并把 `.` 转换为 `-`
 
-1. vs的editor下面的转换
+
+theia-core模块的定义2
+===================================
+
+这里主要讲如何讲 json 的内容完整的注册进去.
+如果是一个完全自定义的样式变量, 光写json是不行的.
+
+以下面的两个自定义颜色变量为例::
+
+    {
+        "$schema": "vscode://schemas/color-theme",
+        "name": "Dark (Custom)",
+        "colors": {
+            "ideC.editor.background": "#1E1E1E",
+            "ideC.editor.foreground": "#D4D4D4",
+
+    ...
+
+还需要将这个变量注册进去, 注册实现位于 `node_modules/@theia/core/src/browser/color-application-contribution.ts` 的
+`ColorContribution` 贡献点的 `registerColors` 即可::
+
+    import {ColorContribution} from "@theia/core/lib/browser/color-application-contribution";
+    import {ColorRegistry} from "@theia/core/lib/browser/color-registry";
+    import {ColorDefinition} from "@theia/core/src/common/color";
+
+    // "ideC.editor.background": "#1E1E1E",
+    // "ideC.editor.foreground": "#D4D4D4",
+
+    class CustomColor implements ColorContribution{
+
+        private customColorID: ColorDefinition[] = [
+            {id: "ideC.editor.background", description: "color 1"},
+            {id: "ideC.editor.foreground", description: "color 2"},
+        ]
+
+        registerColors(colors: ColorRegistry): void {
+            colors.register(...this.customColorID)
+        }
+
+    }
+
+.. warning::
+
+    只有注册到贡献点的id, 才会去json里面找
+
+主要是调用的 `node_modules/@theia/monaco-editor-core/src/vs/platform/theme/common/colorRegistry.ts`下
+`ColorRegistry` 的 `registerColor`. 可以理解这个 `ColorRegistry()` 是一个缓存,
+json里面的配置会先读到这里, 然后在 theia-core模块的定义1_ 中需要 `documentElement.style.setProperty`
+的时候再从这个缓存里读.
+
+vs的editor下面的转换
+===================================
+
+主要文件:
+    `node_modules/@theia/monaco-editor-core/src/vs/editor/standalone/browser/standaloneThemeService.ts`
 
 位于 `node_modules/@theia/monaco-editor-core/src/vs/editor/standalone/browser/standaloneThemeService.ts`
 下 `StandaloneThemeService` 的 `_updateThemeOrColorMap` ::
@@ -269,6 +328,128 @@
 与theia不同, 它是直接生成一个style然后写进去.
 
 
+颜色与主题区别
+===================================
+
+主题注册与切换基本是通过 `node_modules/@theia/monaco-editor-core/src/vs/editor/standalone/browser/standaloneEditor.ts`
+下的这两::
+
+    /**
+    * Define a new theme or update an existing theme.
+    */
+    export function defineTheme(themeName: string, themeData: IStandaloneThemeData): void {
+        const standaloneThemeService = StandaloneServices.get(IStandaloneThemeService);
+        standaloneThemeService.defineTheme(themeName, themeData);
+    }
+
+    /**
+    * Switches to a theme.
+    */
+    export function setTheme(themeName: string): void {
+        const standaloneThemeService = StandaloneServices.get(IStandaloneThemeService);
+        standaloneThemeService.setTheme(themeName);
+    }
+
+理一下 **主题** 与 **颜色** 的区别
+
+主题包含颜色, 与颜色定义,
+但是使用的时候, 是根据注册了哪些颜色, 使用主题里的颜色.
+
+即 只有通过  `node_modules/@theia/core/src/browser/color-application-contribution.ts` 的
+`ColorContribution` 贡献点的 `registerColors` 注册的颜色.
+
+下面的 colors 才能生效::
+
+    {
+        "$schema": "vscode://schemas/color-theme",
+        "name": "Dark (Custom)",
+        "colors": {
+            "ideC.editor.background": "#1E1E1E",
+            "ideC.editor.foreground": "#D4D4D4",
+
+    ...
+
+除非是内部已经注册的.
+
+vscode主题与theia主题的区别
+===================================
+
+默认情况下, vscode只会处理vscode相关的样式. `StandaloneThemeService` 上就是这样实例::
+
+    function getBuiltinRules(builtinTheme: BuiltinTheme): IStandaloneThemeData {
+        switch (builtinTheme) {
+            case VS_LIGHT_THEME_NAME:
+                return vs;
+            case VS_DARK_THEME_NAME:
+                return vs_dark;
+            case HC_BLACK_THEME_NAME:
+                return hc_black;
+            case HC_LIGHT_THEME_NAME:
+                return hc_light;
+        }
+    }
+
+    function newBuiltInTheme(builtinTheme: BuiltinTheme): StandaloneTheme {
+        const themeData = getBuiltinRules(builtinTheme);
+        return new StandaloneTheme(builtinTheme, themeData);
+    }
+
+即只处理这四个主题.
+
+另外还有一个 `StandaloneThemeService` 内的 `defineTheme`::
+
+    public defineTheme(themeName: string, themeData: IStandaloneThemeData): void {
+        if (!/^[a-z0-9\-]+$/i.test(themeName)) {
+            throw new Error('Illegal theme name!');
+        }
+        if (!isBuiltinTheme(themeData.base) && !isBuiltinTheme(themeName)) {
+            throw new Error('Illegal theme base!');
+        }
+        // set or replace theme
+        this._knownThemes.set(themeName, new StandaloneTheme(themeName, themeData));
+
+        ...
+    }
+
+这里 this._knownThemes 也会实例一个新的.
+而调用到这的条件还是 `node_modules/@theia/monaco/src/browser/textmate/monaco-theme-registry.ts`
+下 `register` 的::
+
+    register(json: any, includes?: { [includePath: string]: any }, givenName?: string, monacoBase?: monaco.editor.BuiltinTheme): ThemeMix {
+        const name = givenName || json.name!;
+        ...
+
+        if (monacoBase && givenName) { ... }
+
+        ...
+
+    }
+
+从这一点看, 很多样式在注册主题的时候,
+只要定义了 `monacoBase` 是基于vs的, 就会同时包含 ``--theia-xxx`` 与 ``--vscode-xxx``.
+不过只有setTheme才会触发 `--vscode-xxx` 的生成, 算是一种懒加载.
+同时, 由于加载顺序的原因, 往往首次加载只会生成vs主题的 `--vscode-xxx` 样式, 因为这个时候 colors 还没有注册上去,
+而注册 colors 时, 因为主题已经设置好了, 就不会再 settheme 生成 `--vscode-xxx` 样式了, 除非手动切换一下主题.
+
+故, 自定义的颜色, 还是使用 `--theia-xxx` 来使用
+
+注意, **注册主题与注册颜色是两个调用**
 
 
+.. .. note:\:
+
+..     注意这里是 `colorRegistry.getColors()`, 获取的跟上面theia用的不是一个缓存,
+..     theia用的是:\:
+
+..         public getColorSchema(): IJSONSchema {
+..             return this.colorSchema;
+..         }
+
+..     而这用的是:\:
+
+..         public getColors(): ColorContribution[] {
+..             return Object.keys(this.colorsById).map(id => this.colorsById[id]);
+..         }
+
+..     这也是两者的区别
 

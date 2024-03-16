@@ -2,6 +2,14 @@
 数据结构
 ==========================
 
+.. post:: Apr 15, 2022
+  :tags:
+  :category: 数据结构
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 .. 树
 
 .. toctree::

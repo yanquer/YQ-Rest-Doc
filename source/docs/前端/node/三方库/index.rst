@@ -8,6 +8,7 @@ node三方库
   lodash
   AnchorJS
   ajv
+  nteract
 
 
 

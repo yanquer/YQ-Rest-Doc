@@ -2,6 +2,13 @@
 AI
 ==============================
 
+.. post:: Apr 15, 2022
+  :tags:
+  :category: AI
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
 这个其实是一个比较广的
 
 - 计算机视觉

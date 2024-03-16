@@ -69,9 +69,9 @@ shell条件判断if
 如下所示是多行脚本片段::
 
     if [ conditional_expression ]; then
-    if_success_run_this_command
+        if_success_run_this_command
     else
-    if_not_success_run_this_command
+        if_not_success_run_this_command
     fi
 
 这里末尾的 `|| true` 是需要的，
