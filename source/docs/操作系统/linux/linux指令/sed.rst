@@ -2,6 +2,15 @@
 sed
 ====================
 
+
+.. post:: 2023-02-26 21:30:12
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 流式文本编辑器
 
 利用脚本来处理文本文件。

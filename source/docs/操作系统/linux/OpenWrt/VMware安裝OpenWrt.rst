@@ -2,6 +2,15 @@
 VMware安裝OpenWrt
 ======================================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: linux, OpenWrt
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 官网下载地址
   因为我是虚拟机安装, 系统是64位, 所以就只看这个页面的:
   `<https://downloads.openwrt.org/releases/23.05.2/targets/x86/64/>`_

@@ -2,6 +2,15 @@
 react直接执行ts
 =======================
 
+
+.. post:: 2024-03-12 19:49:08
+  :tags: 框架, react, 问题
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 使用WebStrom创建的React的ts项目, 发现不需要手动tsc编译就可以直接运行::
 
   react-script start

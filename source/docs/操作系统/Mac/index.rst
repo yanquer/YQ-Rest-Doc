@@ -2,11 +2,20 @@
 Mac
 =========================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: Mac
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 .. toctree::
   :maxdepth: 1
 
-  Mac指令
-  Mac环境变量
+  Mac指令/index
+  Mac环境变量/index
   打印运行时加载的动态库
   图标制作
   Mac-Vmware磁盘修复

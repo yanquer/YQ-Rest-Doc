@@ -2,6 +2,15 @@
 where
 ==============
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: windows, windows_shell
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 显示符合搜索模式的文件位置。在默认情况下，搜索是在当前目录和 PATH 环境变量指定的路径中执行的
 
 语法::

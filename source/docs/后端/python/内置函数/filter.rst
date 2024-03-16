@@ -2,6 +2,15 @@
 filter
 =================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, 内置函数
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 filter() 函数用于过滤序列，过滤掉不符合条件的元素，返回由符合条件元素组成的新列表。
 
 - Python2.7 返回列表

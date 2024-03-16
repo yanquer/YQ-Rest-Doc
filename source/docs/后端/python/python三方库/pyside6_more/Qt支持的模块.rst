@@ -2,6 +2,15 @@
 Qt支持的模块
 ================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: python, python三方库, pyside6_more
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 :官网地址::
   `modules <https://doc.qt.io/qtforpython/modules.html>`_
 

@@ -2,6 +2,15 @@
 MOD之旅
 =============================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags:
+  :category: 杂乱无章
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 塞尔达的MOD
 
 素材替换需要转换 **RSTB** (ResourceSizeTable.product.srsizetabl)， 即： 游戏内部RAM分配

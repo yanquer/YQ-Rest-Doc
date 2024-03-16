@@ -2,6 +2,15 @@
 timeit
 ====================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, python标准库
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 官网: `timeit --- 测量小代码片段的执行时间 <https://docs.python.org/zh-cn/3/library/timeit.html?highlight=timeit#module-timeit>`_
 
 此模块提供了一种简单的方法来计算一小段 Python 代码的耗时。

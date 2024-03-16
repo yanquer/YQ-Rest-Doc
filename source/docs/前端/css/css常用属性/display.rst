@@ -2,6 +2,15 @@
 display
 ======================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: css, css常用属性
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 设置元素是否被视为块或者内联元素以及用于子元素的布局，例如流式布局、网格布局或弹性布局;
 默认: inline
 

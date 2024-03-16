@@ -2,6 +2,15 @@
 telnet
 ==========================
 
+
+.. post:: 2024-03-04 22:04:43
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 登录远程主机和管理(也可以简单测试ip端口是否连通).
 属于应用层的协议，可用于远程登录，也可用于检测IP的端口状态
 

@@ -2,6 +2,15 @@
 jobs
 ===================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 查看后台被挂起的进程, 一般用于 **Ctrl + Z** 手动挂起进程后的查看
 
 通过 :doc:`/docs/操作系统/linux/linux指令/fg` 命令可以恢复进程到前台执行;

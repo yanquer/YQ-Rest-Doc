@@ -2,6 +2,15 @@
 background
 ======================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: css, css常用属性
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 background属性是一个复合属性，它用于设置元素的背景样式，
 包括背景颜色、背景图片、背景重复方式、背景位置等。
 

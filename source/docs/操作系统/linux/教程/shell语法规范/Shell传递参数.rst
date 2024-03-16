@@ -2,6 +2,15 @@
 Shell传递参数
 ==================================
 
+
+.. post:: 2023-02-23 23:14:15
+  :tags: linux, 教程, shell语法规范
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 主要是Shell传递命令行参数
 
 特殊的 shell 参数经常在 shell 脚本里面被用到::

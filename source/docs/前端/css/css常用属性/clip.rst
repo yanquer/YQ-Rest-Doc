@@ -2,6 +2,15 @@
 clip
 =======================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: css, css常用属性
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 clip 是一个 CSS 属性，用于指定元素的裁剪区域，即确定元素在页面上显示的部分。
 它可以用来隐藏元素的一部分内容或者创建非矩形的可视区域。
 

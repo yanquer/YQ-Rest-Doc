@@ -2,6 +2,15 @@
 divmod
 ==================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, 内置函数
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 python divmod() 函数把除数和余数运算结果结合起来，返回一个包含商和余数的元组(a // b, a % b)
 
 .. function:: divmod(a, b)

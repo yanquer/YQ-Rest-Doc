@@ -2,6 +2,15 @@
 梯度增强算法 Gradient Boosting
 ===============================================
 
+
+.. post:: 2024-03-17 00:32:12
+  :tags: 机器学习, 机器学习算法
+  :category: AI
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 梯度增强算法（Gradient Boosting）使用多个弱算法来创建更强大的精确算法。
 它与使用单个估计量不同，而是使用多个估计量创建一个更稳定和更健壮的算法。梯度增强算法有几种：
 

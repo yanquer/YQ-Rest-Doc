@@ -3,6 +3,13 @@
 input-array使用
 ===========================
 
+.. post:: 2023-03-01 00:19:35
+  :tags: 框架, amis, 问题
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
 必须有 `item` , 组件才知道怎么渲染::
 
   {

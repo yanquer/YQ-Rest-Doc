@@ -2,6 +2,15 @@
 安装kivy
 ====================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, python三方库, kivy
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 官网安装介绍: https://kivy.org/doc/stable/gettingstarted/installation.html
 
 一般都是用的桌面系统开发, 所以直接使用 pip安装即可::

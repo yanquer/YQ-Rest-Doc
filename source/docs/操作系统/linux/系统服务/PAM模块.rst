@@ -2,6 +2,15 @@
 PAM模块
 =================================
 
+
+.. post:: 2023-02-23 23:14:15
+  :tags: linux, 系统服务
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 PAM（Pluggable Authentication Modules， 嵌入式模块）
 
 一套应用程序编程接口，提供一连串的验证机制，使用者将需求告知，PAM返回使用者验证的结果

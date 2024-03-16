@@ -2,6 +2,15 @@
 otool
 =======================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: Mac, Mac指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 某种程度上可以看作 :doc:`/docs/操作系统/linux/linux指令/ldd` 的替代,
 因为Mac上没有 ldd 指令.
 

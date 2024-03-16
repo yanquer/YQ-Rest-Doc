@@ -2,6 +2,15 @@
 time
 ==================
 
+
+.. post:: 2023-02-26 21:30:12
+  :tags: python, python标准库
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 - 官网: https://docs.python.org/zh-cn/3/library/time.html
 - 参考: `python time模块 <https://blog.csdn.net/you_are_my_dream/article/details/61616465>`_
 

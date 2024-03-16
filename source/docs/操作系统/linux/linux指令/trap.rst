@@ -2,6 +2,15 @@
 trap
 ======================
 
+
+.. post:: 2023-02-24 22:59:42
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 指定在接收到信号之后将要采取的动作
 
 用法::

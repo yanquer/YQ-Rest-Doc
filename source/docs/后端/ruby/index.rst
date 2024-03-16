@@ -2,6 +2,15 @@
 Ruby
 ===============================
 
+
+.. post:: 2024-03-09 15:46:28
+  :tags: ruby
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 安装配置
 
 安装::

@@ -2,6 +2,15 @@
 wait
 =================================
 
+
+.. post:: 2023-02-23 23:14:15
+  :tags: linux, 内置函数
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 Linux内核学习笔记 - wait、waitpid、wait3 和 wait4
 
 Linux下有四个wait函数：

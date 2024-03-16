@@ -2,6 +2,15 @@
 Python Qt官方框架 pyside6
 ============================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: python, python三方库
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 :官网文档::
   `Qt for Python <https://doc.qt.io/qtforpython/>`_
 

@@ -2,6 +2,15 @@
 auditd-系统审计
 =========================================
 
+
+.. post:: 2023-02-23 23:14:15
+  :tags: linux, 系统服务
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 auditd
   The Linux Audit Subsystem is a system to Collect information regarding events occurring on the system(s) ,
   Kernel events (syscall events), User events (audit-enabled programs)

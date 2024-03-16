@@ -2,6 +2,15 @@
 ES6 Generator 函数
 ==============================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: ES6
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 ES6 新引入了 Generator 函数，可以通过 yield 关键字，把函数的执行流挂起，
 为改变执行流程提供了可能，从而为异步编程提供解决方案
 

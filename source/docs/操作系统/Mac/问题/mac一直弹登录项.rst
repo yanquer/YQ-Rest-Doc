@@ -3,6 +3,15 @@ mac一直弹登录项
 =====================
 
 
+.. post:: 2023-02-26 21:30:12
+  :tags: Mac, 问题
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
+
 清空登录项::
 
   sfltool resetbtm

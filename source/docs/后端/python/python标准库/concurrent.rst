@@ -2,6 +2,15 @@
 concurrent
 ====================
 
+
+.. post:: 2024-02-21 21:55:17
+  :tags: python, python标准库
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 官网: `<https://docs.python.org/zh-cn/3/library/concurrent.html>`_
 
 目前就一个包:

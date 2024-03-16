@@ -2,6 +2,15 @@
 locals
 =====================================
 
+
+.. post:: 2024-02-21 21:55:17
+  :tags: python, 内置函数
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 **locals()** 函数会以字典类型返回当前位置的全部局部变量。
 
 对于函数, 方法, lambda 函式, 类, 以及实现了 __call__ 方法的类实例, 它都返回 True::

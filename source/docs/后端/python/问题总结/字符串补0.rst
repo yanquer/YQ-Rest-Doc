@@ -2,6 +2,15 @@
 字符串补0
 ==================================
 
+
+.. post:: 2024-03-07 22:25:04
+  :tags: python, 问题总结
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 左对齐, 右侧补0::
 
   In [2]: "123".ljust(5, "0")

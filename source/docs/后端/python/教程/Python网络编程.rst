@@ -2,6 +2,15 @@
 Python网络编程
 =============================
 
+
+.. post:: 2023-02-20 22:08:48
+  :tags: python, 教程
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 Socket又称"套接字"，应用程序通常通过"套接字"向网络发出请求或者应答网络请求，使主机间或者进程间可以通讯。
 
 Python 提供了两种服务模块:

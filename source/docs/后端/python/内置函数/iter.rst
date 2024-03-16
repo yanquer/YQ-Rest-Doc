@@ -2,6 +2,15 @@
 iter
 ===================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, 内置函数
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 创建一个迭代器
 
 iter 函数一个鲜为人知的特性是它接受一个可选的 callable 对象和一个标记 (结 尾) 值作为输入参数。

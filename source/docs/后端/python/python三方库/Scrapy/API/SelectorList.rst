@@ -2,6 +2,15 @@
 SelectorList
 =================================
 
+
+.. post:: 2023-03-01 22:50:22
+  :tags: python, python三方库, Scrapy, API
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 :doc:`/docs/后端/python/python三方库/Scrapy/API/Selector`
 有的对象方法, 好像它也有.
 

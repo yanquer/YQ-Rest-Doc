@@ -2,6 +2,15 @@
 图标制作
 =================================
 
+
+.. post:: 2024-02-21 21:55:17
+  :tags: Mac
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 使用 :doc:`/docs/操作系统/Mac/Mac指令/sips`
 
 例, 有一个1024*1024的png: pic.png::

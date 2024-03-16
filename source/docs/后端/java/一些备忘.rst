@@ -3,6 +3,15 @@
 ======================
 
 
+.. post:: 2023-02-20 22:06:49
+  :tags: java
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
+
 MacOs查看安装路径::
 
 	/usr/libexec/java_home -V

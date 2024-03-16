@@ -2,6 +2,15 @@
 Reflect 与 Proxy
 ====================================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: ES6
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 https://www.runoob.com/w3cnote/es6-reflect-proxy.html
 
 即反射与代理

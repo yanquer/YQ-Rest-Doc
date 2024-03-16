@@ -2,6 +2,15 @@
 debian10 iptables-restore 的 bug
 =============================================
 
+
+.. post:: 2023-02-27 21:24:23
+  :tags: linux, 问题
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 系统是在官网下载的包安装的虚拟机
 
 再一次业务对接过程中意外发现业务连不上这台机器， 经过排除大法，

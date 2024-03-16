@@ -3,6 +3,13 @@
 Python性能分析
 ==========================
 
+.. post:: 2024-03-09 18:21:01
+  :tags: python, 性能分析
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
 查了一下, 主要的有以下几种
 
 - cProfile: Python标准库中内置的性能分析模块，非侵入式.

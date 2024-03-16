@@ -2,6 +2,15 @@
 FieldFile
 ================================
 
+
+.. post:: 2023-02-20 22:18:59
+  :tags: python, Web框架, Django, 支持的Field
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 此节仅说明与FileField关系, 并不存在这样一个列,
 :doc:`/docs/后端/python/Web框架/Django/支持的Field/FileField` 和 FieldFile
 

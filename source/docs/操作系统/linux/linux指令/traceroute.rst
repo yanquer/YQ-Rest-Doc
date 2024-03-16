@@ -2,6 +2,15 @@
 traceroute
 ==========================
 
+
+.. post:: 2023-02-26 21:30:12
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 Linux traceroute命令用于显示数据包到主机间的路径。
 
 traceroute指令让你追踪网络数据包的路由途径，预设数据包大小是40Bytes，用户可另行设置。

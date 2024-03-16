@@ -2,6 +2,15 @@
 linux删除机制
 ============================
 
+
+.. post:: 2024-02-21 21:55:17
+  :tags: linux, 概念性
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 linux下文件是否真实存在可以通过硬连接判断
 
 只要该文件硬连接数量大于等于1, 那么它就真实存在(数量就是有多少份而已)

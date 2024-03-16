@@ -2,6 +2,15 @@
 zip
 ================
 
+
+.. post:: 2024-03-06 23:40:36
+  :tags: python, 内置函数
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 .. note::
 
   相似的函数见 :doc:`/docs/后端/python/python标准库/itertools`

@@ -2,6 +2,15 @@
 update-desktop-database
 =========================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 以GNOME桌面环境为例,
 
 桌面环境的应用菜单并不是实时扫描所有的 .desktop 文件,而是维护一个桌面文件的数据库。

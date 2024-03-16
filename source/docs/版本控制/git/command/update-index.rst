@@ -2,6 +2,15 @@
 update-index
 ======================
 
+
+.. post:: 2023-02-26 21:30:12
+  :tags: git, command
+  :category: 版本控制
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 用于更新Git索引或暂存区的内容。下面是一些常见用法:
 
 --assume-unchanged <file>

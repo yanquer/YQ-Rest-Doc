@@ -2,6 +2,15 @@
 asyncio
 ===========================
 
+
+.. post:: 2023-02-20 22:18:59
+  :tags: python, python标准库
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 - 官网: https://docs.python.org/zh-cn/3/library/asyncio.html
 - 低层api索引: https://docs.python.org/zh-cn/3/library/asyncio-llapi-index.html
 

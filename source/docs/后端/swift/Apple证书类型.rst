@@ -2,6 +2,15 @@
 Apple证书类型
 =============================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: swift
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 开发的设备要在其他设备上运行,
 需要有证书
 

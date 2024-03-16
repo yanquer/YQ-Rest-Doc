@@ -2,6 +2,15 @@
 ubuntu中文支持
 ===========================
 
+
+.. post:: 2023-02-23 00:00:02
+  :tags: linux, ubuntu
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 方式一: 图形化设置
 ===========================
 

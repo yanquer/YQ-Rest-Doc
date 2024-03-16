@@ -2,6 +2,15 @@
 electron生命周期
 =============================
 
+
+.. post:: 2023-02-26 21:30:12
+  :tags: 框架, electron
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 退出的两个调用:
 
 - app.quit(): 尝试关闭所有窗口(如果窗口有 window.on('close', (e) => e.preventDefault()) 则失败)

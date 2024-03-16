@@ -2,6 +2,15 @@
 自制pip包
 =============================
 
+
+.. post:: 2024-02-21 21:55:17
+  :tags: python, 教程
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 自制pip包, 打包为 whl / tar.gz 格式
 
 首先需要自己的一份源码, 一般结构如下,

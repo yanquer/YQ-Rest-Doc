@@ -2,6 +2,15 @@
 vscode后台更新探究
 ===========================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: vscode
+  :category: 常用工具使用
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 因为想像vscode一样实现应用的后台无感更新, 所以clone下来vscode源码研究了这一部分.
 
 对于不同的系统版本, 实现的方式不同, 这里只讨论 windows 与 macos. linux看代码貌似没支持.

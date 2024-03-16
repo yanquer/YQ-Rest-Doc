@@ -2,6 +2,15 @@
 str
 ============================
 
+
+.. post:: 2024-03-12 19:49:08
+  :tags: python, 内置函数
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 python3一个新特性就是对文本和二进制做了更清晰的划分，
 文本是str，二进制是byte(\x01\x06...)
 

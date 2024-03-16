@@ -2,6 +2,15 @@
 cmakelists.txt编写
 ============================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: c
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 cmakelists.txt是基于cmake指令的.
 
 普通变量

@@ -2,6 +2,15 @@
 pkexec
 ======================
 
+
+.. post:: 2023-02-27 21:24:23
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 linux桌面系统下申请提权指令, 是一个用于Linux的通用工具，
 它并不限于特定的桌面环境. 可在多个桌面系统中使用，包括但不限于:
 

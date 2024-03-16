@@ -2,6 +2,15 @@
 分布式锁
 =======================================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: 
+  :category: 中间件
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 .. 参考: `秒懂消息队列MQ，万字总结带你全面了解消息队列MQ <https://developer.aliyun.com/article/953777>`_
 
 参考: `Redis 分布式锁的正确实现原理演化历程与 Redisson 实战总结 <https://developer.aliyun.com/article/1432395?spm=a2c6h.14164896.0.0.224e47c524hkTm&scm=20140722.S_community@@文章@@1432395._.ID_1432395-RL_分布式锁-LOC_search~UND~community~UND~item-OR_ser-V_3-P0_2>`_

@@ -2,6 +2,15 @@
 全局查找快捷键失效
 =================================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: pycharm
+  :category: 常用工具使用
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 主要是Windows下面, 使用 Ctrl+Shift+F 无法打开搜索窗口.
 
 多半是输入法或者其他什么占用了此快捷键, 可以鼠标放到输入法然后右键打开设置.

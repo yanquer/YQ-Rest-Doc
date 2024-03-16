@@ -2,6 +2,15 @@
 等待
 =============================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, python三方库, selenium
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 隐式等待
   对所有元素有效.
   使用 `driver.implicitly_wait(2)`

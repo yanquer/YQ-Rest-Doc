@@ -2,6 +2,15 @@
 Kali安装、配置
 =============================
 
+
+.. post:: 2023-02-20 22:36:38
+  :tags: kali
+  :category: 安全
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 `下载地址 <https://www.kali.org/get-kali/>`_ ,
 选择自己合适的版本下载即可，下载后，直接解压打开（需提前准备好环境如虚拟机）
 

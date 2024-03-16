@@ -2,6 +2,15 @@
 vim
 ===============
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: 
+  :category: 常用工具使用
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 vim有四个模式
 
 - 正常模式 (Normal-mode)

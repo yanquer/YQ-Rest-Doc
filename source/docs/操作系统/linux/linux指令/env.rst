@@ -2,6 +2,15 @@
 env
 =====================
 
+
+.. post:: 2023-02-27 21:24:23
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 env 显示系统中已经存在的环境变量（当前用户），只使用“-”时，隐藏了“-i”的功能
 
 -i

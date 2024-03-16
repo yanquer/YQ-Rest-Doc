@@ -3,6 +3,15 @@ Django
 ===============================
 
 
+.. post:: 2024-03-09 18:21:01
+  :tags: python, Web框架, Django
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
+
 学习进度: `<https://docs.djangoproject.com/zh-hans/3.2/topics/db/models/>`_
 下的字段选项
 

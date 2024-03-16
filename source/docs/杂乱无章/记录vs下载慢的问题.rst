@@ -3,6 +3,15 @@
 ============================
 
 
+.. post:: 2023-06-11 18:06:14
+  :tags: 
+  :category: 杂乱无章
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
+
 - 首先获取下载地址,  比如下载vs2022相关软件包,  地址就是 `download.visualstudio.microsoft.com` (得自己找)
 - 去 `DNS查询网站 <https://tool.chinaz.com/dns>`_ 查询相关改下载地址的相关信息, 然后选择 ttl 最小的那个, 设置DNS
 

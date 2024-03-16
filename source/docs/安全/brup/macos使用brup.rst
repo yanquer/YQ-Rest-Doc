@@ -2,6 +2,15 @@
 macos使用brup
 =========================
 
+
+.. post:: 2023-02-20 22:36:38
+  :tags: brup
+  :category: 安全
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 安装过程暂不表述, 主要是已经忘了
 
 

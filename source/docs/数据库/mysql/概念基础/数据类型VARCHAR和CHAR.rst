@@ -2,6 +2,15 @@
 数据类型VARCHAR和CHAR
 =========================
 
+
+.. post:: 2023-02-27 21:24:23
+  :tags: mysql, 概念基础
+  :category: 数据库
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 固定长度 & 可变长度
 =======================
 

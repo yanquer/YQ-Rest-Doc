@@ -2,6 +2,15 @@
 importlib
 ========================
 
+
+.. post:: 2024-03-13 20:29:00
+  :tags: python, python标准库
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 官网: https://docs.python.org/zh-cn/3/library/importlib.html
 
 实现了import部分功能及动态导入

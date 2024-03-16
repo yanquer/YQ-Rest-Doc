@@ -2,6 +2,15 @@
 Chrome开发者工具
 ========================================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: Chrome
+  :category: 常用工具使用
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 一般默认 **F12** 即可打开
 
 标签

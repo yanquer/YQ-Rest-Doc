@@ -2,6 +2,15 @@
 使用-属性声明
 ============================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, python三方库, kivy
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 官网: https://kivy.org/doc/stable/gettingstarted/properties.html
 
 kivy提供了属性构造的方法, 比如一个数字::

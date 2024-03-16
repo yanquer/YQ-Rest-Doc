@@ -2,6 +2,15 @@
 sort
 ====================
 
+
+.. post:: 2023-02-26 21:30:12
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 对文本内容以行为单位进行 `ASCII` 码排序, 默认按照升序进行排序
 
 -n, --numeric-sort

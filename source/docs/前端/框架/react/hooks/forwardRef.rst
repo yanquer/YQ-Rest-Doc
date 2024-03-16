@@ -2,6 +2,15 @@
 forwardRef
 ================================================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: 框架, react, hooks
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 官网: `<https://zh-hans.react.dev/reference/react/forwardRef>`_
 
 React.forwardRef 会创建一个React组件，这个组件能够将其接受的 ref 属性转发到其组件树下的另一个组件中。

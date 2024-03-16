@@ -2,6 +2,15 @@
 call
 ==================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: windows, windows_shell
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 从批处理程序调用另一个批处理程序::
 
   CALL [drive:][path]filename [batch-parameters]

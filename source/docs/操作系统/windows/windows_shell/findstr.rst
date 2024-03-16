@@ -2,6 +2,15 @@
 findstr
 =============================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: windows, windows_shell
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 搜索字符串, 想找类似与linux下 :doc:`/docs/操作系统/linux/linux指令/grep` 时找到的::
 
   PS C:\Users\yanque> tasklist | findstr dllhost

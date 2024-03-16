@@ -2,6 +2,15 @@
 Deep Neural Networks(DNN)
 ==================================
 
+
+.. post:: 2024-03-17 00:32:12
+  :tags: 深度学习
+  :category: AI
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 深度神经网络（Deep Neural Networks， 简称DNN）是深度学习的基础
 
 感知机

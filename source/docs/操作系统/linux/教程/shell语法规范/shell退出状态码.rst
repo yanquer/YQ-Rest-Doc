@@ -2,6 +2,15 @@
 shell退出状态码
 =============================
 
+
+.. post:: 2024-02-21 21:55:17
+  :tags: linux, 教程, shell语法规范
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 .. csv-table:: Linux退出状态码
   :header: 状态码, 描述
 

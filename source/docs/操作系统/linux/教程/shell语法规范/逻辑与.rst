@@ -2,6 +2,15 @@
 逻辑与
 ========================
 
+
+.. post:: 2024-02-21 21:55:17
+  :tags: linux, 教程, shell语法规范
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 即 ``&&``, 主要说一下与 ``&`` 一起使用的情况
 
 如::

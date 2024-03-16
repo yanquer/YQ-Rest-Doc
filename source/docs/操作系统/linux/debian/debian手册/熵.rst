@@ -2,6 +2,15 @@
 熵
 ========================
 
+
+.. post:: 2023-02-23 23:14:15
+  :tags: linux, debian, debian手册
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 Linux内核采用熵来描述数据的随机性。
 熵（entropy）是描述系统混乱无序程度的物理量，
 一个系统的熵越大则说明该系统的有序性越差，即不确定性越大。

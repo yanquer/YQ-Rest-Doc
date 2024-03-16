@@ -1,6 +1,15 @@
 ======================
 uptime
 ======================
+
+
+.. post:: 2023-02-26 21:30:12
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
 打印系统总共运行了多长时间和系统的平均负载。
 
 打印系统总共运行了多长时间和系统的平均负载。

@@ -2,6 +2,15 @@
 包/模块结构说明
 ====================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, 概念相关
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 在官网下载好并安装好后, 可以发现包存放的目录有
 
 - Lib 目录存放标准库

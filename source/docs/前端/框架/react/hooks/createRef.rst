@@ -2,7 +2,16 @@
 createRef
 ===================================
 
-与 函数组件 的 :doc:`useRef` 基本一致. 支持类组件和函数组件.
+
+.. post:: 2024-03-07 22:13:39
+  :tags: 框架, react, hooks
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
+与 函数组件 的 :doc:`/docs/前端/框架/react/hooks/useRef` 基本一致. 支持类组件和函数组件.
 
 .. note::
 

@@ -2,6 +2,15 @@
 docker使用ubuntu/bind部署dns服务
 ==================================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: config_dns
+  :category: 计算机网络
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 使用的镜像: `ubuntu/bind9 <https://hub.docker.com/r/ubuntu/bind9>`_
 
 创建容器::

@@ -2,6 +2,15 @@
 CRC数据校验
 ==========================
 
+
+.. post:: 2023-06-11 18:06:14
+  :tags: 
+  :category: 杂乱无章
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 CRC（Cyclic Redundancy Check）循环冗余校验.
 
 .. topic:: `百度百科 - 循环冗余检查 <https://baike.baidu.com/item/循环冗余检查/10168241?fromtitle=CRC&fromid=1453359>`_

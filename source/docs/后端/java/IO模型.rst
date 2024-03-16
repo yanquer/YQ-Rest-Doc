@@ -2,6 +2,15 @@
 IO模型
 ==============================
 
+
+.. post:: 2023-02-27 21:24:23
+  :tags: java
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 BIO
   阻塞IO
 NIO

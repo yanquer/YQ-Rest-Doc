@@ -2,6 +2,15 @@
 set
 ===============================
 
+
+.. post:: 2023-03-03 23:21:31
+  :tags: python, 内置函数
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 set的运算::
 
   s = set([3,5,9,10,20,40])      #创建一个数值集合

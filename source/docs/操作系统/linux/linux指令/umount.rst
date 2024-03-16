@@ -2,6 +2,15 @@
 umount
 ======================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 卸载已经加载的文件系统。利用设备名或挂载点都能umount文件系统，
 不过最好还是通过挂载点卸载，以免使用绑定挂载（一个设备，多个挂载点）时产生混乱。
 

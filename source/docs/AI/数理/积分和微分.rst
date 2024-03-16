@@ -2,6 +2,15 @@
 积分和微分
 ==============================
 
+
+.. post:: 2024-03-17 00:32:12
+  :tags: 数理
+  :category: AI
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 以下主要针对这样的一元函数::
 
   y = f(x)

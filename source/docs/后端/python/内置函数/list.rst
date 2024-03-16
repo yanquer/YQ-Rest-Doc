@@ -2,6 +2,15 @@
 list
 ================================
 
+
+.. post:: 2024-03-06 23:40:36
+  :tags: python, 内置函数
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 index()方法
   检测 **字符串** 中是否包含子字符串 str，并返回索引值；
   从 **列表** 中找出某个值第一个匹配项的索引位置。

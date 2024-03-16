@@ -2,6 +2,15 @@
 celery加载流程与懒加载
 =======================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, python三方库, celery_more
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 程序是懒加载的，在没有实际使用的情况下，是不会进行加载的。 创建一个 Celery 程序的流程如下:
 
 - 创建用于事件的逻辑时钟实例

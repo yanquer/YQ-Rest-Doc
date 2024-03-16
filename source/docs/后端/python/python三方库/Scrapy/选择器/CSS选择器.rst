@@ -2,6 +2,15 @@
 CSS选择器
 ================================
 
+
+.. post:: 2023-03-01 22:50:22
+  :tags: python, python三方库, Scrapy, 选择器
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 主要是用法.
 
 概述::

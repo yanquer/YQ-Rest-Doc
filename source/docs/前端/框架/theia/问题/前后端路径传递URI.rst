@@ -2,6 +2,15 @@
 前后端路径传递URI/URL
 ==================================
 
+
+.. post:: 2024-03-08 23:31:08
+  :tags: 框架, theia, 问题
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 - URI: 资源标识符
 - URL: 具体的URI,包含了网络协议信息,如http,https等
 

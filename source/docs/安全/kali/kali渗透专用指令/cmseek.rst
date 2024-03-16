@@ -2,6 +2,15 @@
 cmseek
 ======================
 
+
+.. post:: 2023-02-25 22:13:17
+  :tags: kali, kali渗透专用指令
+  :category: 安全
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 指纹扫描
 
 在Kali中直接输入cmseek，启动该软件,

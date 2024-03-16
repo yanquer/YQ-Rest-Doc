@@ -2,6 +2,15 @@
 update-alternatives
 ==================================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 貌似只有GUI界面才有用 (DEBIAN系列专有)
 
 用软链接的方式处理系统中软件版本的切换，使其多版本共存.

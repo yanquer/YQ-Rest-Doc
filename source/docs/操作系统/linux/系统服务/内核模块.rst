@@ -2,6 +2,15 @@
 内核模块
 =========================================
 
+
+.. post:: 2023-02-23 23:14:15
+  :tags: linux, 系统服务
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 insmod 与 modprobe 都是载入 kernel module，
 不过一般差别于 modprobe 能够处理 module 载入的相依问题。
 

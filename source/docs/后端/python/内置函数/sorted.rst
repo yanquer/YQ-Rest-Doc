@@ -2,6 +2,15 @@
 sorted
 =================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, 内置函数
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 对所有可迭代的对象进行排序操作
 
 sort 与 sorted 区别：

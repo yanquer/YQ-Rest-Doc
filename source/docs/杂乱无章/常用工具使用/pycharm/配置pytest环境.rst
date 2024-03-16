@@ -2,6 +2,15 @@
 配置pytest环境
 ==========================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: pycharm
+  :category: 常用工具使用
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 有时候点测试左边的三角形, 发现使用的是unittest, 于是就找了一下pytest相关的配置.
 
 前提说明, 安装pytest及相应pytest插件, 必须安装的包::

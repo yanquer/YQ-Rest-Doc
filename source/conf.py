@@ -39,8 +39,8 @@ extensions = [
     # 'sphinx.ext.autosectionlabel', 	# 允许直接ref使用标题引用(否则需要给标题定义别名),
                                     # 支持跨文档标题引用(注意标题在多个文档中保持唯一),
 
-    # 'ablog',
-    # 'sphinx.ext.intersphinx',
+    'ablog',
+    'sphinx.ext.intersphinx',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -77,24 +77,24 @@ html_theme_options = {
 # from trojanzoo_sphinx_theme import *
 # html_theme = 'trojanzoo'
 
-# html_style = "alabaster.css"
-# html_theme = "alabaster"
-# html_sidebars = {
-#     "**": [
-#         "about.html",
-#         "ablog/postcard.html",
-#         "ablog/recentposts.html",
-#         "ablog/tagcloud.html",
-#         "ablog/categories.html",
-#         "ablog/archives.html",
-#         "ablog/authors.html",
-#         "ablog/languages.html",
-#         "ablog/locations.html",
-#         "searchbox.html",
-#     ]
-# }
+html_style = "alabaster.css"
+html_theme = "alabaster"
+html_sidebars = {
+    "**": [
+        "about.html",
+        "ablog/postcard.html",
+        "ablog/recentposts.html",
+        "ablog/tagcloud.html",
+        "ablog/categories.html",
+        "ablog/archives.html",
+        "ablog/authors.html",
+        "ablog/languages.html",
+        "ablog/locations.html",
+        "searchbox.html",
+    ]
+}
 
-html_theme = 'furo'
+# html_theme = 'furo'
 # html_theme = 'yanque_sphinx_theme'
 # html_theme_path = ['../submodule/themes']
 html_context = {
@@ -128,7 +128,7 @@ html_theme_options = {
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#confval-html_theme_options
 # https://www.sphinx-doc.org/en/master/usage/theming.html
 
-html_title = f'个人文档 版本 {release}'
+html_title = f'启 {release}'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,

@@ -2,6 +2,15 @@
 c类型
 ==========================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: c
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 char 和 wchar_t 是 C 语言中的字符类型。
 
 .. _char:

@@ -2,6 +2,15 @@
 GNU/Linux 文件有三种类型的时间戳
 =====================================
 
+
+.. post:: 2023-02-27 21:24:23
+  :tags: linux, debian, debian手册
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 .. csv-table:: 时间戳类型列表
   :header: 类型, 含义（历史上 Unix 的定义）
 

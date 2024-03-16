@@ -2,6 +2,15 @@
 /etc/resolv.conf
 =======================================
 
+
+.. post:: 2023-02-23 23:14:15
+  :tags: linux, 配置文件
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 配置本机使用dns服务器, 以nameserver开头, 可多行.
 
 如果 `resolvconf` 软件包没有安装，

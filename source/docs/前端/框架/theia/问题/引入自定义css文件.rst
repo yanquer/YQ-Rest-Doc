@@ -2,6 +2,15 @@
 引入自定义css文件
 =============================
 
+
+.. post:: 2024-03-08 23:31:08
+  :tags: 框架, theia, 问题
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 在拓展根目录(src)下的 `browser` 下新建一个 `style` 文件夹,
 其中新建自己的css, 如 `my-style.css`
 

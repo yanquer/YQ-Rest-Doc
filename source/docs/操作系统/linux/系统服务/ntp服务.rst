@@ -2,6 +2,15 @@
 ntp服务
 ========================
 
+
+.. post:: 2023-02-26 21:30:12
+  :tags: linux, 系统服务
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 NTP（Network Time Protocol，网络时间协议）是由RFC 1305定义的时间同步协议，用来在分布式时间服务器
 和客户端之间进行时间同步。NTP基于UDP报文进行传输，使用的UDP端口号为123。
 

@@ -2,6 +2,15 @@
 OllyDbg (OD)
 =============================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: 逆向工程
+  :category: 安全
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 也简称OD, 是一个比较老的32位调试器工具, 只有Windows版本
 
 看最后一次更新是2014年了, 我都还没高考

@@ -2,6 +2,15 @@
 pr
 =======================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 将文本文件转换成适合打印的格式，它可以把较大的文件分割成多个页面进行打印，并为每个页面添加标题。
 
 语法::

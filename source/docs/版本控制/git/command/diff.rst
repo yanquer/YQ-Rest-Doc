@@ -2,6 +2,15 @@
 diff
 =======================
 
+
+.. post:: 2023-02-26 21:30:12
+  :tags: git, command
+  :category: 版本控制
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 | 比较差异
 
 git diff 命令比较文件的不同，即比较文件在暂存区和工作区的差异。

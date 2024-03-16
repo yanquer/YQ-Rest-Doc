@@ -2,6 +2,15 @@
 nsis打包
 ======================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: windows, windows执行文件打包, nsis
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 :参考文档::
   `NSIS 打包脚本基础 <https://www.cnblogs.com/jingmoxukong/p/5033622.html>`_
 

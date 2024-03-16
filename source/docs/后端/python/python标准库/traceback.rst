@@ -2,6 +2,15 @@
 traceback
 ===================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, python标准库
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 写几个常用的吧暂时.
 
 .. function:: traceback.print_tb(tb, limit=None, file=None)

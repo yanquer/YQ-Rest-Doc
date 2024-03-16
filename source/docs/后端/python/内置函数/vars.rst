@@ -2,6 +2,15 @@
 vars
 =============
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, 内置函数
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 获取局部变量表, 或者对象属性.
 
 .. function:: vars([object])

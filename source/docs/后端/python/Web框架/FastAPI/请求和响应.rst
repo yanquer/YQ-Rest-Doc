@@ -2,6 +2,15 @@
 请求和响应
 =================================
 
+
+.. post:: 2024-02-21 21:55:17
+  :tags: python, Web框架, FastAPI
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 参考: `FastAPI 请求和响应 <https://www.runoob.com/fastapi/fastapi-request-response.html>`_
 
 在 FastAPI 中，请求（Request）和响应（Response）是与客户端交互的核心。

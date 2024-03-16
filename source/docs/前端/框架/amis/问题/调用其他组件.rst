@@ -3,6 +3,14 @@
 调用其他组件
 ===========================
 
+
+.. post:: 2023-03-01 00:19:35
+  :tags: 框架, amis, 问题
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
 比如调用Form的submit,
 
 在action中定义::

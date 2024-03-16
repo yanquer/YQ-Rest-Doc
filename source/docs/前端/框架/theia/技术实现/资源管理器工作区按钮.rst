@@ -2,6 +2,15 @@
 资源管理器工作区按钮
 ====================================
 
+
+.. post:: 2024-03-06 20:51:18
+  :tags: 框架, theia, 技术实现
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 `node_modules/@theia/workspace/src/browser/workspace-commands.ts` 的
 `WorkspaceCommands` 基本上定义完了
 

@@ -2,6 +2,15 @@
 Python中进制
 ==========================
 
+
+.. post:: 2024-03-06 20:51:18
+  :tags: python, 概念相关
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 关键字
   Python进制,
   python进制,

@@ -2,6 +2,15 @@
 reflog
 ====================
 
+
+.. post:: 2023-02-26 21:30:12
+  :tags: git, command
+  :category: 版本控制
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 | reflog(Reference logs), 参考日志
 
 查看本地git变更历史, 方便回滚, 与 log 的 区别是

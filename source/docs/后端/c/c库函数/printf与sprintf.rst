@@ -2,6 +2,15 @@
 printf与sprintf
 =============================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: c, c库函数
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 sprintf和printf在用法和功能上存在以下区别
 
 printf(data):

@@ -2,6 +2,15 @@
 docker容器化下的协作开发
 ====================================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: docker
+  :category: 容器与集群
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 **持续交付部署**
 
 保障一致性的环境

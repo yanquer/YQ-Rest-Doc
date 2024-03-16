@@ -2,6 +2,15 @@
 signal
 =========================
 
+
+.. post:: 2023-02-27 21:24:23
+  :tags: python, python标准库
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 :官网文档::
   `signal <https://docs.python.org/zh-cn/3/library/signal.html>`_
 

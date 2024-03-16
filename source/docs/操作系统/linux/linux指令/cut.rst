@@ -2,6 +2,15 @@
 cut
 ==================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 显示行中的指定部分，删除文件中指定字段。
 
 语法::

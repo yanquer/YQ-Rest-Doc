@@ -2,6 +2,15 @@
 import与require
 ====================
 
+
+.. post:: 2023-02-26 21:30:12
+  :tags: 问题
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 import与require 是前端导包使用的方式, 遵循两种不同的规范
 
 - import

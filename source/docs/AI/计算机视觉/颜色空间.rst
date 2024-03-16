@@ -2,6 +2,15 @@
 颜色空间
 =================================
 
+
+.. post:: 2024-03-17 00:32:12
+  :tags: 计算机视觉
+  :category: AI
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 颜色空间也称彩色模型，用于描述色彩
 
 常见的颜色空间包括 RGB、CMYK、YUK、L\*A\*B\*、HSL和HSV/HSB等

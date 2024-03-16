@@ -2,6 +2,15 @@
 pushd
 ===================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: windows, windows_shell
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 保存当前目录以供 POPD 命令: :doc:`/docs/操作系统/windows/windows_shell/popd` 使用，然后改到指定的目录::
 
   PUSHD [path | ..]

@@ -2,6 +2,15 @@
 linux 系统信号
 =====================
 
+
+.. post:: 2023-02-24 22:59:42
+  :tags: linux, 概念性
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 Linux系统有两大类信号
 
 - POSIX标准的规则信号(regular signal 1-31编号)

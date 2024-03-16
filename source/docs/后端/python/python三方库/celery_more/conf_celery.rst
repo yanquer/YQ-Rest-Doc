@@ -2,6 +2,15 @@
 配置
 ====================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, python三方库, celery_more
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 支持的一种配置形式::
 
   输入端 -> Broker

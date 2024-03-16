@@ -2,6 +2,15 @@
 前端各种选择器
 ==============================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: css
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 主要是三大类:
 
 - ID选择器(#)

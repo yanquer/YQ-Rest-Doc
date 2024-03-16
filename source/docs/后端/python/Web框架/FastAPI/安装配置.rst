@@ -2,6 +2,15 @@
 安装配置
 ==================================
 
+
+.. post:: 2024-02-21 21:55:17
+  :tags: python, Web框架, FastAPI
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 FastAPI 依赖 Python 3.8 及更高版本。
 
 安装 FastAPI 很简单，这里我们使用 pip 命令来安装::

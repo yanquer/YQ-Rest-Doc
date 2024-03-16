@@ -2,6 +2,15 @@
 dup
 =================================
 
+
+.. post:: 2023-02-23 23:14:15
+  :tags: linux, 内置函数
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 dup()用来复制参数oldfd 所指的文件描述词, 并将它返回.
 此新的文件描述词和参数oldfd 指的是同一个文件, 共享所有的锁定、读写位置和各项权限或旗标.
 

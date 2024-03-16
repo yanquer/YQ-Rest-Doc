@@ -2,6 +2,15 @@
 Object原型方法
 ============================
 
+
+.. post:: 2023-02-26 21:30:12
+  :tags: 问题
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 对象拷贝-Object.assign()
 ============================
 

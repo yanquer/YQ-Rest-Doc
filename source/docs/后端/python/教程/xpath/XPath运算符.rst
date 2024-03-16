@@ -2,6 +2,15 @@
 XPath 运算符
 ==================================
 
+
+.. post:: 2023-03-01 22:50:22
+  :tags: python, 教程, xpath
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 XPath 表达式可返回节点集、字符串、逻辑值以及数字。
 
 XPath 运算符

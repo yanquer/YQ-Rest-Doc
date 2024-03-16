@@ -2,6 +2,15 @@
 setlocal
 ===========================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: windows, windows_shell
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 开始批处理文件中环境改动的本地化操作。在执行 SETLOCAL 之后所做的环境改动只限于批处理文件。
 要还原原先的设置，必须执行 ENDLOCAL。
 达到批处理文件结尾时，对于该批处理文件的每个尚未执行的 SETLOCAL 命令，都会有一个隐含的 ENDLOCAL 被执行。

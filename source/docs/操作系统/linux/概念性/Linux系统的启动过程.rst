@@ -2,6 +2,15 @@
 Linux系统的启动过程
 ==============================
 
+
+.. post:: 2024-02-21 21:55:17
+  :tags: linux, 概念性
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 菜鸟的 `Linux 系统启动过程 <https://www.runoob.com/linux/linux-system-boot.html>`_ 的解释还不错
 
 .. sidebar:: 涉及到指令:

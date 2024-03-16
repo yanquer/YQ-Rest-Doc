@@ -2,6 +2,15 @@
 api配置-数据加载/刷新
 =============================
 
+
+.. post:: 2023-02-26 21:30:12
+  :tags: 框架, amis
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 amis有数据域的概念, 数据域也可以从api加载.
 
 普通的 `ajax` 请求

@@ -2,6 +2,15 @@
 ntpq
 =========================
 
+
+.. post:: 2023-02-24 22:59:42
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 ntpq指令使用NTP模式6数据包与NTP服务器通信,能够在允许的网络上查询的兼容的服务器。它以交互模式运行,或者通过命令行参数运行。
 
 此命令的适用范围：RedHat、RHEL、Ubuntu、CentOS、Fedora。

@@ -2,6 +2,15 @@
 Python灰帽子
 ==================================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: 
+  :category: 安全
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 前言: 此文源于书籍 ``Python灰帽子``,
 不过这本书有点老了, 是基于 `Python2.5` 的,
 我阅读的时候尽量转换为 `Python3` 来记录.

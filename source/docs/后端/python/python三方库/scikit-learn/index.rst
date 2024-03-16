@@ -2,6 +2,15 @@
 scikit-learn
 ======================================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: python, python三方库, scikit-learn
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 介绍
   - Scikit-learn是一个非常强大的工具，能为库的开发提供了高水平的支持和严格的管理。
   - 清晰一致的代码样式可确保我们的机器学习代码易于理解和再现，并大大降低了对机器学习模型进行编码的入门门槛。

@@ -2,6 +2,15 @@
 re
 =================================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, python标准库
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 通过正则表达式对字符串进⾏匹配
 
 r

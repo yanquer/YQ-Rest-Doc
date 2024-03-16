@@ -2,6 +2,15 @@
 vscode-本地历史记录
 ======================================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: vscode
+  :category: 常用工具使用
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 vscode编辑器内置了本地文件历史记录的支持, 可以通过配置setting.json自定义,
 默认的配置如下::
 

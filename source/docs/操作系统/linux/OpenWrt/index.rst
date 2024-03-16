@@ -2,6 +2,15 @@
 OpenWrt
 ===================================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: linux, OpenWrt
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 一个嵌入式 Linux, 主要实现路由功能
 
 简单来说，OpenWRT 是一款家用路由器的操作系统，路由器安装了它才能正常的工作。

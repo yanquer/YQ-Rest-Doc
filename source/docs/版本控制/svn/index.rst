@@ -2,6 +2,15 @@
 SVN
 ============================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: svn
+  :category: 版本控制
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 安装::
 
   apt install subversion

@@ -2,6 +2,15 @@
 journalctl
 =============================
 
+
+.. post:: 2023-02-26 21:30:12
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 在 `systemd` 下, 内核和系统的信息都通过日志服务 `systemd-journald.service` (又名 `journald`)来记录，
 放在 `/var/log/journal` 下的不变的二进制数据，
 或放在"`/run/log/journal/`"下的变化的二进制数据.

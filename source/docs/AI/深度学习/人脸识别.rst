@@ -2,6 +2,15 @@
 人脸识别
 =======================================
 
+
+.. post:: 2024-03-17 00:32:12
+  :tags: 深度学习
+  :category: AI
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 由于训练集往往只有一张图片，所以需要比较的是差异值，即使用Similarity函数
 
 Similarity::

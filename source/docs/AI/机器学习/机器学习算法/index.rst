@@ -2,6 +2,15 @@
 机器学习算法
 ========================================
 
+
+.. post:: 2024-03-17 00:32:12
+  :tags: 机器学习, 机器学习算法
+  :category: AI
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 机器学习算法大致可以分为三类：
 
 监督学习算法 (Supervised Algorithms)

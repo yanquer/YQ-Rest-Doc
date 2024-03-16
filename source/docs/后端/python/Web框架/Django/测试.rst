@@ -2,6 +2,15 @@
 测试
 ==============================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, Web框架, Django
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 一份好的业务代码，是需要经过实际测试的。
 
 一方面是自己确认代码运行正常，另一方面是对外提供测试信息。

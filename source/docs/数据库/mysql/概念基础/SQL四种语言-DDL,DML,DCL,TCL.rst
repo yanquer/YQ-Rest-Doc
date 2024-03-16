@@ -2,6 +2,15 @@
 SQL四种语言: DDL,DML,DCL,TCL
 ============================================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: mysql, 概念基础
+  :category: 数据库
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 参考: `SQL四种语言：DDL,DML,DCL,TCL <https://www.cnblogs.com/henryhappier/archive/2010/07/05/1771295.html>`_
 
 DDL(Data Definition Language)

@@ -2,6 +2,15 @@
 Linux的一些内核参数
 ===============================================
 
+
+.. post:: 2023-02-23 23:14:15
+  :tags: linux, 问题
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 问题背景::
 
   execvp: /bin/sh: Argument list too long

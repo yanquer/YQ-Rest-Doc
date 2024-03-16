@@ -2,6 +2,15 @@
 service
 =======================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 service 命令与传统的 SysVinit 和 Upstart 初始化系统相关。
 较早期的 Linux 发行版（如早期的 Ubuntu、Red Hat 等）使用了这些初始化系统。
 虽然许多现代 Linux 发行版已经转向使用 systemd，但它们通常仍然提供 service 命令作为向后兼容支持。

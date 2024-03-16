@@ -2,6 +2,15 @@
 csv
 ===================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, python标准库
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 官网: `csv - CSV 文件读写 <https://docs.python.org/zh-cn/3/library/csv.html>`_
 
 CSV (Comma Separated Values) 格式是电子表格和数据库中最常见的输入、输出文件格式。

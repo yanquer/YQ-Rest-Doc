@@ -2,6 +2,15 @@
 procfs 和 sysfs
 ===================================
 
+
+.. post:: 2023-02-27 21:24:23
+  :tags: linux, debian, debian手册
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 `procfs <https://zh.wikipedia.org/wiki/Procfs>`_ 和
 `sysfs <https://zh.wikipedia.org/wiki/Sysfs>`_ 两个伪文件系统，
 分别加载于 `/proc` 和 `/sys` 之上，

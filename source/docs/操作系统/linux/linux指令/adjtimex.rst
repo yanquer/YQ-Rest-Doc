@@ -2,6 +2,15 @@
 adjtimex
 ===================================
 
+
+.. post:: 2023-02-24 22:59:42
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 linux系统有两个时钟：
 
 - 一个是由主板电池驱动的“Real Time Clock”也叫做RTC或者叫CMOS时钟，硬件时钟。

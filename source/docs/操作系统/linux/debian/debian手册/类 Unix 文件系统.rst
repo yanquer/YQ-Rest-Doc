@@ -2,6 +2,15 @@
 类 Unix 文件系统
 ======================================
 
+
+.. post:: 2023-02-27 21:24:23
+  :tags: linux, debian, debian手册
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 在GNU/Linux和其他 `类Unix <https://zh.wikipedia.org/wiki/Unix-like>`_ 操作系统中，
 `文件 <https://zh.wikipedia.org/wiki/Computer_file>`_ 被组织到
 `目录 <https://zh.wikipedia.org/wiki/Directory_(file_systems)>`_ 中。

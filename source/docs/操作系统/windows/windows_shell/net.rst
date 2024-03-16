@@ -2,6 +2,15 @@
 net
 ================================
 
+
+.. post:: 2024-03-04 22:04:43
+  :tags: windows, windows_shell
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 查看已经挂载/打开的网络地址 (指磁盘, ftp服务器啥的)::
 
   net use

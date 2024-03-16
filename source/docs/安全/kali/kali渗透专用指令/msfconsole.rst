@@ -2,6 +2,15 @@
 msfconsole
 ======================
 
+
+.. post:: 2023-02-26 21:30:12
+  :tags: kali, kali渗透专用指令
+  :category: 安全
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 交互式漏洞搜索工具
 
 示例

@@ -2,6 +2,15 @@
 debian下的安装
 ====================
 
+
+.. post:: 2024-03-12 19:49:08
+  :tags: python, python三方库, pyside6_more
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 使用docker配置, 见: :doc:`/docs/操作系统/linux/debian/配置debian容器`
 
 安装 Python3 必要的包::

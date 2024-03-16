@@ -2,6 +2,15 @@
 交互式API文档
 =====================================
 
+
+.. post:: 2024-02-21 21:55:17
+  :tags: python, Web框架, FastAPI
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 参考: `FastAPI 交互式 API 文档 <https://www.runoob.com/fastapi/fastapi-api-doc.html>`_
 
 FastAPI 提供了内置的交互式 API 文档，使开发者能够轻松了解和测试 API 的各个端点。

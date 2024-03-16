@@ -2,6 +2,15 @@
 创建项目
 =================================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, Web框架, Django
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 命令行::
 
   django-admin startproject $项目名

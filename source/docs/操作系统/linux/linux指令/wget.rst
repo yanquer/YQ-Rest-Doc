@@ -3,6 +3,15 @@ wget
 =================================
 
 
+.. post:: 2023-02-24 22:59:42
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
+
 从指定的URL下载文件。
 
 wget非常稳定，它在带宽很窄的情况下和不稳定网络中有很强的适应性，

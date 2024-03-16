@@ -2,6 +2,15 @@
 认证和访问控制
 ========================================
 
+
+.. post:: 2023-02-27 21:24:23
+  :tags: linux, 系统服务
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 .. _PAM(Pluggable Authentication Modules,即可插入的验证模块): https://zh.wikipedia.org/wiki/Pluggable_Authentication_Modules
 
 一般的 Unix 认证

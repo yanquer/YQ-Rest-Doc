@@ -2,6 +2,15 @@
 ajv
 ===========================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: node, 三方库
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 json-schema: 用来描述 `json` 长什么样数据格式
 
 ajv 是一个校验 `json-schema` 的数据格式工具

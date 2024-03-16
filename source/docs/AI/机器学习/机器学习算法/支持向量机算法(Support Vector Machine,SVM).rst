@@ -2,6 +2,15 @@
 支持向量机算法(Support Vector Machine,SVM)
 =============================================
 
+
+.. post:: 2024-03-17 00:32:12
+  :tags: 机器学习, 机器学习算法
+  :category: AI
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 支持向量机/网络算法(SVM)属于分类型算法。
 
 SVM模型将实例表示为空间中的点，将使用一条直线分隔数据点。

@@ -2,6 +2,15 @@
 docker配置镜像
 ====================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: docker
+  :category: 容器与集群
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 .. sidebar::
 
 	后面看到github上有: https://gist.github.com/y0ngb1n/7e8f16af3242c7815e7ca2f0833d3ea6

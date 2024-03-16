@@ -2,6 +2,15 @@
 jupyter
 ===================================
 
+
+.. post:: 2023-03-03 23:21:31
+  :tags: python, python三方库
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 jupyter notebook 是一个网页形式的编辑器,
 支持 在网页页面中直接编写代码和运行代码，
 代码的运行结果也会直接在代码块下显示的程序。

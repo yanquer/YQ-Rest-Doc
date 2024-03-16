@@ -2,6 +2,15 @@
 套接字
 ===========================
 
+
+.. post:: 2023-02-23 23:14:15
+  :tags: linux, debian, debian手册
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 套接字被广泛应用于所有的互联网通信，数据库和操作系统本身。
 
 它类似于命名管道（FIFO）并且允许进程之间甚至不同计算机之间进行信息交换。

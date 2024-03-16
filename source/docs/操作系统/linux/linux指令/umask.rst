@@ -2,6 +2,15 @@
 umask
 ========================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 :参考::
   - `Linux 命令大全 <https://www.runoob.com/linux/linux-command-manual.html>`_
 

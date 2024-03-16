@@ -2,6 +2,15 @@
 linux系统环境加载顺序
 ==============================
 
+
+.. post:: 2023-02-26 21:30:12
+  :tags: linux, 概念性
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 登陆shell(login shell)
 ==============================
 

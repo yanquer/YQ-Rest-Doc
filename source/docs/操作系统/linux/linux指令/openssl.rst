@@ -2,6 +2,15 @@
 openssl
 ============================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 - 常用指令可见: https://www.gy328.com/ref/docs/openssl.html
   若无法访问可见: :download:`OpenSSL参考手册 </resources/pdf/OpenSSL 参考手册 & openssl 快速入门 - 菜鸟教程.pdf>`
 - 官网: https://www.openssl.org

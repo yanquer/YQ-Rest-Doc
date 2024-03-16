@@ -2,6 +2,15 @@
 树
 ========================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags:
+  :category: 数据结构
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 大致可以分为二叉树和多叉树
 
 普通二叉树

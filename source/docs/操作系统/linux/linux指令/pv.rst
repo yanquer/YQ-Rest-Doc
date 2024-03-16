@@ -2,6 +2,15 @@
 pv
 ==================
 
+
+.. post:: 2023-02-24 22:59:42
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 .. 给执行的指令增加进度信息
 
 Pipe Viewer 显示当前在命令行执行的命令的进度信息，管道查看器

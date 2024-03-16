@@ -2,6 +2,15 @@
 gcc/g++
 ============================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: c
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 最浅显是认识是:
 
 - gcc 用于 c 语言

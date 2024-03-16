@@ -2,6 +2,15 @@
 autograd-自动梯度
 ==============================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, python三方库, pytorch
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 提供了对 Tensors 上所有运算操作的自动微分功能，也就是计算梯度的功能。
 它属于 define-by-run 类型框架，即反向传播操作的定义是根据代码的运行方式，因此每次迭代都可以是不同的。
 

@@ -2,6 +2,15 @@
 元编程
 ========================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, cookbook
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 软件开发领域中最经典的口头禅就是“don’t repeat yourself”。也就是说，任何时
 候当你的程序中存在高度重复 (或者是通过剪切复制) 的代码时，都应该想想是否有更
 好的解决方案。在 Python 当中，通常都可以通过元编程来解决这类问题。简而言之，

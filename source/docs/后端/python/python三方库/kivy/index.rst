@@ -1,3 +1,13 @@
+================
+Kivy
+================
+
+.. post:: 2024-03-09 18:21:01
+  :tags: python, python三方库, kivy
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
 
 .. note::
 

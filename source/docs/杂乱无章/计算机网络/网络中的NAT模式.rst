@@ -2,6 +2,15 @@
 网络中的NAT模式
 ===========================================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: 
+  :category: 计算机网络
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 参考: `<https://www.cnblogs.com/linhaostudy/p/10355614.html>`_
 
 

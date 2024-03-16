@@ -2,6 +2,15 @@
 tr
 =========================
 
+
+.. post:: 2023-02-26 21:30:12
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 tr命令 可以对来自标准输入的字符进行替换、压缩和删除。
 
 语法::

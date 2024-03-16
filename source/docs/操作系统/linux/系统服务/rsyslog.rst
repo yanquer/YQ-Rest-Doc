@@ -2,6 +2,15 @@
 rsyslog
 ===============================
 
+
+.. post:: 2023-02-26 21:30:12
+  :tags: linux, 系统服务
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 rsyslog服务
 
 rsyslog日志服务简介

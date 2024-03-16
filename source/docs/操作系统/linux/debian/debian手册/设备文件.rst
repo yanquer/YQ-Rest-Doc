@@ -2,6 +2,15 @@
 设备文件
 ====================================
 
+
+.. post:: 2023-02-27 21:24:23
+  :tags: linux, debian, debian手册
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 `设备文件 <https://zh.wikipedia.org/wiki/Device_file>`_
 包括系统的物理设备和虚拟设备，如硬盘、显卡、显示屏、键盘。
 虚拟设备的一个例子是控制台，用“`/dev/console`”来描述。

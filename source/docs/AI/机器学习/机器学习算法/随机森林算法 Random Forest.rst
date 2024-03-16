@@ -2,6 +2,15 @@
 随机森林算法 Random Forest
 ================================
 
+
+.. post:: 2024-03-17 00:32:12
+  :tags: 机器学习, 机器学习算法
+  :category: AI
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 属于集成学习
 
 随机森林算法（Random Forest）的名称由 1995 年由贝尔实验室提出的random decision forests 而来，

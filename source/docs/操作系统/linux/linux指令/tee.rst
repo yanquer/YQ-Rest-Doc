@@ -2,6 +2,15 @@
 tee
 =====================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 | 读取标准输入的数据，并将其内容输出成文件(同时输出到终端与文件)。
 
 语法::

@@ -2,6 +2,15 @@
 revert
 =======================
 
+
+.. post:: 2023-02-26 21:30:12
+  :tags: git, command
+  :category: 版本控制
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 | 反做某一个版本.
 
 比如有版本1,  2,  3,  版本2存在问题, 需要撤销版本2, 保留版本3,  那么会重新生成一个符合要求的版本4.

@@ -2,6 +2,15 @@
 Shell的return
 ==================================
 
+
+.. post:: 2023-02-23 23:14:15
+  :tags: linux, 教程, shell语法规范
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 shell的return
 
 今天写bug发现shell的return与之前java的不一样

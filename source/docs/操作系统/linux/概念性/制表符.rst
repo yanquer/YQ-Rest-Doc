@@ -2,6 +2,15 @@
 制表符
 =================================
 
+
+.. post:: 2023-02-23 23:14:15
+  :tags: linux, 概念性
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 参考: `<https://www.zhihu.com/question/19773623/answer/176124901>`_
 
 水平制表符（ ``\t`` ）

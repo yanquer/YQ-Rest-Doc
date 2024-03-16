@@ -2,6 +2,15 @@
 多主题
 ===================================
 
+
+.. post:: 2024-03-12 19:49:08
+  :tags: 框架, theia, 技术实现
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 主要::
 
   node_modules/@theia/core/src/browser/theming.ts

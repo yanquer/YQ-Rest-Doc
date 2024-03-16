@@ -2,6 +2,15 @@
 逻辑回归算法 Logistic Regression
 =================================================
 
+
+.. post:: 2024-03-17 00:32:12
+  :tags: 机器学习, 机器学习算法
+  :category: AI
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 逻辑回归算法(Logistic Regression)一般用于需要明确输出的场景，如某些事件的发生(预测是否会发生降雨)。
 通常，逻辑回归使用某种函数将概率值压缩到某一特定范围。
 

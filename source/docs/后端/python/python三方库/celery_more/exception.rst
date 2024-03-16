@@ -2,6 +2,15 @@
 自定义异常
 =================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, python三方库, celery_more
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 Python 的异常必须要符合一些简单规则，才能被 pickle 模块支持以及序列化。
 
 使用 Pickle 作为序列化器时，引发不可拾取异常的任务将无法正常工作。

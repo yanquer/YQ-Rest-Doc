@@ -2,6 +2,15 @@
 transform
 ======================
 
+
+.. post:: 2023-03-01 00:19:35
+  :tags: css, css常用属性
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 允许你旋转，缩放，倾斜或平移给定元素(包括2D/3D)。这是通过修改 CSS 视觉格式化模型的坐标空间来实现的。
 
 示例: https://developer.mozilla.org/zh-CN/docs/Web/CSS/transform

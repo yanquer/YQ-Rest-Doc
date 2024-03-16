@@ -2,6 +2,15 @@
 json
 =========================
 
+
+.. post:: 2023-03-01 00:19:35
+  :tags: python, python标准库
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 四大方法:
 
 - json.load		将文件中的json的格式转化成python对象提取出来, 操作的是文件流

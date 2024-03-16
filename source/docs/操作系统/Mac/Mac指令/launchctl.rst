@@ -2,6 +2,15 @@
 launchctl
 ===========================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: Mac, Mac指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 MacOS不像 Linux 有 ``/etc/init.d/rc.local``
 以及 ``service`` 的方式可以设置程序随机启动，
 而是使用 plist 文件管理.

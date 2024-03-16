@@ -2,6 +2,15 @@
 lbfgs failed to converge
 ========================================
 
+
+.. post:: 2023-03-03 23:21:31
+  :tags: python, python三方库, scikit-learn, 问题
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 完整报错信息::
 
   /Users/yanque/Project/Code/Pycharm/StudyPytorch/.venv/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:469: ConvergenceWarning: lbfgs failed to converge (status=1):

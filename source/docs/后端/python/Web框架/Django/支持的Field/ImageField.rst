@@ -2,6 +2,15 @@
 ImageField
 ===============================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, Web框架, Django, 支持的Field
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 继承 FileField 的所有属性和方法，但也验证上传的对象是有效的图像::
 
   class ImageField(upload_to=None, height_field=None, width_field=None, max_length=100, \*\*options)

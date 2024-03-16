@@ -2,6 +2,15 @@
 UUIDField
 ==========================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, Web框架, Django, 支持的Field
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 一个用于存储通用唯一标识符的字段。使用 Python 的 UUID 类。当在 PostgreSQL 上使用时，它存储在一个 uuid 的数据类型中，否则存储在一个 char(32) 中::
 
   class UUIDField(**options)

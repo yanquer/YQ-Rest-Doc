@@ -2,6 +2,15 @@
 elf文件
 ===================
 
+
+.. post:: 2024-02-21 21:55:17
+  :tags: linux, 概念性
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 参考:
 
 - https://zhuanlan.zhihu.com/p/59590848

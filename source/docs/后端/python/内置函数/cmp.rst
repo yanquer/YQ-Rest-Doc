@@ -2,6 +2,15 @@
 cmp
 ==================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, 内置函数
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 .. note::
 
   Python3 中已经移除, 可以使用 operator 模块: :doc:`/docs/后端/python/python标准库/operator`

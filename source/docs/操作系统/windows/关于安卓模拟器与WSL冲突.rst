@@ -2,6 +2,15 @@
 关于安卓模拟器与WSL冲突
 =========================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: windows
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 :参考::
   `<https://blog.csdn.net/weixin_42474261/article/details/125396451>`_
   `<https://www.zhihu.com/question/264353707>`_

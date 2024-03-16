@@ -2,6 +2,15 @@
 clash各版本备份
 =================================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: Clash
+  :category: 常用工具使用
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 源于别的UP.
 
 - 视频说明: https://www.youtube.com/watch?app=desktop&v=e3QVBWDJREM

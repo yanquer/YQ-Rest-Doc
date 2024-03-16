@@ -2,6 +2,15 @@
 pywin32
 =====================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, python三方库
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 :pypi地址::
   `pywin32 <https://pypi.org/project/pywin32/>`_
 

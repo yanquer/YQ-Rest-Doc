@@ -2,6 +2,15 @@
 ref类型不匹配
 ======================================
 
+
+.. post:: 2024-03-07 22:13:39
+  :tags: 框架, react, 问题
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 大致报错信息::
 
   MutableRefObject<SelectComponent | undefined> is not assignable to type Ref<SelectComponent> | undefined

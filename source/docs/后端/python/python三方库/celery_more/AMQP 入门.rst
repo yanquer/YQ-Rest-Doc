@@ -2,6 +2,15 @@
 AMQP 入门
 ==================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, python三方库, celery_more
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 celery 基本上全部兼容了 AMQP 的实现, 所以此处对此作一个了解说明.
 
 消息

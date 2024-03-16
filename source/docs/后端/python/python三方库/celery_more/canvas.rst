@@ -2,6 +2,15 @@
 canvas
 ===================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, python三方库, celery_more
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 celery 的 canvas 应当值得是一种设计流程, 目前不是很理解.
 
 签名

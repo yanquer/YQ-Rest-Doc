@@ -2,6 +2,15 @@
 any
 ================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, 内置函数
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 any() 函数用于判断给定的可迭代参数 iterable 是否全部为 False
 
 元素除了是 0、空、FALSE 外都算 TRUE。

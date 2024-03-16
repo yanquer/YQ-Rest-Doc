@@ -2,6 +2,15 @@
 datetime
 =====================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, python标准库
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 与 :doc:`/docs/后端/python/python标准库/time` 类似,
 区别如下
 

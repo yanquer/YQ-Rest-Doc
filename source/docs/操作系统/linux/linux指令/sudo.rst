@@ -2,6 +2,15 @@
 sudo
 =======================
 
+
+.. post:: 2023-02-23 23:14:15
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 以系统管理者的身份执行指令
 
 `sudo` 程序是为了使一个系统管理员可以给用户受限的 root 权限并记录 root 活动而设计的。

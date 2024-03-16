@@ -2,6 +2,15 @@
 dpkg-deb
 =========================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 dpkg-deb 提供了完整的 deb 包创建和操作功能,
 提供打包、解包、查询 deb 信息等功能
 是 deb 包管理不可或缺的工具

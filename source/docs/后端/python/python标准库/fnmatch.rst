@@ -2,6 +2,15 @@
 fnmatch模块
 ===============
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, python标准库
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 介于普通字符串与 :doc:`/docs/后端/python/python标准库/re` 之间的字符串操作模块
 
 fnmatch 模块提供了两个函数——fnmatch() 和 fnmatchcase() ，可以用来实现 这样的匹配。用法如下::

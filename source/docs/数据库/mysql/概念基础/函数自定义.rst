@@ -2,6 +2,15 @@
 自定义函数
 =================================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: mysql, 概念基础
+  :category: 数据库
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 可能会遇到内置函数 :doc:`/docs/数据库/mysql/概念基础/函数API`
 满足不了使用场景的问题, 这时候自定义函数就有用了
 

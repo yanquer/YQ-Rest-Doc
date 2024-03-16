@@ -2,6 +2,15 @@
 bash数组
 ===============================
 
+
+.. post:: 2023-02-23 23:14:15
+  :tags: linux, 教程, shell语法规范
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 定义数组::
 
   arr=(a b c d)

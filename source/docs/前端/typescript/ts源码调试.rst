@@ -2,6 +2,15 @@
 ts源码调试
 ===============================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: typescript
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 例如在 `WebStrome` 工具,
 
 需要在 `tsconfig.json` 设置 `sourceMap` 为 `true`

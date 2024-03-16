@@ -2,6 +2,15 @@
 lpr
 ============================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 用于将文件发送给指定打印机进行打印，如果不指定目标打印机，则使用默认打印机。
 
 语法::

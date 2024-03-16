@@ -2,6 +2,15 @@
 checkout
 =======================
 
+
+.. post:: 2023-02-26 21:30:12
+  :tags: git, command
+  :category: 版本控制
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 ``git checkout $branch_name``			切换分支
 
 ``git checkout -b $new_branch_name``	新建分支并切换

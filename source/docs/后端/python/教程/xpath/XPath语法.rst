@@ -2,6 +2,15 @@
 XPath语法
 =====================================
 
+
+.. post:: 2023-03-01 00:19:35
+  :tags: python, 教程, xpath
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 XPath 使用路径表达式来选取 XML 文档中的节点或节点集。节点是通过沿着路径 (path) 或者步 (steps) 来选取的。
 
 XML 实例文档

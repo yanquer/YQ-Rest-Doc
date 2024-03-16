@@ -2,6 +2,15 @@
 git 工作原理
 =====================
 
+
+.. post:: 2023-02-26 21:30:12
+  :tags: git
+  :category: 版本控制
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 每个git项目下都有一个隐藏的 ``.git`` 目录, 关于git的一切都存储在这个目录里面（全局配置除外）.
 
 .. topic:: 目录结构

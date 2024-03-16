@@ -2,7 +2,16 @@
 iStoreOS
 ===================================
 
-一个基于 :doc:`../OpenWrt/index` 的定制系统
+
+.. post:: 2024-03-04 22:04:43
+  :tags: linux, iStoreOS
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
+一个基于 :doc:`/docs/操作系统/linux/OpenWrt/index` 的定制系统
 
 - 官网: `<https://www.istoreos.com>`_
 - 官网文档: `<https://doc.linkease.com/zh/guide/istoreos/>`_

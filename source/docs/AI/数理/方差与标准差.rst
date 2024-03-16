@@ -2,6 +2,15 @@
 方差与标准差
 ==============================
 
+
+.. post:: 2024-03-17 00:32:12
+  :tags: 数理
+  :category: AI
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 方差和标准差都是用来度量数据的离散程度，即表征一组数据分布情况的统计量。
 
 方差(variance)

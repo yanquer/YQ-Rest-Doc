@@ -2,6 +2,15 @@
 sips
 ==========================
 
+
+.. post:: 2024-02-21 21:55:17
+  :tags: Mac, Mac指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 sips, 图像处理脚本(scriptable image processing system),
 支持进行图片的格式转换, 以及图片的裁剪旋转等各种常用操作.
 是MacOS自带的图片处理命令, 功能强大. 质量高,pdf转png会丢失背景,且不能处理ico文件

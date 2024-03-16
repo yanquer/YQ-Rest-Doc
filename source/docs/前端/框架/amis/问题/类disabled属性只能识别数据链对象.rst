@@ -3,6 +3,14 @@
 类disabled属性只能识别数据链对象
 ======================================================
 
+.. post:: 2023-03-01 00:19:35
+  :tags: 框架, amis, 问题
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 比如有一个 checkbox 控件 name 为: ``com.app.enable`` ::
 
   {

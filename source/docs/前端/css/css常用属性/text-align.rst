@@ -2,6 +2,15 @@
 text-align
 ===========================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: css, css常用属性
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 设置 **元素框内文本内容** 的水平对齐方式
 
 text-align 属性用于设置文本内容在元素框中的水平对齐方式。

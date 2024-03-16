@@ -2,6 +2,15 @@
 记录一次vscode于rst协作的坑
 =============================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: vscode
+  :category: 常用工具使用
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 系统
 =============================
 

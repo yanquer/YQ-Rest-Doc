@@ -2,6 +2,15 @@
 QuerySet Api
 ===========================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, Web框架, Django
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 包含两个公开属性：
 
 - ordered：查询时候是否有序（True/False）

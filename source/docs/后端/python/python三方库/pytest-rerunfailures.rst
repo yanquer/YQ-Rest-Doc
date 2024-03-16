@@ -2,6 +2,15 @@
 pytest-rerunfailures
 ======================
 
+
+.. post:: 2023-02-20 22:18:59
+  :tags: python, python三方库
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 支持使用 :doc:`/docs/后端/python/教程/Pytest` 时候的重试.
 
 安装::

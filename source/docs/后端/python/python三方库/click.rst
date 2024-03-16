@@ -2,6 +2,15 @@
 click
 =================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, python三方库
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 ``click`` 是对 ``Argparse`` 进行封装后的一个 python 命令行工具
 (类似 ``request`` 对 ``urllib`` 的封装)
 

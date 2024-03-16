@@ -2,6 +2,15 @@
 string.h
 ========================================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: c, 标准库
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 .. _Cstring_strcpy:
 
 strcpy

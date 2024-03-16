@@ -2,6 +2,15 @@
 chrome支持的选项
 =============================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, python三方库, selenium
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 从指定位置启动浏览器(即Chrome执行文件路径),
 binary 参数接收一个使用浏览器的备用路径,
 通过这个参数你可以使用chromedriver 去驱动各种基于Chromium 内核的浏览器.::

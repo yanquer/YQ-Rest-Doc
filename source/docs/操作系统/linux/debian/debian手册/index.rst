@@ -2,6 +2,15 @@
 debian手册
 ==================================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: linux, debian, debian手册
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 参考: `<https://www.debian.org/doc/manuals/debian-reference/>`_
 
 .. toctree::

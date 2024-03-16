@@ -2,6 +2,15 @@
 logging
 =======================
 
+
+.. post:: 2024-02-21 21:55:17
+  :tags: python, python标准库
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 官网: `<https://docs.python.org/zh-cn/3/library/logging.html>`_
 
 知乎有篇总结的貌似也可以: `<https://zhuanlan.zhihu.com/p/425678081>`_

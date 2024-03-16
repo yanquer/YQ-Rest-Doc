@@ -2,6 +2,15 @@
 使用
 ==================================
 
+
+.. post:: 2023-03-01 00:19:35
+  :tags: python, python三方库, Scrapy
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 制作 Scrapy 爬虫 一共需要4步：
   - 新建项目 (scrapy startproject xxx)：新建一个新的爬虫项目
   - 明确目标 （编写items.py）：明确你想要抓取的目标

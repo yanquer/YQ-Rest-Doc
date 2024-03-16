@@ -2,6 +2,15 @@
 Debian包依赖
 ===============================
 
+
+.. post:: 2024-02-21 21:55:17
+  :tags: linux, debian
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 要知道package的依赖方案
 
 可以直接看报错地方的源码的要求

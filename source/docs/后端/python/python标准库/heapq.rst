@@ -2,6 +2,15 @@
 heapq
 ================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, python标准库
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 官网: `heapq --- 堆队列算法 <https://docs.python.org/zh-cn/3/library/heapq.html>`_
 
 模块提供了堆队列算法的实现，也称为优先队列算法.

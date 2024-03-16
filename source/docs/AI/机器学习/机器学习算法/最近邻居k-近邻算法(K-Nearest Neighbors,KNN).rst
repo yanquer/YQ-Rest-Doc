@@ -2,6 +2,15 @@
 最近邻居/k-近邻算法(K-Nearest Neighbors,KNN)
 ===================================================
 
+
+.. post:: 2024-03-17 00:32:12
+  :tags: 机器学习, 机器学习算法
+  :category: AI
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 .. note::
 
   属于无监督学习

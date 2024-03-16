@@ -2,6 +2,15 @@
 chkconfig
 ================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 chkconfig是管理系统服务(service)的命令行工具。
 所谓系统服务(service)，就是随系统启动而启动，随系统关闭而关闭的程序。
 

@@ -2,6 +2,15 @@
 math
 ==============
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, python标准库
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 官网: `math --- 数学函数 <https://docs.python.org/zh-cn/3/library/math.html>`_
 
 该模块提供了对C标准定义的数学函数的访问。

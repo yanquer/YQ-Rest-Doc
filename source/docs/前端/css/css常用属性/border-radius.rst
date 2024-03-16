@@ -2,6 +2,15 @@
 border-radius
 ===========================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: css, css常用属性
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 设置元素的边框圆角效果, 使元素的边框角变得圆滑，而不是默认的直角。
 
 border-radius 属性可以应用于元素的四个角，也可以应用于单个角。

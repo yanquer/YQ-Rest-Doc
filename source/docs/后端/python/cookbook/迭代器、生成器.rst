@@ -2,6 +2,15 @@
 迭代器/生成器
 ===================
 
+
+.. post:: 2023-03-01 00:19:35
+  :tags: python, cookbook
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 手动遍历迭代器
 ===================
 

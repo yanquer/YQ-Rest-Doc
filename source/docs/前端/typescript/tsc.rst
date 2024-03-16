@@ -2,6 +2,15 @@
 tsc
 ==========================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: typescript
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 .. note::
 
   考虑过是不是直接放在linux指令下面,

@@ -2,6 +2,15 @@
 完全关闭Theia应用
 =================================
 
+
+.. post:: 2024-03-08 23:31:08
+  :tags: 框架, theia, 问题
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 对用使用Electron的后端, 旧版本支持直接调用 ``app.quit`` 退出,
 新版本编译的程序不暴露app, 所以无法使用此方法.
 

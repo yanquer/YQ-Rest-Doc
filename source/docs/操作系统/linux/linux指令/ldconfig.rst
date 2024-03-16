@@ -2,6 +2,15 @@
 ldconfig
 =====================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 动态链接库管理命令，其目的为了让动态链接库为系统所共享
 
 ldconfig的主要用途

@@ -2,6 +2,15 @@
 RSA算法
 =======================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: linux, linux指令, openssl, 相关算法
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 参考:
 
 - https://zhuanlan.zhihu.com/p/48249182 (RSA这个写的比较详细, 但是看着头疼, 后面有空继续看)

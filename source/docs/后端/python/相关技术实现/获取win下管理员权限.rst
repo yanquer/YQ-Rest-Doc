@@ -3,6 +3,15 @@
 =======================
 
 
+.. post:: 2023-02-20 22:06:49
+  :tags: python, 相关技术实现
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
+
 判断是否有管理员权限::
 
   import ctypes

@@ -2,6 +2,15 @@
 tcpdump
 ================================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 一款sniffer工具，是Linux上的抓包工具，嗅探器
 文字接口的封包抓取
 

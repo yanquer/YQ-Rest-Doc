@@ -2,6 +2,15 @@
 CSS伪类
 ===========================
 
+
+.. post:: 2023-02-26 21:30:12
+  :tags: css
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 常见的
 
 :active

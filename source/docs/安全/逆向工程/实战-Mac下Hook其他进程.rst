@@ -2,6 +2,15 @@
 实战-Mac下Hook其他进程
 ===============================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: 逆向工程
+  :category: 安全
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 写一个测试的源码test2.cpp::
 
   #include "stdio.h"

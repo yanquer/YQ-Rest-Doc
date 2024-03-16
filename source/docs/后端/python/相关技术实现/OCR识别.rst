@@ -2,6 +2,15 @@
 OCR识别
 ===============
 
+
+.. post:: 2023-02-20 22:08:48
+  :tags: python, 相关技术实现
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 OCR (Optical Character Recognition), 光学字符识别
 
 简单baidu了一下, 看到了一篇 `几种python入门级OCR开源库中文识别效果对比 <https://blog.csdn.net/coderider/article/details/126886577>`_

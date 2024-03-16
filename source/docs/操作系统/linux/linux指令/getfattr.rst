@@ -2,6 +2,15 @@
 getfattr
 =====================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 get extended attributes of filesystem objects
 
 获取文件系统扩展属性信息(用 :doc:`/docs/操作系统/linux/linux指令/setfattr` 命令设置的属性)

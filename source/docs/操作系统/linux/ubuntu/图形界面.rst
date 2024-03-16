@@ -2,6 +2,15 @@
 Linux图形界面
 ===============================
 
+
+.. post:: 2024-02-21 21:55:17
+  :tags: linux, ubuntu
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 此篇主要针对与Ubuntu20
 
 .. sidebar::

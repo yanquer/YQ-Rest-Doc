@@ -2,6 +2,15 @@
 QML
 ====================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, python三方库, pyside6_more
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 Qt设计的一种类似 CSS, JSON 的语言, 同时允许 JavaScript , 用于创建 UI 应用
 
 可被其他组件集成, 可被 C++ 代码使用.

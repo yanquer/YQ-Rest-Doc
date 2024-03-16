@@ -2,6 +2,15 @@
 ulimit
 ==============================
 
+
+.. post:: 2023-02-26 21:30:12
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 限制系统最大打开文件数
 
 ulimit 系统linux中进行资源限制

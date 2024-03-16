@@ -2,6 +2,15 @@
 struct
 =====================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, python标准库
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 与c底层数据做转换, 设计到了字节, 大小端, 数据流等的知识
 
 常用函数:

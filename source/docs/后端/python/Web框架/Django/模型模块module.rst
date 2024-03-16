@@ -2,6 +2,15 @@
 模型模块module
 ===========================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: python, Web框架, Django
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 总览::
 
   module.objects.all() 获取该实例的所有信息

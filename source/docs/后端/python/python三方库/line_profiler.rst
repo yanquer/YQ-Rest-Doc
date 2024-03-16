@@ -2,6 +2,15 @@
 line_profiler
 ==========================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, python三方库
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 性能调优模块, 有个类似的 :doc:`/docs/后端/python/python三方库/memory_profiler`
 
 官网: `https://pypi.org/project/line-profiler/`

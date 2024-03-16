@@ -2,6 +2,15 @@
 Android Studio
 ============================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: 
+  :category: 常用工具使用
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 将本地已有的Gradle配置到项目.
 
 .. figure:: /resources/images/studio_conf_gradle.jpg

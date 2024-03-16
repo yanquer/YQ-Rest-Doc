@@ -2,6 +2,15 @@
 chroot
 =========================
 
+
+.. post:: 2023-02-24 22:59:42
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 参考: `<https://www.cnblogs.com/sparkdev/p/8556075.html>`_
 
 即 change root directory (更改 root 目录)。

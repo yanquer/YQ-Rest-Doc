@@ -2,6 +2,15 @@
 collections
 ===================
 
+
+.. post:: 2024-03-10 20:49:14
+  :tags: python, python标准库
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 deque
 ===================
 

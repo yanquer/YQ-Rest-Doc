@@ -2,6 +2,15 @@
 site
 =========================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, python标准库
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 官网: https://docs.python.org/zh-cn/3/library/site.html
 
 获取本地三方包路径::

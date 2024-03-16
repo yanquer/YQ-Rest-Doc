@@ -2,6 +2,15 @@
 自定义样式的Checkbox
 =============================
 
+
+.. post:: 2023-02-26 21:30:12
+  :tags: 问题
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 比如圆形边框
 
 默认情况下，input 元素的复选框（checkbox）的外观是由浏览器自身的样式决定的，

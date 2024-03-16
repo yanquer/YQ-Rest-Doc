@@ -2,6 +2,15 @@
 dis
 ==================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, python标准库
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 官网: `dis --- Python 字节码反汇编器 <https://docs.python.org/zh-cn/3/library/dis.html?highlight=dis#module-dis>`_
 
 通过反汇编支持CPython的 bytecode 分析。

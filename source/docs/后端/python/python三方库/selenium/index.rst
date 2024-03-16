@@ -2,6 +2,15 @@
 selenium
 =============================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: python, python三方库, selenium
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 中文官网: https://www.selenium.dev/zh-cn/documentation/webdriver/
 
 入门: https://www.selenium.dev/zh-cn/documentation/webdriver/getting_started/

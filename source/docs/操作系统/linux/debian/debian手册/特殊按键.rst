@@ -2,6 +2,15 @@
 特殊按键
 ===============================
 
+
+.. post:: 2023-02-27 21:24:23
+  :tags: linux, debian, debian手册
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 在 `类Unix <https://zh.wikipedia.org/wiki/Unix-like>`_ 环境，
 有一些具有特殊含义的按键。
 请注意，普通的Linux字符控制台，只有左手边的 `Ctrl` 和 `Alt` 键可以正常工作。其中有几个值得记住的按键。

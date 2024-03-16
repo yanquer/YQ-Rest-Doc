@@ -2,6 +2,15 @@
 iotop
 =========================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 iotop 一个用来监视磁盘I/O使用状况的top类工具。
 iotop具有与top相似的UI，其中包括PID、用户、I/O、进程等相关信息。
 Linux下的IO统计工具如iostat，nmon等大多数是只能统计到per设备的读写情况，

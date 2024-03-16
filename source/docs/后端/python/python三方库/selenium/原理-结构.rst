@@ -2,6 +2,15 @@
 原理/结构
 =============================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, python三方库, selenium
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 Selenium所做的一切, 就是发送给浏览器命令, 用以执行某些操作或为信息发送请求.
 
 启动一个驱动实例::

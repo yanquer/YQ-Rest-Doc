@@ -2,6 +2,15 @@
 hash
 ========================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 每个SHELL都有一个独立的hash表, 初始时候为空, 可直接hash查看当前SHELL的hash表::
 
   hash

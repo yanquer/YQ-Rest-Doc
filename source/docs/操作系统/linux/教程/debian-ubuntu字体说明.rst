@@ -2,6 +2,15 @@
 debian/ubuntu字体说明
 ===========================
 
+
+.. post:: 2024-02-21 21:55:17
+  :tags: linux, 教程
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 Ubuntu字体及配置说明: `https://wiki.ubuntu.org.cn/字体#.E9.85.8D.E7.BD.AE.fonts.conf`
 
 参考: `https://catcat.cc/post/2020-10-31/`

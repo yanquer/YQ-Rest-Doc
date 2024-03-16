@@ -2,6 +2,15 @@
 zenity
 ============================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 Zenity是一个使用GTK+库开发的工具，用于创建图形用户界面（GUI）对话框(信息框)
 
 .. sidebar::

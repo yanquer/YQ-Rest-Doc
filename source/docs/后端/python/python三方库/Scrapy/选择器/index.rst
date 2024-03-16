@@ -2,6 +2,15 @@
 选择器
 ==================================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: python, python三方库, Scrapy, 选择器
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 主要是针对 HTML / XML 元素吧
 
 选择器支持, 参考 `Selectors <https://docs.scrapy.org/en/latest/topics/selectors.html#selecting-attributes>`_

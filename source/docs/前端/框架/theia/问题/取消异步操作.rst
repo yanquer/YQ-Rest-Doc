@@ -2,6 +2,15 @@
 取消异步操作
 =====================================
 
+
+.. post:: 2024-03-08 23:31:08
+  :tags: 框架, theia, 问题
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 theia提供了 `CancellationTokenSource` 来支持取消异步操作
 
 使用

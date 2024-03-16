@@ -2,6 +2,15 @@
 GUI开发之QT
 =====================
 
+
+.. post:: 2023-02-20 22:09:26
+  :tags: python, 教程
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 前言
 =====================
 

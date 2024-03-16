@@ -2,6 +2,15 @@
 opacity
 =========================
 
+
+.. post:: 2023-03-01 22:50:22
+  :tags: css, css常用属性
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 设置元素透明度
 
 opacity 属性控制元素的不透明度级别，

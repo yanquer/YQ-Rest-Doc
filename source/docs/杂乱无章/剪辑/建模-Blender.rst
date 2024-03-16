@@ -2,6 +2,15 @@
 建模-Blender
 =====================================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: 
+  :category: 剪辑
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 **Blender** 是一个开源免费的软件， 支持中文
 
 快捷键-Win

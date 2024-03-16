@@ -2,6 +2,15 @@
 Python的编码
 ====================================
 
+
+.. post:: 2024-02-21 21:55:17
+  :tags: python, 概念相关
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 字符编码
 ====================================
 

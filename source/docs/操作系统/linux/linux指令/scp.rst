@@ -2,6 +2,15 @@
 scp
 =========================
 
+
+.. post:: 2023-02-24 22:59:42
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 **加密** 的方式在本地主机和远程主机之间复制文件（基于ssh）
 
 用于在Linux下进行远程拷贝文件的命令，和它类似的命令有 cp，

@@ -2,6 +2,15 @@
 Celery的Task
 ===============
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, python三方库, celery_more
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 :参考::
   `[Celery 中文手册] 任务: Tasks <https://www.celerycn.io/v/4.4.0/yong-hu-zhi-nan/ren-wu-tasks>`_
 

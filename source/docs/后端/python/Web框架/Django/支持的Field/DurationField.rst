@@ -3,6 +3,15 @@ DurationField
 ==============================
 
 
+.. post:: 2023-02-20 22:06:49
+  :tags: python, Web框架, Django, 支持的Field
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
+
 一个用于存储时间段的字段——在 Python 中用 timedelta 建模。
 当在 PostgreSQL 上使用时，使用的数据类型是 interval，
 在 Oracle 上使用的数据类型是 INTERVAL DAY(9) TO SECOND(6)。否则使用微秒的 bigint::

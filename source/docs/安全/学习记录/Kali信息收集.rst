@@ -2,6 +2,15 @@
 Kali信息收集
 ======================================
 
+
+.. post:: 2023-02-25 22:13:17
+  :tags: 学习记录
+  :category: 安全
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 资产搜集综合工具
   - Maltego: 强大的跨平台信息搜集工具(可以自动搜集资产)
   - ARL灯塔: 搜集

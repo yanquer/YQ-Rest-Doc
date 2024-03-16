@@ -2,6 +2,15 @@
 ord
 ==============
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, 内置函数
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 ord() 函数是 chr() 函数（对于8位的ASCII字符串, 见 :doc:`/docs/后端/python/内置函数/chr` ）
 或 unichr() 函数（对于Unicode对象）的配对函数，
 它以一个字符（长度为1的字符串）作为参数，返回对应的 ASCII 数值，或者 Unicode 数值，

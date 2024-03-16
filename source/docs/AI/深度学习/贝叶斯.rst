@@ -2,6 +2,15 @@
 贝叶斯
 =========================
 
+
+.. post:: 2024-03-17 00:32:12
+  :tags: 深度学习
+  :category: AI
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 贝叶斯定理由英国数学家贝叶斯 ( Thomas Bayes 1702-1761年) 发展，
 用来描述两个条件概率之间的关系，比如::
 

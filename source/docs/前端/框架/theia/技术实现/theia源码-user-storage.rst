@@ -2,6 +2,15 @@
 theia源码之user-storage
 ============================================
 
+
+.. post:: 2024-03-08 23:31:08
+  :tags: 框架, theia, 技术实现
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 .. note::
 
   此文基于 ``@theia`` 版本 **1.43.1**

@@ -2,6 +2,15 @@
 css常用属性
 ======================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: css, css常用属性
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 .. toctree::
   :maxdepth: 1
 

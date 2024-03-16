@@ -2,6 +2,15 @@
 init
 ==============================
 
+
+.. post:: 2023-02-27 21:24:23
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 这涉及到 :doc:`/docs/操作系统/linux/概念性/Linux系统的启动过程`
 
 支持的参数:

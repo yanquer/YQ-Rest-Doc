@@ -2,6 +2,15 @@
 webstrom中如何进行调试
 =====================================
 
+
+.. post:: 2023-02-26 21:30:12
+  :tags: 框架, electron
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 主要针对ts项目
 
 因为ts需要编译成js使用, 所以断点需要打在编译后的js文件内

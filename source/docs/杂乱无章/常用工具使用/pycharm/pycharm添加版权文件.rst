@@ -2,6 +2,15 @@
 Pycharm添加版权文件
 ===========================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: pycharm
+  :category: 常用工具使用
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 设置概览
 ===========================
 

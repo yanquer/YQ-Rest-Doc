@@ -2,6 +2,15 @@
 使用docker安装
 ====================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, python三方库, pyside6_more
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 使用 指定版本安装 Python 并进入::
 
   docker run --name python39 -itd -p 2222:22 python:3.9

@@ -2,6 +2,15 @@
 cProfile
 ==========================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, 性能分析
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 cProfile是Python标准库中内置的性能分析模块，C扩展，非侵入式，不需要修改代码。
 
 使用方法::

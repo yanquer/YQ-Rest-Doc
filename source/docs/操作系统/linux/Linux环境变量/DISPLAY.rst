@@ -2,6 +2,15 @@
 Linux下DISPLAY作用
 ============================
 
+
+.. post:: 2024-02-21 21:55:17
+  :tags: linux, Linux环境变量
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 DISPLAY用来设置将图形显示到何处, 或者说设置或显示当前的显示环境
 (指定X服务器的现实设备)
 

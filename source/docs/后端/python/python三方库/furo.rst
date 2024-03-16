@@ -2,6 +2,15 @@
 furo
 =============================================
 
+
+.. post:: 2024-03-13 20:29:00
+  :tags: python, python三方库
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 一个开源的sphinx主题.
 
 默认的效果大概这样

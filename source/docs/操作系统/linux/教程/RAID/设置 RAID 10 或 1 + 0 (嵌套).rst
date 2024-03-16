@@ -2,6 +2,15 @@
 设置 RAID 10 或 1 + 0 (嵌套)
 ========================================================
 
+
+.. post:: 2023-02-27 21:24:23
+  :tags: linux, 教程, RAID
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 :参考::
   - 作者: `Babin Lonston <http://www.tecmint.com/create-raid-10-in-linux/>`_
   - 译者: `LCTT <https://linux.cn/lctt/>`_

@@ -2,6 +2,15 @@
 ldd
 ===========================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 用于打印程序或者库文件所依赖的共享库列表
 
 安装(ubuntu, 待验证, mac下不行)::

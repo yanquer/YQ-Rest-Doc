@@ -2,6 +2,15 @@
 str/repr
 =====================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, 内置函数
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 str 与 repr 函数的效果差不多, 所以就放到一起说了.
 
 对于继承了 object 的类(新式类)而言, 可以通过重写::

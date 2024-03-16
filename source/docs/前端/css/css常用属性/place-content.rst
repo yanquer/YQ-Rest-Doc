@@ -2,6 +2,15 @@
 place-content
 ==========================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: css, css常用属性
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 设置 **Grid** 布局元素在容器中的水平和垂直对齐方式
 
 place-content 属性是 CSS Grid 布局的一个简写属性，

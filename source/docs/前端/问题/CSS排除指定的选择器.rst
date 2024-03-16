@@ -2,6 +2,15 @@
 CSS排除指定的选择器
 ===================================
 
+
+.. post:: 2023-02-26 21:30:12
+  :tags: 问题
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 可参考 :doc:``
 
 现有css类属性a,b,c;

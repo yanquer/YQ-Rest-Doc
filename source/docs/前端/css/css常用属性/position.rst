@@ -2,6 +2,15 @@
 position
 ======================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: css, css常用属性
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 规定元素的定位类型
 
 - static: HTML 元素的默认值，即没有定位，遵循正常的文档流对象;

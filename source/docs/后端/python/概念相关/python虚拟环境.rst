@@ -2,6 +2,15 @@
 python虚拟环境
 =========================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, 概念相关
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 部分说明可见: :ref:`创建Python虚拟环境`
 
 涉及到一个模块 pyvenv

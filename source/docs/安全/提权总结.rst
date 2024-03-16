@@ -2,6 +2,15 @@
 提权总结
 =========================
 
+
+.. post:: 2023-02-27 21:24:23
+  :tags:
+  :category: 安全
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 sudo/suid提权
 =========================
 

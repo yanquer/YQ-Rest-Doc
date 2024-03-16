@@ -2,6 +2,15 @@
 open
 ====================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, 内置函数
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 python open() 函数用于打开一个文件，创建一个 file 对象，相关的方法才可以调用它进行读写。
 
 .. function:: open(name[, mode[, buffering]])

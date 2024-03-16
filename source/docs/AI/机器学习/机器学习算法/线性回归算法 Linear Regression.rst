@@ -2,6 +2,15 @@
 线性回归算法 Linear Regression
 ==================================================
 
+
+.. post:: 2024-03-17 00:32:12
+  :tags: 机器学习, 机器学习算法
+  :category: AI
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 回归分析(Regression Analysis)是统计学的数据分析方法，
 目的在于了解两个或多个变量间是否相关、相关方向与强度，
 并建立数学模型以便观察特定变量来预测其它变量的变化情况。

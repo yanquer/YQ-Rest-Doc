@@ -2,6 +2,15 @@
 pytorch
 =============================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: python, python三方库, pytorch
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 参考: `60分钟快速入门 PyTorch <https://zhuanlan.zhihu.com/p/66543791>`_
 
 PyTorch 是由 Facebook 开发，基于 Torch 开发，

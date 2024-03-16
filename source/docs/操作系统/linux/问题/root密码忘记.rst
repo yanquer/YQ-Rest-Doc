@@ -2,6 +2,15 @@
 root密码忘记
 ==============================
 
+
+.. post:: 2023-02-23 23:14:15
+  :tags: linux, 问题
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 查看 /etc/shadow 使用的加密机制::
 
   authconfig --test | grep hashing

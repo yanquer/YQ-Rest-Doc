@@ -2,6 +2,15 @@
 结构详解
 ===============================
 
+
+.. post:: 2024-02-21 21:55:17
+  :tags: python, Web框架, FastAPI
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 源于: `FastAPI <https://fastapi.tiangolo.com/zh/>`_
 
 FastAPI 站在以下巨人的肩膀之上：

@@ -2,6 +2,15 @@
 nohub
 ===========================
 
+
+.. post:: 2023-02-24 22:59:42
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 不挂断地运行命令。no hangup的缩写，意即“不挂断”。
 
 nohup运行由 Command参数和任何相关的 Arg参数指定的命令，忽略所有挂断（SIGHUP）信号；

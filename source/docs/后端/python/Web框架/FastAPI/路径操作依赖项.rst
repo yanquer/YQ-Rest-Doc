@@ -2,6 +2,15 @@
 路径操作依赖项
 ===============================
 
+
+.. post:: 2024-02-21 21:55:17
+  :tags: python, Web框架, FastAPI
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 参考: `FastAPI 路径操作依赖项 <https://www.runoob.com/fastapi/fastapi-path-operation-dependencies.html>`_
 
 FastAPI 提供了简单易用，但功能强大的依赖注入系统，

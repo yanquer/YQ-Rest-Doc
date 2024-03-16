@@ -3,6 +3,15 @@
 ===================================
 
 
+.. post:: 2024-03-17 00:32:12
+  :tags: 深度学习
+  :category: AI
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
+
 visdom
 ===================================
 

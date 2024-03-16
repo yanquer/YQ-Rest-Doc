@@ -2,6 +2,15 @@
 windows shell
 =======================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: windows
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 有一篇总结还可以的: `Windows 批处理命令教程（不追求看完，只要求看懂） <https://hellokandy.blog.csdn.net/article/details/78065145?spm=1001.2101.3001.6650.6&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-6-78065145-blog-122614610.pc_relevant_default&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-6-78065145-blog-122614610.pc_relevant_default>`_
 
 变量

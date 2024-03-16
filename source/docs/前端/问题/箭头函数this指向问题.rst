@@ -2,6 +2,15 @@
 不同位置调用时的this指向问题
 ===============================
 
+
+.. post:: 2023-02-26 21:30:12
+  :tags: 问题
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 举例, 比如React父组件将自己的方法传给子组件,
 然后子组件再调用此方法.
 

@@ -2,6 +2,15 @@
 XPath节点
 =====================================
 
+
+.. post:: 2023-03-01 00:19:35
+  :tags: python, 教程, xpath
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 XPath 术语
 =====================================
 

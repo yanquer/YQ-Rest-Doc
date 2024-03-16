@@ -2,6 +2,15 @@
 Python利用反射实例对象
 =========================
 
+
+.. post:: 2023-02-20 22:08:48
+  :tags: python, 教程
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 如果不局限于使用反射, 可以考虑使用 eval 函数, 此函数会将传入的字符串当作Python代码执行.
 
 反射

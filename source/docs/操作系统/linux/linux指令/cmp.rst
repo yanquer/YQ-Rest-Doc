@@ -2,6 +2,15 @@
 cmp
 ======================
 
+
+.. post:: 2023-02-24 22:59:42
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 Linux cmp命令用于比较两个文件是否有差异。
 
 当相互比较的两个文件完全一样时，则该指令不会显示任何信息。

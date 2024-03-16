@@ -2,6 +2,15 @@
 du
 =================
 
+
+.. post:: 2023-02-24 22:59:42
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 du，disk usage,
 是通过搜索文件来计算每个文件的大小然后累加，
 du能看到的文件只是一些当前存在的，没有被删除的。

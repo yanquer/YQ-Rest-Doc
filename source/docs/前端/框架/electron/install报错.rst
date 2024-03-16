@@ -2,6 +2,15 @@
 一些遇到过的报错
 ============================
 
+
+.. post:: 2023-02-26 21:30:12
+  :tags: 框架, electron
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 报错内容::
 
   error /Users/yanque/project/webstorm/electron-study/node_modules/electron: Command failed.

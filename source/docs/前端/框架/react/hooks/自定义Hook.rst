@@ -2,6 +2,15 @@
 自定义Hook
 ============================
 
+
+.. post:: 2024-03-07 22:13:39
+  :tags: 框架, react, hooks
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 举个例子，我们写一个 hook 实时获取页面的宽度::
 
   // 创建一个名为useWidth的hook

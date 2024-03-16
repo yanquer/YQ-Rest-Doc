@@ -2,6 +2,15 @@
 show
 ===========================
 
+
+.. post:: 2023-02-26 21:30:12
+  :tags: git, command
+  :category: 版本控制
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 显示各种类型的对象，
 对于提交，它显示日志消息和文本差异，
 对于标签，它显示标签消息和引用对象

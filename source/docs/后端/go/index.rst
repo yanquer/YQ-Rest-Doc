@@ -2,6 +2,15 @@
 Go
 ================================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: go
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 Go学习记录, 24.01.29
 
 第一版源于 `Go 语言教程 <https://www.runoob.com/go/go-tutorial.html>`_

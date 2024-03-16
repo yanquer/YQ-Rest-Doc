@@ -2,6 +2,15 @@
 buildozer
 ============================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, python三方库
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 暂时找到的官网文档: https://buildozer.readthedocs.io/en/latest/installation.html
 
 一个用于构建Python应用程序的命令行工具, 可以将python代码打包为安卓的APK或者IPhone的IPA.

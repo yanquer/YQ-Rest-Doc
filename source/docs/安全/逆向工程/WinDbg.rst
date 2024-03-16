@@ -2,6 +2,15 @@
 WinDbg
 =============================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: 逆向工程
+  :category: 安全
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 WinDbg 是一个调试器，可用于分析故障转储、
 调试实时用户模式和内核模式代码，以及检查 CPU 寄存器和内存。
 仅支持Windows

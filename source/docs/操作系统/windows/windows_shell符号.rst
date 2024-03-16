@@ -2,6 +2,15 @@
 windows_shell符号
 ====================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: windows
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 一些符号
 
 原文: `符号的用法 <http://bbs.bathome.net/viewthread.php?tid=1290&page=2#pid6306>`_

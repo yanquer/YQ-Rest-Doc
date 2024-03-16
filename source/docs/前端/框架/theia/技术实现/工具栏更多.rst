@@ -2,6 +2,15 @@
 工具栏更多
 ======================================
 
+
+.. post:: 2024-03-06 20:51:18
+  :tags: 框架, theia, 技术实现
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 资源管理器的工具栏的更多
 `node_modules/@theia/core/src/browser/shell/tab-bar-toolbar/tab-bar-toolbar.tsx` 的
 `TabBarToolbar` 下的 `registerMoreToolbarItem`::

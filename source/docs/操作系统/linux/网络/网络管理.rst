@@ -2,6 +2,15 @@
 网络管理
 ==========================
 
+
+.. post:: 2024-02-21 21:55:17
+  :tags: linux, 网络
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 几个相关的配置文件
 
 - /etc/resolv.conf DNS配置相关的文件, 内容就是当前正在使用的DNS,

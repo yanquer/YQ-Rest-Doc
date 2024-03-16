@@ -2,6 +2,15 @@
 nm
 ===========================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 linux下自带的特定文件分析工具，
 一般用来检查分析二进制文件、库文件、可执行文件中的符号表，返回二进制文件中各段的信息。
 

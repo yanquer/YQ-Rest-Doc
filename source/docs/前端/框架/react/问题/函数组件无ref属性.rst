@@ -2,6 +2,15 @@
 函数组件无ref属性
 ===============================================
 
+
+.. post:: 2024-03-08 23:31:08
+  :tags: 框架, react, 问题
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 函数组件默认没有ref属性,
 .. 需要使用forwardRef来传递ref:
 需要使用 forwardRef 包装::

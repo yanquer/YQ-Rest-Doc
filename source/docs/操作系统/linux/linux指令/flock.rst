@@ -2,6 +2,15 @@
 flock
 =========================
 
+
+.. post:: 2023-02-24 22:59:42
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 flock是Linux下的文件锁。
 当多个进程可能会对同样的数据执行操作时,
 这些进程需要保证其它进程没有也在操作, 以免损坏数据。

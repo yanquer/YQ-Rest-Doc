@@ -2,6 +2,15 @@
 BinaryField
 ==============================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, Web框架, Django, 支持的Field
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 一个用于存储原始二进制数据的字段。可以指定为 bytes、bytearray 或 memoryview。
 
 默认情况下，BinaryField 将 ediditable` 设置为 False，在这种情况下，它不能被包含在 ModelForm 中。

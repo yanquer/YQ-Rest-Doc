@@ -2,6 +2,15 @@
 chattr
 ===================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 Linux chattr命令用于改变文件属性。
 
 这项指令可改变存放在ext2文件系统上的文件或目录属性，这些属性共有以下8种模式：

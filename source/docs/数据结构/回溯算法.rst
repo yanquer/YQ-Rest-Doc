@@ -2,6 +2,15 @@
 回溯算法
 =============================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags:
+  :category: 数据结构
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 参考: `回溯法 <https://www.hello-algo.com/chapter_backtracking/backtracking_algorithm/>`_
 
 「回溯算法 backtracking algorithm」是一种通过穷举来解决问题的方法，

@@ -2,6 +2,15 @@
 TypeScript基础类型
 ========================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: typescript
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 - any: 任意类型
 - number: 数字类型, 双精度 64 位浮点值。它可以用来表示整数和分数
 - string: 字符串, 可使用 单/双/反引号定义, 其中反引号可用于定义多行文本以及使用变量(用$), 类似于Python的 `f`

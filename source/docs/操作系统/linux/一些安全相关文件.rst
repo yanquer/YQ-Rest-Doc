@@ -2,6 +2,15 @@
 一些安全相关文件
 =============================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: linux
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 # todo:
 
 .. figure:: ../../../resources/images/2023-02-19-22-07-10.png

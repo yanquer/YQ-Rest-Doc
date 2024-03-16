@@ -2,6 +2,15 @@
 Theia
 ======================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: 框架, theia
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 一个IDE框架, 前后端分离的架构
 
 以插件的形式编写代码, 支持依赖注入

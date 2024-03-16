@@ -2,6 +2,15 @@
 stash
 =======================
 
+
+.. post:: 2023-02-26 21:30:12
+  :tags: git, command
+  :category: 版本控制
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 | 暂存
 
 当切换分支的时候, 有时会提示需要先提交本地的修改, 但有时我并不想提交, 这时可以选择暂存当前修改

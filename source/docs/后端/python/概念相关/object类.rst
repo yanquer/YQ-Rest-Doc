@@ -2,20 +2,29 @@
 object类
 =====================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, 概念相关
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 方法
 =====================
 
 - new_
 - init_
 - getattribute_
-- getattr_
+- getattr
 - setattr_
 - delattr_
 - enter_
 - exit_
-- str_
+- str
 - class_
-- iter_
+- iter
 - getitem_
 - setitem_
 
@@ -65,10 +74,6 @@ __getattribute__
 
   用处: 通过重写此方法实现代理
 
-.. _getattr:
-
-__getattr__
----------------------
 
 .. function:: __getattr__()
 
@@ -124,12 +129,7 @@ __enter__/__exit__
   - exit只有返回True时, 才不抛出异常
   - 其他相关使用不做赘述
 
-.. _str:
-
-__str__
----------------------
-
-.. function:: __str__()
+__str__()
 
   code::
 
@@ -154,17 +154,10 @@ __class__
 
   相当于java的get, set方法, 可以更方便的通过 @property 装饰器来访问成员变量
 
-.. _iter:
-
-__iter__
----------------------
 
 使自身可迭代, 即可使用 for/next 循环.
 
 .. _getitem:
-
-__getitem__
----------------------
 
 使自身可以用字典的形式 ``obj['x']`` 来取值.
 

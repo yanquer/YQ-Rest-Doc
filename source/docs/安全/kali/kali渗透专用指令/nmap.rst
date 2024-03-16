@@ -2,6 +2,15 @@
 nmap
 ===================================
 
+
+.. post:: 2024-03-04 22:04:43
+  :tags: kali, kali渗透专用指令
+  :category: 安全
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 Network Mapper, Linux下的网络扫描和嗅探工具包(比如IP/端口扫描)
 
 用法::

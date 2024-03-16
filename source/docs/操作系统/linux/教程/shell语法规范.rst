@@ -2,6 +2,15 @@
 shell语法规范
 =========================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: linux, 教程
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 case语句
 =========================
 

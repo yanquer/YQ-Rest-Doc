@@ -2,6 +2,15 @@
 child_process
 ========================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: node, 标准库
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 :官网::
     `Child Process <https://nodejs.org/docs/latest-v10.x/api/child_process.html>`_
 

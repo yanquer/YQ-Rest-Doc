@@ -2,6 +2,15 @@
 基于redis的配置
 ====================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, python三方库, celery_more
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 此处只介绍redis相关配置, 更多配置见 :doc:`/docs/后端/python/python三方库/celery_more/conf_celery`
 
 redis相关配置

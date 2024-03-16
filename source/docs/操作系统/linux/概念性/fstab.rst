@@ -2,6 +2,15 @@
 fstab
 =================================
 
+
+.. post:: 2023-02-26 21:30:12
+  :tags: linux, 概念性
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 概述
 
 /etc/fstab是用来存放文件系统的静态信息的文件。

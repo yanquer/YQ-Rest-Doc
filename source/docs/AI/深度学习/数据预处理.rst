@@ -2,6 +2,15 @@
 数据预处理
 =================================
 
+
+.. post:: 2024-03-17 00:32:12
+  :tags: 深度学习
+  :category: AI
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 数据的归一化和标准化是特征缩放(feature scaling)的方法，
 是数据预处理的关键步骤。
 不同评价指标往往具有不同的量纲和量纲单位，

@@ -2,6 +2,15 @@
 lsblk
 =========================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 列出所有储存装置
 
 -d    仅列出磁盘本身，不列出分区数据

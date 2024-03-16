@@ -2,6 +2,15 @@
 StarWindConverter
 ====================================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: 
+  :category: 常用工具使用
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 将 img 镜像转换为 Wmvare 可用的虚拟机文件
 
 官网下载地址: `<https://www.starwindsoftware.com/starwind-v2v-converter#download>`_

@@ -2,6 +2,15 @@
 set
 ===============
 
+
+.. post:: 2023-02-23 23:14:15
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 set命令用于设置显示当前shell的变量。
 
 set指令能设置所使用shell的执行方式，可依照不同的需求来做设置。

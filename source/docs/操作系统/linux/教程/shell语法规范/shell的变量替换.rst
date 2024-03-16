@@ -2,6 +2,15 @@
 shell的变量替换
 ===============================
 
+
+.. post:: 2024-02-21 21:55:17
+  :tags: linux, 教程, shell语法规范
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 几种特殊的替换结构
 ===============================
 

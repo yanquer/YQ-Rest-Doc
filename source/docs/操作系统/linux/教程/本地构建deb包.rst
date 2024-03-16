@@ -2,6 +2,15 @@
 本地构建deb包
 ============================
 
+
+.. post:: 2024-02-21 21:55:17
+  :tags: linux, 教程
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 debian官方文档: https://www.debian.org/releases/stable/amd64/index.zh-cn.html
 
 control文件说明: https://www.debian.org/doc/debian-policy/ch-controlfields.html

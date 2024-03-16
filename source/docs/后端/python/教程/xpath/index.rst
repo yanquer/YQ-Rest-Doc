@@ -2,6 +2,15 @@
 XPath 教程
 ===============================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: python, 教程, xpath
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 参考: `菜鸟-XPath <https://www.runoob.com/xpath/xpath-intro.html>`_
 
 XPath 是一门在 XML 文档中查找信息的语言。

@@ -2,6 +2,15 @@
 颜色表与代码表
 ==================================
 
+
+.. post:: 2023-02-23 23:14:15
+  :tags: linux, 概念性
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 .. csv-table:: 颜色表
   :header: 前景, 背景, 颜色
 

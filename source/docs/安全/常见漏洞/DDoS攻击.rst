@@ -2,6 +2,15 @@
 DDoS攻击
 =========================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: 常见漏洞
+  :category: 安全
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 DDoS全称是分布式拒绝服务攻击（Distributed Denial of Service）,
 属于是最没技术含量但攻击起来最让人头疼的一种。攻击者不断地提出服务请求，
 让合法用户的请求无法及时处理，这是 DoS 攻击。

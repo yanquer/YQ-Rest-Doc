@@ -2,6 +2,15 @@
 定时任务
 ==================================
 
+
+.. post:: 2023-02-27 21:24:23
+  :tags: linux, 问题
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 使用 :doc:`/docs/操作系统/linux/linux指令/crond`
 来进行定时任务安排。参见 `crontab`  和 `crontab`
 

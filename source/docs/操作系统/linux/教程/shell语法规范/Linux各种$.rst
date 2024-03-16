@@ -2,6 +2,15 @@
 Linux各种$(美元符)
 ========================
 
+
+.. post:: 2024-02-21 21:55:17
+  :tags: linux, 教程, shell语法规范
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 ``$$``
   Shell本身的PID（ProcessID，即脚本运行的当前 进程ID号）
 ``$!``

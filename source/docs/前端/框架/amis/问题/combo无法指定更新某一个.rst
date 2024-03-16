@@ -3,6 +3,13 @@
 combo无法指定更新某一个
 ===========================
 
+.. post:: 2023-03-01 00:19:35
+  :tags: 框架, amis, 问题
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
 第一次遇到是使用 `input-array` ,
 数组的每一个项有多个指定的值,
 

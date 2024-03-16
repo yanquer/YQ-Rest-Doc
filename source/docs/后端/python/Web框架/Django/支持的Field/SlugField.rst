@@ -2,6 +2,15 @@
 SlugField
 ==========================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, Web框架, Django, 支持的Field
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 Slug 是一个报纸术语。slug 是一个简短的标签，只包含字母、数字、下划线或连字符。它们一般用于 URL 中::
 
   class SlugField(max_length=50, **options)

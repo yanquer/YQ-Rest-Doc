@@ -2,6 +2,15 @@
 一些XML配置属性
 ==================================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: Android
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 screenOrientation
 ----------------------------------
 

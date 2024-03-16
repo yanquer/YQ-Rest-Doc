@@ -2,6 +2,15 @@
 shell条件判断if
 ====================
 
+
+.. post:: 2024-03-12 19:49:08
+  :tags: linux, 教程, shell语法规范
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 **在条件表达式中进行字符串/数值比较**
 
 字符串/数值判断(字符串判断时, shell一个等号与两个等号的效果是一致的)::

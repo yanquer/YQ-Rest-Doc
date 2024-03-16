@@ -2,6 +2,15 @@
 神经网络
 ===========================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, python三方库, pytorch
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 在 PyTorch 中 torch.nn 专门用于实现神经网络。
 其中 nn.Module 包含了网络层的搭建，
 以及一个方法 forward(input) ，并返回网络的输出 output .

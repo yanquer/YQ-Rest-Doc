@@ -2,6 +2,15 @@
 AnchorJS
 ===================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: node, 三方库
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 针对文档项目的索引吧. 官网: `anchorjs-doc <https://www.bryanbraun.com/anchorjs/>`_
 
 安装/使用

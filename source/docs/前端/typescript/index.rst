@@ -2,6 +2,15 @@
 TypeScript
 =============================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: typescript
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 TypeScript 微软开发, 自由、开源的编程语言; 是 JavaScript 的一个超集
 
 TypeScript 是 JavaScript 的超集，扩展了 JavaScript 的语法，

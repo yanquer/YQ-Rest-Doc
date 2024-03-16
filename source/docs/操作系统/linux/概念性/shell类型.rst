@@ -2,9 +2,18 @@
 shell类型
 ==========================
 
+
+.. post:: 2023-02-27 21:24:23
+  :tags: linux, 概念性
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 .. shell基础了解
 
-大致与 :doc:`linux系统环境加载顺序` 一致
+大致与 :doc:`/docs/操作系统/linux/概念性/linux系统环境加载顺序` 一致
 
 登录shell
 ==========================

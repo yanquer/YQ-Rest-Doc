@@ -2,6 +2,15 @@
 debian查看版本
 =====================
 
+
+.. post:: 2024-02-21 21:55:17
+  :tags: linux, debian
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 在 Debian 或基于 Debian 的 Linux 发行版中，有多种方法可以查看当前系统的版本信息：
 
 使用 lsb_release 命令::

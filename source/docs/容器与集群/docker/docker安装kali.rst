@@ -2,6 +2,15 @@
 Docker安装Kali
 ===========================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: docker
+  :category: 容器与集群
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 命令
 ===========================
 

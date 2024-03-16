@@ -2,6 +2,15 @@
 redis
 ============
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: redis
+  :category: 数据库
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 .. _redis官网: http://www.redis.cn/download.html
 
 Redis 常用五大数据类型:

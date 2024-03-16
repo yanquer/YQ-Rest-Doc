@@ -2,6 +2,15 @@
 XSS 攻击
 ==============================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: 常见漏洞
+  :category: 安全
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 XSS全称是跨站脚本攻击（Cross Site Scripting），
 为了和重叠样式表CSS区分，换了另一个缩写XSS。
 

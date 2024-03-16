@@ -2,6 +2,15 @@
 一些使用问题/技巧
 ======================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: windows, windows执行文件打包, nsis
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 执行 bat 不打开 dos窗口
 ============================================
 

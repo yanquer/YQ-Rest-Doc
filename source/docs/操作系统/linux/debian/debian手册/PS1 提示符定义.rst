@@ -2,6 +2,15 @@
 PS1 提示符定义
 ====================================
 
+
+.. post:: 2023-02-23 23:14:15
+  :tags: linux, debian, debian手册
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 参考: `linux PS1 提示符定义 <https://www.cnblogs.com/starspace/archive/2009/02/21/1395382.html>`_
 
 PS1

@@ -2,6 +2,15 @@
 Linux下配置DLAN服务
 ==================================
 
+
+.. post:: 2024-02-21 21:55:17
+  :tags: linux, 教程
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 DLAN是一个适用于多媒体的传输协议
 
 安装 minidlna::

@@ -2,6 +2,15 @@
 docker使用bind部署dns服务-管理面板
 =====================================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: config_dns
+  :category: 计算机网络
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 使用的镜像: `sameersbn/bind <https://hub.docker.com/r/sameersbn/bind>`_
 
 使用bind镜像创建::

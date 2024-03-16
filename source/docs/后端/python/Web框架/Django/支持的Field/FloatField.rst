@@ -2,6 +2,15 @@
 FloatField
 ===========================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, Web框架, Django, 支持的Field
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 在 Python 中用一个 float 实例表示的浮点数::
 
   class FloatField(**options)

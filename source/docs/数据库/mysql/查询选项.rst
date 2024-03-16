@@ -2,6 +2,15 @@
 查询选项
 ===========================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: mysql
+  :category: 数据库
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 - union	去重查询
 - union all	不去重查询
 - distinct	字段去重

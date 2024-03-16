@@ -2,6 +2,15 @@
 教程
 ===================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: python, python三方库, pyside6_more
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 基本说明见: :doc:`/docs/后端/python/python三方库/pyside6_more/index`
 
 Widgets说明

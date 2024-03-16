@@ -2,6 +2,15 @@
 aiohttp
 ==================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, python三方库
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 :官网:: `Welcome to AIOHTTP <https://docs.aiohttp.org/en/stable/>`_
 
 **异步的网络连接库** , 内部存在 asyncio 库的调用, 如 run_in_executor

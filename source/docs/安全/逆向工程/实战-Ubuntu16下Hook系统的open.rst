@@ -2,6 +2,15 @@
 实战-Ubuntu16下Hook系统的open
 ======================================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: 逆向工程
+  :category: 安全
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 因为上一篇的 :doc:`/docs/安全/逆向工程/实战-Mac下Hook其他进程`
 失败了,
 然后找原因啊, 巴拉巴拉的, 就有了这个

@@ -2,6 +2,15 @@
 RAID 的级别和概念
 ========================================
 
+
+.. post:: 2023-02-23 00:00:02
+  :tags: linux, 教程, RAID
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 :参考::
   - 作者: `Babin Lonston <http://www.tecmint.com/understanding-raid-setup-in-linux/>`_
   - 译者: `LCTT <https://linux.cn/lctt/>`_

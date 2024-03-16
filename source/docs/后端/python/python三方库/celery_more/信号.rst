@@ -2,6 +2,15 @@
 信号
 =============
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, python三方库, celery_more
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 当某些动作在应用中的其他位置触发时，信号允许解耦的应用接收到通知。
 
 Celery 附带了很多信号，您的应用可以嵌入这些信号来增加某些动作的额外行为。

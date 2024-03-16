@@ -2,6 +2,15 @@
 高级Python
 ===================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, 教程
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 主要对Python中支持的操作做一个归纳总结.
 
 生成器效率高于推导式

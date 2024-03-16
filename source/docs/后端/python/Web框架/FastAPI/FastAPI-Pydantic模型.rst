@@ -2,6 +2,15 @@
 FastAPI-Pydantic模型
 ==========================================
 
+
+.. post:: 2024-02-21 21:55:17
+  :tags: python, Web框架, FastAPI
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 参考: `FastAPI Pydantic 模型 <https://www.runoob.com/fastapi/fastapi-pydantic.html>`_
 
 Pydantic 是一个用于数据验证和序列化的 Python 模型库。

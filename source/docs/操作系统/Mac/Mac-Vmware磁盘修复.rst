@@ -2,6 +2,15 @@
 Mac-Vmware磁盘修复
 =================================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: Mac
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 Mac下面个人免费的虚拟机好像只有Vmware的
 `Vmware Fusion`, 有时候由于磁盘空间不足啊等原因可能会
 造成 **指定的虚拟磁盘需要修复**

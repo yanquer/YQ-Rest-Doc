@@ -2,7 +2,16 @@
 tac
 =========================
 
-跟 :doc:`cat` 相反
+
+.. post:: 2023-02-26 21:30:12
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
+跟 :doc:`/docs/操作系统/linux/linux指令/cat` 相反
 
 tac命令就是将文件反向输出(有缓冲)，刚好和cat输出相反。
 

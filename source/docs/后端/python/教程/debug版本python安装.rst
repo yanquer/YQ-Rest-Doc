@@ -2,6 +2,15 @@
 debug版本python安装
 ===============================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, 教程
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 参考: https://docs.python.org/zh-cn/3.11/using/unix.html
 
 找了一下资料, debug版本只有windows可以通过安装包安装,

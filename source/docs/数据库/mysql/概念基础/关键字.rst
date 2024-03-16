@@ -2,6 +2,15 @@
 关键字
 =============================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: mysql, 概念基础
+  :category: 数据库
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 .. note::
 
   Mysql一般都不区分大小写, 比如 ``desc`` 和 ``DESC`` 是一致的

@@ -2,6 +2,15 @@
 shell下while与set
 ============================
 
+
+.. post:: 2024-02-21 21:55:17
+  :tags: linux, 教程, shell语法规范
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 使用了::
 
     set -e

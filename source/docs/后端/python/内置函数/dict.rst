@@ -2,6 +2,15 @@
 dict
 ===================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, 内置函数
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 生成一个字典
 
 支持将两个值的迭代转换为字典::

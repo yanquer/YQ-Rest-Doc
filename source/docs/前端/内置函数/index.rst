@@ -2,6 +2,15 @@
 内置函数/对象
 ==============================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: 内置函数
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 内置对象
 
 .. toctree::

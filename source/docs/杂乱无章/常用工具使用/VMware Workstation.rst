@@ -2,6 +2,15 @@
 VMware Workstation
 ==========================================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: 
+  :category: 常用工具使用
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 .. note::
 
   VMware Workstation Pro 16 许可证密钥，批量永久激活！::

@@ -2,6 +2,15 @@
 jsonrpc
 ====================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, python三方库
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 .. note::
 
 	这玩意儿不止一个, 看了一下, 有 jsonrpc, json-rpc, python-jsonrpc ...

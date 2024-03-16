@@ -2,6 +2,15 @@
 ld
 ==================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 ld（Link eDitor）命令是二进制工具集 GNU Binutils 的一员，
 是 GNU 链接器，用于将目标文件与库链接为可执行文件或库文件
 

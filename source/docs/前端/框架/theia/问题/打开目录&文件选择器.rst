@@ -2,6 +2,15 @@
 打开目录/文件选择器
 ===============================
 
+
+.. post:: 2024-03-08 23:31:08
+  :tags: 框架, theia, 问题
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 使用内置 ``FileDialogService`` 的 ``showOpenDialog`` 即可::
 
   import {FileDialogService, OpenFileDialogProps} from '@theia/filesystem/lib/browser'

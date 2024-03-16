@@ -2,6 +2,15 @@
 ES6
 =========================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: ES6
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 基本上参照 `菜鸟教程-ES6教程 <https://www.runoob.com/w3cnote/es6-tutorial.html>`_
 
 ES6， 全称 ECMAScript 6.0 ，是 JavaScript 的下一个版本标准，2015.06 发版。

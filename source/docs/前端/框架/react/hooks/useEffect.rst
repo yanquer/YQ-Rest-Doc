@@ -2,6 +2,15 @@
 useEffect
 ============================
 
+
+.. post:: 2024-03-07 22:13:39
+  :tags: 框架, react, hooks
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 为组件添加副作用的操作
 
 比如，每次渲染之后，修改网站的标题::

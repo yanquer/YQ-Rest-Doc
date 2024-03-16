@@ -2,6 +2,15 @@
 7z
 =========================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 低版本系统可能非内置指令, 需要手动安装::
 
   apt install p7zip
@@ -35,4 +44,3 @@
 解压, 例::
 
    7z x xxx.7z
-   

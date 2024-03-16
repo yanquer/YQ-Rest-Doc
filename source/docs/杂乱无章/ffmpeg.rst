@@ -2,6 +2,15 @@
 ffmpeg介绍
 =========================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags:
+  :category: 杂乱无章
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 Python下有个三方库, 可见: :doc:`/docs/后端/python/python三方库/ffmpeg`
 
 前言

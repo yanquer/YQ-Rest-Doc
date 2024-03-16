@@ -2,6 +2,15 @@
 决策树算法 Decision Tree
 ==========================================
 
+
+.. post:: 2024-03-17 00:32:12
+  :tags: 机器学习, 机器学习算法
+  :category: AI
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 .. 决策树（Decision tree）是一种特殊的树结构，
 .. 由一个决策图和可能的结果（例如成本和风险）组成，用来辅助决策。
 

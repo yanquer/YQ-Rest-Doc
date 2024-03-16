@@ -2,6 +2,15 @@
 docker部署nginx
 ==========================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: nginx
+  :category: 容器与集群
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 大概指令::
 
 	docker pull nginx

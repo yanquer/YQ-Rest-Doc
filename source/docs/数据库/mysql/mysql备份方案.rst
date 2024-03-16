@@ -2,6 +2,15 @@
 mysql 备份方案
 ===================================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: mysql
+  :category: 数据库
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 全量备份
 ===================================
 

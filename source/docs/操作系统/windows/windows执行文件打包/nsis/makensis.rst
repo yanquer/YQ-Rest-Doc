@@ -2,6 +2,15 @@
 makensis指令
 ======================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: windows, windows执行文件打包, nsis
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 使用nsis脚本命令行打包
 ======================
 

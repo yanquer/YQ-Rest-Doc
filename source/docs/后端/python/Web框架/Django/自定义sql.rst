@@ -2,6 +2,15 @@
 自定义sql
 ============================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, Web框架, Django
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 使用::
 
   Manager.raw(raw_query,params=(),translations=None)

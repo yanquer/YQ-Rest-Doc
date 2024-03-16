@@ -2,6 +2,15 @@
 debian启动
 =============================
 
+
+.. post:: 2023-02-26 21:30:12
+  :tags: linux, debian
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 UEFI ==》 加载引导程序 （一般情况）
 
 内核消息

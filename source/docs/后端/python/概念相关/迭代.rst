@@ -2,6 +2,15 @@
 迭代(生成器/式)
 =========================
 
+
+.. post:: 2024-02-21 21:55:17
+  :tags: python, 概念相关
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 字典生成式, 会立刻计算::
 
   a = {id:0 for id in range(10)}

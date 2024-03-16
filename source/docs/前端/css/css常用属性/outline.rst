@@ -2,6 +2,15 @@
 outline
 ============================
 
+
+.. post:: 2023-03-01 22:50:22
+  :tags: css, css常用属性
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 CSS 的 outline 属性用于设置元素的轮廓样式，它是一种在元素周围绘制轮廓线的装饰效果。
 轮廓线位于元素的边框之外，并且不占据布局空间。
 

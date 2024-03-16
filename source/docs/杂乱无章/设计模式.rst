@@ -2,6 +2,15 @@
 设计模式
 ==================================
 
+
+.. post:: 2023-02-26 21:30:12
+  :tags:
+  :category: 杂乱无章
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 面向对象程序设计
   面向对象程序设计（Object-Oriented Programming）是一种范式
 

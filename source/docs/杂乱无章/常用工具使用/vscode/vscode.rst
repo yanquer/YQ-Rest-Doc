@@ -3,6 +3,14 @@
 vscode
 ====================
 
+.. post:: 2024-03-09 18:21:01
+  :tags: vscode
+  :category: 常用工具使用
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 常用快捷键::
 
   ctrl + p                #按文件名搜索

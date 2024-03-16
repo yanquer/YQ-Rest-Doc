@@ -2,6 +2,15 @@
 find
 =============================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 在指定目录下查找文件。
 
 任何位于参数之前的字符串都将被视为欲查找的目录名。

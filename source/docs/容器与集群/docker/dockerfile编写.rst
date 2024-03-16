@@ -2,6 +2,15 @@
 dockerfile编写
 ==============================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: docker
+  :category: 容器与集群
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 定制docker镜像的方式有两种
 
 - 手动修改容器内容，导出新的镜像;

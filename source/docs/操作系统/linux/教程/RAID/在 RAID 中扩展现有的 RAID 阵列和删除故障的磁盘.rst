@@ -2,6 +2,15 @@
 在 RAID 中扩展现有的 RAID 阵列和删除故障的磁盘
 =======================================================
 
+
+.. post:: 2023-02-23 00:00:02
+  :tags: linux, 教程, RAID
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 :参考::
   - 作者: `Babin Lonston <http://www.tecmint.com/grow-raid-array-in-linux/>`_
   - 译者: `LCTT <https://linux.cn/lctt/>`_

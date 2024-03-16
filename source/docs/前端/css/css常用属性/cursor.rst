@@ -2,6 +2,15 @@
 cursor
 ===========================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: css, css常用属性
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 cursor 用于指定鼠标指针在元素上的外观。
 通过设置 cursor 属性，你可以改变用户与特定元素交互时鼠标指针的样式，以提供视觉反馈或指示元素的可操作性。
 

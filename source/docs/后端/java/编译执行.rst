@@ -2,6 +2,15 @@
 java文件的编译执行
 ===================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: java
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 很久没用java, 在vscode里写测试都忘了类名需要与文件名一致...
 
 

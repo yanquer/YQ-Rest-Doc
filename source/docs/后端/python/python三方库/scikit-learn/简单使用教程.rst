@@ -2,6 +2,15 @@
 简单使用教程
 =====================================
 
+
+.. post:: 2023-03-03 23:21:31
+  :tags: python, python三方库, scikit-learn
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 以下将会使用 Wine 数据集, 可以直接代码下载::
 
   from sklearn.datasets import load_wine

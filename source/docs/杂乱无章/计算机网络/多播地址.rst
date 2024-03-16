@@ -2,6 +2,15 @@
 多播地址
 ==============================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: 
+  :category: 计算机网络
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 多播地址(Multicast Address)是一种特殊的 IP 地址,用于同时向多台主机发送 UDP 数据包。
 
 多播地址有以下特征:

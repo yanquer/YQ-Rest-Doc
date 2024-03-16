@@ -2,6 +2,15 @@
 结合electron时候的报错
 ==================================================================
 
+
+.. post:: 2024-03-08 23:31:08
+  :tags: 框架, theia, 问题
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 报错 ``Module did not self-register: '.../node_modules/drivelist/build/Release/drivelist.node'.``
 ==============================================================================================================
 

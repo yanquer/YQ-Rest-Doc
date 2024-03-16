@@ -2,6 +2,15 @@
 GNOME文件管理器内添加右键菜单
 ================================
 
+
+.. post:: 2024-02-21 21:55:17
+  :tags: linux, 教程
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 目前已测试适用与 ``Ubuntu20``
 
 .. sidebar:: nautilus

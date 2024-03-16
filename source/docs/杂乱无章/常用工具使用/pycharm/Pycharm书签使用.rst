@@ -2,6 +2,15 @@
 Pycharm书签使用
 ===========================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: pycharm
+  :category: 常用工具使用
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 .. topic:: 快捷键-Windows
 
 	- F11			: 光标所有位置添加书签

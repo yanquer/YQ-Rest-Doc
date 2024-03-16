@@ -2,6 +2,15 @@
 一些开源便利的Git项目
 =============================
 
+
+.. post:: 2024-03-13 20:29:00
+  :tags: 
+  :category: 杂乱无章
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 alist
   文件云盘存储项目: `https://github.com/alist-org/alist/tree/main`
 latest

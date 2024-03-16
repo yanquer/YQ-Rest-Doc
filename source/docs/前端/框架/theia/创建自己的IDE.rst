@@ -2,6 +2,15 @@
 创建自己的IDE
 ==========================
 
+
+.. post:: 2023-02-26 21:30:12
+  :tags: 框架, theia
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 其实跟着官方文档走就行了, 主要可能遇到的问题就是依赖包的问题,
 
 可以直接按照官网文档给的来: `https://theia-ide.org/docs/composing_applications/` ,

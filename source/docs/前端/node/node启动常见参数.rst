@@ -3,6 +3,15 @@ node启动常见参数
 =============================
 
 
+.. post:: 2023-02-20 22:06:49
+  :tags: node
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
+
 --remote-debug-port=<port>
   旧版调试参数; 使用旧的 Legacy 协议,功能较少
 --inspect=<port>

@@ -2,6 +2,15 @@
 换行符问题
 =================
 
+
+.. post:: 2023-02-26 21:30:12
+  :tags: git
+  :category: 版本控制
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 主要是 Windows 下, 以及跨平台协作时吧
 
 相关的两个配置::

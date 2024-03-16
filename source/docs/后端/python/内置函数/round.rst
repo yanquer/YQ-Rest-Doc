@@ -2,6 +2,15 @@
 round
 =================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, 内置函数
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 round() 方法返回浮点数x的四舍五入值。
 
 .. function:: round( x [, n]  )

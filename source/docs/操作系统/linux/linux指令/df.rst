@@ -2,6 +2,15 @@
 df
 =========================
 
+
+.. post:: 2023-02-24 22:59:42
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 df，disk free，
 通过文件系统来快速获取空间大小的信息，
 当我们删除一个文件的时候，这个文件不是马上就在文件系统当中消失了，

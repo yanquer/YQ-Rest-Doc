@@ -2,6 +2,15 @@
 低代码框架amis
 ===============================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: 框架, amis
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 低代码框架旨在仅用极少的配置信息来表述一个页面
 
 关于amis, 个人觉得,

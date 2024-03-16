@@ -2,6 +2,15 @@
 设置默认文本编辑器
 ===============================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: linux, debian, debian手册
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 Debian有许多不同的编辑器。
 我们建议安装上面提到的 :doc:`/docs/杂乱无章/常用工具使用/vim` 软件包。
 Debian通过命令 `/usr/bin/editor` 提供了对系统默认编辑器的统一访问，

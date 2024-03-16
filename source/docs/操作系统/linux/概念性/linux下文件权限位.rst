@@ -2,6 +2,15 @@
 linux下文件权限
 ==============================
 
+
+.. post:: 2023-02-24 22:59:42
+  :tags: linux, 概念性
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 ls -l查看文件格式一共有10位::
 
 	9 8 7 6 5 4 3 2 1 0

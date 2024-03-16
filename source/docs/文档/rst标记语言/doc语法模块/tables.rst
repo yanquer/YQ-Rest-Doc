@@ -2,6 +2,15 @@
 tables
 =================================
 
+
+.. post:: 2023-03-01 00:19:35
+  :tags: rst标记语言, doc语法模块
+  :category: 文档
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 参考: `<https://docutils.sourceforge.io/docs/ref/rst/directives.html#tables>`_
 
 table

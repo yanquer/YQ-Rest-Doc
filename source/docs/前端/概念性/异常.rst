@@ -2,6 +2,15 @@
 异常
 ==============================
 
+
+.. post:: 2023-02-26 21:30:12
+  :tags: 概念性
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 在 TypeScript 中，没有像 Python 中的 ValueError 这样的内置异常类型。
 不过，你可以自定义异常类来表示特定的错误情况。
 

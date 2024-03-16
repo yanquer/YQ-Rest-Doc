@@ -2,6 +2,15 @@
 systemctl
 ===================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 一个systemd工具，主要负责控制systemd系统和服务管理器.
 systemd 是许多现代 Linux 发行版（如 Ubuntu、Fedora、Debian 等）的默认初始化系统。
 systemd 采用了并行启动方式，提供了更快的启动速度和更高的灵活性。

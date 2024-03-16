@@ -2,6 +2,15 @@
 DDD
 ================================
 
+
+.. post:: 2024-03-09 15:46:28
+  :tags: java
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 对DDD的理解
   最开始的MVC只是抽象出一个Model实体, 做ORM;
 

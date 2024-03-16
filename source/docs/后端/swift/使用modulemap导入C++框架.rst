@@ -2,6 +2,15 @@
 使用modulemap导入C++框架
 ===========================================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: swift
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 自己使用modulemap只导入某一个头文件,
 文件是位于SDK库的 `libproc.h`, 奈何一直失败, 故放弃....
 

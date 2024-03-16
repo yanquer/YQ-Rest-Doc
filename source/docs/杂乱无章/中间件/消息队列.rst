@@ -2,6 +2,15 @@
 消息队列
 ====================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: 
+  :category: 中间件
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 rabbitmq地址: `AMQP 0-9-1 Protocol <https://www.rabbitmq.com/protocol.html>`_
 
 此文主要介绍 AMQP (Advanced Message Queuing Protocol) 协议: 高级消息队列协议

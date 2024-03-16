@@ -2,6 +2,15 @@
 doc可用于rst文本元素
 ===========================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: rst标记语言, doc语法模块
+  :category: 文档
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 这是按照指令分类
 
 .. toctree::

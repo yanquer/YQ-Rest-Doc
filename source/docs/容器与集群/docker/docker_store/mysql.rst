@@ -2,6 +2,15 @@
 mysql
 =================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: docker, docker_store
+  :category: 容器与集群
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 :hub地址::
   `docker-mysql <https://hub.docker.com/_/mysql>`_
 

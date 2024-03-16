@@ -2,6 +2,15 @@
 electron-builder配置生成位置
 ===============================
 
+
+.. post:: 2023-02-26 21:30:12
+  :tags: 框架, electron
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 在 `package.json` 的 `build` 位置::
 
   "build": {                    // electron-builder的配置

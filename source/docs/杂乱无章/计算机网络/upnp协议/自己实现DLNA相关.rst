@@ -2,6 +2,15 @@
 自己实现DLNA相关
 =============================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: upnp协议
+  :category: 计算机网络
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 前景
 =============================
 

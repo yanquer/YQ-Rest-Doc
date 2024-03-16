@@ -3,6 +3,13 @@
 on、where、Having的区别
 ===========================
 
+.. post:: 2023-02-20 22:06:49
+  :tags: mysql
+  :category: 数据库
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
 .. note::
 
   连接查询参考: :doc:`/docs/数据库/mysql/表内外连接`
@@ -211,7 +218,7 @@ on、where、having这三个都可以加在条件的子句中，on是最先执�
 
   .. note::
 
-    笛卡尔集, 就是一个表的所有行跟另一个表的所有行全连接  
+    笛卡尔集, 就是一个表的所有行跟另一个表的所有行全连接
 
 参考: `【MySQL】连接查询 以及 on、where、Having的区别 <https://www.cnblogs.com/birdy-silhouette/p/14011817.html>`_
 

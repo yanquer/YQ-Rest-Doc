@@ -2,6 +2,15 @@
 fflush
 ===============================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: c, c库函数
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 .. function:: int fflush(FILE *stream)
 
   清除读写缓冲区，用于需要立即把输出缓冲区的数据进行物理写入时

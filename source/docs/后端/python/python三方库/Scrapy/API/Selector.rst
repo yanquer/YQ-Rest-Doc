@@ -2,6 +2,15 @@
 Selector
 ================================
 
+
+.. post:: 2023-03-01 22:50:22
+  :tags: python, python三方库, Scrapy, API
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 参考: `<https://docs.scrapy.org/en/latest/topics/selectors.html#scrapy.selector.SelectorList>`_
 
 code::

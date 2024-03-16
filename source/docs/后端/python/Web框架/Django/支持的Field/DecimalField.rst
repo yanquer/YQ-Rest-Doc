@@ -2,6 +2,15 @@
 DecimalField
 =============================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, Web框架, Django, 支持的Field
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 一个固定精度的十进制数，在 Python 中用一个 Decimal 实例来表示。它使用 DecimalValidator 验证输入::
 
   class DecimalField(max_digits=None, decimal_places=None, **options)

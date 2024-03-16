@@ -2,6 +2,15 @@
 linux参数过长
 ===============================
 
+
+.. post:: 2023-02-23 23:14:15
+  :tags: linux, 问题
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 关于linux参数过长问题，
 
 查看参数可以使用::

@@ -2,6 +2,15 @@
 sphinx自定义主题
 ===============================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: rst标记语言
+  :category: 文档
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 :日期: 2023.02.24 周五
 :参考: `主题开发 <https://www.sphinx-doc.org/zh_CN/master/development/theming.html>`_
 

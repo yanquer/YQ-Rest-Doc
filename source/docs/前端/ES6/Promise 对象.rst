@@ -2,6 +2,15 @@
 ES6 Promise 对象
 =========================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: ES6
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 异步编程的一种解决方案。
 从语法上说，Promise 是一个对象，从它可以获取异步操作的消息
 

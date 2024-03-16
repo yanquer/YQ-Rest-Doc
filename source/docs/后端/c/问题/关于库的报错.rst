@@ -2,6 +2,15 @@
 关于库的报错
 ===========================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: c, 问题
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 对于使用Nuitka编译的Python代码而言, 也适用, 因为最终还是先转换为C再编译.
 
 尤其易出现的跨系统场景, 比如在Ubuntu16编译的方法哦Ubuntu20上去跑.

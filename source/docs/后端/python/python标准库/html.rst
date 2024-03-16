@@ -2,6 +2,15 @@
 html
 ====================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, python标准库
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 官网: `html --- 超文本标记语言支持 <https://docs.python.org/zh-cn/3/library/html.html>`_
 
 该模块定义了操作HTML的工具。

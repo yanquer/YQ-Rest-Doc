@@ -2,6 +2,15 @@
 gzip
 =====================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 压缩/解压文件, 压缩包后缀名一般为.gz
 
 语法::

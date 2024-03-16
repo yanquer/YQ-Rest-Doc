@@ -2,6 +2,15 @@
 Scrapy shell
 =====================================
 
+
+.. post:: 2023-03-01 00:19:35
+  :tags: python, python三方库, Scrapy
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 交互式终端工具
 
 参考: `<https://docs.scrapy.org/en/latest/topics/shell.html#topics-shell>`_

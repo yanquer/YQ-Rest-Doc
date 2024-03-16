@@ -2,6 +2,15 @@
 goto
 ==============
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: windows, windows_shell
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 将 cmd.exe 定向到批处理程序中带标签的行。
 
 GOTO label

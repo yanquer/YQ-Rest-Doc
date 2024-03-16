@@ -2,6 +2,15 @@
 input-text说明
 ===========================
 
+
+.. post:: 2023-03-01 00:19:35
+  :tags: 框架, amis, 问题
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 input-text接受的数据, 如果是JSON格式, 会自动转换为字符串展示,
 同时在此处所有的更改, 也会自动变换原来的JSON格式(前提是格式正确)
 

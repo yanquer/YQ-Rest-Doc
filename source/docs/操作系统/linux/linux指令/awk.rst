@@ -2,6 +2,15 @@
 awk
 =========================
 
+
+.. post:: 2023-02-27 21:24:23
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 文本和数据进行处理的编程语言
 
 选项参数:

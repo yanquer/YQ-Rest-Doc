@@ -2,6 +2,15 @@
 自定义主题
 ==================================
 
+
+.. post:: 2023-03-03 23:21:31
+  :tags: rst标记语言, 问题
+  :category: 文档
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 具体怎么自定义可以参考: :doc:`/docs/文档/rst标记语言/sphinx自定义主题`
 
 不过有个坑点是, 使用pip安装的主题(我直接是安装的pytorch的那个主题). 可能内容比较老...

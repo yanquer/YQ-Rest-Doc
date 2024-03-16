@@ -2,6 +2,15 @@
 export
 ============================
 
+
+.. post:: 2023-02-24 22:59:42
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 export用于设置或显示环境变量,
 显示当前导出成用户变量的shell变量(可以在当前shell以及子shell中使用的变量):
 

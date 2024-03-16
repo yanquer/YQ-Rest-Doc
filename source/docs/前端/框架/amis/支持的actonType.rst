@@ -2,6 +2,15 @@
 amis-支持的actonType(事件动作)
 ====================================
 
+
+.. post:: 2023-02-26 21:30:12
+  :tags: 框架, amis
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 参考: https://aisuda.bce.baidu.com/amis/zh-CN/docs/concepts/event-action
 
 自定义JS

@@ -2,6 +2,15 @@
 自然语言处理
 ===================================
 
+
+.. post:: 2024-03-17 00:32:12
+  :tags: 深度学习
+  :category: AI
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 时序模型
   构建 one-hot模型
 

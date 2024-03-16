@@ -2,6 +2,15 @@
 关于雪球-爆仓
 ===============================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags:
+  :category: 杂乱无章
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 地址: `https://www.huxiu.com/article/2563407.html`
 
 防止地址失效, 搞成pdf了, :download:`../../resources/pdf/咋就爆仓了？3分钟搞懂雪球产品-虎嗅网.pdf`

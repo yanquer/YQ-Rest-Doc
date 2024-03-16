@@ -2,6 +2,15 @@
 amis
 ============================
 
+
+.. post:: 2023-02-26 21:30:12
+  :tags: 框架, amis
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 Github地址: https://github.com/baidu/amis
 
 Amis 是百度开源的一块前端低代码框架，

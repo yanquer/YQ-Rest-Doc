@@ -2,6 +2,15 @@
 move
 ==========
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: windows, windows_shell
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 移动文件并重命名文件和目录。
 
 要移动至少一个文件::

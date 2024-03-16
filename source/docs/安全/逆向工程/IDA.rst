@@ -2,6 +2,15 @@
 IDA工具
 ============================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: 逆向工程
+  :category: 安全
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 IDA是一款强大的反编译工具, 支持跨平台
 
 官网: `https://hex-rays.com/ida-free/#download`

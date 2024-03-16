@@ -2,6 +2,15 @@
 chr
 =====================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, 内置函数
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 chr() 用一个范围在 range（256）内的（就是0～255）整数作参数，返回一个对应的字符。
 
 .. function:: chr(i)

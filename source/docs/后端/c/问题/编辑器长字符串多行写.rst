@@ -2,6 +2,15 @@
 编辑器长字符串多行写
 ===============================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: c, 问题
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 字符串拼接来创建跨多行的字符串::
 
   char *data = "it is"

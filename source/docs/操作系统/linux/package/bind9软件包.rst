@@ -2,6 +2,15 @@
 bind9
 ==========================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: linux, package
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 :参考::
     `ISC BIND9 - 最详细、最认真的从零开始的 BIND 9 - DNS服务搭建及其原理讲解 <https://www.cnblogs.com/doherasyang/p/14464999.html>`_
 

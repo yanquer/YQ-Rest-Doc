@@ -2,6 +2,15 @@
 DYLD_PRINT_LIBRARIES
 =============================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: Mac, Mac环境变量
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 设置值为1后, 执行程序之前会打印出运行时加载的所有动态库
 
 用例::

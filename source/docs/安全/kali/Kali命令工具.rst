@@ -2,6 +2,15 @@
 Kali命令工具
 ========================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: kali
+  :category: 安全
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 - nmap: IP/端口扫描
 - maltego
 - dirb: 服务目录扫描

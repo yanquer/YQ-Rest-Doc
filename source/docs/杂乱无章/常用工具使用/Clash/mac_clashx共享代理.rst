@@ -3,6 +3,15 @@ mac下clash x共享代理
 =================================
 
 
+.. post:: 2024-03-09 18:21:01
+  :tags: Clash
+  :category: 常用工具使用
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
+
 在已安装clash x 且能够开启代理的机器上, 菜单栏点开clash x, 设置允许局域网连接
 
 .. figure:: ../../../../resources/images/2023-02-27-09-50-13.png

@@ -2,6 +2,15 @@
 抽象基类-定义公共字段
 ===========================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, Web框架, Django
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 抽象基类在你要将公共信息放入很多模型时会很有用。
 编写你的基类，并在 `Meta <https://docs.djangoproject.com/zh-hans/3.2/topics/db/models/#meta-options>`_
 类中填入 `abstract=True`.

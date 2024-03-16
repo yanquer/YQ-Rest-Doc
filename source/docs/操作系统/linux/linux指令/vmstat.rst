@@ -2,6 +2,15 @@
 vmstat
 =============================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 vmstat是Virtual Meomory Statistics（虚拟内存统计）的缩写，
 可对操作系统的虚拟内存、进程、CPU活动进行监控。
 它是对系统的整体情况进行统计，

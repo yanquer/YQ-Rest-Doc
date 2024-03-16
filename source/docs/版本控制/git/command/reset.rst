@@ -2,6 +2,15 @@
 reset
 =======================
 
+
+.. post:: 2023-02-26 21:30:12
+  :tags: git, command
+  :category: 版本控制
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 | 回退到某一个版本
 
 reset直接回退, 丢失指定版本后的所有修改（直接修改HEAD指向）

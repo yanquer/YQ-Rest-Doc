@@ -2,6 +2,15 @@
 zip
 ==========================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 压缩文件, zip 是个使用广泛的压缩程序，压缩后的文件后缀名为 .zip。
 
 语法::

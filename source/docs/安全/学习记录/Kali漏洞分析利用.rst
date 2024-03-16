@@ -2,6 +2,15 @@
 Kali漏洞分析利用
 ===========================
 
+
+.. post:: 2023-02-27 21:24:23
+  :tags: 学习记录
+  :category: 安全
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 经过 :doc:`/docs/安全/学习记录/Kali信息收集` 收集到的资产
 
 - 联系人、联系方式

@@ -2,6 +2,15 @@
 k-平均算法 K-Means
 =====================================
 
+
+.. post:: 2024-03-17 00:32:12
+  :tags: 机器学习, 机器学习算法
+  :category: AI
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 k-平均算法(K-Means)是一种无监督学习算法，为聚类问题提供了一种解决方案。
 
 K-Means 算法把 n 个点（可以是样本的一次观察或一个实例）划分到 k 个集群（cluster），

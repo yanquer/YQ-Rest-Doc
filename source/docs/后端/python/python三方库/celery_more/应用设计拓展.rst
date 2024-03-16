@@ -2,6 +2,15 @@
 应用设计(编码)拓展
 ====================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, python三方库, celery_more
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 任务基类更新
 ====================
 

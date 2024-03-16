@@ -2,6 +2,15 @@
 在一个Python环境使用另一个Python环境的包
 =============================================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, 相关技术实现
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 仅针对三方包.
 
 需求:

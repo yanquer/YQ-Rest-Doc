@@ -2,6 +2,15 @@
 数理相关
 =======================================
 
+
+.. post:: 2024-03-17 00:32:12
+  :tags: 数理
+  :category: AI
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 .. toctree::
   :maxdepth: 1
 

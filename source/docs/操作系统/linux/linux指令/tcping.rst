@@ -2,7 +2,16 @@
 tcping
 ========================================
 
-与 :doc:`ping` 和 :doc:`telnet` 都不同,
+
+.. post:: 2024-03-04 22:04:43
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
+与 :doc:`/docs/操作系统/linux/linux指令/ping` 和 :doc:`/docs/操作系统/linux/linux指令/telnet` 都不同,
 是一款跨平台的基于Go的, tcp链接检查工具.
 使用传输层协议，可以检测IP端口状态和查看ping 值，
 即使源地址禁 ping 也可以通过 tcping 来监控服务器网络状态。

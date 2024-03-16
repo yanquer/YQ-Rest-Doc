@@ -2,6 +2,15 @@
 内部类Meta
 ===========================
 
+
+.. post:: 2023-02-20 22:18:59
+  :tags: python, Web框架, Django
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 可用的选项
 
 abstract

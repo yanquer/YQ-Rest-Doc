@@ -3,6 +3,15 @@ locale-gen
 =============================
 
 
+.. post:: 2023-02-24 22:59:42
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
+
 默认情况下，为基于 libc 的程序的本地化提供基本支持的 locale 包不包含每种支持语言的可用本地化文件。
 由于此类文件的巨大大小以及 libc 支持的大量语言，此限制变得必要。
 因此，Debian 使用了一种特殊的机制，我们在目标主机上准备实际的本地化文件并仅分发它们的模板。

@@ -2,6 +2,15 @@
 Java安装配置
 =======================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: java
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 可官网下载: https://www.oracle.com/cn/java/technologies/downloads/#java20
 
 解压后需要设置的环境变量:

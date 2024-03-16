@@ -2,6 +2,15 @@
 ar
 ======================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 Linux ar命令用于建立或修改备存文件，或是从备存文件中抽取文件。
 ar可让您集合许多文件，成为单一的备存文件。在备存文件中，所有成员文件皆保有原来的属性与权限。
 

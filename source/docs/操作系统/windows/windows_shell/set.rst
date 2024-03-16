@@ -2,6 +2,15 @@
 set
 ===============
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: windows, windows_shell
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 用于设置变量
 
 显示、设置或删除 cmd.exe 环境变量。

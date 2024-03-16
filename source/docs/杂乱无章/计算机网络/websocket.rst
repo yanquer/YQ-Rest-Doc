@@ -2,6 +2,15 @@
 websocket
 =============================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: 
+  :category: 计算机网络
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 url表示常以 `ws` 开头, 或 `wss` 开头, 如::
 
   wss://127.0.0.1:8080/

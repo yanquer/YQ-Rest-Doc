@@ -3,6 +3,13 @@
 dialog更新父组件数据域
 ===========================
 
+.. post:: 2023-03-01 00:19:35
+  :tags: 框架, amis, 问题
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
 一般来说有两种方案
 
 方案一:

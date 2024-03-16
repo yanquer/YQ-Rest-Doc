@@ -2,6 +2,15 @@
 XPath选择器
 ====================================
 
+
+.. post:: 2023-03-01 22:50:22
+  :tags: python, python三方库, Scrapy, 选择器
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 XPath 参考 :doc:`/docs/后端/python/教程/xpath/index`
 
 概述::

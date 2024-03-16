@@ -2,7 +2,16 @@
 whatweb
 ======================
 
-用于CMS指纹识别   
+
+.. post:: 2023-02-25 22:13:17
+  :tags: kali, kali渗透专用指令
+  :category: 安全
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
+用于CMS指纹识别
 .. 服务框架扫描, VUE啥的.
 
 示例

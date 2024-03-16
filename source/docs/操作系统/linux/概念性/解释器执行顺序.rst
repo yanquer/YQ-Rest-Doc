@@ -2,6 +2,15 @@
 解释器执行顺序
 ========================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: linux, 概念性
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 暂且只谈 Linux 下的 bash/dash, 以及Python.
 
 sh脚本, 大多会在文件头定义::

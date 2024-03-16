@@ -2,6 +2,15 @@
 ftype
 ================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: windows, windows_shell
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 显示或修改用在文件扩展名关联中的文件类型::
 
   FTYPE [fileType[=[openCommandString]]]

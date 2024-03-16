@@ -2,6 +2,15 @@
 debian一些了解
 ============================
 
+
+.. post:: 2024-02-21 21:55:17
+  :tags: linux, debian
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 debian的服务基本上都可以在 ``/etc/init.d`` 下找到
 
 使用apt安装deb本地包

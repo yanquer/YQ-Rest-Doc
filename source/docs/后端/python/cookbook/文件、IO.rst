@@ -2,6 +2,15 @@
 文件/IO
 =====================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, cookbook
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 所有程序都要处理输入和输出。这一章将涵盖处理不同类型的文件，包括文本和二
 进制文件，文件编码和其他相关的内容。对文件名和目录的操作也会涉及到。
 

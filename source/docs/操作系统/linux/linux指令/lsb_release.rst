@@ -2,6 +2,15 @@
 lsb_release
 =======================
 
+
+.. post:: 2023-02-26 21:30:12
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 如果没有, 使用以下指令安装::
 
 	apt install lsb-core

@@ -2,6 +2,15 @@
 textwrap
 ==================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, python标准库
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 官网: `textwrap --- 文本自动换行与填充 <https://docs.python.org/zh-cn/3/library/textwrap.html>`_
 
 textwrap 模块提供了一些快捷函数，以及可以完成所有工作的类 TextWrapper。

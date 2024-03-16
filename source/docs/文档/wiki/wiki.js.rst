@@ -2,6 +2,15 @@
 wiki.js
 ====================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: wiki
+  :category: 文档
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 一个开源的 wiki 框架, 支持数据库...
 
 :官网/gitthub::

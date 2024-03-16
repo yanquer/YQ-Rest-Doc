@@ -2,6 +2,15 @@
 协程
 ===========================
 
+
+.. post:: 2024-02-21 21:55:17
+  :tags: python, 概念相关
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 常用的异步库见: :doc:`/docs/后端/python/python标准库/asyncio`
 
 基于python特性, 于是有了单线程内多任务, 即协程, 是一种轻量级线程 (另一方面, 避免了线程在内核的切换, 而是用户态类似函数的快捷切换)

@@ -2,6 +2,15 @@
 优化
 ====================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, python三方库, celery_more
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 默认情况下，默认的配置项没有针对吞吐量进行优化，默认的配置比较合适大量短任务和比较少的长任务。
 
 如果需要优化吞吐量，请参考优化：Optimizing。

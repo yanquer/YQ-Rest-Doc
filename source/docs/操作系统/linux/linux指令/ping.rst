@@ -3,6 +3,15 @@ ping
 ======================
 
 
+.. post:: 2024-03-04 22:04:43
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
+
 主要透过 icmp 封包 探索网络.
 属于网络层的ICMP协议，只能检查 IP 的连通性或网络连接速度， 无法检测IP的端口状态。
 

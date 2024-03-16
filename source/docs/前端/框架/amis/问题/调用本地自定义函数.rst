@@ -2,6 +2,15 @@
 调用本地自定义函数
 ===========================
 
+
+.. post:: 2023-03-01 00:19:35
+  :tags: 框架, amis, 问题
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 这个是个坑, 官网文档只提了一句 `Button` , 且不支持完全自定义参数,
 其他控件比如 `Dialog` 的完全不知道怎么用
 

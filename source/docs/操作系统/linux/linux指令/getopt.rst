@@ -3,6 +3,14 @@
 getopt
 ============================
 
+.. post:: 2023-02-20 22:06:49
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 getopt选项字符串:
   "a:b:cd::e"，这就是一个选项字符串。对应到命令行就是-a ,-b ,-c ,-d, -e 。
   冒号又是什么呢？ 冒号表示参数，

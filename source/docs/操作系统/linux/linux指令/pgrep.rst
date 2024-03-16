@@ -2,6 +2,15 @@
 pgrep
 =============================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 pgrep通过匹配其程序名, 获得正在被调度的进程的相关信息
 
 常见选项:

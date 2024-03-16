@@ -2,6 +2,15 @@
 with
 =================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, 内置函数
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 with相当于 try catch finnally语句
 
 自定义的with语句, 需要实现::

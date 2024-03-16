@@ -2,6 +2,15 @@
 组件的状态渲染
 =================================
 
+
+.. post:: 2024-03-08 23:31:08
+  :tags: 框架, theia, 问题
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 Theia 虽然有使用 `react`, 不过却是自己另外封装的控件,
 比较典型的就是
 “@theia/core/src/browser/widgets/react-widgets” 定义的 `ReactWidget`.

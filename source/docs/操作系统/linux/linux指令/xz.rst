@@ -2,6 +2,15 @@
 xz
 =========================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 高压缩率的工具, 使用 LZMA2 压缩算法，
 生成的压缩文件比 POSIX 平台传统使用的 gzip、bzip2 生成的压缩文件更小，
 而且解压缩速度也很快，压缩或解压缩xz文件

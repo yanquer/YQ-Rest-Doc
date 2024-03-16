@@ -2,7 +2,16 @@
 关于theia的绑定
 ================================
 
-自定义拓展可见 :doc:`./创建自定义拓展`
+
+.. post:: 2024-03-08 23:31:08
+  :tags: 框架, theia, 问题
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
+自定义拓展可见 :doc:`/docs/前端/框架/theia/问题/创建自定义拓展`
 
 一般来说, 自定义拓展都需要在package.json声明入口文件::
 

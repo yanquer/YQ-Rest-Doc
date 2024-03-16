@@ -2,6 +2,15 @@
 arp
 ===========================
 
+
+.. post:: 2023-02-27 21:24:23
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 arp 命令用于显示和修改 IP 到 MAC 转换表
 
 **arp 命令** 是 Address Resolution Protocol，地址解析协议，

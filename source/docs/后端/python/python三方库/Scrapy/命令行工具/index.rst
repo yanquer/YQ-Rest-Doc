@@ -2,6 +2,15 @@
 命令行工具
 =======================================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: python, python三方库, Scrapy, 命令行工具
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 参考: `<https://docs.scrapy.org/en/latest/topics/commands.html>`_
 
 配置文件位置::

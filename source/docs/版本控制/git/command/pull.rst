@@ -2,6 +2,15 @@
 pull
 =======================
 
+
+.. post:: 2023-02-26 21:30:12
+  :tags: git, command
+  :category: 版本控制
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 从远程拉取并更新本地, 相当于::
 
 	git fetch && git merge

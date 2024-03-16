@@ -4,10 +4,12 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Study Document's documentation!
-==========================================
+启程
+==================================================
 
-编程语言并不会限制开发, 相反是开发者限制了语言
+.. sidebar::
+
+    编程语言并不会限制开发, 相反是开发者限制了语言
 
 .. toctree::
     :maxdepth: 2

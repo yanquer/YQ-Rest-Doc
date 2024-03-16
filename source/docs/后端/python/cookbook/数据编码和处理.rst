@@ -2,6 +2,15 @@
 数据编码和处理
 =====================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, cookbook
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 主要讨论使用 Python 处理各种不同方式编码的数据，比如 CSV 文件， JSON，XML 和二进制包装记录。
 不讨论特殊的算 法问题，而是关注于怎样获取和存储这些格式的数据。
 

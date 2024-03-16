@@ -2,6 +2,15 @@
 binlog
 =======================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: mysql, 概念基础
+  :category: 数据库
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 binlog是Mysql sever层维护的一种二进制日志，
 与innodb引擎中的redo/undo log是完全不同的日志；
 

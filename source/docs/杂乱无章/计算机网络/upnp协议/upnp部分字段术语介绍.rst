@@ -2,6 +2,15 @@
 upnp部分字段/术语介绍
 =================================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: upnp协议
+  :category: 计算机网络
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 UUID
   UUID含义是通用唯一识别码（Universally Unique Identifier），
   其目的是让分布式系统中的所有元素都有唯一的标识，其格式为xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxxxxxx（8-4-4-16），

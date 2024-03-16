@@ -2,6 +2,15 @@
 技术实现
 ====================================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: 框架, theia, 技术实现
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 .. toctree::
   :maxdepth: 1
 

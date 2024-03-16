@@ -2,6 +2,15 @@
 特殊的权限位
 ===============================
 
+
+.. post:: 2023-02-23 23:14:15
+  :tags: linux, 概念性
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 Set-User-ID(SUID)位
   **s** 或 **S** 替换用户的 **x**
 Set-Group-ID(SGID)位

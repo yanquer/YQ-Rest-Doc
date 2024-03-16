@@ -2,6 +2,15 @@
 XPath 轴（Axes）
 =========================================
 
+
+.. post:: 2023-03-01 00:19:35
+  :tags: python, 教程, xpath
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 XML 实例文档
 
 我们将在下面的例子中使用此 XML 文档::

@@ -2,6 +2,15 @@
 自建局域网dns服务器
 =======================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: config_dns
+  :category: 计算机网络
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 完全限定域名(FQDN) = 主机名 + 域名.
 
 例: www.baidu.com = www(主机) + baidu.com(域名)

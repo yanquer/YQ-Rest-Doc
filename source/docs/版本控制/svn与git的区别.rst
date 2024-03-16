@@ -3,6 +3,15 @@ SVN与Git的区别
 ================================
 
 
+.. post:: 2024-03-09 18:21:01
+  :tags: 
+  :category: 版本控制
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
+
 参考: `svn与git的区别（总结） <https://www.cnblogs.com/morganlin/p/12140677.html>`_
 
 版本控制器的作用

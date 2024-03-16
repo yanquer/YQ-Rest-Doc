@@ -2,6 +2,15 @@
 kill
 =======================
 
+
+.. post:: 2023-02-26 21:30:12
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 类似的指令:
 
 - :doc:`/docs/操作系统/linux/linux指令/killall`

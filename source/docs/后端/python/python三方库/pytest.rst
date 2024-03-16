@@ -2,6 +2,15 @@
 pytest
 ==============
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: python, python三方库
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 使用见: :doc:`/docs/后端/python/教程/Pytest`
 
 语法::

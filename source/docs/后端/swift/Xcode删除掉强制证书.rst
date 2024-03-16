@@ -2,6 +2,15 @@
 Xcode删除掉强制证书
 =============================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: swift
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 Xcode删除掉强制证书/删除掉强制团队验证
 
 先关闭掉xcode项目, 然后用文本编辑器比如vscode打开

@@ -2,6 +2,15 @@
 包管理工具pod(cocoapods)
 ============================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: swift
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 参考: https://juejin.cn/post/6932739864613879821
 
 类似于Java的Maven

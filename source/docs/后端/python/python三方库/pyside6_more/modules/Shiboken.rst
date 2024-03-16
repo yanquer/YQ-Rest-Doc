@@ -2,6 +2,15 @@
 Shiboken
 ==================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, python三方库, pyside6_more, modules
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 安装 pyside6 自带的模块
 
 - 可使用其访问一些内部信息, 一般用于 debug

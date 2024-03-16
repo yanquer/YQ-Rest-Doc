@@ -3,6 +3,15 @@ Python 判断某个类包含的类方法
 ===============================
 
 
+.. post:: 2023-02-20 22:06:49
+  :tags: python, 相关技术实现
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
+
 | 使用 types 与 isinstance
 
 .. code-block:: python
@@ -20,4 +29,3 @@ Python 判断某个类包含的类方法
 	functions_ = [k for k, v in ITest.__dict__.items() if isinstance(v, types.FunctionType)]
 	print(functions_)
 	# ['get_one', 'get_two']
-	

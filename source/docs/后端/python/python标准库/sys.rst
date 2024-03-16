@@ -2,6 +2,15 @@
 sys
 ================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, python标准库
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 官网: `sys --- 系统相关的参数和函数 <https://docs.python.org/zh-cn/3/library/sys.html>`_
 
 该模块提供了一些变量和函数。

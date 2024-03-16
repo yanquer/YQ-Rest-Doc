@@ -2,6 +2,15 @@
 内置一些外部插件
 ============================
 
+
+.. post:: 2024-03-08 23:31:08
+  :tags: 框架, theia, 问题
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 可以去插件商店搜索获取插件下载地址: `https://open-vsx.org`
 
 然后补充到 `package.json` 中, 比如我搜了c的语法分析的插件clang,

@@ -2,6 +2,15 @@
 使用CLion遇到的坑
 =============================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: c
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 c(++)的项目根据不同的编译方式, 可以分为几类项目:
 
 - cmake

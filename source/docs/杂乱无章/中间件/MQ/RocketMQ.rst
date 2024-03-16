@@ -2,6 +2,15 @@
 RocketMQ
 =========================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: MQ
+  :category: 中间件
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 如何避免消息丢失
 =========================
 

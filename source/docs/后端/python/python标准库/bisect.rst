@@ -2,6 +2,15 @@
 bisect
 ===========================
 
+
+.. post:: 2023-02-24 22:59:42
+  :tags: python, python标准库
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 bisect --- 数组二分查找算法
 
 官网: `<https://docs.python.org/zh-cn/3/library/bisect.html>`_

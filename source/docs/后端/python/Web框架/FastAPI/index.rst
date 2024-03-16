@@ -2,6 +2,15 @@
 FastAPI
 ============================================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: python, Web框架, FastAPI
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 - 官网文档: `FastAPI <https://fastapi.tiangolo.com/zh/>`_
 - 菜鸟: `FastAPI教程 <https://www.runoob.com/fastapi/fastapi-tutorial.html>`_
 

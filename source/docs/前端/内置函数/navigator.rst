@@ -2,6 +2,15 @@
 navigator
 ===========================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: 内置函数
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 navigator 是一个 JavaScript 中的内置对象，提供了与浏览器相关的信息和功能。
 它是 window 对象的一个属性，可以通过 window.navigator 或者直接使用 navigator 访问。
 

@@ -2,6 +2,15 @@
 记录 shell 活动
 ===================================
 
+
+.. post:: 2023-02-23 23:14:15
+  :tags: linux, debian, debian手册
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 shell 命令的输出有可能滚动出了屏幕，
 并可能导致你无法再查看到它。
 将shell活动记录到文件中再来回顾它是个不错的主意。

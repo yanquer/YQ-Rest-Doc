@@ -2,6 +2,15 @@
 Kubernetes
 ============================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: k8s
+  :category: 容器与集群
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 官网主页: `Kubernetes 文档 <https://kubernetes.io/zh-cn/docs/home/>`_
 
 .. toctree::

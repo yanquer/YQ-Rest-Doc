@@ -2,6 +2,15 @@
 DateField
 ==============================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, Web框架, Django, 支持的Field
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 一个日期，在 Python 中用一个 datetime.date 实例表示。有一些额外的、可选的参数。
 
 DateField.auto_now

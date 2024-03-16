@@ -2,6 +2,15 @@
 curl
 ============================================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 curl 是常用的命令行工具，用来请求 Web 服务器。
 它的名字就是客户端（client）的 URL 工具的意思。
 

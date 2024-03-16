@@ -2,6 +2,15 @@
 CSRF攻击
 ============================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: 常见漏洞
+  :category: 安全
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 CSRF攻击，全称是跨站请求伪造（Cross-site request forgery），
 它可以利用用户已登录的身份，在用户毫不知情的情况下，以用户的名义完成非法操作。
 

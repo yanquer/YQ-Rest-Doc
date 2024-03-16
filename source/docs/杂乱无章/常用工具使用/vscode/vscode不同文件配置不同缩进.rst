@@ -2,6 +2,15 @@
 vscode不同文件配置不同缩进
 ===========================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: vscode
+  :category: 常用工具使用
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 Command + Shift + P 打开用户设置, 参考以下设置::
 
   "[restructuredtext]": {

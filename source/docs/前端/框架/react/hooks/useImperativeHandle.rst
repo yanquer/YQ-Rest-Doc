@@ -2,10 +2,19 @@
 useImperativeHandle
 ===========================================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: 框架, react, hooks
+  :category: 前端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 useImperativeHandle 可以让你在使用 ref 时 **自定义暴露给父组件的实例值**。
 或者 **给不存在ref属性的函数组件, 增加ref属性**.
 在大多数情况下，应当避免使用 ref 这样的命令式代码。
-useImperativeHandle 应当与 :doc:`forwardRef` 一起使用
+useImperativeHandle 应当与 :doc:`/docs/前端/框架/react/hooks/forwardRef` 一起使用
 
 .. 在forwardRef例子中的代码实际上是不推荐的，
 .. 因为无法控制要暴露给父组件的值，所以我们使用useImperativeHandle控制要将哪些东西暴露给父组件。

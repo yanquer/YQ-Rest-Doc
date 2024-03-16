@@ -2,6 +2,15 @@
 debbuild
 ============================
 
+
+.. post:: 2023-02-27 21:24:23
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 deb完整构建可参考: :doc:`/docs/操作系统/linux/教程/本地构建deb包`
 
 deb包需要的目录结构构建好后

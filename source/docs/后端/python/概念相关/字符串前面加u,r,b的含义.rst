@@ -2,6 +2,15 @@
 字符串前面加u,r,b的含义
 ===================================
 
+
+.. post:: 2024-02-21 21:55:17
+  :tags: python, 概念相关
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 u/U
   表示unicode字符串
 

@@ -2,6 +2,15 @@
 元类
 ====================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, 概念相关
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 默认情况下，类是使用 type() 来构建的。类体会在一个新的命名空间内执行，
 类名会被局部绑定到 type(name, bases, namespace) 的结果。
 

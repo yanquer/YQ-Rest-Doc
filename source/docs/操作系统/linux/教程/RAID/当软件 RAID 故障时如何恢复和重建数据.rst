@@ -2,6 +2,15 @@
 当软件 RAID 故障时如何恢复和重建数据
 =====================================================
 
+
+.. post:: 2023-02-23 00:00:02
+  :tags: linux, 教程, RAID
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 :参考::
   - 作者: `Babin Lonston <http://www.tecmint.com/recover-data-and-rebuild-failed-software-raid/>`_
   - 译者: `LCTT <https://linux.cn/lctt/>`_

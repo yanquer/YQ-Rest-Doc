@@ -2,6 +2,15 @@
 特殊符号
 ===================================
 
+
+.. post:: 2023-02-26 21:30:12
+  :tags: linux, 概念性
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 code::
 
   &     表示任务在后台执行，如要在后台运行

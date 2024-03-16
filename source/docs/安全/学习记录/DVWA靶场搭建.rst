@@ -2,6 +2,15 @@
 DVWA靶场搭建
 ====================================
 
+
+.. post:: 2023-02-25 22:13:17
+  :tags: 学习记录
+  :category: 安全
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 地址: `<https://github.com/digininja/DVWA>`_
 
 通过简单明了的界面来练习一些最常见的 Web 漏洞，所练习的漏洞具有不同的难度级别。

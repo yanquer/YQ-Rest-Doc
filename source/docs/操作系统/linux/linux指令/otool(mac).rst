@@ -2,6 +2,15 @@
 otool
 ==========================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 mac下指令, 类似linux的 :doc:`/docs/操作系统/linux/linux指令/ldd`
 
 如查看vim的链接::

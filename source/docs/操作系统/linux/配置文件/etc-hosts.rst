@@ -2,6 +2,15 @@
 /etc/hosts
 ===================================
 
+
+.. post:: 2023-02-23 23:14:15
+  :tags: linux, 配置文件
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 查看本地域名与地址映射, 内容为 地址与域名的映射,
 
 例如,  `/etc/hosts` 看起来如下::

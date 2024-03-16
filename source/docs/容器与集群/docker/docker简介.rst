@@ -2,6 +2,15 @@
 docker
 =======================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: docker
+  :category: 容器与集群
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 对进程进行封装隔离，属于操作系统层面的虚拟化技术。
 
 利用Docker可以实现开发，测试，生产环境的部署一致性，极大的减少运维成本。

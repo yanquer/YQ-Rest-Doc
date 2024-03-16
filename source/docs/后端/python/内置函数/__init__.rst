@@ -2,6 +2,15 @@
 __init__
 ===========================
 
+
+.. post:: 2024-02-21 21:55:17
+  :tags: python, 内置函数
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 属于 :doc:`/docs/后端/python/概念相关/object类`
 
 用于类中，一般表示初始化类（构造函数）

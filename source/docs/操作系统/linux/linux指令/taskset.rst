@@ -2,6 +2,15 @@
 taskset
 ==============================
 
+
+.. post:: 2023-02-24 22:59:42
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 taskset命令用于设置进程（或 线程）的处理器亲和性（Processor Affinity），
 可以将进程（或 线程）绑定到特定的一个 或 多个CPU上去执行，
 而不允许将进程（或 线程）调度到其他的CPU上。

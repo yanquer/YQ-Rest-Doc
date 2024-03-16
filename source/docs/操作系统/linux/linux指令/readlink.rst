@@ -2,6 +2,15 @@
 readlink
 =========================
 
+
+.. post:: 2023-02-24 22:59:42
+  :tags: linux, linux指令
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 `Linux <http://lib.csdn.net/base/linux>`_
 系统中一个常用工具，主要用来找出符号链接所指向的位置
 

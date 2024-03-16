@@ -2,6 +2,15 @@
 工具-burpsuite
 =====================================
 
+
+.. post:: 2023-02-20 22:36:38
+  :tags: brup
+  :category: 安全
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 BurpSuite 安装
 =====================================
 

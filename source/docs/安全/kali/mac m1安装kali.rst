@@ -2,6 +2,15 @@
 Mac M1 Pro 安装 Kali
 ======================
 
+
+.. post:: 2023-02-20 22:36:38
+  :tags: kali
+  :category: 安全
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 下载地址
 ======================
 

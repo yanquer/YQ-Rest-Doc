@@ -2,6 +2,15 @@
 记录vscode与rst协作遇到的一些坑
 =================================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: vscode
+  :category: 常用工具使用
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 语法检查
 =================================
 

@@ -2,6 +2,15 @@
 pyinstaller
 =======================================
 
+
+.. post:: 2024-02-21 21:55:17
+  :tags: python, python三方库
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 python打包程序
 
 安装::

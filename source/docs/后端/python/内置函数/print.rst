@@ -2,6 +2,15 @@
 print
 ==============================
 
+
+.. post:: 2023-02-20 22:06:49
+  :tags: python, 内置函数
+  :category: 后端
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 这个本来不用说的, 但是想了想还是记录一下
 
 .. note::

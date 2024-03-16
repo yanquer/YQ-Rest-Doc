@@ -2,6 +2,15 @@
 clash等代理问题
 =========================
 
+
+.. post:: 2024-03-09 18:21:01
+  :tags: Clash
+  :category: 常用工具使用
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 关于普通版clash的代理问题
 
 - 规则: 你购买的节点代理商那边有一个分流规则,

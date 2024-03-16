@@ -2,6 +2,15 @@
 硬盘分区配置
 =====================================
 
+
+.. post:: 2023-02-23 23:14:15
+  :tags: linux, 教程
+  :category: 操作系统
+  :author: YanQue
+  :location: CD
+  :language: zh-cn
+
+
 .. _硬盘分区: https://zh.wikipedia.org/wiki/Disk_partitioning
 
 对于 `硬盘分区`_ 配置，
